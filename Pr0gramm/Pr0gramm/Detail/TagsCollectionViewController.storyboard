@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="874-LI-njH">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tags Collection View Controller-->
+        <scene sceneID="TF7-8z-qMr">
+            <objects>
+                <collectionViewController id="874-LI-njH" customClass="TagsCollectionViewController" customModule="Pr0gramm" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="SpR-lu-hoR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1Ra-J8-cbq">
+                            <size key="itemSize" width="87" height="32"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="tagCell" id="1KU-nH-RP8" customClass="TagCollectionViewCell" customModule="Pr0gramm" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="87" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="9pU-zm-Rxk">
+                                    <rect key="frame" x="0.0" y="0.0" width="87" height="32"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EVv-mV-DIv">
+                                            <rect key="frame" x="5" y="2" width="77" height="28"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tag" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="apP-NM-jgW">
+                                                    <rect key="frame" x="5" y="2" width="67" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="apP-NM-jgW" secondAttribute="bottom" constant="2" id="2Nz-ao-LK2"/>
+                                                <constraint firstItem="apP-NM-jgW" firstAttribute="top" secondItem="EVv-mV-DIv" secondAttribute="top" constant="2" id="HGm-Wu-uaD"/>
+                                                <constraint firstItem="apP-NM-jgW" firstAttribute="leading" secondItem="EVv-mV-DIv" secondAttribute="leading" constant="5" id="Jvp-gE-2VZ"/>
+                                                <constraint firstAttribute="trailing" secondItem="apP-NM-jgW" secondAttribute="trailing" constant="5" id="YR5-lL-8Dt"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="EVv-mV-DIv" secondAttribute="bottom" constant="2" id="EJd-vv-gx1"/>
+                                        <constraint firstItem="EVv-mV-DIv" firstAttribute="leading" secondItem="9pU-zm-Rxk" secondAttribute="leading" constant="5" id="M6t-2D-paS"/>
+                                        <constraint firstAttribute="trailing" secondItem="EVv-mV-DIv" secondAttribute="trailing" constant="5" id="cHE-EF-aQx"/>
+                                        <constraint firstItem="EVv-mV-DIv" firstAttribute="top" secondItem="9pU-zm-Rxk" secondAttribute="top" constant="2" id="xzF-gT-wXl"/>
+                                    </constraints>
+                                </collectionViewCellContentView>
+                                <size key="customSize" width="87" height="32"/>
+                                <connections>
+                                    <outlet property="containerView" destination="EVv-mV-DIv" id="CiF-JC-Ro2"/>
+                                    <outlet property="tagLabel" destination="apP-NM-jgW" id="qoC-ea-25h"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="874-LI-njH" id="S4u-VQ-HUB"/>
+                            <outlet property="delegate" destination="874-LI-njH" id="5Qy-AM-iJY"/>
+                        </connections>
+                    </collectionView>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="414" height="200"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wqX-e5-TCT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="136.60714285714286"/>
+        </scene>
+    </scenes>
+</document>

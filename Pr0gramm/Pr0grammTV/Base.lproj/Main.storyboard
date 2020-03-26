@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="13771" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="appleTV" orientation="landscape">
+        <adaptation id="light"/>
+    </device>
+    <dependencies>
+        <deployment identifier="tvOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="TVViewController" customModule="Pr0grammTV" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fgw-dn-pgU">
+                                <rect key="frame" x="0.0" y="0.0" width="1520" height="1080"/>
+                                <gestureRecognizers/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="r0o-fZ-dmi">
+                                <rect key="frame" x="1520" y="0.0" width="400" height="1080"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WQZ-dD-aK3">
+                                        <rect key="frame" x="0.0" y="0.0" width="400" height="200"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="69" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aF2-U2-xua">
+                                                <rect key="frame" x="0.0" y="25" width="400" height="59"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="50"/>
+                                                <color key="textColor" name="Schriftfarbe"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="User" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H9c-9g-y01">
+                                                <rect key="frame" x="0.0" y="92" width="400" height="83"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                                <color key="textColor" name="Schriftfarbe"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="H9c-9g-y01" secondAttribute="bottom" constant="25" id="1V3-Eb-Dcj"/>
+                                            <constraint firstItem="H9c-9g-y01" firstAttribute="top" secondItem="aF2-U2-xua" secondAttribute="bottom" constant="8" id="4LX-Kx-iF5"/>
+                                            <constraint firstItem="aF2-U2-xua" firstAttribute="top" secondItem="WQZ-dD-aK3" secondAttribute="top" constant="25" id="4VY-Cw-tdi"/>
+                                            <constraint firstAttribute="trailing" secondItem="aF2-U2-xua" secondAttribute="trailing" id="DFJ-T8-RFH"/>
+                                            <constraint firstAttribute="trailing" secondItem="H9c-9g-y01" secondAttribute="trailing" id="Ebf-N4-5Ug"/>
+                                            <constraint firstAttribute="height" constant="200" id="Mcx-Jd-P35"/>
+                                            <constraint firstItem="H9c-9g-y01" firstAttribute="leading" secondItem="WQZ-dD-aK3" secondAttribute="leading" id="NML-vy-IWH"/>
+                                            <constraint firstItem="aF2-U2-xua" firstAttribute="leading" secondItem="WQZ-dD-aK3" secondAttribute="leading" id="UUt-4J-w4a"/>
+                                        </constraints>
+                                    </view>
+                                    <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" sectionHeaderHeight="66" sectionFooterHeight="66" translatesAutoresizingMaskIntoConstraints="NO" id="ezk-Pv-9PN">
+                                        <rect key="frame" x="0.0" y="200" width="400" height="880"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="400" id="mL3-Wo-iLO"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" name="Richtiges Grau"/>
+                        <constraints>
+                            <constraint firstItem="r0o-fZ-dmi" firstAttribute="leading" secondItem="fgw-dn-pgU" secondAttribute="trailing" id="LcD-B2-Gid"/>
+                            <constraint firstAttribute="bottom" secondItem="r0o-fZ-dmi" secondAttribute="bottom" id="MIl-5G-EH8"/>
+                            <constraint firstItem="fgw-dn-pgU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="aVD-cd-yOe"/>
+                            <constraint firstAttribute="trailing" secondItem="r0o-fZ-dmi" secondAttribute="trailing" id="dch-zE-Bfn"/>
+                            <constraint firstAttribute="bottom" secondItem="fgw-dn-pgU" secondAttribute="bottom" id="iEP-eK-cPo"/>
+                            <constraint firstItem="fgw-dn-pgU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="shc-Fc-ef1"/>
+                            <constraint firstItem="r0o-fZ-dmi" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="yGv-Gv-EG5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wu6-TO-1qx"/>
+                    </view>
+                    <connections>
+                        <outlet property="authorLabel" destination="H9c-9g-y01" id="pPH-Ye-WlD"/>
+                        <outlet property="imageView" destination="fgw-dn-pgU" id="Y3T-Ux-84d"/>
+                        <outlet property="pointsLabel" destination="aF2-U2-xua" id="xqo-J4-FXX"/>
+                        <outlet property="tagsTableView" destination="ezk-Pv-9PN" id="sIJ-Gh-VTC"/>
+                        <outlet property="tagsViewWidthConstraint" destination="mL3-Wo-iLO" id="kDc-AQ-ZfZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="Richtiges Grau">
+            <color red="0.086274509803921567" green="0.086274509803921567" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Schriftfarbe">
+            <color red="0.94901960784313721" green="0.96078431372549022" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

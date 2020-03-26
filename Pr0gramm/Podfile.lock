@@ -1,0 +1,16 @@
+PODS:
+  - ScrollingContentViewController (1.4.0)
+
+DEPENDENCIES:
+  - ScrollingContentViewController
+
+SPEC REPOS:
+  trunk:
+    - ScrollingContentViewController
+
+SPEC CHECKSUMS:
+  ScrollingContentViewController: 1bff026d6f32c15489dcd22821911eda5fda3801
+
+PODFILE CHECKSUM: b186c36838c99898fa21283aff0d727a2b91126f
+
+COCOAPODS: 1.8.4

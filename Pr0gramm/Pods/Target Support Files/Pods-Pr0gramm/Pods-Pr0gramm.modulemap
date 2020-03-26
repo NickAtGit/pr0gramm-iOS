@@ -1,0 +1,6 @@
+framework module Pods_Pr0gramm {
+  umbrella header "Pods-Pr0gramm-umbrella.h"
+
+  export *
+  module * { export * }
+}

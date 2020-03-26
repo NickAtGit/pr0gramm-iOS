@@ -1,0 +1,6 @@
+framework module ScrollingContentViewController {
+  umbrella header "ScrollingContentViewController-umbrella.h"
+
+  export *
+  module * { export * }
+}

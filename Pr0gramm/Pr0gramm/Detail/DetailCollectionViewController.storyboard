@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fYd-6F-Fse">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Detail Collection View Controller-->
+        <scene sceneID="QR1-pH-b8a">
+            <objects>
+                <collectionViewController id="fYd-6F-Fse" customClass="DetailCollectionViewController" customModule="Pr0gramm" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" id="VAq-T7-J04">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" name="Richtiges Grau"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="fHi-c5-Ftr">
+                            <size key="itemSize" width="414" height="600"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="detailLargeCell" id="r27-A8-61V" customClass="DetailCollectionViewCell" customModule="Pr0gramm" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="22" width="414" height="852"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Nnj-hn-kBJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e6n-Is-SFA">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="e6n-Is-SFA" secondAttribute="trailing" id="9cF-oV-nIl"/>
+                                        <constraint firstItem="e6n-Is-SFA" firstAttribute="leading" secondItem="Nnj-hn-kBJ" secondAttribute="leading" id="Pr6-5k-mxU"/>
+                                        <constraint firstAttribute="bottom" secondItem="e6n-Is-SFA" secondAttribute="bottom" id="Yet-VQ-auR"/>
+                                        <constraint firstItem="e6n-Is-SFA" firstAttribute="top" secondItem="Nnj-hn-kBJ" secondAttribute="top" id="fjT-NW-VRu"/>
+                                    </constraints>
+                                </collectionViewCellContentView>
+                                <size key="customSize" width="414" height="852"/>
+                                <connections>
+                                    <outlet property="content" destination="e6n-Is-SFA" id="rhb-L6-XEJ"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="fYd-6F-Fse" id="9HK-Ui-SV7"/>
+                            <outlet property="delegate" destination="fYd-6F-Fse" id="0nl-Ce-wwj"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S2e-lR-1KK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-14.492753623188406" y="124.55357142857142"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="Richtiges Grau">
+            <color red="0.086274509803921567" green="0.086274509803921567" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
