@@ -46,7 +46,7 @@ class DownloadedFilesTableViewController: UITableViewController, StoryboardIniti
         if fileURL.lastPathComponent.hasSuffix(".mp4") {
             coordinator?.showVideo(with: fileURL)
         } else {
-            coordinator?.showImageViewController(with: UIImage(contentsOfFile: fileURL.path)!)
+            coordinator?.showImageViewController(with: UIImage(contentsOfFile: fileURL.path)!, from: self)
         }
     }
             

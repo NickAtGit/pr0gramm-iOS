@@ -71,10 +71,10 @@ class Coordinator {
         tabbarController.present(avPlayerViewController, animated: true)
     }
     
-    func showImageViewController(with image: UIImage) {
-        let viewController = ImageDetailViewController.fromStoryboard()
-        viewController.image = image
-        tabbarController.present(viewController, animated: true)
+    func showImageViewController(with image: UIImage, from viewController: UIViewController) {
+        let imageViewController = ImageDetailViewController.fromStoryboard()
+        imageViewController.image = image
+        viewController.present(imageViewController, animated: true)
     }
     
     @objc

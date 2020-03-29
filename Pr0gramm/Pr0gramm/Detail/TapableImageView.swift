@@ -12,15 +12,13 @@ class TapableImageView: UIImageView {
         let touchAreaWidth: CGFloat = 80
 
         if location.x <= touchAreaWidth {
-            print("Left area touched")
             nc.post(name: Notification.Name("leftTapped"), object: nil)
             feedback.selectionChanged()
         } else if location.x >= (self.frame.size.width - touchAreaWidth) {
-            print("Right area touched")
             nc.post(name: Notification.Name("rightTapped"), object: nil)
             feedback.selectionChanged()
         } else {
-            print("Ignore in-between touch.")
+            nc.post(name: Notification.Name("showImageDetail"), object: self)
         }
     }
 

@@ -29,7 +29,7 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
                                                selector: #selector(nextItem),
                                                name: Notification.Name("rightTapped"),
                                                object: nil)
-
+        
         let downloadBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.down"),
                                                     style: .plain,
                                                     target: self,
@@ -47,7 +47,7 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
     func dismissSelf() {
         dismiss(animated: true)
     }
-    
+        
     @objc
     func downloadItem() {
         guard let connector = coordinator?.pr0grammConnector,
@@ -100,6 +100,7 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! DetailCollectionViewCell
         
         cell.detailViewController = DetailViewController.fromStoryboard()
+        cell.detailViewController.coordinator = coordinator
         cell.detailViewController.pr0grammConnector = coordinator?.pr0grammConnector
         cell.detailViewController.item = coordinator?.pr0grammConnector.item(for: indexPath)
         embed(cell.detailViewController, in: cell.content)

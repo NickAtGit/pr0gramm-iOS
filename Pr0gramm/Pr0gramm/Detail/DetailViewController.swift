@@ -6,6 +6,8 @@ import AVKit
 
 class DetailViewController: ScrollingContentViewController, StoryboardInitialViewController {
 
+    weak var coordinator: Coordinator?
+    
     private var stackView: UIStackView!
     private let imageView = TapableImageView()
     private let tagsCollectionViewController = TagsCollectionViewController.fromStoryboard()
@@ -23,6 +25,12 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(showImageDetail),
+                                               name: Notification.Name("showImageDetail"),
+                                               object: nil)
+        
         imageView.isUserInteractionEnabled = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .top
@@ -65,6 +73,13 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         scrollView.contentSize = CGSize(width: stackView.frame.width, height: stackView.frame.height)
+    }
+    
+    @objc
+    func showImageDetail(_ notificaiton: NSNotification) {
+        guard (notificaiton.object as? TapableImageView) == imageView else { return }
+        guard let image = imageView.image else { return }
+        coordinator?.showImageViewController(with: image, from: self)
     }
     
     @objc
