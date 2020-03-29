@@ -1,0 +1,6 @@
+framework module ImageScrollView {
+  umbrella header "ImageScrollView-umbrella.h"
+
+  export *
+  module * { export * }
+}

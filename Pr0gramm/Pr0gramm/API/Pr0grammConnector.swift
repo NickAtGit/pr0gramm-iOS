@@ -203,12 +203,14 @@ class Pr0grammConnector {
         task.resume()
     }
 
-    func thumbLink(for indexPath: IndexPath) -> String {
+    func thumbLink(for indexPath: IndexPath) -> String? {
+        guard indexPath.row <= allItems.count - 1 else { return nil }
         let link = http + thumb + baseURL + allItems[indexPath.row].thumb
         return link
     }
 
-    func imageLink(for indexPath: IndexPath) -> String {
+    func imageLink(for indexPath: IndexPath) -> String? {
+        guard indexPath.row <= allItems.count - 1 else { return nil }
         let link = http + img + baseURL + allItems[indexPath.row].image
         return link
     }

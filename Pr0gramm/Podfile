@@ -6,4 +6,5 @@ target 'Pr0gramm' do
   use_frameworks!
 
   pod 'ScrollingContentViewController'
+  pod 'ImageScrollView'
 end

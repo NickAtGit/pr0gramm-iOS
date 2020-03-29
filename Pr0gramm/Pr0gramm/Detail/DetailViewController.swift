@@ -54,9 +54,6 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
         contentView = hostView
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        
-        //Play audio when ringer switch is silent
-        try? AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

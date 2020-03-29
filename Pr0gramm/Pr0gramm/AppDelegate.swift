@@ -1,5 +1,6 @@
 
 import UIKit
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -12,6 +13,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = coordinator.startViewController()
         window?.makeKeyAndVisible()
+        
+        //Play audio when ringer switch is silent
+        try? AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
 
         return true
     }

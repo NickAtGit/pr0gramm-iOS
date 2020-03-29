@@ -30,16 +30,26 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
                                                name: Notification.Name("rightTapped"),
                                                object: nil)
 
-        let shareBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action,
-                                                 target: self,
-                                                 action: #selector(shareItem))
+        let downloadBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.down"),
+                                                    style: .plain,
+                                                    target: self,
+                                                    action: #selector(downloadItem))
+                
+        navigationItem.rightBarButtonItem = downloadBarButtonItem
         
-        navigationItem.rightBarButtonItem = shareBarButtonItem
+        let dismissItem = UIBarButtonItem(barButtonSystemItem: .done,
+                                          target: self,
+                                          action: #selector(dismissSelf))
+        navigationItem.leftBarButtonItem = dismissItem
     }
     
     @objc
-    func shareItem() {
-        
+    func dismissSelf() {
+        dismiss(animated: true)
+    }
+    
+    @objc
+    func downloadItem() {
         guard let connector = coordinator?.pr0grammConnector,
             let cell = collectionView.visibleCells.first as? DetailCollectionViewCell,
             let item = cell.detailViewController.item else { return }
@@ -47,21 +57,10 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
         let link = connector.imageLink(for: item) ?? connector.videoLink(for: item)
         let downloader = Downloader()
         let url = URL(string: link)!
-        downloader.loadFileAsync(url: url) { done in
-            if done {
-                let path = URL.urlInDocumentsDirectory(with: url.lastPathComponent).path
-                
-                let file: Any
-                
-                if path.hasSuffix(".mp4") {
-                    file = URL(fileURLWithPath: path)
-                } else {
-                    file = UIImage(contentsOfFile: path)!
-                }
-                
-                let items = [file]
-                DispatchQueue.main.async {
-                    self.coordinator?.showShareSheet(with: items)
+        downloader.loadFileAsync(url: url) { successfully in
+            DispatchQueue.main.async {
+                if let navigationContoller = self.navigationController as? NavigationController {
+                    navigationContoller.showBanner(with: successfully ? "Download abgeschlossen" : "Download fehlgeschlagen")
                 }
             }
         }

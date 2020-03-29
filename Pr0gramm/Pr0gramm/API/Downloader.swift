@@ -73,3 +73,35 @@ extension URL {
         return documentsDirectory.appendingPathComponent(filename)
     }
 }
+
+extension FileManager {
+    func urls(for directory: FileManager.SearchPathDirectory, skipsHiddenFiles: Bool = false ) -> [URL]? {
+        let documentsURL = urls(for: directory, in: .userDomainMask)[0]
+        let fileURLs = try? contentsOfDirectory(at: documentsURL, includingPropertiesForKeys: nil, options: skipsHiddenFiles ? .skipsHiddenFiles : [] )
+        return fileURLs
+    }
+}
+
+extension URL {
+    var filesize: Int? {
+        let set = Set.init([URLResourceKey.fileSizeKey])
+        var filesize: Int?
+        do {
+            let values = try self.resourceValues(forKeys: set)
+            if let theFileSize = values.fileSize {
+                filesize = theFileSize
+            }
+        }
+        catch {
+            print("Error: \(error)")
+        }
+        return filesize
+    }
+
+    var filesizeNicelyformatted: String? {
+        guard let fileSize = self.filesize else {
+            return nil
+        }
+        return ByteCountFormatter.init().string(fromByteCount: Int64(fileSize))
+    }
+}

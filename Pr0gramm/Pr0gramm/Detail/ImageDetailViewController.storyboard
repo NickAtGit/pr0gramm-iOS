@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GFb-34-F2L">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Image Detail View Controller-->
+        <scene sceneID="EOG-cN-u19">
+            <objects>
+                <viewController id="GFb-34-F2L" customClass="ImageDetailViewController" customModule="Pr0gramm" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EN8-oW-ieV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NTx-ww-4Ze" customClass="ImageScrollView" customModule="ImageScrollView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="Nyt-Di-67g"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="6n4-mf-jSD"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="NTx-ww-4Ze" firstAttribute="trailing" secondItem="Amh-F2-t1s" secondAttribute="trailing" id="BVz-HV-wJ8"/>
+                            <constraint firstItem="NTx-ww-4Ze" firstAttribute="leading" secondItem="Amh-F2-t1s" secondAttribute="leading" id="WA1-YR-W80"/>
+                            <constraint firstItem="NTx-ww-4Ze" firstAttribute="top" secondItem="EN8-oW-ieV" secondAttribute="top" constant="20" symbolic="YES" id="e5w-jN-UsX"/>
+                            <constraint firstAttribute="bottom" secondItem="NTx-ww-4Ze" secondAttribute="bottom" id="qFu-07-tNa"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Amh-F2-t1s"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageScrollView" destination="NTx-ww-4Ze" id="17f-di-7zx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8RC-pZ-LgU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
+        </scene>
+    </scenes>
+</document>

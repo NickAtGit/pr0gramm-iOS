@@ -7,35 +7,46 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0199A5BCCE31A79EA674B66225F87BD2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
-		09635EB94C3D8ECCA23A58C6141FD6C4 /* ScrollingContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3980071C352760E99FC1E24E6E87373 /* ScrollingContentViewController.swift */; };
+		09635EB94C3D8ECCA23A58C6141FD6C4 /* ScrollingContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9C329F19D5C1354544C89E560A37D7 /* ScrollingContentViewController.swift */; };
 		18F071F39E050237C3412C1D258CAA91 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 312B988EF117AE4DE76A268D970131FE /* UIKit.framework */; };
-		224CBC8F2A6A712B61A725ED80CDFB3E /* ScrollViewFilterKeyboardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F56543A5022C3234AC213ACD32955AF /* ScrollViewFilterKeyboardDelegate.swift */; };
-		2A1DA6A402D19C5CBB813423BDB5DC59 /* UIResponder+Current.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C88561796B5D25A9D03DE1FF0E3E93 /* UIResponder+Current.swift */; };
-		47BD6FB0EFF0B600B248DD13A930600E /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D54C29F4E21C4A5AC7183B34942010 /* KeyboardObserver.swift */; };
-		4B249135309A16F67F59B16C6A9DAAA5 /* ScrollingContentViewController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C9BBF0714ACA636D133AF89FE061AB94 /* ScrollingContentViewController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4EF35B789EF8BCF6826D5C40F1F6AA58 /* KeyboardNotificationObserving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F9AD0577B398522CB16105C87B2D88 /* KeyboardNotificationObserving.swift */; };
-		56DADF22D90A49489580C017FAAB84F8 /* AdditionalSafeAreaInsetsControlling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4624EE2AEC4726351869BAC6B3C8C3C8 /* AdditionalSafeAreaInsetsControlling.swift */; };
-		597D3227A47C47A38202C1CCB2C36C73 /* ScrollViewBounceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133D4B582498C18B3A60ADDB8A22F0DF /* ScrollViewBounceController.swift */; };
-		6CC37E3AB733E882D85DB5B439818AE6 /* IsUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0D6C5BB2D1A60D6B0346BF533D0C72 /* IsUnitTest.swift */; };
-		7288D69FBB7ACDE9655788BA4C34DA98 /* Pods-Pr0gramm-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 90D2D1FB89CF5796C30E2A9974D3EFC7 /* Pods-Pr0gramm-dummy.m */; };
-		838D4D1161A4A201BEF777E803259586 /* KeyboardFrameEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B3FC026409E24CDFD1896C8EC49985 /* KeyboardFrameEvent.swift */; };
-		8FA0C5A79D1FAAE6316F705E74C05D0E /* KeyboardObservering.swift in Sources */ = {isa = PBXBuildFile; fileRef = D258BBDA89DC7E68C096450AFA473F59 /* KeyboardObservering.swift */; };
-		A095695A59F956D9219BECC17B095BC4 /* ScrollViewFilterScrollDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F48969A8F2BB67CD0A53D46F6955829 /* ScrollViewFilterScrollDelegate.swift */; };
-		A67A1745E4030E31965F9E0DDF185D99 /* Pods-Pr0gramm-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CA9D6A5B44D85358F5FAC6437F31D29B /* Pods-Pr0gramm-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B252BC58C5176F66C58CF09F421AA434 /* KeyboardNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37DF1C14C7AD244714EE441944AC987 /* KeyboardNotificationManager.swift */; };
-		BE07F07C3D70EF23594A4983BBCF9995 /* ScrollingContentViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70FD2BF935DBDF1E740D1EBEEB392DC /* ScrollingContentViewManager.swift */; };
+		1904ABEEBC762ADEF822133848F46E39 /* ImageScrollView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7BB725E900EBCF991829958138B92A /* ImageScrollView-dummy.m */; };
+		224CBC8F2A6A712B61A725ED80CDFB3E /* ScrollViewFilterKeyboardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F99088330769ABD6EE8B533B2C080A8 /* ScrollViewFilterKeyboardDelegate.swift */; };
+		2A1DA6A402D19C5CBB813423BDB5DC59 /* UIResponder+Current.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23076DD802D1417385A3CDB0DE28B00F /* UIResponder+Current.swift */; };
+		47BD6FB0EFF0B600B248DD13A930600E /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3614051ACCA2FCDF5B24F06D4602391F /* KeyboardObserver.swift */; };
+		4B249135309A16F67F59B16C6A9DAAA5 /* ScrollingContentViewController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C63EA2E2C15E117ABAB003C977AFFE45 /* ScrollingContentViewController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4EF35B789EF8BCF6826D5C40F1F6AA58 /* KeyboardNotificationObserving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9529214F62473667342905298BF07B21 /* KeyboardNotificationObserving.swift */; };
+		56DADF22D90A49489580C017FAAB84F8 /* AdditionalSafeAreaInsetsControlling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E6F47E6652EAD538E572D422DDA7DE /* AdditionalSafeAreaInsetsControlling.swift */; };
+		597D3227A47C47A38202C1CCB2C36C73 /* ScrollViewBounceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEF77145D1DD87151C884EA0E839FAA /* ScrollViewBounceController.swift */; };
+		6CC37E3AB733E882D85DB5B439818AE6 /* IsUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5715DF0C69F2D75A60F782020ED668D9 /* IsUnitTest.swift */; };
+		74C16BE02C66CCF3E81154A916D2D527 /* Pods-Pr0gramm-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 90D2D1FB89CF5796C30E2A9974D3EFC7 /* Pods-Pr0gramm-dummy.m */; };
+		76F2238CC12CA26FD69BFDEEF9139DAD /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D7AD1A519D0F81D03880BE34CF69B2 /* ImageScrollView.swift */; };
+		838D4D1161A4A201BEF777E803259586 /* KeyboardFrameEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F1F2244AAE78A2D530DFC04C4DC4B8 /* KeyboardFrameEvent.swift */; };
+		85F45380F3D3E638DAFEDE24A3D3EFC4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
+		8FA0C5A79D1FAAE6316F705E74C05D0E /* KeyboardObservering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91791010AF712493D27BABFDA7FDE626 /* KeyboardObservering.swift */; };
+		A095695A59F956D9219BECC17B095BC4 /* ScrollViewFilterScrollDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C21B24BE176E07CC6257D9C3A0BDBC /* ScrollViewFilterScrollDelegate.swift */; };
+		B0B16B364E195CAB752922401F658815 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
+		B252BC58C5176F66C58CF09F421AA434 /* KeyboardNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE42A10A0659457989B395EB9D4748F1 /* KeyboardNotificationManager.swift */; };
+		BE07F07C3D70EF23594A4983BBCF9995 /* ScrollingContentViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AFE33CC636900ED64EC4549D46D82B /* ScrollingContentViewManager.swift */; };
 		C72F91E4B8DBCF55630BD889EDF83B7F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
-		CA8251608D0F6843ECE39E7D35338A89 /* ScrollingContentViewController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3456EFE4AC365CDB76A0D8D57206D80B /* ScrollingContentViewController-dummy.m */; };
-		D9C862EF4184190D3860F20BCD40157D /* ScrollRectEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66FD2D2A50B542E801B2CDF38EF9FD7 /* ScrollRectEvent.swift */; };
-		E563E29E59AB9F3D17DAE3B05B65B114 /* AdditionalSafeAreaInsetsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A61C4F6293AA114735CA1DEBDC835E0 /* AdditionalSafeAreaInsetsController.swift */; };
-		E96257C989B169DC8114CC170140D838 /* ScrollViewFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472962D0D2BDEC84D2F2C24931C99C1C /* ScrollViewFilter.swift */; };
-		EB963C4B07EF31DE86538B697E73F905 /* ScrollingContentScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6CFFA97A168D5CC93BE3B01D14045B /* ScrollingContentScrollView.swift */; };
-		F3F5F224CC3CF6D0C7087F70DAB24D9C /* ScrollViewBounceControlling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316FBF0718A049F83F8A1A0A4E83D9B0 /* ScrollViewBounceControlling.swift */; };
+		CA8251608D0F6843ECE39E7D35338A89 /* ScrollingContentViewController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 462CBF67BA25D074669AE923EF380259 /* ScrollingContentViewController-dummy.m */; };
+		D14F73CE708C0DB720A1979C659F9284 /* ImageScrollView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C11B50A871DCF06D5637F22EAAA3F607 /* ImageScrollView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9C862EF4184190D3860F20BCD40157D /* ScrollRectEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E9E4D3B93C66AD0BAE524F5543BC51 /* ScrollRectEvent.swift */; };
+		E563E29E59AB9F3D17DAE3B05B65B114 /* AdditionalSafeAreaInsetsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3A406D0055C153084D8A500B71767C /* AdditionalSafeAreaInsetsController.swift */; };
+		E96257C989B169DC8114CC170140D838 /* ScrollViewFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1D435D1D19270D7C9F64B5BFCA466C /* ScrollViewFilter.swift */; };
+		EB963C4B07EF31DE86538B697E73F905 /* ScrollingContentScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B0B6FFE5B962ADE9C6077F93A7D81C /* ScrollingContentScrollView.swift */; };
+		F3F5F224CC3CF6D0C7087F70DAB24D9C /* ScrollViewBounceControlling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868BD3865108CEB32D3A85E210F50F66 /* ScrollViewBounceControlling.swift */; };
+		F655CA3E7069322180AB14012B134080 /* Pods-Pr0gramm-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CA9D6A5B44D85358F5FAC6437F31D29B /* Pods-Pr0gramm-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		DE2181FD7723ED741859D91B7646008C /* PBXContainerItemProxy */ = {
+		10B41B75FCB5596506F2302A004FDA52 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1CAEC00F99D9CCA04293B3139152CA5C;
+			remoteInfo = ImageScrollView;
+		};
+		416AF9A64CA4A2A584145F5038A4B0C3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -45,43 +56,51 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		04F5E1FA212A966E4023C6784723AC77 /* ScrollingContentViewController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ScrollingContentViewController-prefix.pch"; sourceTree = "<group>"; };
-		0A61C4F6293AA114735CA1DEBDC835E0 /* AdditionalSafeAreaInsetsController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AdditionalSafeAreaInsetsController.swift; path = Source/AdditionalSafeAreaInsetsController.swift; sourceTree = "<group>"; };
 		119D82401C0C8CD62272730E63DC19F4 /* Pods-Pr0gramm-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Pr0gramm-frameworks.sh"; sourceTree = "<group>"; };
-		133D4B582498C18B3A60ADDB8A22F0DF /* ScrollViewBounceController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollViewBounceController.swift; path = Source/ScrollViewBounceController.swift; sourceTree = "<group>"; };
+		136B901B8D20A6B8672D073A8BE8EC56 /* ScrollingContentViewController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ScrollingContentViewController-prefix.pch"; sourceTree = "<group>"; };
 		1EB6392CD04AF8D603979C4C2F841A85 /* Pods_Pr0gramm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Pr0gramm.framework; path = "Pods-Pr0gramm.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		23076DD802D1417385A3CDB0DE28B00F /* UIResponder+Current.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIResponder+Current.swift"; path = "Source/UIResponder+Current.swift"; sourceTree = "<group>"; };
 		26208E040DD5601BEA0799D876FBDD13 /* Pods-Pr0gramm-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Pr0gramm-Info.plist"; sourceTree = "<group>"; };
+		29E9E4D3B93C66AD0BAE524F5543BC51 /* ScrollRectEvent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollRectEvent.swift; path = Source/ScrollRectEvent.swift; sourceTree = "<group>"; };
+		2F7BB725E900EBCF991829958138B92A /* ImageScrollView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ImageScrollView-dummy.m"; sourceTree = "<group>"; };
+		2FEF77145D1DD87151C884EA0E839FAA /* ScrollViewBounceController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollViewBounceController.swift; path = Source/ScrollViewBounceController.swift; sourceTree = "<group>"; };
 		312B988EF117AE4DE76A268D970131FE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		316FBF0718A049F83F8A1A0A4E83D9B0 /* ScrollViewBounceControlling.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollViewBounceControlling.swift; path = Source/ScrollViewBounceControlling.swift; sourceTree = "<group>"; };
-		3456EFE4AC365CDB76A0D8D57206D80B /* ScrollingContentViewController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ScrollingContentViewController-dummy.m"; sourceTree = "<group>"; };
+		32F1F2244AAE78A2D530DFC04C4DC4B8 /* KeyboardFrameEvent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyboardFrameEvent.swift; path = Source/KeyboardFrameEvent.swift; sourceTree = "<group>"; };
+		3614051ACCA2FCDF5B24F06D4602391F /* KeyboardObserver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyboardObserver.swift; path = Source/KeyboardObserver.swift; sourceTree = "<group>"; };
 		436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		4624EE2AEC4726351869BAC6B3C8C3C8 /* AdditionalSafeAreaInsetsControlling.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AdditionalSafeAreaInsetsControlling.swift; path = Source/AdditionalSafeAreaInsetsControlling.swift; sourceTree = "<group>"; };
-		472962D0D2BDEC84D2F2C24931C99C1C /* ScrollViewFilter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollViewFilter.swift; path = Source/ScrollViewFilter.swift; sourceTree = "<group>"; };
+		462CBF67BA25D074669AE923EF380259 /* ScrollingContentViewController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ScrollingContentViewController-dummy.m"; sourceTree = "<group>"; };
+		4A1D435D1D19270D7C9F64B5BFCA466C /* ScrollViewFilter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollViewFilter.swift; path = Source/ScrollViewFilter.swift; sourceTree = "<group>"; };
 		4CC8A5A32B1B8D05FFA96F43BCE6EA06 /* ScrollingContentViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ScrollingContentViewController.framework; path = ScrollingContentViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		68F9AD0577B398522CB16105C87B2D88 /* KeyboardNotificationObserving.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyboardNotificationObserving.swift; path = Source/KeyboardNotificationObserving.swift; sourceTree = "<group>"; };
-		7341AFA3534B36358299E013E07DD98E /* ScrollingContentViewController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ScrollingContentViewController.xcconfig; sourceTree = "<group>"; };
+		54DAE4398062177811376716AFA76C9E /* ImageScrollView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ImageScrollView-Info.plist"; sourceTree = "<group>"; };
+		5715DF0C69F2D75A60F782020ED668D9 /* IsUnitTest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IsUnitTest.swift; path = Source/IsUnitTest.swift; sourceTree = "<group>"; };
+		6AE6CDFAA2E15CA407D5E313649BE275 /* ScrollingContentViewController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ScrollingContentViewController.xcconfig; sourceTree = "<group>"; };
+		6F99088330769ABD6EE8B533B2C080A8 /* ScrollViewFilterKeyboardDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollViewFilterKeyboardDelegate.swift; path = Source/ScrollViewFilterKeyboardDelegate.swift; sourceTree = "<group>"; };
+		70995719D1C2AB60A099A6C19BDEEE16 /* ScrollingContentViewController-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ScrollingContentViewController-Info.plist"; sourceTree = "<group>"; };
 		768699712F4323D9EEAE2F56C1E67423 /* Pods-Pr0gramm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Pr0gramm.release.xcconfig"; sourceTree = "<group>"; };
-		775297516621E98BE033FE363C4951ED /* ScrollingContentViewController-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ScrollingContentViewController-Info.plist"; sourceTree = "<group>"; };
-		7F48969A8F2BB67CD0A53D46F6955829 /* ScrollViewFilterScrollDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollViewFilterScrollDelegate.swift; path = Source/ScrollViewFilterScrollDelegate.swift; sourceTree = "<group>"; };
 		84489977A07A31F3EBEA45F1EFE49818 /* Pods-Pr0gramm-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Pr0gramm-acknowledgements.plist"; sourceTree = "<group>"; };
-		8F56543A5022C3234AC213ACD32955AF /* ScrollViewFilterKeyboardDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollViewFilterKeyboardDelegate.swift; path = Source/ScrollViewFilterKeyboardDelegate.swift; sourceTree = "<group>"; };
-		8F6CFFA97A168D5CC93BE3B01D14045B /* ScrollingContentScrollView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollingContentScrollView.swift; path = Source/ScrollingContentScrollView.swift; sourceTree = "<group>"; };
+		868BD3865108CEB32D3A85E210F50F66 /* ScrollViewBounceControlling.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollViewBounceControlling.swift; path = Source/ScrollViewBounceControlling.swift; sourceTree = "<group>"; };
+		87C21B24BE176E07CC6257D9C3A0BDBC /* ScrollViewFilterScrollDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollViewFilterScrollDelegate.swift; path = Source/ScrollViewFilterScrollDelegate.swift; sourceTree = "<group>"; };
+		8B963D5BA311EDEBC8AD8D6FA53E6B20 /* ImageScrollView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ImageScrollView.framework; path = ImageScrollView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90D2D1FB89CF5796C30E2A9974D3EFC7 /* Pods-Pr0gramm-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Pr0gramm-dummy.m"; sourceTree = "<group>"; };
+		90E6F47E6652EAD538E572D422DDA7DE /* AdditionalSafeAreaInsetsControlling.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AdditionalSafeAreaInsetsControlling.swift; path = Source/AdditionalSafeAreaInsetsControlling.swift; sourceTree = "<group>"; };
+		91791010AF712493D27BABFDA7FDE626 /* KeyboardObservering.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyboardObservering.swift; path = Source/KeyboardObservering.swift; sourceTree = "<group>"; };
+		9529214F62473667342905298BF07B21 /* KeyboardNotificationObserving.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyboardNotificationObserving.swift; path = Source/KeyboardNotificationObserving.swift; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A2C88561796B5D25A9D03DE1FF0E3E93 /* UIResponder+Current.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIResponder+Current.swift"; path = "Source/UIResponder+Current.swift"; sourceTree = "<group>"; };
-		A3980071C352760E99FC1E24E6E87373 /* ScrollingContentViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollingContentViewController.swift; path = Source/ScrollingContentViewController.swift; sourceTree = "<group>"; };
-		A66FD2D2A50B542E801B2CDF38EF9FD7 /* ScrollRectEvent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollRectEvent.swift; path = Source/ScrollRectEvent.swift; sourceTree = "<group>"; };
-		A70FD2BF935DBDF1E740D1EBEEB392DC /* ScrollingContentViewManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollingContentViewManager.swift; path = Source/ScrollingContentViewManager.swift; sourceTree = "<group>"; };
-		C3B3FC026409E24CDFD1896C8EC49985 /* KeyboardFrameEvent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyboardFrameEvent.swift; path = Source/KeyboardFrameEvent.swift; sourceTree = "<group>"; };
+		AF20A1363790A28643DE24008418E36E /* ImageScrollView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ImageScrollView-prefix.pch"; sourceTree = "<group>"; };
+		B0D7AD1A519D0F81D03880BE34CF69B2 /* ImageScrollView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageScrollView.swift; path = Sources/ImageScrollView.swift; sourceTree = "<group>"; };
+		B3B0B6FFE5B962ADE9C6077F93A7D81C /* ScrollingContentScrollView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollingContentScrollView.swift; path = Source/ScrollingContentScrollView.swift; sourceTree = "<group>"; };
+		C11B50A871DCF06D5637F22EAAA3F607 /* ImageScrollView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ImageScrollView-umbrella.h"; sourceTree = "<group>"; };
+		C63EA2E2C15E117ABAB003C977AFFE45 /* ScrollingContentViewController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ScrollingContentViewController-umbrella.h"; sourceTree = "<group>"; };
 		C86D7A3EF5CC0B72B31CD0A53D5F8C30 /* Pods-Pr0gramm.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Pr0gramm.modulemap"; sourceTree = "<group>"; };
-		C9BBF0714ACA636D133AF89FE061AB94 /* ScrollingContentViewController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ScrollingContentViewController-umbrella.h"; sourceTree = "<group>"; };
-		CA0D6C5BB2D1A60D6B0346BF533D0C72 /* IsUnitTest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IsUnitTest.swift; path = Source/IsUnitTest.swift; sourceTree = "<group>"; };
 		CA9D6A5B44D85358F5FAC6437F31D29B /* Pods-Pr0gramm-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Pr0gramm-umbrella.h"; sourceTree = "<group>"; };
-		D258BBDA89DC7E68C096450AFA473F59 /* KeyboardObservering.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyboardObservering.swift; path = Source/KeyboardObservering.swift; sourceTree = "<group>"; };
-		E37DF1C14C7AD244714EE441944AC987 /* KeyboardNotificationManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyboardNotificationManager.swift; path = Source/KeyboardNotificationManager.swift; sourceTree = "<group>"; };
+		D278F0B8F44D35AA54E3D2AFD329AA10 /* ImageScrollView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ImageScrollView.modulemap; sourceTree = "<group>"; };
+		D92D5530D55D7F420CFCA97524A6FB2A /* ImageScrollView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ImageScrollView.xcconfig; sourceTree = "<group>"; };
+		E2AFE33CC636900ED64EC4549D46D82B /* ScrollingContentViewManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollingContentViewManager.swift; path = Source/ScrollingContentViewManager.swift; sourceTree = "<group>"; };
 		E5A4405B54402D20FB4AF90D62023411 /* Pods-Pr0gramm-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Pr0gramm-acknowledgements.markdown"; sourceTree = "<group>"; };
-		F4D54C29F4E21C4A5AC7183B34942010 /* KeyboardObserver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyboardObserver.swift; path = Source/KeyboardObserver.swift; sourceTree = "<group>"; };
-		F7289ABABEF43BBBC458D5C85CFC3ED6 /* ScrollingContentViewController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ScrollingContentViewController.modulemap; sourceTree = "<group>"; };
+		EA3A406D0055C153084D8A500B71767C /* AdditionalSafeAreaInsetsController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AdditionalSafeAreaInsetsController.swift; path = Source/AdditionalSafeAreaInsetsController.swift; sourceTree = "<group>"; };
+		ED9C329F19D5C1354544C89E560A37D7 /* ScrollingContentViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollingContentViewController.swift; path = Source/ScrollingContentViewController.swift; sourceTree = "<group>"; };
+		EE42A10A0659457989B395EB9D4748F1 /* KeyboardNotificationManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyboardNotificationManager.swift; path = Source/KeyboardNotificationManager.swift; sourceTree = "<group>"; };
+		F3F45F97E52DD97FA468B71DD30188F4 /* ScrollingContentViewController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ScrollingContentViewController.modulemap; sourceTree = "<group>"; };
 		F7965E929607B726B1FD02690B20EFDE /* Pods-Pr0gramm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Pr0gramm.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,21 +114,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A23A60F365019ACA1BCD3B5FFE26E021 /* Frameworks */ = {
+		949602B4C2A0BFF6E9AAC7811637FA8D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0199A5BCCE31A79EA674B66225F87BD2 /* Foundation.framework in Frameworks */,
+				85F45380F3D3E638DAFEDE24A3D3EFC4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD46339AC4FE0AE2F605549A8EAB25EB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0B16B364E195CAB752922401F658815 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0504A3C0A0C0630F716B04310BF37BC1 /* Pods */ = {
+		0B5608F53C219A4F1EFE0E8AC2BA693D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				943F63D5FD162827225A76A6239F2A0C /* ScrollingContentViewController */,
+				DC1F8BC1D383C249A4F3A51CE3D628D9 /* ImageScrollView */,
+				5C21F6D83E3E0C76F894EEC58B8CD37D /* ScrollingContentViewController */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -122,15 +150,29 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		24CD6491BFAD54F67F5B0A954B3419D1 /* Support Files */ = {
+		30DB4D05D24B39A22FB0E450725FA584 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				F7289ABABEF43BBBC458D5C85CFC3ED6 /* ScrollingContentViewController.modulemap */,
-				7341AFA3534B36358299E013E07DD98E /* ScrollingContentViewController.xcconfig */,
-				3456EFE4AC365CDB76A0D8D57206D80B /* ScrollingContentViewController-dummy.m */,
-				775297516621E98BE033FE363C4951ED /* ScrollingContentViewController-Info.plist */,
-				04F5E1FA212A966E4023C6784723AC77 /* ScrollingContentViewController-prefix.pch */,
-				C9BBF0714ACA636D133AF89FE061AB94 /* ScrollingContentViewController-umbrella.h */,
+				D278F0B8F44D35AA54E3D2AFD329AA10 /* ImageScrollView.modulemap */,
+				D92D5530D55D7F420CFCA97524A6FB2A /* ImageScrollView.xcconfig */,
+				2F7BB725E900EBCF991829958138B92A /* ImageScrollView-dummy.m */,
+				54DAE4398062177811376716AFA76C9E /* ImageScrollView-Info.plist */,
+				AF20A1363790A28643DE24008418E36E /* ImageScrollView-prefix.pch */,
+				C11B50A871DCF06D5637F22EAAA3F607 /* ImageScrollView-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/ImageScrollView";
+			sourceTree = "<group>";
+		};
+		34E0EEFCEEADF4D6E2B462F14BA21A2F /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				F3F45F97E52DD97FA468B71DD30188F4 /* ScrollingContentViewController.modulemap */,
+				6AE6CDFAA2E15CA407D5E313649BE275 /* ScrollingContentViewController.xcconfig */,
+				462CBF67BA25D074669AE923EF380259 /* ScrollingContentViewController-dummy.m */,
+				70995719D1C2AB60A099A6C19BDEEE16 /* ScrollingContentViewController-Info.plist */,
+				136B901B8D20A6B8672D073A8BE8EC56 /* ScrollingContentViewController-prefix.pch */,
+				C63EA2E2C15E117ABAB003C977AFFE45 /* ScrollingContentViewController-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/ScrollingContentViewController";
@@ -153,6 +195,33 @@
 			path = "Target Support Files/Pods-Pr0gramm";
 			sourceTree = "<group>";
 		};
+		5C21F6D83E3E0C76F894EEC58B8CD37D /* ScrollingContentViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EA3A406D0055C153084D8A500B71767C /* AdditionalSafeAreaInsetsController.swift */,
+				90E6F47E6652EAD538E572D422DDA7DE /* AdditionalSafeAreaInsetsControlling.swift */,
+				5715DF0C69F2D75A60F782020ED668D9 /* IsUnitTest.swift */,
+				32F1F2244AAE78A2D530DFC04C4DC4B8 /* KeyboardFrameEvent.swift */,
+				EE42A10A0659457989B395EB9D4748F1 /* KeyboardNotificationManager.swift */,
+				9529214F62473667342905298BF07B21 /* KeyboardNotificationObserving.swift */,
+				3614051ACCA2FCDF5B24F06D4602391F /* KeyboardObserver.swift */,
+				91791010AF712493D27BABFDA7FDE626 /* KeyboardObservering.swift */,
+				B3B0B6FFE5B962ADE9C6077F93A7D81C /* ScrollingContentScrollView.swift */,
+				ED9C329F19D5C1354544C89E560A37D7 /* ScrollingContentViewController.swift */,
+				E2AFE33CC636900ED64EC4549D46D82B /* ScrollingContentViewManager.swift */,
+				29E9E4D3B93C66AD0BAE524F5543BC51 /* ScrollRectEvent.swift */,
+				2FEF77145D1DD87151C884EA0E839FAA /* ScrollViewBounceController.swift */,
+				868BD3865108CEB32D3A85E210F50F66 /* ScrollViewBounceControlling.swift */,
+				4A1D435D1D19270D7C9F64B5BFCA466C /* ScrollViewFilter.swift */,
+				6F99088330769ABD6EE8B533B2C080A8 /* ScrollViewFilterKeyboardDelegate.swift */,
+				87C21B24BE176E07CC6257D9C3A0BDBC /* ScrollViewFilterScrollDelegate.swift */,
+				23076DD802D1417385A3CDB0DE28B00F /* UIResponder+Current.swift */,
+				34E0EEFCEEADF4D6E2B462F14BA21A2F /* Support Files */,
+			);
+			name = ScrollingContentViewController;
+			path = ScrollingContentViewController;
+			sourceTree = "<group>";
+		};
 		61FE16C1396D06D890B32C6965C8C203 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,31 +230,14 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		943F63D5FD162827225A76A6239F2A0C /* ScrollingContentViewController */ = {
+		7AFF21D1B4086604BC84DDD6EA4F54BF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0A61C4F6293AA114735CA1DEBDC835E0 /* AdditionalSafeAreaInsetsController.swift */,
-				4624EE2AEC4726351869BAC6B3C8C3C8 /* AdditionalSafeAreaInsetsControlling.swift */,
-				CA0D6C5BB2D1A60D6B0346BF533D0C72 /* IsUnitTest.swift */,
-				C3B3FC026409E24CDFD1896C8EC49985 /* KeyboardFrameEvent.swift */,
-				E37DF1C14C7AD244714EE441944AC987 /* KeyboardNotificationManager.swift */,
-				68F9AD0577B398522CB16105C87B2D88 /* KeyboardNotificationObserving.swift */,
-				F4D54C29F4E21C4A5AC7183B34942010 /* KeyboardObserver.swift */,
-				D258BBDA89DC7E68C096450AFA473F59 /* KeyboardObservering.swift */,
-				8F6CFFA97A168D5CC93BE3B01D14045B /* ScrollingContentScrollView.swift */,
-				A3980071C352760E99FC1E24E6E87373 /* ScrollingContentViewController.swift */,
-				A70FD2BF935DBDF1E740D1EBEEB392DC /* ScrollingContentViewManager.swift */,
-				A66FD2D2A50B542E801B2CDF38EF9FD7 /* ScrollRectEvent.swift */,
-				133D4B582498C18B3A60ADDB8A22F0DF /* ScrollViewBounceController.swift */,
-				316FBF0718A049F83F8A1A0A4E83D9B0 /* ScrollViewBounceControlling.swift */,
-				472962D0D2BDEC84D2F2C24931C99C1C /* ScrollViewFilter.swift */,
-				8F56543A5022C3234AC213ACD32955AF /* ScrollViewFilterKeyboardDelegate.swift */,
-				7F48969A8F2BB67CD0A53D46F6955829 /* ScrollViewFilterScrollDelegate.swift */,
-				A2C88561796B5D25A9D03DE1FF0E3E93 /* UIResponder+Current.swift */,
-				24CD6491BFAD54F67F5B0A954B3419D1 /* Support Files */,
+				8B963D5BA311EDEBC8AD8D6FA53E6B20 /* ImageScrollView.framework */,
+				1EB6392CD04AF8D603979C4C2F841A85 /* Pods_Pr0gramm.framework */,
+				4CC8A5A32B1B8D05FFA96F43BCE6EA06 /* ScrollingContentViewController.framework */,
 			);
-			name = ScrollingContentViewController;
-			path = ScrollingContentViewController;
+			name = Products;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -193,10 +245,20 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
-				0504A3C0A0C0630F716B04310BF37BC1 /* Pods */,
-				FFBA1614142B0682C985332A5801387F /* Products */,
+				0B5608F53C219A4F1EFE0E8AC2BA693D /* Pods */,
+				7AFF21D1B4086604BC84DDD6EA4F54BF /* Products */,
 				61FE16C1396D06D890B32C6965C8C203 /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		DC1F8BC1D383C249A4F3A51CE3D628D9 /* ImageScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				B0D7AD1A519D0F81D03880BE34CF69B2 /* ImageScrollView.swift */,
+				30DB4D05D24B39A22FB0E450725FA584 /* Support Files */,
+			);
+			name = ImageScrollView;
+			path = ImageScrollView;
 			sourceTree = "<group>";
 		};
 		E2983683FD097A93297E2F5D4E382B36 /* iOS */ = {
@@ -208,23 +270,22 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		FFBA1614142B0682C985332A5801387F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				1EB6392CD04AF8D603979C4C2F841A85 /* Pods_Pr0gramm.framework */,
-				4CC8A5A32B1B8D05FFA96F43BCE6EA06 /* ScrollingContentViewController.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		69D293C7C1D87536348C598D253B7665 /* Headers */ = {
+		0AE6B79E69ACED7B663910673CB4E342 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A67A1745E4030E31965F9E0DDF185D99 /* Pods-Pr0gramm-umbrella.h in Headers */,
+				D14F73CE708C0DB720A1979C659F9284 /* ImageScrollView-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B81C79205F162C42E4D545D0FD76145 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F655CA3E7069322180AB14012B134080 /* Pods-Pr0gramm-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,19 +300,38 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		3E371BBEC1B023845097EC69895CA81A /* Pods-Pr0gramm */ = {
+		1CAEC00F99D9CCA04293B3139152CA5C /* ImageScrollView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C53CFD3B7203B2110137B13E2DBCBB4A /* Build configuration list for PBXNativeTarget "Pods-Pr0gramm" */;
+			buildConfigurationList = D64FF396F472B5B3B5113CC2DDB98213 /* Build configuration list for PBXNativeTarget "ImageScrollView" */;
 			buildPhases = (
-				69D293C7C1D87536348C598D253B7665 /* Headers */,
-				42768FDA8334D2ABE71AD892C31AA23E /* Sources */,
-				A23A60F365019ACA1BCD3B5FFE26E021 /* Frameworks */,
-				17794835263EEB84259F3202CEC0847A /* Resources */,
+				0AE6B79E69ACED7B663910673CB4E342 /* Headers */,
+				61E80F9EF146928083B309D7225A46F1 /* Sources */,
+				949602B4C2A0BFF6E9AAC7811637FA8D /* Frameworks */,
+				82A8E22BD2871C5889698C86B1D829B9 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				A28F6923FD6C092858EBFC9C489A685F /* PBXTargetDependency */,
+			);
+			name = ImageScrollView;
+			productName = ImageScrollView;
+			productReference = 8B963D5BA311EDEBC8AD8D6FA53E6B20 /* ImageScrollView.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		3E371BBEC1B023845097EC69895CA81A /* Pods-Pr0gramm */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 834E07A45007CCD7BA774AF69049C570 /* Build configuration list for PBXNativeTarget "Pods-Pr0gramm" */;
+			buildPhases = (
+				4B81C79205F162C42E4D545D0FD76145 /* Headers */,
+				8877C15AFAA8CE7271B8F4D00309A4E5 /* Sources */,
+				AD46339AC4FE0AE2F605549A8EAB25EB /* Frameworks */,
+				622E18B0E7858EF4C7DD47AB513077CE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0A8D10FC1A1DB7C2A65E2A6D12D50191 /* PBXTargetDependency */,
+				2C2BF0322856AFB69A210051F7D11020 /* PBXTargetDependency */,
 			);
 			name = "Pods-Pr0gramm";
 			productName = "Pods-Pr0gramm";
@@ -294,10 +374,11 @@
 				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = FFBA1614142B0682C985332A5801387F /* Products */;
+			productRefGroup = 7AFF21D1B4086604BC84DDD6EA4F54BF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				1CAEC00F99D9CCA04293B3139152CA5C /* ImageScrollView */,
 				3E371BBEC1B023845097EC69895CA81A /* Pods-Pr0gramm */,
 				61AEB25FFF12DCFE0839624D1D3039A3 /* ScrollingContentViewController */,
 			);
@@ -305,14 +386,21 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		17794835263EEB84259F3202CEC0847A /* Resources */ = {
+		3692958406EC93DB28B5B149EF9A395A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3692958406EC93DB28B5B149EF9A395A /* Resources */ = {
+		622E18B0E7858EF4C7DD47AB513077CE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82A8E22BD2871C5889698C86B1D829B9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -322,11 +410,12 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		42768FDA8334D2ABE71AD892C31AA23E /* Sources */ = {
+		61E80F9EF146928083B309D7225A46F1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7288D69FBB7ACDE9655788BA4C34DA98 /* Pods-Pr0gramm-dummy.m in Sources */,
+				1904ABEEBC762ADEF822133848F46E39 /* ImageScrollView-dummy.m in Sources */,
+				76F2238CC12CA26FD69BFDEEF9139DAD /* ImageScrollView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,21 +445,35 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8877C15AFAA8CE7271B8F4D00309A4E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74C16BE02C66CCF3E81154A916D2D527 /* Pods-Pr0gramm-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		A28F6923FD6C092858EBFC9C489A685F /* PBXTargetDependency */ = {
+		0A8D10FC1A1DB7C2A65E2A6D12D50191 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ImageScrollView;
+			target = 1CAEC00F99D9CCA04293B3139152CA5C /* ImageScrollView */;
+			targetProxy = 10B41B75FCB5596506F2302A004FDA52 /* PBXContainerItemProxy */;
+		};
+		2C2BF0322856AFB69A210051F7D11020 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ScrollingContentViewController;
 			target = 61AEB25FFF12DCFE0839624D1D3039A3 /* ScrollingContentViewController */;
-			targetProxy = DE2181FD7723ED741859D91B7646008C /* PBXContainerItemProxy */;
+			targetProxy = 416AF9A64CA4A2A584145F5038A4B0C3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		00F86E61E8CFA8A1CDC2DC3BFE1CBF98 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7341AFA3534B36358299E013E07DD98E /* ScrollingContentViewController.xcconfig */;
+			baseConfigurationReference = 6AE6CDFAA2E15CA407D5E313649BE275 /* ScrollingContentViewController.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -403,7 +506,7 @@
 		};
 		0A09DB90136974D392FA8C043E194B9B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7341AFA3534B36358299E013E07DD98E /* ScrollingContentViewController.xcconfig */;
+			baseConfigurationReference = 6AE6CDFAA2E15CA407D5E313649BE275 /* ScrollingContentViewController.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -495,7 +598,39 @@
 			};
 			name = Release;
 		};
-		43D2C199766A2F5B0EB796E4840F14FD /* Debug */ = {
+		52D3C3297670E67AEF455656F0D2E258 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D92D5530D55D7F420CFCA97524A6FB2A /* ImageScrollView.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ImageScrollView/ImageScrollView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ImageScrollView/ImageScrollView-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ImageScrollView/ImageScrollView.modulemap";
+				PRODUCT_MODULE_NAME = ImageScrollView;
+				PRODUCT_NAME = ImageScrollView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		AF0D150788C62FF6833B40FF690F5B74 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F7965E929607B726B1FD02690B20EFDE /* Pods-Pr0gramm.debug.xcconfig */;
 			buildSettings = {
@@ -530,13 +665,11 @@
 			};
 			name = Debug;
 		};
-		9F547718CDD1B324690EA04AB26136AC /* Release */ = {
+		E0B1D0612CF740D2A16C9CCCA3D9C654 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 768699712F4323D9EEAE2F56C1E67423 /* Pods-Pr0gramm.release.xcconfig */;
+			baseConfigurationReference = D92D5530D55D7F420CFCA97524A6FB2A /* ImageScrollView.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -546,19 +679,18 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Pr0gramm/Pods-Pr0gramm-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/ImageScrollView/ImageScrollView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ImageScrollView/ImageScrollView-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Pr0gramm/Pods-Pr0gramm.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				MODULEMAP_FILE = "Target Support Files/ImageScrollView/ImageScrollView.modulemap";
+				PRODUCT_MODULE_NAME = ImageScrollView;
+				PRODUCT_NAME = ImageScrollView;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -630,6 +762,42 @@
 			};
 			name = Debug;
 		};
+		F7C942B93E32FC439771FEEA0C71073F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 768699712F4323D9EEAE2F56C1E67423 /* Pods-Pr0gramm.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Pr0gramm/Pods-Pr0gramm-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Pr0gramm/Pods-Pr0gramm.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -638,6 +806,15 @@
 			buildConfigurations = (
 				ED7888FA6713EABBF66D26A8003AD1CA /* Debug */,
 				1422B121EAEAEA11307496903FA623C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		834E07A45007CCD7BA774AF69049C570 /* Build configuration list for PBXNativeTarget "Pods-Pr0gramm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF0D150788C62FF6833B40FF690F5B74 /* Debug */,
+				F7C942B93E32FC439771FEEA0C71073F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -651,11 +828,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C53CFD3B7203B2110137B13E2DBCBB4A /* Build configuration list for PBXNativeTarget "Pods-Pr0gramm" */ = {
+		D64FF396F472B5B3B5113CC2DDB98213 /* Build configuration list for PBXNativeTarget "ImageScrollView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				43D2C199766A2F5B0EB796E4840F14FD /* Debug */,
-				9F547718CDD1B324690EA04AB26136AC /* Release */,
+				52D3C3297670E67AEF455656F0D2E258 /* Debug */,
+				E0B1D0612CF740D2A16C9CCCA3D9C654 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

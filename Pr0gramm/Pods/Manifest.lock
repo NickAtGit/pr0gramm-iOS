@@ -1,16 +1,20 @@
 PODS:
+  - ImageScrollView (1.8)
   - ScrollingContentViewController (1.4.0)
 
 DEPENDENCIES:
+  - ImageScrollView
   - ScrollingContentViewController
 
 SPEC REPOS:
   trunk:
+    - ImageScrollView
     - ScrollingContentViewController
 
 SPEC CHECKSUMS:
+  ImageScrollView: 82912273486297285682bdb2a806742f0d39940c
   ScrollingContentViewController: 1bff026d6f32c15489dcd22821911eda5fda3801
 
-PODFILE CHECKSUM: b186c36838c99898fa21283aff0d727a2b91126f
+PODFILE CHECKSUM: 2cfa289aad25020f23f3fe969bdcc1845a9bb951
 
 COCOAPODS: 1.8.4
