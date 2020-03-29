@@ -15,13 +15,18 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
     private let infoView = InfoView.instantiateFromNib()
     private let avPlayer = AVPlayer()
     private let avPlayerViewController = AVPlayerViewController()
-    
+    private let loadCommentsButton = UIButton()
+
     var pr0grammConnector: Pr0grammConnector!
     var item: Item? {
         didSet {
+            guard let item = item else { return }
+            pr0grammConnector.loadItemInfo(for: item.id) { self.itemInfo = $0; self.setupTags() }
             updateUI()
         }
     }
+    
+    private var itemInfo: ItemInfo?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,10 +44,14 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
                 
         tagsCollectionViewController.view.translatesAutoresizingMaskIntoConstraints = false
         addChild(tagsCollectionViewController)
+        
+        loadCommentsButton.setTitle("Kommentare laden", for: .normal)
+        loadCommentsButton.addTarget(self, action: #selector(showComments), for: .touchUpInside)
 
         stackView = UIStackView(arrangedSubviews: [imageView,
                                                    infoView,
                                                    tagsCollectionViewController.view,
+                                                   loadCommentsButton,
                                                    commentsStackView])
         
         tagsCollectionViewController.didMove(toParent: self)
@@ -116,17 +125,23 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
             let playerItem = AVPlayerItem(url: url!)
             avPlayer.replaceCurrentItem(with: playerItem)
         }
-
-        pr0grammConnector.loadItemInfo(for: item.id) { itemInfo in
-            guard let itemInfo = itemInfo else { return }
-            self.addComments(for: itemInfo)
-            DispatchQueue.main.async {
-                self.tagsCollectionViewController.tags = itemInfo.tags
-            }
+    }
+    
+    private func setupTags() {
+        guard let itemInfo = itemInfo else { return }
+        DispatchQueue.main.async {
+            self.tagsCollectionViewController.tags = itemInfo.tags
         }
     }
     
-    func addComments(for itemInfo: ItemInfo) {
+    @objc
+    func showComments() {
+        guard let itemInfo = itemInfo else { return }
+        self.addComments(for: itemInfo)
+        loadCommentsButton.isHidden = true
+    }
+    
+    private func addComments(for itemInfo: ItemInfo) {
         for comment in itemInfo.comments {
             DispatchQueue.main.async {
                 let commentView = CommentView.instantiateFromNib()
