@@ -45,7 +45,7 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
         tagsCollectionViewController.view.translatesAutoresizingMaskIntoConstraints = false
         addChild(tagsCollectionViewController)
         
-        loadCommentsButton.setTitle("Kommentare laden", for: .normal)
+        loadCommentsButton.setTitle("Kommentare anzeigen", for: .normal)
         loadCommentsButton.addTarget(self, action: #selector(showComments), for: .touchUpInside)
 
         stackView = UIStackView(arrangedSubviews: [imageView,
