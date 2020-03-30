@@ -19,10 +19,18 @@ class Coordinator {
             let viewController = MainCollectionViewController.fromStoryboard()
             viewController.coordinator = self
             navigationController.viewControllers = [viewController]
-            
+            viewController.tabBarItem = UITabBarItem(title: "Top",
+                                                           image: UIImage(systemName: "list.bullet"),
+                                                           selectedImage: nil)
+
             let downloadedFilesTableViewController = DownloadedFilesTableViewController.fromStoryboard()
             downloadedFilesTableViewController.coordinator = self
+            downloadedFilesTableViewController.tabBarItem = UITabBarItem(title: "Downloads",
+                                                                         image: UIImage(systemName: "square.and.arrow.down"),
+                                                                         selectedImage: nil)
+            
             tabbarController.setViewControllers([navigationController, downloadedFilesTableViewController], animated: false)
+
             return tabbarController
         } else {
             let viewController = LoginViewController.fromStoryboard()

@@ -12,8 +12,6 @@ class MainCollectionViewController: UICollectionViewController, Pr0grammConnecto
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = ">_"
-        clearsSelectionOnViewWillAppear = false
         coordinator?.pr0grammConnector.delegate = self
 
         if let flowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
