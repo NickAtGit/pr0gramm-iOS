@@ -20,6 +20,22 @@ extension String {
     }
 }
 
+enum Flags: Int {
+    case sfw = 9
+    case nsfw = 2
+    case nsfl = 4
+}
+
+enum Sorting: String {
+    case top = "1"
+    case neu = "0"
+}
+
+enum FetchType {
+    case reload
+    case more
+    case search
+}
 
 class Pr0grammConnector {
 
@@ -156,8 +172,32 @@ class Pr0grammConnector {
         responseModels.removeAll()
     }
     
-    func fetchItems() {
-        let url = URL(string: "https://pr0gramm.com/api/items/get?flags=3&promoted=0")!
+    func fetchItems(sorting: Sorting, flags: [Flags], more: Bool = false) {
+        
+        let flagsCombined = flags.reduce(0, { $0 + $1.rawValue })
+        
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "pr0gramm.com"
+        components.path = "/api/items/get"
+        components.queryItems = [
+            URLQueryItem(name: "flags", value: "\(flagsCombined)"),
+            URLQueryItem(name: "promoted", value: sorting.rawValue)
+        ]
+        
+        switch sorting {
+        case .top:
+            if more, let promotedId = allItems.last?.promoted {
+                components.queryItems?.append(URLQueryItem(name: "older", value: "\(promotedId)"))
+            }
+        case .neu:
+            if more, let lastId = allItems.last?.id {
+                components.queryItems?.append(URLQueryItem(name: "older", value: "\(lastId)"))
+            }
+        }
+        
+        
+        guard let url = components.url else { return }
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -178,10 +218,10 @@ class Pr0grammConnector {
         }
         task.resume()
     }
-    
-    func loadMoreItems() {
-        guard let lastId = allItems.last?.id else { return }
-        let url = URL(string: "https://pr0gramm.com/api/items/get?flags=3&promoted=0&older=\(lastId)")!
+        
+    func searchItems(for tags: [String]) {
+        clearItems()
+        let url = URL(string: "https://pr0gramm.com/api/items/get?flags=3&promoted=1&tags=\(tags[0])")!
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
