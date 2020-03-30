@@ -1,13 +1,12 @@
 
 import UIKit
 import AVKit
-import ImageScrollView
 
 class Coordinator {
     
     let pr0grammConnector = Pr0grammConnector()
-    let navigationController = NavigationController()
-    let tabbarController = UITabBarController()
+    private let navigationController = NavigationController()
+    private let tabbarController = UITabBarController()
     
     init() {
         navigationController.coordinator = self
@@ -18,6 +17,7 @@ class Coordinator {
         if pr0grammConnector.isLoggedIn {
             let viewController = MainCollectionViewController.fromStoryboard()
             viewController.coordinator = self
+            navigationController.style = .main
             navigationController.viewControllers = [viewController]
             viewController.tabBarItem = UITabBarItem(title: "Top",
                                                            image: UIImage(systemName: "list.bullet"),

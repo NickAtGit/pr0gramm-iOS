@@ -59,6 +59,9 @@
 		03B062942428EC3600CA657A /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B062932428EC3600CA657A /* TagCollectionViewCell.swift */; };
 		03C1FA242427854600E6AEE4 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C1FA232427854600E6AEE4 /* NavigationController.swift */; };
 		03C1FA2B2427D27600E6AEE4 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C1FA2A2427D27600E6AEE4 /* UIViewController+Extension.swift */; };
+		03D2AC46243212A70082D4C9 /* FlagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2AC45243212A70082D4C9 /* FlagsViewController.swift */; };
+		03D2AC48243212C40082D4C9 /* FlagsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03D2AC47243212C40082D4C9 /* FlagsViewController.storyboard */; };
+		03D2AC4B24321DB40082D4C9 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2AC4A24321DB40082D4C9 /* Settings.swift */; };
 		03D4B02C2427EDF30041DCC9 /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D4B02B2427EDF30041DCC9 /* DetailCollectionViewCell.swift */; };
 		9F41A63FD0AD2BBEFBCBB0D8 /* Pods_Pr0gramm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55CDBC6EB3F96F0E3E6A68C0 /* Pods_Pr0gramm.framework */; };
 /* End PBXBuildFile section */
@@ -113,6 +116,9 @@
 		03B062932428EC3600CA657A /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
 		03C1FA232427854600E6AEE4 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		03C1FA2A2427D27600E6AEE4 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		03D2AC45243212A70082D4C9 /* FlagsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagsViewController.swift; sourceTree = "<group>"; };
+		03D2AC47243212C40082D4C9 /* FlagsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FlagsViewController.storyboard; sourceTree = "<group>"; };
+		03D2AC4A24321DB40082D4C9 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		03D4B02B2427EDF30041DCC9 /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		55CDBC6EB3F96F0E3E6A68C0 /* Pods_Pr0gramm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pr0gramm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8B6109EB9DAB3D7BC6F488C /* Pods-Pr0gramm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pr0gramm.release.xcconfig"; path = "Target Support Files/Pods-Pr0gramm/Pods-Pr0gramm.release.xcconfig"; sourceTree = "<group>"; };
@@ -164,6 +170,7 @@
 				03076A632059E80F00168E62 /* AppDelegate.swift */,
 				035EBA812426DA5E009185E9 /* Coordinator.swift */,
 				03C1FA232427854600E6AEE4 /* NavigationController.swift */,
+				03D2AC4A24321DB40082D4C9 /* Settings.swift */,
 				033CF1BD205BFD2A00627321 /* Main */,
 				033CF1BE205BFD3200627321 /* Detail */,
 				0354AAF12431287A009C35E0 /* DownloadedFiles */,
@@ -200,6 +207,8 @@
 				033CF1B5205BDBED00627321 /* MainCollectionViewController.swift */,
 				03076A672059E80F00168E62 /* MainCollectionViewController.storyboard */,
 				033CF1B9205BDE1500627321 /* ThumbCollectionViewCell.swift */,
+				03D2AC45243212A70082D4C9 /* FlagsViewController.swift */,
+				03D2AC47243212C40082D4C9 /* FlagsViewController.storyboard */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -208,8 +217,8 @@
 			isa = PBXGroup;
 			children = (
 				0331B2852427ED4D0040D1D1 /* DetailCollectionViewController.swift */,
-				0331B2872427ED680040D1D1 /* DetailCollectionViewController.storyboard */,
 				03D4B02B2427EDF30041DCC9 /* DetailCollectionViewCell.swift */,
+				0331B2872427ED680040D1D1 /* DetailCollectionViewController.storyboard */,
 				033CF1BB205BE5AC00627321 /* DetailViewController.swift */,
 				035EBA832427790C009185E9 /* DetailViewController.storyboard */,
 				03B0628B2428CFE100CA657A /* InfoView.swift */,
@@ -358,6 +367,7 @@
 				03076A6B2059E80F00168E62 /* Assets.xcassets in Resources */,
 				03B06260242800DC00CA657A /* TestViewController.storyboard in Resources */,
 				0354AAF324312E37009C35E0 /* ImageDetailViewController.storyboard in Resources */,
+				03D2AC48243212C40082D4C9 /* FlagsViewController.storyboard in Resources */,
 				03B0628A2428CFD600CA657A /* InfoView.xib in Resources */,
 				035EBA7F24262CA3009185E9 /* LoginViewController.storyboard in Resources */,
 				033CF1C9205EDD7900627321 /* CommentView.xib in Resources */,
@@ -450,7 +460,9 @@
 				03C1FA242427854600E6AEE4 /* NavigationController.swift in Sources */,
 				03B0628C2428CFE100CA657A /* InfoView.swift in Sources */,
 				03076A772059E8B900168E62 /* Item.swift in Sources */,
+				03D2AC4B24321DB40082D4C9 /* Settings.swift in Sources */,
 				03076A642059E80F00168E62 /* AppDelegate.swift in Sources */,
+				03D2AC46243212A70082D4C9 /* FlagsViewController.swift in Sources */,
 				0331B2862427ED4D0040D1D1 /* DetailCollectionViewController.swift in Sources */,
 				033CF1B8205BDC6B00627321 /* Pr0grammConnector.swift in Sources */,
 				0388A0B724297C70006E86A3 /* Downloader.swift in Sources */,

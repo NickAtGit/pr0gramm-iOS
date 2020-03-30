@@ -2,10 +2,10 @@
 import UIKit
 
 enum NavigationControllerStyle {
-    case login, detail
+    case login, detail, main
 }
 
-class NavigationController: UINavigationController {
+class NavigationController: UINavigationController, UIPopoverPresentationControllerDelegate {
     
     weak var coordinator: Coordinator?
 
@@ -38,6 +38,12 @@ class NavigationController: UINavigationController {
             topViewController?.navigationItem.rightBarButtonItem = logoutItem
         case .detail:
             break
+        case .main:
+            let flagsItem = UIBarButtonItem(image: UIImage(systemName: "list.dash"),
+                                             style: .plain,
+                                             target: self,
+                                             action: #selector(showFlagsPopover(_:)))
+            topViewController?.navigationItem.rightBarButtonItem = flagsItem
         }
     }
     
@@ -60,7 +66,34 @@ class NavigationController: UINavigationController {
     func showBanner(with message: String, duration: TimeInterval = 1.5) {
         navigationBannerView.show(message: message, for: duration)
     }
+    
+    @objc
+    func showFlagsPopover(_ sender: UIBarButtonItem) {
+        let flagsViewController = FlagsViewController.fromStoryboard()
+        flagsViewController.modalPresentationStyle = .popover
+        flagsViewController.popoverPresentationController?.sourceView = view
+        flagsViewController.popoverPresentationController?.permittedArrowDirections = .up
+
+        let popover: UIPopoverPresentationController = flagsViewController.popoverPresentationController!
+        popover.barButtonItem = sender
+        popover.delegate = self
+        
+        present(flagsViewController, animated: true)
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+    
+    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+        coordinator?.pr0grammConnector.clearItems()
+        coordinator?.pr0grammConnector.fetchItems(sorting: Sorting(rawValue: AppSettings.sorting)!,
+                                                  flags: AppSettings.currentFlags)
+    }
 }
+
+
+
 
 
 class NavigationBannerView: UIView {

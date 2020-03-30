@@ -26,9 +26,10 @@ enum Flags: Int {
     case nsfl = 4
 }
 
-enum Sorting: String {
-    case top = "1"
-    case neu = "0"
+@objc
+enum Sorting: Int {
+    case top = 1
+    case neu = 0
 }
 
 enum FetchType {
@@ -182,7 +183,7 @@ class Pr0grammConnector {
         components.path = "/api/items/get"
         components.queryItems = [
             URLQueryItem(name: "flags", value: "\(flagsCombined)"),
-            URLQueryItem(name: "promoted", value: sorting.rawValue)
+            URLQueryItem(name: "promoted", value: "\(sorting.rawValue)")
         ]
         
         switch sorting {

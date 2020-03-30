@@ -31,7 +31,8 @@ class MainCollectionViewController: UICollectionViewController, Pr0grammConnecto
     @objc
     func refresh() {
         coordinator?.pr0grammConnector.clearItems()
-        coordinator?.pr0grammConnector.fetchItems(sorting: .neu, flags: [.nsfw, .sfw])
+        coordinator?.pr0grammConnector.fetchItems(sorting: Sorting(rawValue: AppSettings.sorting)!,
+                                                  flags: AppSettings.currentFlags)
     }
     
     // MARK: UICollectionViewDataSource
@@ -70,7 +71,8 @@ class MainCollectionViewController: UICollectionViewController, Pr0grammConnecto
 
         if indexPath.row + 1 == items.count {
             print("Loading more items")
-            coordinator?.pr0grammConnector.fetchItems(sorting: .neu, flags: [.nsfw, .sfw], more: true)
+            coordinator?.pr0grammConnector.fetchItems(sorting: Sorting(rawValue: AppSettings.sorting)!,
+                                                      flags: AppSettings.currentFlags, more: true)
         }
     }
 }

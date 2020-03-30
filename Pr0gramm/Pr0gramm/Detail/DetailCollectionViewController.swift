@@ -119,7 +119,8 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
 
         if indexPath.row + 1 == items.count {
             print("Loading more items")
-            coordinator?.pr0grammConnector.fetchItems(sorting: .neu, flags: [.nsfw, .sfw], more: true)
+            coordinator?.pr0grammConnector.fetchItems(sorting: Sorting(rawValue: AppSettings.sorting)!,
+                                                      flags: AppSettings.currentFlags, more: true)
         }
     }
 }
