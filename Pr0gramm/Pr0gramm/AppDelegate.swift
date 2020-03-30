@@ -13,7 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = coordinator.startViewController()
         window?.makeKeyAndVisible()
-        
+        Theming.applySelectedPersistedTheme()
+
         //Play audio when ringer switch is silent
         try? AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
 

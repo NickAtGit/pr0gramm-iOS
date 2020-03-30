@@ -5,6 +5,11 @@ import Foundation
 protocol SettingsConfigurable {}
 
 @objc
+protocol UserSettingsConfigurable {
+    static var selectedTheme: Int { get set }
+}
+
+@objc
 protocol SortingSettingsConfigurable {
     static var sorting: Int { get set }
 }
@@ -58,5 +63,12 @@ extension AppSettings: SortingSettingsConfigurable {
     static var sorting: Int {
         get { return AppSettings.value(for: #keyPath(sorting)) ?? 1 }
         set { AppSettings.updateDefaults(for: #keyPath(sorting), value: newValue) }
+    }
+}
+
+extension AppSettings: UserSettingsConfigurable {
+    static var selectedTheme: Int {
+        get { return AppSettings.value(for: #keyPath(selectedTheme)) ?? 1 }
+        set { AppSettings.updateDefaults(for: #keyPath(selectedTheme), value: newValue) }
     }
 }

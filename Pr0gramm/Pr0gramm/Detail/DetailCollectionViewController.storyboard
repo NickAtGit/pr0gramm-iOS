@@ -35,6 +35,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
                                     </subviews>
+                                    <color key="backgroundColor" name="Richtiges Grau"/>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="e6n-Is-SFA" secondAttribute="trailing" id="9cF-oV-nIl"/>
                                         <constraint firstItem="e6n-Is-SFA" firstAttribute="leading" secondItem="Nnj-hn-kBJ" secondAttribute="leading" id="Pr6-5k-mxU"/>
@@ -42,6 +43,7 @@
                                         <constraint firstItem="e6n-Is-SFA" firstAttribute="top" secondItem="Nnj-hn-kBJ" secondAttribute="top" id="fjT-NW-VRu"/>
                                     </constraints>
                                 </collectionViewCellContentView>
+                                <color key="backgroundColor" name="Richtiges Grau"/>
                                 <size key="customSize" width="414" height="852"/>
                                 <connections>
                                     <outlet property="content" destination="e6n-Is-SFA" id="rhb-L6-XEJ"/>

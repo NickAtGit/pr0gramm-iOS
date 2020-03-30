@@ -57,7 +57,7 @@ class Coordinator {
         let viewController = DetailCollectionViewController.fromStoryboard()
         viewController.coordinator = self
         let detailNavigationController = NavigationController(rootViewController: viewController)
-        detailNavigationController.style = .detail
+        detailNavigationController.style = .dismissable
         detailNavigationController.modalPresentationStyle = .fullScreen
         navigationController.present(detailNavigationController, animated: true)
         viewController.scrollTo(indexPath: indexPath)
@@ -82,7 +82,9 @@ class Coordinator {
     func showImageViewController(with image: UIImage, from viewController: UIViewController) {
         let imageViewController = ImageDetailViewController.fromStoryboard()
         imageViewController.image = image
-        viewController.present(imageViewController, animated: true)
+        let navigationController = NavigationController(rootViewController: imageViewController)
+        navigationController.style = .dragable
+        viewController.present(navigationController, animated: true)
     }
     
     @objc

@@ -29,4 +29,9 @@ extension UIViewController {
         viewController.didMove(toParent: self)
         viewController.endAppearanceTransition()
     }
+    
+    @objc
+    func dismissSelf() {
+        dismiss(animated: true)
+    }
 }

@@ -12,6 +12,8 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
     override func viewDidLoad() {
         super.viewDidLoad()
         edgesForExtendedLayout = []
+        view.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
+        collectionView.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
         
         let layout: UICollectionViewFlowLayout = SnapCenterLayout()
         layout.itemSize = CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
@@ -35,19 +37,9 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
                                                     target: self,
                                                     action: #selector(downloadItem))
                 
-        navigationItem.rightBarButtonItem = downloadBarButtonItem
-        
-        let dismissItem = UIBarButtonItem(barButtonSystemItem: .done,
-                                          target: self,
-                                          action: #selector(dismissSelf))
-        navigationItem.leftBarButtonItem = dismissItem
+        navigationItem.leftBarButtonItem = downloadBarButtonItem
     }
-    
-    @objc
-    func dismissSelf() {
-        dismiss(animated: true)
-    }
-        
+            
     @objc
     func downloadItem() {
         guard let connector = coordinator?.pr0grammConnector,

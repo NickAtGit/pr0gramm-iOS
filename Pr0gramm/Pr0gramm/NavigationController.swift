@@ -2,12 +2,13 @@
 import UIKit
 
 enum NavigationControllerStyle {
-    case login, detail, main
+    case login, main, dismissable, dragable
 }
 
 class NavigationController: UINavigationController, UIPopoverPresentationControllerDelegate {
     
     weak var coordinator: Coordinator?
+    private var navigationBannerView = NavigationBannerView(frame: .zero)
 
     var style: NavigationControllerStyle? {
         didSet {
@@ -36,25 +37,32 @@ class NavigationController: UINavigationController, UIPopoverPresentationControl
                                              target: coordinator,
                                              action: #selector(Coordinator.logout))
             topViewController?.navigationItem.rightBarButtonItem = logoutItem
-        case .detail:
-            break
+        case .dragable:
+            let flagsItem = UIBarButtonItem(image: UIImage(systemName: "chevron.down"),
+                                             style: .plain,
+                                             target: self,
+                                             action: #selector(dismissSelf))
+            topViewController?.navigationItem.rightBarButtonItem = flagsItem
+
         case .main:
             let flagsItem = UIBarButtonItem(image: UIImage(systemName: "list.dash"),
                                              style: .plain,
                                              target: self,
                                              action: #selector(showFlagsPopover(_:)))
+            topViewController?.navigationItem.leftBarButtonItem = flagsItem
+        case .dismissable:
+            let flagsItem = UIBarButtonItem(image: UIImage(systemName: "xmark"),
+                                             style: .plain,
+                                             target: self,
+                                             action: #selector(dismissSelf))
             topViewController?.navigationItem.rightBarButtonItem = flagsItem
         }
     }
     
-    var navigationBannerView: NavigationBannerView!
 
     private func setupBanner() {
-        //BannerView
-        navigationBannerView = NavigationBannerView(frame: .zero)
         view.addSubview(navigationBannerView)
         view.bringSubviewToFront(navigationBannerView)
-        
         navigationBannerView.translatesAutoresizingMaskIntoConstraints = false
         navigationBannerView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
         navigationBannerView.topAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: 0).isActive = true

@@ -7,8 +7,8 @@ class MainCollectionViewController: UICollectionViewController, Pr0grammConnecto
 
     weak var coordinator: Coordinator?
     
-    let numberOfCellsPerRow: CGFloat = 3
-    let refreshControl = UIRefreshControl()
+    private let numberOfCellsPerRow: CGFloat = 3
+    private let refreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +20,6 @@ class MainCollectionViewController: UICollectionViewController, Pr0grammConnecto
             flowLayout.itemSize = CGSize(width: cellWidth, height: cellWidth)
         }
 
-        refreshControl.tintColor = #colorLiteral(red: 0.9333333333, green: 0.3019607843, blue: 0.1803921569, alpha: 1)
         refreshControl.addTarget(self,
                                  action: #selector(MainCollectionViewController.refresh),
                                  for: .valueChanged)
@@ -70,7 +69,6 @@ class MainCollectionViewController: UICollectionViewController, Pr0grammConnecto
         guard let items = coordinator?.pr0grammConnector.allItems else { return }
 
         if indexPath.row + 1 == items.count {
-            print("Loading more items")
             coordinator?.pr0grammConnector.fetchItems(sorting: Sorting(rawValue: AppSettings.sorting)!,
                                                       flags: AppSettings.currentFlags, more: true)
         }
