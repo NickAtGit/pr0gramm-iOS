@@ -7,101 +7,123 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		09635EB94C3D8ECCA23A58C6141FD6C4 /* ScrollingContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9C329F19D5C1354544C89E560A37D7 /* ScrollingContentViewController.swift */; };
+		09635EB94C3D8ECCA23A58C6141FD6C4 /* ScrollingContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F52E2ED697D0CF2B852C30AA14C595E /* ScrollingContentViewController.swift */; };
+		11971073DAF4E72C59F05D5D1F3EF690 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 312B988EF117AE4DE76A268D970131FE /* UIKit.framework */; };
 		18F071F39E050237C3412C1D258CAA91 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 312B988EF117AE4DE76A268D970131FE /* UIKit.framework */; };
-		1904ABEEBC762ADEF822133848F46E39 /* ImageScrollView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F7BB725E900EBCF991829958138B92A /* ImageScrollView-dummy.m */; };
-		224CBC8F2A6A712B61A725ED80CDFB3E /* ScrollViewFilterKeyboardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F99088330769ABD6EE8B533B2C080A8 /* ScrollViewFilterKeyboardDelegate.swift */; };
-		2A1DA6A402D19C5CBB813423BDB5DC59 /* UIResponder+Current.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23076DD802D1417385A3CDB0DE28B00F /* UIResponder+Current.swift */; };
-		47BD6FB0EFF0B600B248DD13A930600E /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3614051ACCA2FCDF5B24F06D4602391F /* KeyboardObserver.swift */; };
-		4B249135309A16F67F59B16C6A9DAAA5 /* ScrollingContentViewController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C63EA2E2C15E117ABAB003C977AFFE45 /* ScrollingContentViewController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4EF35B789EF8BCF6826D5C40F1F6AA58 /* KeyboardNotificationObserving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9529214F62473667342905298BF07B21 /* KeyboardNotificationObserving.swift */; };
-		56DADF22D90A49489580C017FAAB84F8 /* AdditionalSafeAreaInsetsControlling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E6F47E6652EAD538E572D422DDA7DE /* AdditionalSafeAreaInsetsControlling.swift */; };
-		597D3227A47C47A38202C1CCB2C36C73 /* ScrollViewBounceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEF77145D1DD87151C884EA0E839FAA /* ScrollViewBounceController.swift */; };
-		6CC37E3AB733E882D85DB5B439818AE6 /* IsUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5715DF0C69F2D75A60F782020ED668D9 /* IsUnitTest.swift */; };
-		74C16BE02C66CCF3E81154A916D2D527 /* Pods-Pr0gramm-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 90D2D1FB89CF5796C30E2A9974D3EFC7 /* Pods-Pr0gramm-dummy.m */; };
-		76F2238CC12CA26FD69BFDEEF9139DAD /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D7AD1A519D0F81D03880BE34CF69B2 /* ImageScrollView.swift */; };
-		838D4D1161A4A201BEF777E803259586 /* KeyboardFrameEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F1F2244AAE78A2D530DFC04C4DC4B8 /* KeyboardFrameEvent.swift */; };
+		1904ABEEBC762ADEF822133848F46E39 /* ImageScrollView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 56008D3B294F3D505B5595FB979B33D3 /* ImageScrollView-dummy.m */; };
+		224CBC8F2A6A712B61A725ED80CDFB3E /* ScrollViewFilterKeyboardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F6EA09ADCCBD61ECA5CA3EBD091FB5 /* ScrollViewFilterKeyboardDelegate.swift */; };
+		2A1DA6A402D19C5CBB813423BDB5DC59 /* UIResponder+Current.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0973091515401E90F343A18A958C15AD /* UIResponder+Current.swift */; };
+		38822A4F4F0341B8D0443065DEB2E4D0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
+		47BD6FB0EFF0B600B248DD13A930600E /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6B4B4F25669388DEA124261B96916D /* KeyboardObserver.swift */; };
+		4B249135309A16F67F59B16C6A9DAAA5 /* ScrollingContentViewController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 57165AD60E8452C7DF1D9C20C89EAE6B /* ScrollingContentViewController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4EF35B789EF8BCF6826D5C40F1F6AA58 /* KeyboardNotificationObserving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A32EDCFF44C2AACD6B532219B0781DA /* KeyboardNotificationObserving.swift */; };
+		56DADF22D90A49489580C017FAAB84F8 /* AdditionalSafeAreaInsetsControlling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9281E9F4572970F6B64F3DF6CFDBDE /* AdditionalSafeAreaInsetsControlling.swift */; };
+		597D3227A47C47A38202C1CCB2C36C73 /* ScrollViewBounceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCC892E7165DEC30BD183B2976AD7F5 /* ScrollViewBounceController.swift */; };
+		5CC0E2DB3F7A6C3E2E26642F47E1A576 /* GTForceTouchGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F971785680B369689AEC486F6D8F71D0 /* GTForceTouchGestureRecognizer.swift */; };
+		6CC37E3AB733E882D85DB5B439818AE6 /* IsUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1933E7888AD1DEB6DF9827DBA840E30 /* IsUnitTest.swift */; };
+		76F2238CC12CA26FD69BFDEEF9139DAD /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B505DA3F840177951DDBA0E25C3E5FCF /* ImageScrollView.swift */; };
+		7B938B5FDFD579819F923EAFE4FA730C /* GTForceTouchGestureRecognizer-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A21629472DE6A350A1CD05D4184A2CF /* GTForceTouchGestureRecognizer-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		838D4D1161A4A201BEF777E803259586 /* KeyboardFrameEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDB64DC27A0889E63016C6B3DA73F72 /* KeyboardFrameEvent.swift */; };
 		85F45380F3D3E638DAFEDE24A3D3EFC4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
-		8FA0C5A79D1FAAE6316F705E74C05D0E /* KeyboardObservering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91791010AF712493D27BABFDA7FDE626 /* KeyboardObservering.swift */; };
-		A095695A59F956D9219BECC17B095BC4 /* ScrollViewFilterScrollDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C21B24BE176E07CC6257D9C3A0BDBC /* ScrollViewFilterScrollDelegate.swift */; };
-		B0B16B364E195CAB752922401F658815 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
-		B252BC58C5176F66C58CF09F421AA434 /* KeyboardNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE42A10A0659457989B395EB9D4748F1 /* KeyboardNotificationManager.swift */; };
-		BE07F07C3D70EF23594A4983BBCF9995 /* ScrollingContentViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AFE33CC636900ED64EC4549D46D82B /* ScrollingContentViewManager.swift */; };
+		8FA0C5A79D1FAAE6316F705E74C05D0E /* KeyboardObservering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA54B093E7F6740A394191E8C55C1F8 /* KeyboardObservering.swift */; };
+		A095695A59F956D9219BECC17B095BC4 /* ScrollViewFilterScrollDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690770471A38F38C70215360AABDBEC9 /* ScrollViewFilterScrollDelegate.swift */; };
+		A21297A36B2DC429CD83826DC1B3C477 /* GTForceTouchGestureRecognizerInternal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61ED930C4E37A090B2B59B89D1F059FA /* GTForceTouchGestureRecognizerInternal.swift */; };
+		A2FBF356909F28F00FAEE60FDEA7D117 /* Pods-Pr0gramm-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CA9D6A5B44D85358F5FAC6437F31D29B /* Pods-Pr0gramm-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B252BC58C5176F66C58CF09F421AA434 /* KeyboardNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E86DEF4F03936578B0F4413744C030 /* KeyboardNotificationManager.swift */; };
+		BE07F07C3D70EF23594A4983BBCF9995 /* ScrollingContentViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188AAB36FFB2CFCF8CD838EAAFB3FAF3 /* ScrollingContentViewManager.swift */; };
+		BE791426B26B6B699D106407D6967756 /* GTForceTouchGestureRecognizer-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 298B62E1F5C1CA3DFA72C4C0C5AA6EA2 /* GTForceTouchGestureRecognizer-dummy.m */; };
 		C72F91E4B8DBCF55630BD889EDF83B7F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
-		CA8251608D0F6843ECE39E7D35338A89 /* ScrollingContentViewController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 462CBF67BA25D074669AE923EF380259 /* ScrollingContentViewController-dummy.m */; };
-		D14F73CE708C0DB720A1979C659F9284 /* ImageScrollView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C11B50A871DCF06D5637F22EAAA3F607 /* ImageScrollView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D9C862EF4184190D3860F20BCD40157D /* ScrollRectEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E9E4D3B93C66AD0BAE524F5543BC51 /* ScrollRectEvent.swift */; };
-		E563E29E59AB9F3D17DAE3B05B65B114 /* AdditionalSafeAreaInsetsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3A406D0055C153084D8A500B71767C /* AdditionalSafeAreaInsetsController.swift */; };
-		E96257C989B169DC8114CC170140D838 /* ScrollViewFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1D435D1D19270D7C9F64B5BFCA466C /* ScrollViewFilter.swift */; };
-		EB963C4B07EF31DE86538B697E73F905 /* ScrollingContentScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B0B6FFE5B962ADE9C6077F93A7D81C /* ScrollingContentScrollView.swift */; };
-		F3F5F224CC3CF6D0C7087F70DAB24D9C /* ScrollViewBounceControlling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868BD3865108CEB32D3A85E210F50F66 /* ScrollViewBounceControlling.swift */; };
-		F655CA3E7069322180AB14012B134080 /* Pods-Pr0gramm-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CA9D6A5B44D85358F5FAC6437F31D29B /* Pods-Pr0gramm-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA8251608D0F6843ECE39E7D35338A89 /* ScrollingContentViewController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B9156ACF0D1A63971D88061FB1C5F97A /* ScrollingContentViewController-dummy.m */; };
+		D14F73CE708C0DB720A1979C659F9284 /* ImageScrollView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E435D972DDEBBFCDF1A8E41B2AB09864 /* ImageScrollView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D5C131BBA5E43E680B30FDD1AE2D74EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
+		D9C862EF4184190D3860F20BCD40157D /* ScrollRectEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9719A610130574C4F3760647967E8770 /* ScrollRectEvent.swift */; };
+		DDAAD60F6618665F6D7E7DDD6D693E35 /* Pods-Pr0gramm-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 90D2D1FB89CF5796C30E2A9974D3EFC7 /* Pods-Pr0gramm-dummy.m */; };
+		E563E29E59AB9F3D17DAE3B05B65B114 /* AdditionalSafeAreaInsetsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6761C9462464FA6491A9FE854C5BE89B /* AdditionalSafeAreaInsetsController.swift */; };
+		E96257C989B169DC8114CC170140D838 /* ScrollViewFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72165DD3753EB0BC5645AA07C6DFD43 /* ScrollViewFilter.swift */; };
+		EB963C4B07EF31DE86538B697E73F905 /* ScrollingContentScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B789E17B6D05A0DC66697417889D3A /* ScrollingContentScrollView.swift */; };
+		F3F5F224CC3CF6D0C7087F70DAB24D9C /* ScrollViewBounceControlling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101E77392BBF5C6035D6A8A54BE6D6EB /* ScrollViewBounceControlling.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		10B41B75FCB5596506F2302A004FDA52 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1CAEC00F99D9CCA04293B3139152CA5C;
-			remoteInfo = ImageScrollView;
-		};
-		416AF9A64CA4A2A584145F5038A4B0C3 /* PBXContainerItemProxy */ = {
+		08758F7492B096403E5C4865B5FF8434 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 61AEB25FFF12DCFE0839624D1D3039A3;
 			remoteInfo = ScrollingContentViewController;
 		};
+		85292329CC4BE33005BFCAA0F2BDD5C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9BF400286622323CA4E839314ED50533;
+			remoteInfo = GTForceTouchGestureRecognizer;
+		};
+		9B5AC7211C385EE9D754E41B7B68C142 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1CAEC00F99D9CCA04293B3139152CA5C;
+			remoteInfo = ImageScrollView;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0973091515401E90F343A18A958C15AD /* UIResponder+Current.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIResponder+Current.swift"; path = "Source/UIResponder+Current.swift"; sourceTree = "<group>"; };
+		0EA54B093E7F6740A394191E8C55C1F8 /* KeyboardObservering.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyboardObservering.swift; path = Source/KeyboardObservering.swift; sourceTree = "<group>"; };
+		101E77392BBF5C6035D6A8A54BE6D6EB /* ScrollViewBounceControlling.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollViewBounceControlling.swift; path = Source/ScrollViewBounceControlling.swift; sourceTree = "<group>"; };
 		119D82401C0C8CD62272730E63DC19F4 /* Pods-Pr0gramm-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Pr0gramm-frameworks.sh"; sourceTree = "<group>"; };
-		136B901B8D20A6B8672D073A8BE8EC56 /* ScrollingContentViewController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ScrollingContentViewController-prefix.pch"; sourceTree = "<group>"; };
+		14D3A6DA0D0A82F160B43311D4CDDFD2 /* GTForceTouchGestureRecognizer.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = GTForceTouchGestureRecognizer.modulemap; sourceTree = "<group>"; };
+		188AAB36FFB2CFCF8CD838EAAFB3FAF3 /* ScrollingContentViewManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollingContentViewManager.swift; path = Source/ScrollingContentViewManager.swift; sourceTree = "<group>"; };
+		18F6EA09ADCCBD61ECA5CA3EBD091FB5 /* ScrollViewFilterKeyboardDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollViewFilterKeyboardDelegate.swift; path = Source/ScrollViewFilterKeyboardDelegate.swift; sourceTree = "<group>"; };
+		197761B6645F44DC5E5AC6D2041B8611 /* ScrollingContentViewController-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ScrollingContentViewController-Info.plist"; sourceTree = "<group>"; };
 		1EB6392CD04AF8D603979C4C2F841A85 /* Pods_Pr0gramm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Pr0gramm.framework; path = "Pods-Pr0gramm.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		23076DD802D1417385A3CDB0DE28B00F /* UIResponder+Current.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIResponder+Current.swift"; path = "Source/UIResponder+Current.swift"; sourceTree = "<group>"; };
 		26208E040DD5601BEA0799D876FBDD13 /* Pods-Pr0gramm-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Pr0gramm-Info.plist"; sourceTree = "<group>"; };
-		29E9E4D3B93C66AD0BAE524F5543BC51 /* ScrollRectEvent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollRectEvent.swift; path = Source/ScrollRectEvent.swift; sourceTree = "<group>"; };
-		2F7BB725E900EBCF991829958138B92A /* ImageScrollView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ImageScrollView-dummy.m"; sourceTree = "<group>"; };
-		2FEF77145D1DD87151C884EA0E839FAA /* ScrollViewBounceController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollViewBounceController.swift; path = Source/ScrollViewBounceController.swift; sourceTree = "<group>"; };
+		298B62E1F5C1CA3DFA72C4C0C5AA6EA2 /* GTForceTouchGestureRecognizer-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GTForceTouchGestureRecognizer-dummy.m"; sourceTree = "<group>"; };
+		2F52E2ED697D0CF2B852C30AA14C595E /* ScrollingContentViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollingContentViewController.swift; path = Source/ScrollingContentViewController.swift; sourceTree = "<group>"; };
 		312B988EF117AE4DE76A268D970131FE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		32F1F2244AAE78A2D530DFC04C4DC4B8 /* KeyboardFrameEvent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyboardFrameEvent.swift; path = Source/KeyboardFrameEvent.swift; sourceTree = "<group>"; };
-		3614051ACCA2FCDF5B24F06D4602391F /* KeyboardObserver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyboardObserver.swift; path = Source/KeyboardObserver.swift; sourceTree = "<group>"; };
+		3A21629472DE6A350A1CD05D4184A2CF /* GTForceTouchGestureRecognizer-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GTForceTouchGestureRecognizer-umbrella.h"; sourceTree = "<group>"; };
+		3CFC2407B9ED3381175DEA4C82D86958 /* ImageScrollView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ImageScrollView.modulemap; sourceTree = "<group>"; };
+		41E86DEF4F03936578B0F4413744C030 /* KeyboardNotificationManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyboardNotificationManager.swift; path = Source/KeyboardNotificationManager.swift; sourceTree = "<group>"; };
 		436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		462CBF67BA25D074669AE923EF380259 /* ScrollingContentViewController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ScrollingContentViewController-dummy.m"; sourceTree = "<group>"; };
-		4A1D435D1D19270D7C9F64B5BFCA466C /* ScrollViewFilter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollViewFilter.swift; path = Source/ScrollViewFilter.swift; sourceTree = "<group>"; };
+		4A01A2C49E3DB54AA9699A665EECF9BC /* ImageScrollView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ImageScrollView.xcconfig; sourceTree = "<group>"; };
 		4CC8A5A32B1B8D05FFA96F43BCE6EA06 /* ScrollingContentViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ScrollingContentViewController.framework; path = ScrollingContentViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		54DAE4398062177811376716AFA76C9E /* ImageScrollView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ImageScrollView-Info.plist"; sourceTree = "<group>"; };
-		5715DF0C69F2D75A60F782020ED668D9 /* IsUnitTest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IsUnitTest.swift; path = Source/IsUnitTest.swift; sourceTree = "<group>"; };
-		6AE6CDFAA2E15CA407D5E313649BE275 /* ScrollingContentViewController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ScrollingContentViewController.xcconfig; sourceTree = "<group>"; };
-		6F99088330769ABD6EE8B533B2C080A8 /* ScrollViewFilterKeyboardDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollViewFilterKeyboardDelegate.swift; path = Source/ScrollViewFilterKeyboardDelegate.swift; sourceTree = "<group>"; };
-		70995719D1C2AB60A099A6C19BDEEE16 /* ScrollingContentViewController-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ScrollingContentViewController-Info.plist"; sourceTree = "<group>"; };
+		53B789E17B6D05A0DC66697417889D3A /* ScrollingContentScrollView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollingContentScrollView.swift; path = Source/ScrollingContentScrollView.swift; sourceTree = "<group>"; };
+		56008D3B294F3D505B5595FB979B33D3 /* ImageScrollView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ImageScrollView-dummy.m"; sourceTree = "<group>"; };
+		57165AD60E8452C7DF1D9C20C89EAE6B /* ScrollingContentViewController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ScrollingContentViewController-umbrella.h"; sourceTree = "<group>"; };
+		61ED930C4E37A090B2B59B89D1F059FA /* GTForceTouchGestureRecognizerInternal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GTForceTouchGestureRecognizerInternal.swift; path = Sources/GTForceTouchGestureRecognizerInternal.swift; sourceTree = "<group>"; };
+		6761C9462464FA6491A9FE854C5BE89B /* AdditionalSafeAreaInsetsController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AdditionalSafeAreaInsetsController.swift; path = Source/AdditionalSafeAreaInsetsController.swift; sourceTree = "<group>"; };
+		690770471A38F38C70215360AABDBEC9 /* ScrollViewFilterScrollDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollViewFilterScrollDelegate.swift; path = Source/ScrollViewFilterScrollDelegate.swift; sourceTree = "<group>"; };
+		6E9AE1D4080FAB040D872A5C262865EA /* GTForceTouchGestureRecognizer.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GTForceTouchGestureRecognizer.xcconfig; sourceTree = "<group>"; };
 		768699712F4323D9EEAE2F56C1E67423 /* Pods-Pr0gramm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Pr0gramm.release.xcconfig"; sourceTree = "<group>"; };
+		77D6CD34F9B72D3BD15AF35BB4228F09 /* GTForceTouchGestureRecognizer-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "GTForceTouchGestureRecognizer-Info.plist"; sourceTree = "<group>"; };
+		7E4AAB04F060BAC8B624F6F10DC770BE /* ScrollingContentViewController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ScrollingContentViewController.xcconfig; sourceTree = "<group>"; };
 		84489977A07A31F3EBEA45F1EFE49818 /* Pods-Pr0gramm-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Pr0gramm-acknowledgements.plist"; sourceTree = "<group>"; };
-		868BD3865108CEB32D3A85E210F50F66 /* ScrollViewBounceControlling.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollViewBounceControlling.swift; path = Source/ScrollViewBounceControlling.swift; sourceTree = "<group>"; };
-		87C21B24BE176E07CC6257D9C3A0BDBC /* ScrollViewFilterScrollDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollViewFilterScrollDelegate.swift; path = Source/ScrollViewFilterScrollDelegate.swift; sourceTree = "<group>"; };
 		8B963D5BA311EDEBC8AD8D6FA53E6B20 /* ImageScrollView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ImageScrollView.framework; path = ImageScrollView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D9281E9F4572970F6B64F3DF6CFDBDE /* AdditionalSafeAreaInsetsControlling.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AdditionalSafeAreaInsetsControlling.swift; path = Source/AdditionalSafeAreaInsetsControlling.swift; sourceTree = "<group>"; };
+		8DCC892E7165DEC30BD183B2976AD7F5 /* ScrollViewBounceController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollViewBounceController.swift; path = Source/ScrollViewBounceController.swift; sourceTree = "<group>"; };
+		8F507825CD87EB04E5D0D696FA2B6219 /* ImageScrollView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ImageScrollView-Info.plist"; sourceTree = "<group>"; };
 		90D2D1FB89CF5796C30E2A9974D3EFC7 /* Pods-Pr0gramm-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Pr0gramm-dummy.m"; sourceTree = "<group>"; };
-		90E6F47E6652EAD538E572D422DDA7DE /* AdditionalSafeAreaInsetsControlling.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AdditionalSafeAreaInsetsControlling.swift; path = Source/AdditionalSafeAreaInsetsControlling.swift; sourceTree = "<group>"; };
-		91791010AF712493D27BABFDA7FDE626 /* KeyboardObservering.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyboardObservering.swift; path = Source/KeyboardObservering.swift; sourceTree = "<group>"; };
-		9529214F62473667342905298BF07B21 /* KeyboardNotificationObserving.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyboardNotificationObserving.swift; path = Source/KeyboardNotificationObserving.swift; sourceTree = "<group>"; };
+		9719A610130574C4F3760647967E8770 /* ScrollRectEvent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollRectEvent.swift; path = Source/ScrollRectEvent.swift; sourceTree = "<group>"; };
+		9A32EDCFF44C2AACD6B532219B0781DA /* KeyboardNotificationObserving.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyboardNotificationObserving.swift; path = Source/KeyboardNotificationObserving.swift; sourceTree = "<group>"; };
+		9B6B4B4F25669388DEA124261B96916D /* KeyboardObserver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyboardObserver.swift; path = Source/KeyboardObserver.swift; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		AF20A1363790A28643DE24008418E36E /* ImageScrollView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ImageScrollView-prefix.pch"; sourceTree = "<group>"; };
-		B0D7AD1A519D0F81D03880BE34CF69B2 /* ImageScrollView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageScrollView.swift; path = Sources/ImageScrollView.swift; sourceTree = "<group>"; };
-		B3B0B6FFE5B962ADE9C6077F93A7D81C /* ScrollingContentScrollView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollingContentScrollView.swift; path = Source/ScrollingContentScrollView.swift; sourceTree = "<group>"; };
-		C11B50A871DCF06D5637F22EAAA3F607 /* ImageScrollView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ImageScrollView-umbrella.h"; sourceTree = "<group>"; };
-		C63EA2E2C15E117ABAB003C977AFFE45 /* ScrollingContentViewController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ScrollingContentViewController-umbrella.h"; sourceTree = "<group>"; };
+		A1C26E8F62CD145ABB3CD0F6CF99407B /* ImageScrollView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ImageScrollView-prefix.pch"; sourceTree = "<group>"; };
+		ADDB64DC27A0889E63016C6B3DA73F72 /* KeyboardFrameEvent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyboardFrameEvent.swift; path = Source/KeyboardFrameEvent.swift; sourceTree = "<group>"; };
+		B505DA3F840177951DDBA0E25C3E5FCF /* ImageScrollView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageScrollView.swift; path = Sources/ImageScrollView.swift; sourceTree = "<group>"; };
+		B9156ACF0D1A63971D88061FB1C5F97A /* ScrollingContentViewController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ScrollingContentViewController-dummy.m"; sourceTree = "<group>"; };
 		C86D7A3EF5CC0B72B31CD0A53D5F8C30 /* Pods-Pr0gramm.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Pr0gramm.modulemap"; sourceTree = "<group>"; };
 		CA9D6A5B44D85358F5FAC6437F31D29B /* Pods-Pr0gramm-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Pr0gramm-umbrella.h"; sourceTree = "<group>"; };
-		D278F0B8F44D35AA54E3D2AFD329AA10 /* ImageScrollView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ImageScrollView.modulemap; sourceTree = "<group>"; };
-		D92D5530D55D7F420CFCA97524A6FB2A /* ImageScrollView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ImageScrollView.xcconfig; sourceTree = "<group>"; };
-		E2AFE33CC636900ED64EC4549D46D82B /* ScrollingContentViewManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollingContentViewManager.swift; path = Source/ScrollingContentViewManager.swift; sourceTree = "<group>"; };
+		E435D972DDEBBFCDF1A8E41B2AB09864 /* ImageScrollView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ImageScrollView-umbrella.h"; sourceTree = "<group>"; };
 		E5A4405B54402D20FB4AF90D62023411 /* Pods-Pr0gramm-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Pr0gramm-acknowledgements.markdown"; sourceTree = "<group>"; };
-		EA3A406D0055C153084D8A500B71767C /* AdditionalSafeAreaInsetsController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AdditionalSafeAreaInsetsController.swift; path = Source/AdditionalSafeAreaInsetsController.swift; sourceTree = "<group>"; };
-		ED9C329F19D5C1354544C89E560A37D7 /* ScrollingContentViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollingContentViewController.swift; path = Source/ScrollingContentViewController.swift; sourceTree = "<group>"; };
-		EE42A10A0659457989B395EB9D4748F1 /* KeyboardNotificationManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyboardNotificationManager.swift; path = Source/KeyboardNotificationManager.swift; sourceTree = "<group>"; };
-		F3F45F97E52DD97FA468B71DD30188F4 /* ScrollingContentViewController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ScrollingContentViewController.modulemap; sourceTree = "<group>"; };
+		E72165DD3753EB0BC5645AA07C6DFD43 /* ScrollViewFilter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScrollViewFilter.swift; path = Source/ScrollViewFilter.swift; sourceTree = "<group>"; };
+		EA36E564C77C2334C00F4745FBEB2500 /* GTForceTouchGestureRecognizer-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GTForceTouchGestureRecognizer-prefix.pch"; sourceTree = "<group>"; };
+		F182AD7C67212E9F1F5288C8FA4EF813 /* GTForceTouchGestureRecognizer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GTForceTouchGestureRecognizer.framework; path = GTForceTouchGestureRecognizer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1933E7888AD1DEB6DF9827DBA840E30 /* IsUnitTest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IsUnitTest.swift; path = Source/IsUnitTest.swift; sourceTree = "<group>"; };
+		F1C48EE3F5F97779A7F24E0A72F8BD16 /* ScrollingContentViewController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ScrollingContentViewController.modulemap; sourceTree = "<group>"; };
 		F7965E929607B726B1FD02690B20EFDE /* Pods-Pr0gramm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Pr0gramm.debug.xcconfig"; sourceTree = "<group>"; };
+		F971785680B369689AEC486F6D8F71D0 /* GTForceTouchGestureRecognizer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GTForceTouchGestureRecognizer.swift; path = Sources/GTForceTouchGestureRecognizer.swift; sourceTree = "<group>"; };
+		FE7802C60D9464FD280808E20539269C /* ScrollingContentViewController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ScrollingContentViewController-prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,24 +144,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AD46339AC4FE0AE2F605549A8EAB25EB /* Frameworks */ = {
+		C1880FF3D8D6D398D56DE7E5C21DA729 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0B16B364E195CAB752922401F658815 /* Foundation.framework in Frameworks */,
+				D5C131BBA5E43E680B30FDD1AE2D74EE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6B885CF3549A4B3FCCB91EA9764F409 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38822A4F4F0341B8D0443065DEB2E4D0 /* Foundation.framework in Frameworks */,
+				11971073DAF4E72C59F05D5D1F3EF690 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0B5608F53C219A4F1EFE0E8AC2BA693D /* Pods */ = {
+		0685B68CBE69BFB0CB55A7BF163F5400 /* ImageScrollView */ = {
 			isa = PBXGroup;
 			children = (
-				DC1F8BC1D383C249A4F3A51CE3D628D9 /* ImageScrollView */,
-				5C21F6D83E3E0C76F894EEC58B8CD37D /* ScrollingContentViewController */,
+				B505DA3F840177951DDBA0E25C3E5FCF /* ImageScrollView.swift */,
+				B1BF95857D4B5B1A82CF549FDF1BF874 /* Support Files */,
 			);
-			name = Pods;
+			name = ImageScrollView;
+			path = ImageScrollView;
 			sourceTree = "<group>";
 		};
 		1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */ = {
@@ -150,32 +182,28 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		30DB4D05D24B39A22FB0E450725FA584 /* Support Files */ = {
+		19B29731BD87385E751EEAE796B7F0C0 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D278F0B8F44D35AA54E3D2AFD329AA10 /* ImageScrollView.modulemap */,
-				D92D5530D55D7F420CFCA97524A6FB2A /* ImageScrollView.xcconfig */,
-				2F7BB725E900EBCF991829958138B92A /* ImageScrollView-dummy.m */,
-				54DAE4398062177811376716AFA76C9E /* ImageScrollView-Info.plist */,
-				AF20A1363790A28643DE24008418E36E /* ImageScrollView-prefix.pch */,
-				C11B50A871DCF06D5637F22EAAA3F607 /* ImageScrollView-umbrella.h */,
+				F7ABD0CC6BE1B47770CCB870FE363496 /* GTForceTouchGestureRecognizer */,
+				0685B68CBE69BFB0CB55A7BF163F5400 /* ImageScrollView */,
+				BF4E16B5E5DE30F117C29FCCDD3697A1 /* ScrollingContentViewController */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/ImageScrollView";
+			name = Pods;
 			sourceTree = "<group>";
 		};
-		34E0EEFCEEADF4D6E2B462F14BA21A2F /* Support Files */ = {
+		1EB88FC6AA0D0E6E53C7388407B486BC /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				F3F45F97E52DD97FA468B71DD30188F4 /* ScrollingContentViewController.modulemap */,
-				6AE6CDFAA2E15CA407D5E313649BE275 /* ScrollingContentViewController.xcconfig */,
-				462CBF67BA25D074669AE923EF380259 /* ScrollingContentViewController-dummy.m */,
-				70995719D1C2AB60A099A6C19BDEEE16 /* ScrollingContentViewController-Info.plist */,
-				136B901B8D20A6B8672D073A8BE8EC56 /* ScrollingContentViewController-prefix.pch */,
-				C63EA2E2C15E117ABAB003C977AFFE45 /* ScrollingContentViewController-umbrella.h */,
+				14D3A6DA0D0A82F160B43311D4CDDFD2 /* GTForceTouchGestureRecognizer.modulemap */,
+				6E9AE1D4080FAB040D872A5C262865EA /* GTForceTouchGestureRecognizer.xcconfig */,
+				298B62E1F5C1CA3DFA72C4C0C5AA6EA2 /* GTForceTouchGestureRecognizer-dummy.m */,
+				77D6CD34F9B72D3BD15AF35BB4228F09 /* GTForceTouchGestureRecognizer-Info.plist */,
+				EA36E564C77C2334C00F4745FBEB2500 /* GTForceTouchGestureRecognizer-prefix.pch */,
+				3A21629472DE6A350A1CD05D4184A2CF /* GTForceTouchGestureRecognizer-umbrella.h */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/ScrollingContentViewController";
+			path = "../Target Support Files/GTForceTouchGestureRecognizer";
 			sourceTree = "<group>";
 		};
 		37093F9B9B89143B59C56CB445220818 /* Pods-Pr0gramm */ = {
@@ -195,31 +223,29 @@
 			path = "Target Support Files/Pods-Pr0gramm";
 			sourceTree = "<group>";
 		};
-		5C21F6D83E3E0C76F894EEC58B8CD37D /* ScrollingContentViewController */ = {
+		514AB148A8B8E8A5DFE71A9F96A84600 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				EA3A406D0055C153084D8A500B71767C /* AdditionalSafeAreaInsetsController.swift */,
-				90E6F47E6652EAD538E572D422DDA7DE /* AdditionalSafeAreaInsetsControlling.swift */,
-				5715DF0C69F2D75A60F782020ED668D9 /* IsUnitTest.swift */,
-				32F1F2244AAE78A2D530DFC04C4DC4B8 /* KeyboardFrameEvent.swift */,
-				EE42A10A0659457989B395EB9D4748F1 /* KeyboardNotificationManager.swift */,
-				9529214F62473667342905298BF07B21 /* KeyboardNotificationObserving.swift */,
-				3614051ACCA2FCDF5B24F06D4602391F /* KeyboardObserver.swift */,
-				91791010AF712493D27BABFDA7FDE626 /* KeyboardObservering.swift */,
-				B3B0B6FFE5B962ADE9C6077F93A7D81C /* ScrollingContentScrollView.swift */,
-				ED9C329F19D5C1354544C89E560A37D7 /* ScrollingContentViewController.swift */,
-				E2AFE33CC636900ED64EC4549D46D82B /* ScrollingContentViewManager.swift */,
-				29E9E4D3B93C66AD0BAE524F5543BC51 /* ScrollRectEvent.swift */,
-				2FEF77145D1DD87151C884EA0E839FAA /* ScrollViewBounceController.swift */,
-				868BD3865108CEB32D3A85E210F50F66 /* ScrollViewBounceControlling.swift */,
-				4A1D435D1D19270D7C9F64B5BFCA466C /* ScrollViewFilter.swift */,
-				6F99088330769ABD6EE8B533B2C080A8 /* ScrollViewFilterKeyboardDelegate.swift */,
-				87C21B24BE176E07CC6257D9C3A0BDBC /* ScrollViewFilterScrollDelegate.swift */,
-				23076DD802D1417385A3CDB0DE28B00F /* UIResponder+Current.swift */,
-				34E0EEFCEEADF4D6E2B462F14BA21A2F /* Support Files */,
+				F1C48EE3F5F97779A7F24E0A72F8BD16 /* ScrollingContentViewController.modulemap */,
+				7E4AAB04F060BAC8B624F6F10DC770BE /* ScrollingContentViewController.xcconfig */,
+				B9156ACF0D1A63971D88061FB1C5F97A /* ScrollingContentViewController-dummy.m */,
+				197761B6645F44DC5E5AC6D2041B8611 /* ScrollingContentViewController-Info.plist */,
+				FE7802C60D9464FD280808E20539269C /* ScrollingContentViewController-prefix.pch */,
+				57165AD60E8452C7DF1D9C20C89EAE6B /* ScrollingContentViewController-umbrella.h */,
 			);
-			name = ScrollingContentViewController;
-			path = ScrollingContentViewController;
+			name = "Support Files";
+			path = "../Target Support Files/ScrollingContentViewController";
+			sourceTree = "<group>";
+		};
+		6008F79A0FBEA2767EAC229D14FDFFB2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F182AD7C67212E9F1F5288C8FA4EF813 /* GTForceTouchGestureRecognizer.framework */,
+				8B963D5BA311EDEBC8AD8D6FA53E6B20 /* ImageScrollView.framework */,
+				1EB6392CD04AF8D603979C4C2F841A85 /* Pods_Pr0gramm.framework */,
+				4CC8A5A32B1B8D05FFA96F43BCE6EA06 /* ScrollingContentViewController.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		61FE16C1396D06D890B32C6965C8C203 /* Targets Support Files */ = {
@@ -230,14 +256,45 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		7AFF21D1B4086604BC84DDD6EA4F54BF /* Products */ = {
+		B1BF95857D4B5B1A82CF549FDF1BF874 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				8B963D5BA311EDEBC8AD8D6FA53E6B20 /* ImageScrollView.framework */,
-				1EB6392CD04AF8D603979C4C2F841A85 /* Pods_Pr0gramm.framework */,
-				4CC8A5A32B1B8D05FFA96F43BCE6EA06 /* ScrollingContentViewController.framework */,
+				3CFC2407B9ED3381175DEA4C82D86958 /* ImageScrollView.modulemap */,
+				4A01A2C49E3DB54AA9699A665EECF9BC /* ImageScrollView.xcconfig */,
+				56008D3B294F3D505B5595FB979B33D3 /* ImageScrollView-dummy.m */,
+				8F507825CD87EB04E5D0D696FA2B6219 /* ImageScrollView-Info.plist */,
+				A1C26E8F62CD145ABB3CD0F6CF99407B /* ImageScrollView-prefix.pch */,
+				E435D972DDEBBFCDF1A8E41B2AB09864 /* ImageScrollView-umbrella.h */,
 			);
-			name = Products;
+			name = "Support Files";
+			path = "../Target Support Files/ImageScrollView";
+			sourceTree = "<group>";
+		};
+		BF4E16B5E5DE30F117C29FCCDD3697A1 /* ScrollingContentViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6761C9462464FA6491A9FE854C5BE89B /* AdditionalSafeAreaInsetsController.swift */,
+				8D9281E9F4572970F6B64F3DF6CFDBDE /* AdditionalSafeAreaInsetsControlling.swift */,
+				F1933E7888AD1DEB6DF9827DBA840E30 /* IsUnitTest.swift */,
+				ADDB64DC27A0889E63016C6B3DA73F72 /* KeyboardFrameEvent.swift */,
+				41E86DEF4F03936578B0F4413744C030 /* KeyboardNotificationManager.swift */,
+				9A32EDCFF44C2AACD6B532219B0781DA /* KeyboardNotificationObserving.swift */,
+				9B6B4B4F25669388DEA124261B96916D /* KeyboardObserver.swift */,
+				0EA54B093E7F6740A394191E8C55C1F8 /* KeyboardObservering.swift */,
+				53B789E17B6D05A0DC66697417889D3A /* ScrollingContentScrollView.swift */,
+				2F52E2ED697D0CF2B852C30AA14C595E /* ScrollingContentViewController.swift */,
+				188AAB36FFB2CFCF8CD838EAAFB3FAF3 /* ScrollingContentViewManager.swift */,
+				9719A610130574C4F3760647967E8770 /* ScrollRectEvent.swift */,
+				8DCC892E7165DEC30BD183B2976AD7F5 /* ScrollViewBounceController.swift */,
+				101E77392BBF5C6035D6A8A54BE6D6EB /* ScrollViewBounceControlling.swift */,
+				E72165DD3753EB0BC5645AA07C6DFD43 /* ScrollViewFilter.swift */,
+				18F6EA09ADCCBD61ECA5CA3EBD091FB5 /* ScrollViewFilterKeyboardDelegate.swift */,
+				690770471A38F38C70215360AABDBEC9 /* ScrollViewFilterScrollDelegate.swift */,
+				0973091515401E90F343A18A958C15AD /* UIResponder+Current.swift */,
+				514AB148A8B8E8A5DFE71A9F96A84600 /* Support Files */,
+			);
+			name = ScrollingContentViewController;
+			path = ScrollingContentViewController;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -245,20 +302,10 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
-				0B5608F53C219A4F1EFE0E8AC2BA693D /* Pods */,
-				7AFF21D1B4086604BC84DDD6EA4F54BF /* Products */,
+				19B29731BD87385E751EEAE796B7F0C0 /* Pods */,
+				6008F79A0FBEA2767EAC229D14FDFFB2 /* Products */,
 				61FE16C1396D06D890B32C6965C8C203 /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		DC1F8BC1D383C249A4F3A51CE3D628D9 /* ImageScrollView */ = {
-			isa = PBXGroup;
-			children = (
-				B0D7AD1A519D0F81D03880BE34CF69B2 /* ImageScrollView.swift */,
-				30DB4D05D24B39A22FB0E450725FA584 /* Support Files */,
-			);
-			name = ImageScrollView;
-			path = ImageScrollView;
 			sourceTree = "<group>";
 		};
 		E2983683FD097A93297E2F5D4E382B36 /* iOS */ = {
@@ -270,9 +317,28 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
+		F7ABD0CC6BE1B47770CCB870FE363496 /* GTForceTouchGestureRecognizer */ = {
+			isa = PBXGroup;
+			children = (
+				F971785680B369689AEC486F6D8F71D0 /* GTForceTouchGestureRecognizer.swift */,
+				61ED930C4E37A090B2B59B89D1F059FA /* GTForceTouchGestureRecognizerInternal.swift */,
+				1EB88FC6AA0D0E6E53C7388407B486BC /* Support Files */,
+			);
+			name = GTForceTouchGestureRecognizer;
+			path = GTForceTouchGestureRecognizer;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		0A2D5C41A7544C70DE2DC8D483E297A1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B938B5FDFD579819F923EAFE4FA730C /* GTForceTouchGestureRecognizer-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0AE6B79E69ACED7B663910673CB4E342 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -281,11 +347,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4B81C79205F162C42E4D545D0FD76145 /* Headers */ = {
+		529581687C45F46E139ED20AD92D69B8 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F655CA3E7069322180AB14012B134080 /* Pods-Pr0gramm-umbrella.h in Headers */,
+				A2FBF356909F28F00FAEE60FDEA7D117 /* Pods-Pr0gramm-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,18 +386,19 @@
 		};
 		3E371BBEC1B023845097EC69895CA81A /* Pods-Pr0gramm */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 834E07A45007CCD7BA774AF69049C570 /* Build configuration list for PBXNativeTarget "Pods-Pr0gramm" */;
+			buildConfigurationList = 1AD7F00AF39E1913B3A0C3CA1717FBCC /* Build configuration list for PBXNativeTarget "Pods-Pr0gramm" */;
 			buildPhases = (
-				4B81C79205F162C42E4D545D0FD76145 /* Headers */,
-				8877C15AFAA8CE7271B8F4D00309A4E5 /* Sources */,
-				AD46339AC4FE0AE2F605549A8EAB25EB /* Frameworks */,
-				622E18B0E7858EF4C7DD47AB513077CE /* Resources */,
+				529581687C45F46E139ED20AD92D69B8 /* Headers */,
+				408BEABFE7F7D71E66F72601874333D7 /* Sources */,
+				C1880FF3D8D6D398D56DE7E5C21DA729 /* Frameworks */,
+				95FF10DE54F005FD8B61A1C21A2515CD /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				0A8D10FC1A1DB7C2A65E2A6D12D50191 /* PBXTargetDependency */,
-				2C2BF0322856AFB69A210051F7D11020 /* PBXTargetDependency */,
+				E037903D17714F5603A9753E8B2C936D /* PBXTargetDependency */,
+				448A3CF9F7AD83D7F90560013390C954 /* PBXTargetDependency */,
+				4D363A474F6E80E10BBB08374B028593 /* PBXTargetDependency */,
 			);
 			name = "Pods-Pr0gramm";
 			productName = "Pods-Pr0gramm";
@@ -356,6 +423,24 @@
 			productReference = 4CC8A5A32B1B8D05FFA96F43BCE6EA06 /* ScrollingContentViewController.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		9BF400286622323CA4E839314ED50533 /* GTForceTouchGestureRecognizer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9E96C44FC4013F27E395BDDC85E31536 /* Build configuration list for PBXNativeTarget "GTForceTouchGestureRecognizer" */;
+			buildPhases = (
+				0A2D5C41A7544C70DE2DC8D483E297A1 /* Headers */,
+				B23B6D00AAB1FE52C1A67F9729EFB579 /* Sources */,
+				D6B885CF3549A4B3FCCB91EA9764F409 /* Frameworks */,
+				7E1DE1F5D45BEA1329C61DC1462874E3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GTForceTouchGestureRecognizer;
+			productName = GTForceTouchGestureRecognizer;
+			productReference = F182AD7C67212E9F1F5288C8FA4EF813 /* GTForceTouchGestureRecognizer.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -374,10 +459,11 @@
 				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 7AFF21D1B4086604BC84DDD6EA4F54BF /* Products */;
+			productRefGroup = 6008F79A0FBEA2767EAC229D14FDFFB2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				9BF400286622323CA4E839314ED50533 /* GTForceTouchGestureRecognizer */,
 				1CAEC00F99D9CCA04293B3139152CA5C /* ImageScrollView */,
 				3E371BBEC1B023845097EC69895CA81A /* Pods-Pr0gramm */,
 				61AEB25FFF12DCFE0839624D1D3039A3 /* ScrollingContentViewController */,
@@ -393,7 +479,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		622E18B0E7858EF4C7DD47AB513077CE /* Resources */ = {
+		7E1DE1F5D45BEA1329C61DC1462874E3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -407,9 +493,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		95FF10DE54F005FD8B61A1C21A2515CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		408BEABFE7F7D71E66F72601874333D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DDAAD60F6618665F6D7E7DDD6D693E35 /* Pods-Pr0gramm-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		61E80F9EF146928083B309D7225A46F1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -445,35 +546,43 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8877C15AFAA8CE7271B8F4D00309A4E5 /* Sources */ = {
+		B23B6D00AAB1FE52C1A67F9729EFB579 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74C16BE02C66CCF3E81154A916D2D527 /* Pods-Pr0gramm-dummy.m in Sources */,
+				BE791426B26B6B699D106407D6967756 /* GTForceTouchGestureRecognizer-dummy.m in Sources */,
+				5CC0E2DB3F7A6C3E2E26642F47E1A576 /* GTForceTouchGestureRecognizer.swift in Sources */,
+				A21297A36B2DC429CD83826DC1B3C477 /* GTForceTouchGestureRecognizerInternal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0A8D10FC1A1DB7C2A65E2A6D12D50191 /* PBXTargetDependency */ = {
+		448A3CF9F7AD83D7F90560013390C954 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ImageScrollView;
 			target = 1CAEC00F99D9CCA04293B3139152CA5C /* ImageScrollView */;
-			targetProxy = 10B41B75FCB5596506F2302A004FDA52 /* PBXContainerItemProxy */;
+			targetProxy = 9B5AC7211C385EE9D754E41B7B68C142 /* PBXContainerItemProxy */;
 		};
-		2C2BF0322856AFB69A210051F7D11020 /* PBXTargetDependency */ = {
+		4D363A474F6E80E10BBB08374B028593 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ScrollingContentViewController;
 			target = 61AEB25FFF12DCFE0839624D1D3039A3 /* ScrollingContentViewController */;
-			targetProxy = 416AF9A64CA4A2A584145F5038A4B0C3 /* PBXContainerItemProxy */;
+			targetProxy = 08758F7492B096403E5C4865B5FF8434 /* PBXContainerItemProxy */;
+		};
+		E037903D17714F5603A9753E8B2C936D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GTForceTouchGestureRecognizer;
+			target = 9BF400286622323CA4E839314ED50533 /* GTForceTouchGestureRecognizer */;
+			targetProxy = 85292329CC4BE33005BFCAA0F2BDD5C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		00F86E61E8CFA8A1CDC2DC3BFE1CBF98 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6AE6CDFAA2E15CA407D5E313649BE275 /* ScrollingContentViewController.xcconfig */;
+			baseConfigurationReference = 7E4AAB04F060BAC8B624F6F10DC770BE /* ScrollingContentViewController.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -506,7 +615,7 @@
 		};
 		0A09DB90136974D392FA8C043E194B9B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6AE6CDFAA2E15CA407D5E313649BE275 /* ScrollingContentViewController.xcconfig */;
+			baseConfigurationReference = 7E4AAB04F060BAC8B624F6F10DC770BE /* ScrollingContentViewController.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -600,7 +709,7 @@
 		};
 		52D3C3297670E67AEF455656F0D2E258 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D92D5530D55D7F420CFCA97524A6FB2A /* ImageScrollView.xcconfig */;
+			baseConfigurationReference = 4A01A2C49E3DB54AA9699A665EECF9BC /* ImageScrollView.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CODE_SIGN_IDENTITY = "";
@@ -630,7 +739,7 @@
 			};
 			name = Debug;
 		};
-		AF0D150788C62FF6833B40FF690F5B74 /* Debug */ = {
+		7C5C1D7DC5E07C16339E527E7FEAE5D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F7965E929607B726B1FD02690B20EFDE /* Pods-Pr0gramm.debug.xcconfig */;
 			buildSettings = {
@@ -665,9 +774,112 @@
 			};
 			name = Debug;
 		};
+		815A46C509A9ACAB0A09D1C0F908A4CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E9AE1D4080FAB040D872A5C262865EA /* GTForceTouchGestureRecognizer.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/GTForceTouchGestureRecognizer/GTForceTouchGestureRecognizer-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/GTForceTouchGestureRecognizer/GTForceTouchGestureRecognizer-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/GTForceTouchGestureRecognizer/GTForceTouchGestureRecognizer.modulemap";
+				PRODUCT_MODULE_NAME = GTForceTouchGestureRecognizer;
+				PRODUCT_NAME = GTForceTouchGestureRecognizer;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A894E9EEA60BB86226BF12BC98E20BC7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E9AE1D4080FAB040D872A5C262865EA /* GTForceTouchGestureRecognizer.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/GTForceTouchGestureRecognizer/GTForceTouchGestureRecognizer-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/GTForceTouchGestureRecognizer/GTForceTouchGestureRecognizer-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/GTForceTouchGestureRecognizer/GTForceTouchGestureRecognizer.modulemap";
+				PRODUCT_MODULE_NAME = GTForceTouchGestureRecognizer;
+				PRODUCT_NAME = GTForceTouchGestureRecognizer;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B09ADBD733A7CF75FE43ADC49CF1D936 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 768699712F4323D9EEAE2F56C1E67423 /* Pods-Pr0gramm.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Pr0gramm/Pods-Pr0gramm-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Pr0gramm/Pods-Pr0gramm.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		E0B1D0612CF740D2A16C9CCCA3D9C654 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D92D5530D55D7F420CFCA97524A6FB2A /* ImageScrollView.xcconfig */;
+			baseConfigurationReference = 4A01A2C49E3DB54AA9699A665EECF9BC /* ImageScrollView.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CODE_SIGN_IDENTITY = "";
@@ -762,45 +974,18 @@
 			};
 			name = Debug;
 		};
-		F7C942B93E32FC439771FEEA0C71073F /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 768699712F4323D9EEAE2F56C1E67423 /* Pods-Pr0gramm.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Pr0gramm/Pods-Pr0gramm-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Pr0gramm/Pods-Pr0gramm.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1AD7F00AF39E1913B3A0C3CA1717FBCC /* Build configuration list for PBXNativeTarget "Pods-Pr0gramm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7C5C1D7DC5E07C16339E527E7FEAE5D4 /* Debug */,
+				B09ADBD733A7CF75FE43ADC49CF1D936 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -810,11 +995,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		834E07A45007CCD7BA774AF69049C570 /* Build configuration list for PBXNativeTarget "Pods-Pr0gramm" */ = {
+		9E96C44FC4013F27E395BDDC85E31536 /* Build configuration list for PBXNativeTarget "GTForceTouchGestureRecognizer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AF0D150788C62FF6833B40FF690F5B74 /* Debug */,
-				F7C942B93E32FC439771FEEA0C71073F /* Release */,
+				A894E9EEA60BB86226BF12BC98E20BC7 /* Debug */,
+				815A46C509A9ACAB0A09D1C0F908A4CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

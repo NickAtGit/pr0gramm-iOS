@@ -1,20 +1,24 @@
 PODS:
+  - GTForceTouchGestureRecognizer (1.1.2)
   - ImageScrollView (1.8)
   - ScrollingContentViewController (1.4.0)
 
 DEPENDENCIES:
+  - GTForceTouchGestureRecognizer
   - ImageScrollView
   - ScrollingContentViewController
 
 SPEC REPOS:
   trunk:
+    - GTForceTouchGestureRecognizer
     - ImageScrollView
     - ScrollingContentViewController
 
 SPEC CHECKSUMS:
+  GTForceTouchGestureRecognizer: bc95b71c0fc00aa22d9441398d1a17be527e4d86
   ImageScrollView: 82912273486297285682bdb2a806742f0d39940c
   ScrollingContentViewController: 1bff026d6f32c15489dcd22821911eda5fda3801
 
-PODFILE CHECKSUM: 2cfa289aad25020f23f3fe969bdcc1845a9bb951
+PODFILE CHECKSUM: 35cb12368c81bf2cd7cb6e715aba8367d3d74887
 
 COCOAPODS: 1.8.4

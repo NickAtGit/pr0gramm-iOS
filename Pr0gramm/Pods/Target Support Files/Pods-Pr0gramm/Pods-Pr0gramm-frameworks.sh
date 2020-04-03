@@ -161,10 +161,12 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/GTForceTouchGestureRecognizer/GTForceTouchGestureRecognizer.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ImageScrollView/ImageScrollView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ScrollingContentViewController/ScrollingContentViewController.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/GTForceTouchGestureRecognizer/GTForceTouchGestureRecognizer.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ImageScrollView/ImageScrollView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ScrollingContentViewController/ScrollingContentViewController.framework"
 fi
