@@ -7,7 +7,7 @@ class DownloadedFilesTableViewController: UITableViewController, StoryboardIniti
     weak var coordinator: Coordinator?
     private let cellIdentifier = "downloadedFileCell"
     private var files: [URL]? {
-        return FileManager.default.urls(for: .documentDirectory)
+        return FileManager.default.urls(for: .documentDirectory)?.sorted { $0.creationDate > $1.creationDate }
     }
     
     override func viewDidLoad() {
@@ -30,7 +30,7 @@ class DownloadedFilesTableViewController: UITableViewController, StoryboardIniti
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! DownloadedFileTableViewCell
         guard let fileURL = files?[indexPath.row] else { return cell }
-        cell.fileNameLabel.text = fileURL.lastPathComponent + "\n" + (fileURL.filesizeNicelyformatted ?? "")
+        cell.fileNameLabel.text = fileURL.lastPathComponent + "\n" + (fileURL.filesizeNicelyformatted ?? "") + "\n" + "\(fileURL.creationDate)"
         
         if fileURL.lastPathComponent.hasSuffix(".mp4") {
             cell.previewImageView.thumbnailImageFromVideoUrl(url: fileURL)

@@ -105,3 +105,9 @@ extension URL {
         return ByteCountFormatter.init().string(fromByteCount: Int64(fileSize))
     }
 }
+
+extension URL {
+    var creationDate: Date {
+        return (try? resourceValues(forKeys: [.creationDateKey]))?.creationDate ?? Date()
+    }
+}

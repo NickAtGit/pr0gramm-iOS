@@ -51,9 +51,8 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
         let url = URL(string: link)!
         downloader.loadFileAsync(url: url) { successfully in
             DispatchQueue.main.async {
-                if let navigationContoller = self.navigationController as? NavigationController {
-                    navigationContoller.showBanner(with: successfully ? "Download abgeschlossen" : "Download fehlgeschlagen")
-                }
+                let navigationContoller = self.navigationController as! NavigationController
+                navigationContoller.showBanner(with: successfully ? "Download abgeschlossen" : "Download fehlgeschlagen")
             }
         }
     }
