@@ -3,11 +3,13 @@ import UIKit
 import AVFoundation
 import ScrollingContentViewController
 import AVKit
+import GTForceTouchGestureRecognizer
 
 class DetailViewController: ScrollingContentViewController, StoryboardInitialViewController {
 
     weak var coordinator: Coordinator?
-    
+    var pr0grammConnector: Pr0grammConnector!
+
     private var stackView: UIStackView!
     private let imageView = TapableImageView()
     private let tagsCollectionViewController = TagsCollectionViewController.fromStoryboard()
@@ -17,7 +19,6 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
     private let avPlayerViewController = AVPlayerViewController()
     private let loadCommentsButton = UIButton()
 
-    var pr0grammConnector: Pr0grammConnector!
     var item: Item? {
         didSet {
             guard let item = item else { return }
@@ -71,6 +72,16 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
         contentView = hostView
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        let forceTouchGestureRecognizer = GTForceTouchGestureRecognizer(target: self, action: #selector(upVote))
+        view.addGestureRecognizer(forceTouchGestureRecognizer)
+    }
+    
+    @objc
+    func upVote() {
+        guard let id = item?.id else { return }
+        pr0grammConnector?.vote(itemId: "\(id)", value: 1)
+        let navigationContoller = self.navigationController as! NavigationController
+        navigationContoller.showBanner(with: "Han blussert ⨁")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
