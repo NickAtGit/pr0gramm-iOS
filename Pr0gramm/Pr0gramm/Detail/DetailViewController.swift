@@ -134,6 +134,7 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
             
             avPlayer = AVPlayer()
             avPlayerViewController = TapableAVPlayerViewController()
+            avPlayerViewController?.delegate = self
             guard let avPlayer = avPlayer else { return }
             guard let avPlayerViewController = avPlayerViewController else { return }
 
@@ -199,5 +200,15 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
         forceTouchGestureRecognizer.removeTarget(self, action: nil)
         view.removeGestureRecognizer(forceTouchGestureRecognizer)
         forceTouchGestureRecognizer = nil
+    }
+}
+
+extension DetailViewController: AVPlayerViewControllerDelegate {
+    func playerViewController(_ playerViewController: AVPlayerViewController, willBeginFullScreenPresentationWithAnimationCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        playerViewController.player?.play()
+    }
+    
+    func playerViewController(_ playerViewController: AVPlayerViewController, willEndFullScreenPresentationWithAnimationCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        playerViewController.player?.play()
     }
 }
