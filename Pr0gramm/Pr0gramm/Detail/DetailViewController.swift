@@ -15,8 +15,8 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
     private let tagsCollectionViewController = TagsCollectionViewController.fromStoryboard()
     private let commentsStackView = UIStackView()
     private let infoView = InfoView.instantiateFromNib()
-    private let avPlayer = AVPlayer()
-    private let avPlayerViewController = AVPlayerViewController()
+    private var avPlayer: AVPlayer?
+    private var avPlayerViewController: AVPlayerViewController?
     private let loadCommentsButton = UIButton()
 
     var item: Item? {
@@ -86,7 +86,7 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        avPlayer.pause()
+        avPlayer?.pause()
         NotificationCenter.default.removeObserver(self)
     }
     
@@ -104,25 +104,36 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
     
     @objc
     func play() {
-        avPlayer.play()
+        avPlayer?.play()
+    }
+    
+    func stop() {
+        avPlayer?.pause()
     }
         
     private func updateUI() {
-        avPlayer.pause()
+        avPlayer?.pause()
         guard let item = item else { return }
         imageView.heightAnchor.constraint(equalTo: view.widthAnchor,
                                           multiplier: CGFloat(item.height) / CGFloat(item.width)).isActive = true
         infoView.pointsLabel.text = "\(item.up - item.down)"
         infoView.userNameLabel.text = item.user
                 
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(DetailViewController.playerItemDidReachEnd(_:)),
-                                               name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
-                                               object: avPlayer.currentItem)
 
         if let link = pr0grammConnector.imageLink(for: item) {
             imageView.downloadedFrom(link: link)
         } else {
+            
+            avPlayer = AVPlayer()
+            avPlayerViewController = AVPlayerViewController()
+            guard let avPlayer = avPlayer else { return }
+            guard let avPlayerViewController = avPlayerViewController else { return }
+
+            NotificationCenter.default.addObserver(self,
+                                                   selector: #selector(DetailViewController.playerItemDidReachEnd(_:)),
+                                                   name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
+                                                   object: avPlayer.currentItem)
+
             avPlayer.isMuted = false
             avPlayerViewController.player = avPlayer
             avPlayerViewController.view.translatesAutoresizingMaskIntoConstraints = false
@@ -166,9 +177,9 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
     @objc
     func playerItemDidReachEnd(_ notification: NSNotification) {
         if let playerItem = notification.object as? AVPlayerItem {
-            if playerItem == avPlayer.currentItem {
+            if playerItem == avPlayer?.currentItem {
                 playerItem.seek(to: CMTime.zero, completionHandler: nil)
-                avPlayer.play()
+                avPlayer?.play()
             }
         }
     }

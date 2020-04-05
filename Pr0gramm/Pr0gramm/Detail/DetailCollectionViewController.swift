@@ -107,12 +107,20 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
     
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard let items = coordinator?.pr0grammConnector.allItems else { return }
-
+        
+        let cell = cell as! DetailCollectionViewCell
+        cell.detailViewController.play()
+        
         if indexPath.row + 1 == items.count {
             print("Loading more items")
             coordinator?.pr0grammConnector.fetchItems(sorting: Sorting(rawValue: AppSettings.sorting)!,
                                                       flags: AppSettings.currentFlags, more: true)
         }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let cell = cell as! DetailCollectionViewCell
+        cell.detailViewController.stop()
     }
 }
 
