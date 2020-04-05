@@ -48,7 +48,7 @@
 		035EBA7F24262CA3009185E9 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035EBA7E24262CA3009185E9 /* LoginViewController.storyboard */; };
 		035EBA822426DA5E009185E9 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035EBA812426DA5E009185E9 /* Coordinator.swift */; };
 		035EBA842427790C009185E9 /* DetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035EBA832427790C009185E9 /* DetailViewController.storyboard */; };
-		0388A0B524293BE0006E86A3 /* TapableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0388A0B424293BE0006E86A3 /* TapableImageView.swift */; };
+		0388A0B524293BE0006E86A3 /* TapableImage+Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0388A0B424293BE0006E86A3 /* TapableImage+Video.swift */; };
 		0388A0B724297C70006E86A3 /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0388A0B624297C70006E86A3 /* Downloader.swift */; };
 		03B0628A2428CFD600CA657A /* InfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03B062892428CFD600CA657A /* InfoView.xib */; };
 		03B0628C2428CFE100CA657A /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B0628B2428CFE100CA657A /* InfoView.swift */; };
@@ -110,7 +110,7 @@
 		035EBA812426DA5E009185E9 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		035EBA832427790C009185E9 /* DetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailViewController.storyboard; sourceTree = "<group>"; };
 		037A3F0924366F7800D68391 /* Pr0gramm.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pr0gramm.entitlements; sourceTree = "<group>"; };
-		0388A0B424293BE0006E86A3 /* TapableImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapableImageView.swift; sourceTree = "<group>"; };
+		0388A0B424293BE0006E86A3 /* TapableImage+Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TapableImage+Video.swift"; sourceTree = "<group>"; };
 		0388A0B624297C70006E86A3 /* Downloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
 		03B062892428CFD600CA657A /* InfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoView.xib; sourceTree = "<group>"; };
 		03B0628B2428CFE100CA657A /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
@@ -242,7 +242,7 @@
 				03B062932428EC3600CA657A /* TagCollectionViewCell.swift */,
 				033CF1C6205ED95500627321 /* CommentView.swift */,
 				033CF1C8205EDD7900627321 /* CommentView.xib */,
-				0388A0B424293BE0006E86A3 /* TapableImageView.swift */,
+				0388A0B424293BE0006E86A3 /* TapableImage+Video.swift */,
 				0354AAF424312E52009C35E0 /* ImageDetailViewController.swift */,
 				0354AAF224312E37009C35E0 /* ImageDetailViewController.storyboard */,
 			);
@@ -458,7 +458,7 @@
 				03D2AC50243264740082D4C9 /* With.swift in Sources */,
 				035EBA7D24262C7E009185E9 /* StoryboardViewController.swift in Sources */,
 				03D2AC5624337EC90082D4C9 /* Inbox.swift in Sources */,
-				0388A0B524293BE0006E86A3 /* TapableImageView.swift in Sources */,
+				0388A0B524293BE0006E86A3 /* TapableImage+Video.swift in Sources */,
 				03B062942428EC3600CA657A /* TagCollectionViewCell.swift in Sources */,
 				033CF1B6205BDBED00627321 /* MainCollectionViewController.swift in Sources */,
 				033CF1C2205BFF9A00627321 /* Comments.swift in Sources */,

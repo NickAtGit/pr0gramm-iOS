@@ -16,9 +16,10 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
     private let commentsStackView = UIStackView()
     private let infoView = InfoView.instantiateFromNib()
     private var avPlayer: AVPlayer?
-    private var avPlayerViewController: AVPlayerViewController?
+    private var avPlayerViewController: TapableAVPlayerViewController?
     private let loadCommentsButton = UIButton()
-
+    private var forceTouchGestureRecognizer: GTForceTouchGestureRecognizer!
+    
     var item: Item? {
         didSet {
             guard let item = item else { return }
@@ -48,7 +49,8 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
         
         loadCommentsButton.setTitle("Kommentare anzeigen", for: .normal)
         loadCommentsButton.addTarget(self, action: #selector(showComments), for: .touchUpInside)
-
+        loadCommentsButton.isHidden = !AppSettings.isLoggedIn
+        
         stackView = UIStackView(arrangedSubviews: [imageView,
                                                    infoView,
                                                    tagsCollectionViewController.view,
@@ -72,7 +74,9 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
         contentView = hostView
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        let forceTouchGestureRecognizer = GTForceTouchGestureRecognizer(target: self, action: #selector(upVote))
+        
+        
+        forceTouchGestureRecognizer = GTForceTouchGestureRecognizer(target: self, action: #selector(upVote))
         view.addGestureRecognizer(forceTouchGestureRecognizer)
     }
     
@@ -125,7 +129,7 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
         } else {
             
             avPlayer = AVPlayer()
-            avPlayerViewController = AVPlayerViewController()
+            avPlayerViewController = TapableAVPlayerViewController()
             guard let avPlayer = avPlayer else { return }
             guard let avPlayerViewController = avPlayerViewController else { return }
 
@@ -182,5 +186,14 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
                 avPlayer?.play()
             }
         }
+    }
+    
+    func cleanup() {
+        avPlayer = nil
+        avPlayerViewController = nil
+        NotificationCenter.default.removeObserver(self)
+        forceTouchGestureRecognizer.removeTarget(self, action: nil)
+        view.removeGestureRecognizer(forceTouchGestureRecognizer)
+        forceTouchGestureRecognizer = nil
     }
 }

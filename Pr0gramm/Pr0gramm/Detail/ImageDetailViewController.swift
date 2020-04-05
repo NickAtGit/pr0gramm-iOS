@@ -7,9 +7,9 @@ class ImageDetailViewController: UIViewController, StoryboardInitialViewControll
     @IBOutlet var imageScrollView: ImageScrollView!
     
     var image: UIImage?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         imageScrollView.setup()
         guard let image = image else { return }
         imageScrollView.display(image: image)

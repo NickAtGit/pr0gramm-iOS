@@ -16,6 +16,7 @@ class DetailCollectionViewCell: UICollectionViewCell {
         }
         
         guard let detailViewController = detailViewController else { return }
+        detailViewController.cleanup()
         detailViewController.willMove(toParent: nil)
         detailViewController.view.removeFromSuperview()
         detailViewController.removeFromParent()

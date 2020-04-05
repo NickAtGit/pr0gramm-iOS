@@ -61,7 +61,7 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
     
     @objc
     func nextItem() {
-        let cell = collectionView.visibleCells.first!
+        guard let cell = collectionView.visibleCells.first else { return }
         let indexPath = collectionView.indexPath(for: cell)!
         let newIndexPath = IndexPath(row: indexPath.row + 1, section: indexPath.section)
         collectionView.scrollToItem(at: newIndexPath, at: .centeredHorizontally, animated: true)
@@ -70,7 +70,7 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
     
     @objc
     func previousItem() {
-        let cell = collectionView.visibleCells.first!
+        guard let cell = collectionView.visibleCells.first else { return }
         let indexPath = collectionView.indexPath(for: cell)!
         let newIndexPath = IndexPath(row: indexPath.row - 1, section: indexPath.section)
         collectionView.scrollToItem(at: newIndexPath, at: .centeredHorizontally, animated: true)

@@ -36,6 +36,7 @@ class LoginViewController: UIViewController, StoryboardInitialViewController, Lo
     }
     
     func didLogin(successful: Bool) {
+        AppSettings.isLoggedIn = successful
         if successful {
             DispatchQueue.main.async {
                 self.coordinator?.showOverview()

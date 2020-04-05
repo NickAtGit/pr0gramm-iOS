@@ -15,8 +15,10 @@ class FlagsViewController: UIViewController, StoryboardInitialViewController {
         super.viewDidLoad()
         sortingSegmentedControl.selectedSegmentIndex = AppSettings.sorting == 1 ? 0 : 1
         sfwSwitch.isOn = AppSettings.sfwActive
-        nsfwSwitch.isOn = AppSettings.nsfwActive
-        nsflSwitch.isOn = AppSettings.nsflActive
+        nsfwSwitch.isOn = AppSettings.nsfwActive && AppSettings.isLoggedIn
+        nsflSwitch.isOn = AppSettings.nsflActive && AppSettings.isLoggedIn
+        nsfwSwitch.isEnabled = AppSettings.isLoggedIn
+        nsflSwitch.isEnabled = AppSettings.isLoggedIn
     }
     
     override func viewWillAppear(_ animated: Bool) {

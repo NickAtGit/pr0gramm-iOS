@@ -140,6 +140,7 @@ class Pr0grammConnector {
     func logout() {
         let cookies = HTTPCookieStorage.shared.cookies(for: URL(string: "https://pr0gramm.com/")!)
         cookies?.forEach { HTTPCookieStorage.shared.deleteCookie($0) }
+        AppSettings.isLoggedIn = false
     }
     
     //"description": "-1 = Minus, 1 = Plus, 2 = Fav, 0 = Kein Vote/Vote zurückziehen",
@@ -237,7 +238,9 @@ class Pr0grammConnector {
             do {
                 let responseModel = try jsonDecoder.decode(AllItems.self, from: data)
                 self.responseModels.append(responseModel)
-                self.observers.forEach { $0.didReceiveData() }
+                DispatchQueue.main.async {
+                    self.observers.forEach { $0.didReceiveData() }
+                }
             } catch {
                 print(error.localizedDescription)
             }
@@ -261,7 +264,9 @@ class Pr0grammConnector {
             do {
                 let responseModel = try jsonDecoder.decode(AllItems.self, from: data)
                 self.responseModels.append(responseModel)
-                self.observers.forEach { $0.didReceiveData() }
+                DispatchQueue.main.async {
+                    self.observers.forEach { $0.didReceiveData() }
+                }
             } catch {
                 print(error.localizedDescription)
             }

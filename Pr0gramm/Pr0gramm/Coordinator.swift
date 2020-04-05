@@ -13,38 +13,32 @@ class Coordinator {
     }
     
     func startViewController() -> UIViewController {
+        let viewController = MainCollectionViewController.fromStoryboard()
+        viewController.coordinator = self
+        navigationController.style = .main
+        navigationController.viewControllers = [viewController]
+        viewController.tabBarItem = UITabBarItem(title: "Top",
+                                                 image: UIImage(systemName: "list.bullet"),
+                                                 selectedImage: nil)
         
-        if pr0grammConnector.isLoggedIn {
-            let viewController = MainCollectionViewController.fromStoryboard()
-            viewController.coordinator = self
-            navigationController.style = .main
-            navigationController.viewControllers = [viewController]
-            viewController.tabBarItem = UITabBarItem(title: "Top",
-                                                           image: UIImage(systemName: "list.bullet"),
-                                                           selectedImage: nil)
-
-            let downloadedFilesTableViewController = DownloadedFilesTableViewController.fromStoryboard()
-            downloadedFilesTableViewController.coordinator = self
-            downloadedFilesTableViewController.tabBarItem = UITabBarItem(title: "Downloads",
-                                                                         image: UIImage(systemName: "square.and.arrow.down"),
-                                                                         selectedImage: nil)
-            
-            tabbarController.setViewControllers([navigationController, downloadedFilesTableViewController], animated: false)
-
-            return tabbarController
-        } else {
-            let viewController = LoginViewController.fromStoryboard()
-            viewController.coordinator = self
-            navigationController.style = .login
-            navigationController.viewControllers = [viewController]
-            return navigationController
-        }
+        let downloadedFilesTableViewController = DownloadedFilesTableViewController.fromStoryboard()
+        downloadedFilesTableViewController.coordinator = self
+        downloadedFilesTableViewController.tabBarItem = UITabBarItem(title: "Downloads",
+                                                                     image: UIImage(systemName: "square.and.arrow.down"),
+                                                                     selectedImage: nil)
+        
+        tabbarController.setViewControllers([navigationController, downloadedFilesTableViewController], animated: false)
+        
+        return tabbarController
     }
     
+    @objc
     func showLogin() {
         let viewController = LoginViewController.fromStoryboard()
         viewController.coordinator = self
-        navigationController.viewControllers = [viewController]
+        let detailNavigationController = NavigationController(rootViewController: viewController)
+        detailNavigationController.style = .dismissable
+        navigationController.present(detailNavigationController, animated: true)
     }
     
     func showOverview() {

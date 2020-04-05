@@ -6,6 +6,7 @@ protocol SettingsConfigurable {}
 
 @objc
 protocol UserSettingsConfigurable {
+    static var isLoggedIn: Bool { get set }
     static var selectedTheme: Int { get set }
 }
 
@@ -70,5 +71,10 @@ extension AppSettings: UserSettingsConfigurable {
     static var selectedTheme: Int {
         get { return AppSettings.value(for: #keyPath(selectedTheme)) ?? 1 }
         set { AppSettings.updateDefaults(for: #keyPath(selectedTheme), value: newValue) }
+    }
+    
+    static var isLoggedIn: Bool {
+        get { return AppSettings.value(for: #keyPath(isLoggedIn)) ?? false }
+        set { AppSettings.updateDefaults(for: #keyPath(isLoggedIn), value: newValue) }
     }
 }

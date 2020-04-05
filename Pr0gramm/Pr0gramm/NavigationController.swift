@@ -2,7 +2,7 @@
 import UIKit
 
 enum NavigationControllerStyle {
-    case login, main, dismissable, dragable
+    case main, dismissable, dragable
 }
 
 class NavigationController: UINavigationController, UIPopoverPresentationControllerDelegate {
@@ -31,12 +31,6 @@ class NavigationController: UINavigationController, UIPopoverPresentationControl
         guard let style = style else { return }
         
         switch style {
-        case .login:
-            let logoutItem = UIBarButtonItem(image: UIImage(systemName: "person.crop.circle.badge.minus"),
-                                             style: .plain,
-                                             target: coordinator,
-                                             action: #selector(Coordinator.logout))
-            topViewController?.navigationItem.rightBarButtonItem = logoutItem
         case .dragable:
             let flagsItem = UIBarButtonItem(image: UIImage(systemName: "chevron.down"),
                                              style: .plain,
@@ -50,6 +44,25 @@ class NavigationController: UINavigationController, UIPopoverPresentationControl
                                              target: self,
                                              action: #selector(showFlagsPopover(_:)))
             topViewController?.navigationItem.leftBarButtonItem = flagsItem
+            
+            if AppSettings.isLoggedIn {
+                let logoutItem = UIBarButtonItem(image: UIImage(systemName: "person.crop.circle.badge.minus"),
+                                                 style: .plain,
+                                                 target: coordinator,
+                                                 action: #selector(Coordinator.logout))
+                var rightItems = topViewController?.navigationItem.rightBarButtonItems ?? []
+                rightItems.append(logoutItem)
+                topViewController?.navigationItem.rightBarButtonItems = rightItems
+            } else {
+                let loginItem = UIBarButtonItem(image: UIImage(systemName: "person.crop.circle.badge.plus"),
+                                                 style: .plain,
+                                                 target: coordinator,
+                                                 action: #selector(Coordinator.showLogin))
+                var rightItems = topViewController?.navigationItem.rightBarButtonItems ?? []
+                rightItems.append(loginItem)
+                topViewController?.navigationItem.rightBarButtonItems = rightItems
+            }
+
         case .dismissable:
             let flagsItem = UIBarButtonItem(image: UIImage(systemName: "xmark"),
                                              style: .plain,
