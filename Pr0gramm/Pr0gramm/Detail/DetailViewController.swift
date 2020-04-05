@@ -82,10 +82,14 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
     
     @objc
     func upVote() {
-        guard let id = item?.id else { return }
-        pr0grammConnector?.vote(itemId: "\(id)", value: 1)
         let navigationContoller = self.navigationController as! NavigationController
-        navigationContoller.showBanner(with: "Han blussert ⨁")
+        if AppSettings.isLoggedIn {
+            guard let id = item?.id else { return }
+            pr0grammConnector?.vote(itemId: "\(id)", value: 1)
+            navigationContoller.showBanner(with: "Han blussert ⨁")
+        } else {
+            navigationContoller.showBanner(with: "Du musst eingeloggt sein, um dieses Feature zu nutzen")
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

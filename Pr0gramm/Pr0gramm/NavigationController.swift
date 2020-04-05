@@ -80,7 +80,6 @@ class NavigationController: UINavigationController, UIPopoverPresentationControl
         navigationBannerView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
         navigationBannerView.topAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: 0).isActive = true
         navigationBannerView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
-        navigationBannerView.heightAnchor.constraint(equalToConstant: 34).isActive = true
         navigationBannerView.alpha = 0
     }
     
@@ -127,10 +126,14 @@ class NavigationBannerView: UIView {
         messageTextLabel.translatesAutoresizingMaskIntoConstraints = false
         messageTextLabel.numberOfLines = 0
         messageTextLabel.textColor = .white
+        messageTextLabel.textAlignment = .center
         addSubview(messageTextLabel)
+        
         NSLayoutConstraint.activate([
-            messageTextLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            messageTextLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
+            messageTextLabel.leftAnchor.constraint(equalTo: leftAnchor),
+            messageTextLabel.rightAnchor.constraint(equalTo: rightAnchor),
+            messageTextLabel.topAnchor.constraint(equalTo: topAnchor),
+            messageTextLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
     
