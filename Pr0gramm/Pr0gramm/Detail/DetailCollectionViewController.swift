@@ -38,6 +38,8 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
                                                     action: #selector(downloadItem))
                 
         navigationItem.leftBarButtonItem = downloadBarButtonItem
+        
+        coordinator?.pr0grammConnector.addObserver(self)
     }
             
     @objc
@@ -131,6 +133,12 @@ extension DetailCollectionViewController: UICollectionViewDelegateFlowLayout {
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width,
                       height: view.frame.height - (view.safeAreaInsets.top + view.safeAreaInsets.bottom))
+    }
+}
+
+extension DetailCollectionViewController: Pr0grammConnectorObserver {
+    func didReceiveData() {
+        collectionView.reloadData()
     }
 }
 

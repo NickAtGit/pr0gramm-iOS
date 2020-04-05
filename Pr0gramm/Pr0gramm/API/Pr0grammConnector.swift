@@ -2,7 +2,7 @@
 import Foundation
 import UIKit
 
-protocol Pr0grammConnectorDelegate: class {
+protocol Pr0grammConnectorObserver: class {
     func didReceiveData()
 }
 
@@ -21,7 +21,7 @@ extension String {
 }
 
 enum Flags: Int {
-    case sfw = 9
+    case sfw = 1
     case nsfw = 2
     case nsfl = 4
 }
@@ -40,7 +40,7 @@ enum FetchType {
 
 class Pr0grammConnector {
 
-    weak var delegate: Pr0grammConnectorDelegate?
+    var observers: [Pr0grammConnectorObserver] = []
     weak var loginDelegate: LoginDelegate?
 
     let http = "https://"
@@ -88,6 +88,19 @@ class Pr0grammConnector {
         URLSession.shared.configuration.httpCookieAcceptPolicy = .always
     }
     
+    func addObserver(_ observer: Pr0grammConnectorObserver) {
+        observers.append(observer)
+    }
+    
+    func removeObserver(_ observer: Pr0grammConnectorObserver) {
+        for i in observers.indices {
+            if observers[i] === observer {
+                observers.remove(at: i)
+                break
+            }
+        }
+    }
+    
     func getCaptcha() {
         let url = URL(string:"https://pr0gramm.com/api/user/captcha")!
         var request = URLRequest(url: url)
@@ -133,10 +146,22 @@ class Pr0grammConnector {
     func vote(commentId: String, value: Int) {
         guard let nonce = nonce else { return }
         let data: [String: String] = ["id": commentId,
-                                            "vote": "\(value)",
-                                            "_nonce": nonce]
+                                      "vote": "\(value)",
+                                      "_nonce": nonce]
 
         let url = URL(string: http + baseURL + "api/comments/vote")!
+        post(data: data, to: url) { success in
+            print("Voted: \(success)")
+        }
+    }
+    
+    func vote(itemId: String, value: Int) {
+        guard let nonce = nonce else { return }
+        let data: [String: String] = ["id": itemId,
+                                      "vote": "\(value)",
+                                      "_nonce": nonce]
+
+        let url = URL(string: http + baseURL + "api/items/vote")!
         post(data: data, to: url) { success in
             print("Voted: \(success)")
         }
@@ -212,7 +237,7 @@ class Pr0grammConnector {
             do {
                 let responseModel = try jsonDecoder.decode(AllItems.self, from: data)
                 self.responseModels.append(responseModel)
-                self.delegate?.didReceiveData()
+                self.observers.forEach { $0.didReceiveData() }
             } catch {
                 print(error.localizedDescription)
             }
@@ -236,7 +261,7 @@ class Pr0grammConnector {
             do {
                 let responseModel = try jsonDecoder.decode(AllItems.self, from: data)
                 self.responseModels.append(responseModel)
-                self.delegate?.didReceiveData()
+                self.observers.forEach { $0.didReceiveData() }
             } catch {
                 print(error.localizedDescription)
             }

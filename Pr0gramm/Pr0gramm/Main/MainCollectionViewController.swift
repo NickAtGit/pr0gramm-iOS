@@ -3,7 +3,7 @@ import UIKit
 
 private let reuseIdentifier = "thumbCell"
 
-class MainCollectionViewController: UICollectionViewController, Pr0grammConnectorDelegate, StoryboardInitialViewController {
+class MainCollectionViewController: UICollectionViewController, Pr0grammConnectorObserver, StoryboardInitialViewController {
 
     weak var coordinator: Coordinator?
     
@@ -12,7 +12,7 @@ class MainCollectionViewController: UICollectionViewController, Pr0grammConnecto
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        coordinator?.pr0grammConnector.delegate = self
+        coordinator?.pr0grammConnector.addObserver(self)
 
         if let flowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
             let horizontalSpacing = flowLayout.scrollDirection == .vertical ? flowLayout.minimumInteritemSpacing : flowLayout.minimumLineSpacing
