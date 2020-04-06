@@ -75,20 +75,17 @@ class MainCollectionViewController: UICollectionViewController, StoryboardInitia
 
 extension MainCollectionViewController: Pr0grammConnectorObserver {
     
-    func didReceiveData() {
-        self.collectionView?.reloadData()
-        self.refreshControl.endRefreshing()
-    }
-
-    func didLogin(successful: Bool) {
-        if successful {
+    func connectorDidUpdate(type: ConnectorUpdateType) {
+        switch type {
+        case .login(let success):
+            if success { refresh() }
+        case .receivedData:
+            collectionView?.reloadData()
+            refreshControl.endRefreshing()
+        case .logout:
             refresh()
+        default:
+            break
         }
     }
-    
-    func didLogout() {
-        refresh()
-    }
-    
-    func didReceiveCaptcha(image: UIImage) {}
 }

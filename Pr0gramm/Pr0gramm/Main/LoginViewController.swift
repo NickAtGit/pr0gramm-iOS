@@ -32,21 +32,21 @@ class LoginViewController: UIViewController, StoryboardInitialViewController {
 }
 
 extension LoginViewController: Pr0grammConnectorObserver {
-    func didLogout() {}
-    func didReceiveData() {}
     
-    func didReceiveCaptcha(image: UIImage) {
-        DispatchQueue.main.async {
+    func connectorDidUpdate(type: ConnectorUpdateType) {
+        switch type {
+        case .login(let success):
+            if success {
+                self.dismiss(animated: true)
+            } else {
+                let navigationContoller = self.navigationController as! NavigationController
+                navigationContoller.showBanner(with: "Login fehlgeschlagen")
+            }
+        case .captcha(let image):
             self.captchaImageView.image = image
-        }
-    }
-    
-    func didLogin(successful: Bool) {
-        if successful {
-            self.dismiss(animated: true)
-        } else {
-            let navigationContoller = self.navigationController as! NavigationController
-            navigationContoller.showBanner(with: "Login fehlgeschlagen")
+        
+         default:
+            break
         }
     }
 }

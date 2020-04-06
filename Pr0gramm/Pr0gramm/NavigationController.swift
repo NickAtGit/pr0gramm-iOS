@@ -114,15 +114,16 @@ class NavigationController: UINavigationController, UIPopoverPresentationControl
 }
 
 extension NavigationController: Pr0grammConnectorObserver {
-    func didReceiveData() {}
-    func didReceiveCaptcha(image: UIImage) {}
-
-    func didLogout() {
-        setupBarButtonItems()
-    }
-
-    func didLogin(successful: Bool) {
-        setupBarButtonItems()
+    
+    func connectorDidUpdate(type: ConnectorUpdateType) {
+        switch type {
+        case .login(_):
+            setupBarButtonItems()
+        case .logout:
+            setupBarButtonItems()
+        default:
+            break
+        }
     }
 }
 

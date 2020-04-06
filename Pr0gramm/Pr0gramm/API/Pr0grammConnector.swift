@@ -2,11 +2,15 @@
 import Foundation
 import UIKit
 
+enum ConnectorUpdateType: Equatable {
+    case login(success: Bool)
+    case receivedData
+    case captcha(image: UIImage)
+    case logout
+}
+
 protocol Pr0grammConnectorObserver: class {
-    func didReceiveData()
-    func didLogin(successful: Bool)
-    func didReceiveCaptcha(image: UIImage)
-    func didLogout()
+    func connectorDidUpdate(type: ConnectorUpdateType)
 }
 
 extension String {
@@ -118,7 +122,9 @@ class Pr0grammConnector {
             do {
                 self.captchaResponse = try jsonDecoder.decode(LoginCaptcha.self, from: data)
                 if let image = self.captchaResponse?.captcha?.base64ToImage() {
-                    self.observers.forEach { $0.didReceiveCaptcha(image: image) }
+                    DispatchQueue.main.async {
+                        self.observers.forEach { $0.connectorDidUpdate(type: .captcha(image: image))}
+                    }
                 }
             } catch let error {
                 print(error.localizedDescription)
@@ -141,7 +147,7 @@ class Pr0grammConnector {
             print("Login: \(success)")
             AppSettings.isLoggedIn = success
             DispatchQueue.main.async {
-                self.observers.forEach { $0.didLogin(successful: success) }
+                self.observers.forEach { $0.connectorDidUpdate(type: .login(success: success)) }
             }
         }
     }
@@ -150,7 +156,7 @@ class Pr0grammConnector {
         let cookies = HTTPCookieStorage.shared.cookies(for: URL(string: "https://pr0gramm.com/")!)
         cookies?.forEach { HTTPCookieStorage.shared.deleteCookie($0) }
         AppSettings.isLoggedIn = false
-        observers.forEach { $0.didLogout() }
+        observers.forEach { $0.connectorDidUpdate(type: .logout) }
     }
     
     //"description": "-1 = Minus, 1 = Plus, 2 = Fav, 0 = Kein Vote/Vote zurückziehen",
@@ -253,7 +259,7 @@ class Pr0grammConnector {
                 let responseModel = try jsonDecoder.decode(AllItems.self, from: data)
                 self.responseModels.append(responseModel)
                 DispatchQueue.main.async {
-                    self.observers.forEach { $0.didReceiveData() }
+                    self.observers.forEach { $0.connectorDidUpdate(type: .receivedData) }
                 }
             } catch {
                 print(error.localizedDescription)
@@ -279,7 +285,7 @@ class Pr0grammConnector {
                 let responseModel = try jsonDecoder.decode(AllItems.self, from: data)
                 self.responseModels.append(responseModel)
                 DispatchQueue.main.async {
-                    self.observers.forEach { $0.didReceiveData() }
+                    self.observers.forEach { $0.connectorDidUpdate(type: .receivedData) }
                 }
             } catch {
                 print(error.localizedDescription)

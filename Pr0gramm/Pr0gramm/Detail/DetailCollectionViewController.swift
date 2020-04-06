@@ -141,13 +141,11 @@ extension DetailCollectionViewController: UICollectionViewDelegateFlowLayout {
 
 extension DetailCollectionViewController: Pr0grammConnectorObserver {
     
-    func didReceiveData() {
-        collectionView.reloadData()
+    func connectorDidUpdate(type: ConnectorUpdateType) {
+        if type == .receivedData {
+            collectionView.reloadData()
+        }
     }
-    
-    func didLogout() {}
-    func didLogin(successful: Bool) {}
-    func didReceiveCaptcha(image: UIImage) {}
 }
 
 class SnapCenterLayout: UICollectionViewFlowLayout {
