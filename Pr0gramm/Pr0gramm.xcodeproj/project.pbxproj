@@ -50,6 +50,7 @@
 		035EBA842427790C009185E9 /* DetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035EBA832427790C009185E9 /* DetailViewController.storyboard */; };
 		0388A0B524293BE0006E86A3 /* TapableImage+Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0388A0B424293BE0006E86A3 /* TapableImage+Video.swift */; };
 		0388A0B724297C70006E86A3 /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0388A0B624297C70006E86A3 /* Downloader.swift */; };
+		03A93326243BC82000A16E1B /* AlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A93325243BC82000A16E1B /* AlignedCollectionViewFlowLayout.swift */; };
 		03B0628A2428CFD600CA657A /* InfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03B062892428CFD600CA657A /* InfoView.xib */; };
 		03B0628C2428CFE100CA657A /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B0628B2428CFE100CA657A /* InfoView.swift */; };
 		03B0628E2428E9FF00CA657A /* TagsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B0628D2428E9FF00CA657A /* TagsCollectionViewController.swift */; };
@@ -112,6 +113,7 @@
 		037A3F0924366F7800D68391 /* Pr0gramm.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pr0gramm.entitlements; sourceTree = "<group>"; };
 		0388A0B424293BE0006E86A3 /* TapableImage+Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TapableImage+Video.swift"; sourceTree = "<group>"; };
 		0388A0B624297C70006E86A3 /* Downloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
+		03A93325243BC82000A16E1B /* AlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		03B062892428CFD600CA657A /* InfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoView.xib; sourceTree = "<group>"; };
 		03B0628B2428CFE100CA657A /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		03B0628D2428E9FF00CA657A /* TagsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsCollectionViewController.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				03B062912428EB6E00CA657A /* TagsCollectionViewController.storyboard */,
 				03B062932428EC3600CA657A /* TagCollectionViewCell.swift */,
 				033CF1C6205ED95500627321 /* CommentView.swift */,
+				03A93325243BC82000A16E1B /* AlignedCollectionViewFlowLayout.swift */,
 				033CF1C8205EDD7900627321 /* CommentView.xib */,
 				0388A0B424293BE0006E86A3 /* TapableImage+Video.swift */,
 				0354AAF424312E52009C35E0 /* ImageDetailViewController.swift */,
@@ -484,6 +487,7 @@
 				0331B2862427ED4D0040D1D1 /* DetailCollectionViewController.swift in Sources */,
 				033CF1B8205BDC6B00627321 /* Pr0grammConnector.swift in Sources */,
 				03D2AC5824337EDD0082D4C9 /* User.swift in Sources */,
+				03A93326243BC82000A16E1B /* AlignedCollectionViewFlowLayout.swift in Sources */,
 				0388A0B724297C70006E86A3 /* Downloader.swift in Sources */,
 				033CF1CB205FCB4500627321 /* NibView.swift in Sources */,
 				0354AAF524312E52009C35E0 /* ImageDetailViewController.swift in Sources */,
