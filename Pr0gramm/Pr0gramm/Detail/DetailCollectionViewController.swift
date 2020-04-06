@@ -11,6 +11,7 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        coordinator?.pr0grammConnector.addObserver(self)
         edgesForExtendedLayout = []
         view.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
         collectionView.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
@@ -38,8 +39,10 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
                                                     action: #selector(downloadItem))
                 
         navigationItem.leftBarButtonItem = downloadBarButtonItem
-        
-        coordinator?.pr0grammConnector.addObserver(self)
+    }
+    
+    deinit {
+        coordinator?.pr0grammConnector.removeObserver(self)
     }
             
     @objc
@@ -137,9 +140,14 @@ extension DetailCollectionViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension DetailCollectionViewController: Pr0grammConnectorObserver {
+    
     func didReceiveData() {
         collectionView.reloadData()
     }
+    
+    func didLogout() {}
+    func didLogin(successful: Bool) {}
+    func didReceiveCaptcha(image: UIImage) {}
 }
 
 class SnapCenterLayout: UICollectionViewFlowLayout {

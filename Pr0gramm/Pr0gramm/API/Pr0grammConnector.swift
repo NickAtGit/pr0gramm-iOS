@@ -4,11 +4,9 @@ import UIKit
 
 protocol Pr0grammConnectorObserver: class {
     func didReceiveData()
-}
-
-protocol LoginDelegate: class {
     func didLogin(successful: Bool)
     func didReceiveCaptcha(image: UIImage)
+    func didLogout()
 }
 
 extension String {
@@ -38,10 +36,15 @@ enum FetchType {
     case search
 }
 
+enum PostType {
+    case login
+    case voteComment
+    case voteItem
+}
+
 class Pr0grammConnector {
 
     var observers: [Pr0grammConnectorObserver] = []
-    weak var loginDelegate: LoginDelegate?
 
     let http = "https://"
     let thumb = "thumb."
@@ -51,7 +54,7 @@ class Pr0grammConnector {
     let top = "api/items/get?flags=3&promoted=0"
     let itemInfo = "api/items/info?itemId="
     var responseModels: [AllItems?] = []
-    var captchaResponse: Login?
+    var captchaResponse: LoginCaptcha?
     var nonce: String?
     
     var allItems: [Item] {
@@ -111,9 +114,10 @@ class Pr0grammConnector {
             guard let data = data else { return }
             let jsonDecoder = JSONDecoder()
             do {
-                self.captchaResponse = try jsonDecoder.decode(Login.self, from: data)
-                let image = self.captchaResponse?.captcha?.base64ToImage()
-                self.loginDelegate?.didReceiveCaptcha(image: image!)
+                self.captchaResponse = try jsonDecoder.decode(LoginCaptcha.self, from: data)
+                if let image = self.captchaResponse?.captcha?.base64ToImage() {
+                    self.observers.forEach { $0.didReceiveCaptcha(image: image) }
+                }
             } catch let error {
                 print(error.localizedDescription)
             }
@@ -128,12 +132,15 @@ class Pr0grammConnector {
         let url = URL(string: http + baseURL + "api/user/login")!
         guard let token = captchaResponse?.token else { return }
         let data: [String: String] = ["name": userName,
-                                            "password": password,
-                                            "token": token,
-                                            "captcha": solvedCaptcha]
-        post(data: data, to: url) { success in
+                                      "password": password,
+                                      "token": token,
+                                      "captcha": solvedCaptcha]
+        post(data: data, to: url, postType: .login) { success in
             print("Login: \(success)")
-            self.loginDelegate?.didLogin(successful: success)
+            AppSettings.isLoggedIn = success
+            DispatchQueue.main.async {
+                self.observers.forEach { $0.didLogin(successful: success) }
+            }
         }
     }
     
@@ -141,6 +148,7 @@ class Pr0grammConnector {
         let cookies = HTTPCookieStorage.shared.cookies(for: URL(string: "https://pr0gramm.com/")!)
         cookies?.forEach { HTTPCookieStorage.shared.deleteCookie($0) }
         AppSettings.isLoggedIn = false
+        observers.forEach { $0.didLogout() }
     }
     
     //"description": "-1 = Minus, 1 = Plus, 2 = Fav, 0 = Kein Vote/Vote zurückziehen",
@@ -151,7 +159,7 @@ class Pr0grammConnector {
                                       "_nonce": nonce]
 
         let url = URL(string: http + baseURL + "api/comments/vote")!
-        post(data: data, to: url) { success in
+        post(data: data, to: url, postType: .voteComment) { success in
             print("Voted: \(success)")
         }
     }
@@ -163,12 +171,12 @@ class Pr0grammConnector {
                                       "_nonce": nonce]
 
         let url = URL(string: http + baseURL + "api/items/vote")!
-        post(data: data, to: url) { success in
+        post(data: data, to: url, postType: .voteItem) { success in
             print("Voted: \(success)")
         }
     }
     
-    private func post(data: [String: String], to url: URL, completion: @escaping (Bool) -> Void) {
+    private func post(data: [String: String], to url: URL, postType: PostType, completion: @escaping (Bool) -> Void) {
         let jsonString = data.reduce("") { "\($0)\($1.0)=\($1.1)&" }
         let jsonData = jsonString.data(using: .utf8, allowLossyConversion: false)!
         
@@ -178,14 +186,18 @@ class Pr0grammConnector {
         request.httpBody = jsonData
 
         let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
-            guard let data = data else {
-                completion(false)
-                return
-            }
+            guard let data = data else { completion(false); return }
+            
             do {
-                if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
-                    print(json)
-                    completion(true)
+                let jsonDecoder = JSONDecoder()
+                switch postType {
+                case .login:
+                    let responseModel = try jsonDecoder.decode(Login.self, from: data)
+                    completion(responseModel.success ?? false)
+                case .voteComment:
+                    break
+                case .voteItem:
+                    break
                 }
             } catch {
                 print(error.localizedDescription)

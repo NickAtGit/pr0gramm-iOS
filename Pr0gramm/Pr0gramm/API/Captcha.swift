@@ -1,7 +1,8 @@
 
 import Foundation
 
-struct Login : Codable {
+struct LoginCaptcha : Codable {
+    
     let token : String?
     let captcha : String?
     let ts : Int?

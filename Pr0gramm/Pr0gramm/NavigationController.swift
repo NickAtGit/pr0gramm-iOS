@@ -18,7 +18,12 @@ class NavigationController: UINavigationController, UIPopoverPresentationControl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        coordinator?.pr0grammConnector.addObserver(self)
         setupBanner()
+    }
+    
+    deinit {
+        coordinator?.pr0grammConnector.removeObserver(self)
     }
     
     override func setViewControllers(_ viewControllers: [UIViewController], animated: Bool) {
@@ -50,17 +55,13 @@ class NavigationController: UINavigationController, UIPopoverPresentationControl
                                                  style: .plain,
                                                  target: coordinator,
                                                  action: #selector(Coordinator.logout))
-                var rightItems = topViewController?.navigationItem.rightBarButtonItems ?? []
-                rightItems.append(logoutItem)
-                topViewController?.navigationItem.rightBarButtonItems = rightItems
+                topViewController?.navigationItem.rightBarButtonItem = logoutItem
             } else {
                 let loginItem = UIBarButtonItem(image: UIImage(systemName: "person.crop.circle.badge.plus"),
                                                  style: .plain,
                                                  target: coordinator,
                                                  action: #selector(Coordinator.showLogin))
-                var rightItems = topViewController?.navigationItem.rightBarButtonItems ?? []
-                rightItems.append(loginItem)
-                topViewController?.navigationItem.rightBarButtonItems = rightItems
+                topViewController?.navigationItem.rightBarButtonItem = loginItem
             }
 
         case .dismissable:
@@ -109,6 +110,19 @@ class NavigationController: UINavigationController, UIPopoverPresentationControl
         coordinator?.pr0grammConnector.clearItems()
         coordinator?.pr0grammConnector.fetchItems(sorting: Sorting(rawValue: AppSettings.sorting)!,
                                                   flags: AppSettings.currentFlags)
+    }
+}
+
+extension NavigationController: Pr0grammConnectorObserver {
+    func didReceiveData() {}
+    func didReceiveCaptcha(image: UIImage) {}
+
+    func didLogout() {
+        setupBarButtonItems()
+    }
+
+    func didLogin(successful: Bool) {
+        setupBarButtonItems()
     }
 }
 

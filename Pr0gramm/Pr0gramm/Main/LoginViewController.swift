@@ -1,7 +1,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, StoryboardInitialViewController, LoginDelegate {
+class LoginViewController: UIViewController, StoryboardInitialViewController {
     
     weak var coordinator: Coordinator?
     
@@ -9,15 +9,16 @@ class LoginViewController: UIViewController, StoryboardInitialViewController, Lo
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var captchaTextField: UITextField!
     @IBOutlet var captchaImageView: UIImageView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        coordinator?.pr0grammConnector.loginDelegate = self
-    }
-    
+        
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        coordinator?.pr0grammConnector.addObserver(self)
         coordinator?.pr0grammConnector.getCaptcha()
+        userNameTextField.becomeFirstResponder()
+    }
+    
+    deinit {
+        coordinator?.pr0grammConnector.removeObserver(self)
     }
     
     @IBAction func loginTapped(_ sender: Any) {
@@ -28,7 +29,12 @@ class LoginViewController: UIViewController, StoryboardInitialViewController, Lo
                                              password: password,
                                              solvedCaptcha: solvedCaptcha)
     }
-        
+}
+
+extension LoginViewController: Pr0grammConnectorObserver {
+    func didLogout() {}
+    func didReceiveData() {}
+    
     func didReceiveCaptcha(image: UIImage) {
         DispatchQueue.main.async {
             self.captchaImageView.image = image
@@ -36,11 +42,11 @@ class LoginViewController: UIViewController, StoryboardInitialViewController, Lo
     }
     
     func didLogin(successful: Bool) {
-        AppSettings.isLoggedIn = successful
         if successful {
-            DispatchQueue.main.async {
-                self.coordinator?.showOverview()
-            }
+            self.dismiss(animated: true)
+        } else {
+            let navigationContoller = self.navigationController as! NavigationController
+            navigationContoller.showBanner(with: "Login fehlgeschlagen")
         }
     }
 }

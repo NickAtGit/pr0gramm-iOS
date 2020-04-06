@@ -84,6 +84,5 @@ class Coordinator {
     @objc
     func logout() {
         pr0grammConnector.logout()
-        showLogin()
     }
 }

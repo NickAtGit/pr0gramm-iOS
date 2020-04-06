@@ -53,6 +53,7 @@ extension AppSettings: FlagFilterSettingsConfigurable {
     
     static var currentFlags: [Flags] {
         var flags: [Flags] = []
+        guard AppSettings.isLoggedIn else { return [.sfw] }
         if AppSettings.sfwActive { flags.append(.sfw) }
         if AppSettings.nsfwActive { flags.append(.nsfw) }
         if AppSettings.nsflActive { flags.append(.nsfl) }

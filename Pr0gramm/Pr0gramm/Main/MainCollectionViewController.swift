@@ -3,7 +3,7 @@ import UIKit
 
 private let reuseIdentifier = "thumbCell"
 
-class MainCollectionViewController: UICollectionViewController, Pr0grammConnectorObserver, StoryboardInitialViewController {
+class MainCollectionViewController: UICollectionViewController, StoryboardInitialViewController {
 
     weak var coordinator: Coordinator?
     
@@ -25,6 +25,10 @@ class MainCollectionViewController: UICollectionViewController, Pr0grammConnecto
                                  for: .valueChanged)
         collectionView?.refreshControl = refreshControl
         refresh()
+    }
+    
+    deinit {
+        coordinator?.pr0grammConnector.removeObserver(self)
     }
 
     @objc
@@ -58,12 +62,6 @@ class MainCollectionViewController: UICollectionViewController, Pr0grammConnecto
         coordinator?.showDetail(for: item, at: indexPath)
     }
     
-    func didReceiveData() {
-        DispatchQueue.main.async {
-            self.collectionView?.reloadData()
-            self.refreshControl.endRefreshing()
-        }
-    }
 
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard let items = coordinator?.pr0grammConnector.allItems else { return }
@@ -73,4 +71,24 @@ class MainCollectionViewController: UICollectionViewController, Pr0grammConnecto
                                                       flags: AppSettings.currentFlags, more: true)
         }
     }
+}
+
+extension MainCollectionViewController: Pr0grammConnectorObserver {
+    
+    func didReceiveData() {
+        self.collectionView?.reloadData()
+        self.refreshControl.endRefreshing()
+    }
+
+    func didLogin(successful: Bool) {
+        if successful {
+            refresh()
+        }
+    }
+    
+    func didLogout() {
+        refresh()
+    }
+    
+    func didReceiveCaptcha(image: UIImage) {}
 }
