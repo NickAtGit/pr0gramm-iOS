@@ -271,7 +271,7 @@ class Pr0grammConnector {
         task.resume()
     }
         
-    func searchItems(for tags: [String]) {
+    func searchItems(for tags: [String], completion: @escaping ([Item]) -> Void) {
         guard let tag = tags[0].addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {return}
         let url = URL(string: "https://pr0gramm.com/api/items/get?flags=3&promoted=1&tags=\(tag)")!
         var request = URLRequest(url: url)
@@ -285,9 +285,9 @@ class Pr0grammConnector {
             guard let data = data else { return }
             let jsonDecoder = JSONDecoder()
             do {
-                self.searchResponseModel = try jsonDecoder.decode(AllItems.self, from: data)
+                let searchResponse = try jsonDecoder.decode(AllItems.self, from: data)
                 DispatchQueue.main.async {
-                    self.observers.forEach { $0.connectorDidUpdate(type: .search(items: self.searchResponseModel?.items ?? [])) }
+                    completion(searchResponse.items)
                 }
             } catch {
                 print(error.localizedDescription)

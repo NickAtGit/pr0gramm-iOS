@@ -144,7 +144,7 @@ extension Theme {
             $0.tintColor = tint
             $0.shadowImage = tint.as1ptImage()
             $0.titleTextAttributes = [.foregroundColor: labelColor,
-                                      .font: font24]
+                                      .font: font15]
             $0.isTranslucent = false
             $0.barTintColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
         }

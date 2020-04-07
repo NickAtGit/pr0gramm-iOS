@@ -83,15 +83,18 @@ class Coordinator {
         viewController.present(navigationController, animated: true)
     }
     
-    func showSearchResult(with items: [Item], from presentingViewController: UIViewController) {
-        let viewController = MainCollectionViewController.fromStoryboard()
-        viewController.isSearch = true
-        viewController.coordinator = self
-        viewController.items = items
-        let navigationController = NavigationController(rootViewController: viewController)
-        navigationController.style = .dismissable
-        navigationController.modalPresentationStyle = .fullScreen
-        presentingViewController.present(navigationController, animated: true)
+    func showSearchResult(for tag: String, from presentingViewController: UIViewController) {
+        pr0grammConnector.searchItems(for: [tag]) { items in
+            let viewController = MainCollectionViewController.fromStoryboard()
+            viewController.title = tag
+            viewController.isSearch = true
+            viewController.coordinator = self
+            viewController.items = items
+            let navigationController = NavigationController(rootViewController: viewController)
+            navigationController.style = .dismissable
+            navigationController.modalPresentationStyle = .fullScreen
+            presentingViewController.present(navigationController, animated: true)
+        }
     }
     
     @objc

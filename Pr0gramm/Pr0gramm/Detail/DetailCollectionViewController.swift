@@ -1,8 +1,6 @@
 
 import UIKit
 
-private let reuseIdentifier = "detailLargeCell"
-
 class DetailCollectionViewController: UICollectionViewController, StoryboardInitialViewController {
     
     weak var coordinator: Coordinator?
@@ -78,7 +76,6 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
         let newIndexPath = IndexPath(row: indexPath.row + 1, section: indexPath.section)
         collectionView.scrollToItem(at: newIndexPath, at: .centeredHorizontally, animated: true)
     }
-
     
     @objc
     func previousItem() {
@@ -101,7 +98,7 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! DetailCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailLargeCell", for: indexPath) as! DetailCollectionViewCell
         
         cell.detailViewController = DetailViewController.fromStoryboard()
         cell.detailViewController.coordinator = coordinator
@@ -150,16 +147,12 @@ extension DetailCollectionViewController: UICollectionViewDelegateFlowLayout {
 extension DetailCollectionViewController: Pr0grammConnectorObserver {
     
     func connectorDidUpdate(type: ConnectorUpdateType) {
-        
         switch type {
         case .receivedData(let newItems):
             items = newItems
             collectionView.reloadData()
-        case .search(let items):
-            coordinator?.showSearchResult(with: items, from: self)
-        break
-            //show main collectionview with search result
-        default: break
+        default:
+            break
         }
     }
 }
