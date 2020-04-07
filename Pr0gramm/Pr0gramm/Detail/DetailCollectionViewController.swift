@@ -23,17 +23,7 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
         layout.minimumLineSpacing = 25
         layout.scrollDirection = .horizontal
         collectionView.collectionViewLayout = layout
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(previousItem),
-                                               name: Notification.Name("leftTapped"),
-                                               object: nil)
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(nextItem),
-                                               name: Notification.Name("rightTapped"),
-                                               object: nil)
-        
+                
         let downloadBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.down"),
                                                     style: .plain,
                                                     target: self,
@@ -45,11 +35,22 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         coordinator?.pr0grammConnector.addObserver(self)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(previousItem),
+                                               name: Notification.Name("leftTapped"),
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(nextItem),
+                                               name: Notification.Name("rightTapped"),
+                                               object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         coordinator?.pr0grammConnector.removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
             
     @objc
@@ -87,10 +88,6 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
     
     private func getCurrentIndex() -> Int {
         return Int(collectionView.contentOffset.x / collectionView.frame.width)
-    }
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
