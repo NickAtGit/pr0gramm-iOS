@@ -52,6 +52,7 @@
 		0388A0B724297C70006E86A3 /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0388A0B624297C70006E86A3 /* Downloader.swift */; };
 		03A93324243BAFBB00A16E1B /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A93323243BAFBB00A16E1B /* Login.swift */; };
 		03A93326243BC82000A16E1B /* AlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A93325243BC82000A16E1B /* AlignedCollectionViewFlowLayout.swift */; };
+		03A93328243CEFE100A16E1B /* HapticFeedbackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A93327243CEFE100A16E1B /* HapticFeedbackButton.swift */; };
 		03B0628A2428CFD600CA657A /* InfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03B062892428CFD600CA657A /* InfoView.xib */; };
 		03B0628C2428CFE100CA657A /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B0628B2428CFE100CA657A /* InfoView.swift */; };
 		03B0628E2428E9FF00CA657A /* TagsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B0628D2428E9FF00CA657A /* TagsCollectionViewController.swift */; };
@@ -116,6 +117,7 @@
 		0388A0B624297C70006E86A3 /* Downloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
 		03A93323243BAFBB00A16E1B /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		03A93325243BC82000A16E1B /* AlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		03A93327243CEFE100A16E1B /* HapticFeedbackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedbackButton.swift; sourceTree = "<group>"; };
 		03B062892428CFD600CA657A /* InfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoView.xib; sourceTree = "<group>"; };
 		03B0628B2428CFE100CA657A /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		03B0628D2428E9FF00CA657A /* TagsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsCollectionViewController.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				0354AAF12431287A009C35E0 /* DownloadedFiles */,
 				033CF1BF205BFD3A00627321 /* API */,
 				03076A652059E80F00168E62 /* UIImageView+Extension.swift */,
+				03A93327243CEFE100A16E1B /* HapticFeedbackButton.swift */,
 				03D2AC4F243264740082D4C9 /* Theme.swift */,
 				03D2AC4E243264740082D4C9 /* UIWindow.swift */,
 				03D2AC532432649C0082D4C9 /* Appearance.swift */,
@@ -244,8 +247,8 @@
 				03B0628D2428E9FF00CA657A /* TagsCollectionViewController.swift */,
 				03B062912428EB6E00CA657A /* TagsCollectionViewController.storyboard */,
 				03B062932428EC3600CA657A /* TagCollectionViewCell.swift */,
-				033CF1C6205ED95500627321 /* CommentView.swift */,
 				03A93325243BC82000A16E1B /* AlignedCollectionViewFlowLayout.swift */,
+				033CF1C6205ED95500627321 /* CommentView.swift */,
 				033CF1C8205EDD7900627321 /* CommentView.xib */,
 				0388A0B424293BE0006E86A3 /* TapableImage+Video.swift */,
 				0354AAF424312E52009C35E0 /* ImageDetailViewController.swift */,
@@ -476,6 +479,7 @@
 				03076A782059E8B900168E62 /* AllItems.swift in Sources */,
 				03B0628E2428E9FF00CA657A /* TagsCollectionViewController.swift in Sources */,
 				03D2AC51243264740082D4C9 /* UIWindow.swift in Sources */,
+				03A93328243CEFE100A16E1B /* HapticFeedbackButton.swift in Sources */,
 				0354AAEE24311CE6009C35E0 /* DownloadedFilesTableViewController.swift in Sources */,
 				03D4B02C2427EDF30041DCC9 /* DetailCollectionViewCell.swift in Sources */,
 				033CF1C7205ED95500627321 /* CommentView.swift in Sources */,

@@ -6,12 +6,15 @@ private let reuseIdentifier = "detailLargeCell"
 class DetailCollectionViewController: UICollectionViewController, StoryboardInitialViewController {
     
     weak var coordinator: Coordinator?
-    
-    let numberOfCellsPerRow: CGFloat = 1
+    var isSearch = false
+    var items: [Item]? {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        coordinator?.pr0grammConnector.addObserver(self)
         edgesForExtendedLayout = []
         view.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
         collectionView.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
@@ -41,7 +44,13 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
         navigationItem.leftBarButtonItem = downloadBarButtonItem
     }
     
-    deinit {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        coordinator?.pr0grammConnector.addObserver(self)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         coordinator?.pr0grammConnector.removeObserver(self)
     }
             
@@ -88,8 +97,7 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let items = coordinator?.pr0grammConnector.allItems else { return 0 }
-        return items.count
+        return items?.count ?? 0
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -97,8 +105,7 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
         
         cell.detailViewController = DetailViewController.fromStoryboard()
         cell.detailViewController.coordinator = coordinator
-        cell.detailViewController.pr0grammConnector = coordinator?.pr0grammConnector
-        cell.detailViewController.item = coordinator?.pr0grammConnector.item(for: indexPath)
+        cell.detailViewController.item = items?[indexPath.row]
         embed(cell.detailViewController, in: cell.content)
         
         return cell
@@ -111,15 +118,16 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
     }
     
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard let items = coordinator?.pr0grammConnector.allItems else { return }
-        
+        guard let items = items else { return }
         let cell = cell as! DetailCollectionViewCell
         cell.detailViewController.play()
         
-        if indexPath.row + 1 == items.count {
-            print("Loading more items")
-            coordinator?.pr0grammConnector.fetchItems(sorting: Sorting(rawValue: AppSettings.sorting)!,
-                                                      flags: AppSettings.currentFlags, more: true)
+        if !isSearch {
+            if indexPath.row + 1 == items.count {
+                print("Loading more items")
+                coordinator?.pr0grammConnector.fetchItems(sorting: Sorting(rawValue: AppSettings.sorting)!,
+                                                          flags: AppSettings.currentFlags, more: true)
+            }
         }
     }
     
@@ -142,8 +150,16 @@ extension DetailCollectionViewController: UICollectionViewDelegateFlowLayout {
 extension DetailCollectionViewController: Pr0grammConnectorObserver {
     
     func connectorDidUpdate(type: ConnectorUpdateType) {
-        if type == .receivedData {
+        
+        switch type {
+        case .receivedData(let newItems):
+            items = newItems
             collectionView.reloadData()
+        case .search(let items):
+            coordinator?.showSearchResult(with: items, from: self)
+        break
+            //show main collectionview with search result
+        default: break
         }
     }
 }

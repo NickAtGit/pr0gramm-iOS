@@ -47,13 +47,15 @@ class Coordinator {
         navigationController.viewControllers = [viewController]
     }
     
-    func showDetail(for item: Item, at indexPath: IndexPath) {
+    func showDetail(with items: [Item], at indexPath: IndexPath, isSearch: Bool = false) {
         let viewController = DetailCollectionViewController.fromStoryboard()
+        viewController.isSearch = isSearch
         viewController.coordinator = self
+        viewController.items = items
         let detailNavigationController = NavigationController(rootViewController: viewController)
         detailNavigationController.style = .dismissable
         detailNavigationController.modalPresentationStyle = .fullScreen
-        navigationController.present(detailNavigationController, animated: true)
+        navigationController.topVisibleViewController?.present(detailNavigationController, animated: true)
         viewController.scrollTo(indexPath: indexPath)
     }
     
@@ -79,6 +81,17 @@ class Coordinator {
         let navigationController = NavigationController(rootViewController: imageViewController)
         navigationController.style = .dragable
         viewController.present(navigationController, animated: true)
+    }
+    
+    func showSearchResult(with items: [Item], from presentingViewController: UIViewController) {
+        let viewController = MainCollectionViewController.fromStoryboard()
+        viewController.isSearch = true
+        viewController.coordinator = self
+        viewController.items = items
+        let navigationController = NavigationController(rootViewController: viewController)
+        navigationController.style = .dismissable
+        navigationController.modalPresentationStyle = .fullScreen
+        presentingViewController.present(navigationController, animated: true)
     }
     
     @objc

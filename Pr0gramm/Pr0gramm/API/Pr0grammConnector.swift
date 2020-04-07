@@ -2,11 +2,12 @@
 import Foundation
 import UIKit
 
-enum ConnectorUpdateType: Equatable {
+enum ConnectorUpdateType {
     case login(success: Bool)
-    case receivedData
+    case receivedData(items: [Item])
     case captcha(image: UIImage)
     case logout
+    case search(items: [Item])
 }
 
 protocol Pr0grammConnectorObserver: class {
@@ -60,10 +61,11 @@ class Pr0grammConnector {
     let top = "api/items/get?flags=3&promoted=0"
     let itemInfo = "api/items/info?itemId="
     var responseModels: [AllItems?] = []
+    var searchResponseModel: AllItems?
     var captchaResponse: LoginCaptcha?
     var nonce: String?
     
-    var allItems: [Item] {
+    private var allItems: [Item] {
         var items = [Item]()
         
         for responseModel in responseModels {
@@ -72,7 +74,7 @@ class Pr0grammConnector {
         return items
     }
     
-    var isLoggedIn: Bool {
+    private var isLoggedIn: Bool {
         guard let cookies = HTTPCookieStorage.shared.cookies(for: URL(string: "https://pr0gramm.com/")!) else { return false }
             
         for cookie in cookies {
@@ -95,6 +97,7 @@ class Pr0grammConnector {
     
     init() {
         URLSession.shared.configuration.httpCookieAcceptPolicy = .always
+        AppSettings.isLoggedIn = isLoggedIn
     }
     
     func addObserver(_ observer: Pr0grammConnectorObserver) {
@@ -203,9 +206,9 @@ class Pr0grammConnector {
                     let responseModel = try jsonDecoder.decode(Login.self, from: data)
                     completion(responseModel.success ?? false)
                 case .voteComment:
-                    break
+                    completion(true)
                 case .voteItem:
-                    break
+                    completion(true)
                 }
             } catch {
                 print(error.localizedDescription)
@@ -259,7 +262,7 @@ class Pr0grammConnector {
                 let responseModel = try jsonDecoder.decode(AllItems.self, from: data)
                 self.responseModels.append(responseModel)
                 DispatchQueue.main.async {
-                    self.observers.forEach { $0.connectorDidUpdate(type: .receivedData) }
+                    self.observers.forEach { $0.connectorDidUpdate(type: .receivedData(items: self.allItems)) }
                 }
             } catch {
                 print(error.localizedDescription)
@@ -269,8 +272,8 @@ class Pr0grammConnector {
     }
         
     func searchItems(for tags: [String]) {
-        clearItems()
-        let url = URL(string: "https://pr0gramm.com/api/items/get?flags=3&promoted=1&tags=\(tags[0])")!
+        guard let tag = tags[0].addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {return}
+        let url = URL(string: "https://pr0gramm.com/api/items/get?flags=3&promoted=1&tags=\(tag)")!
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -282,10 +285,9 @@ class Pr0grammConnector {
             guard let data = data else { return }
             let jsonDecoder = JSONDecoder()
             do {
-                let responseModel = try jsonDecoder.decode(AllItems.self, from: data)
-                self.responseModels.append(responseModel)
+                self.searchResponseModel = try jsonDecoder.decode(AllItems.self, from: data)
                 DispatchQueue.main.async {
-                    self.observers.forEach { $0.connectorDidUpdate(type: .receivedData) }
+                    self.observers.forEach { $0.connectorDidUpdate(type: .search(items: self.searchResponseModel?.items ?? [])) }
                 }
             } catch {
                 print(error.localizedDescription)
@@ -293,10 +295,9 @@ class Pr0grammConnector {
         }
         task.resume()
     }
-
-    func thumbLink(for indexPath: IndexPath) -> String? {
-        guard indexPath.row <= allItems.count - 1 else { return nil }
-        let link = http + thumb + baseURL + allItems[indexPath.row].thumb
+    
+    func thumbLink(for item: Item) -> String {
+        let link = http + thumb + baseURL + item.thumb
         return link
     }
 

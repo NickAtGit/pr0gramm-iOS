@@ -35,3 +35,38 @@ extension UIViewController {
         dismiss(animated: true)
     }
 }
+
+extension UIWindow {
+    /// returns the frontmost view controller in the view controller hierarchy (starting with the window's root view controller)
+    public var topVisibleViewController: UIViewController? {
+        guard let rootViewController = rootViewController else {
+            return nil
+        }
+        return rootViewController.topVisibleViewController
+    }
+}
+
+extension UIViewController {
+    /// returns the frontmost view controller in die view controller hierarchy (starting with self)
+    @objc
+    public var topVisibleViewController: UIViewController? {
+        if let topVisibleViewController = presentedViewController?.topVisibleViewController {
+            return topVisibleViewController
+        } else if let topVisibleViewController = children.first?.topVisibleViewController {
+            return topVisibleViewController
+        } else {
+            return self
+        }
+    }
+}
+
+extension UINavigationController {
+    /// returns the frontmost view controller in die view controller hierarchy (starting with self)
+    public override var topVisibleViewController: UIViewController? {
+        guard let topVisibleViewController = visibleViewController?.topVisibleViewController else {
+            return self
+        }
+        return topVisibleViewController
+    }
+}
+

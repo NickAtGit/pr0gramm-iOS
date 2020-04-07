@@ -18,14 +18,19 @@ class NavigationController: UINavigationController, UIPopoverPresentationControl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        coordinator?.pr0grammConnector.addObserver(self)
         setupBanner()
     }
     
-    deinit {
-        coordinator?.pr0grammConnector.removeObserver(self)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        coordinator?.pr0grammConnector.addObserver(self)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        coordinator?.pr0grammConnector.removeObserver(self)
+    }
+
     override func setViewControllers(_ viewControllers: [UIViewController], animated: Bool) {
         super.setViewControllers(viewControllers, animated: animated)
         setupBarButtonItems()

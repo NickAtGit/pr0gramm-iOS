@@ -8,7 +8,6 @@ import GTForceTouchGestureRecognizer
 class DetailViewController: ScrollingContentViewController, StoryboardInitialViewController {
 
     weak var coordinator: Coordinator?
-    var pr0grammConnector: Pr0grammConnector!
 
     private var stackView: UIStackView!
     private let imageView = TapableImageView()
@@ -23,7 +22,7 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
     var item: Item? {
         didSet {
             guard let item = item else { return }
-            pr0grammConnector.loadItemInfo(for: item.id) { self.itemInfo = $0; self.setupTags() }
+            coordinator?.pr0grammConnector.loadItemInfo(for: item.id) { self.itemInfo = $0; self.setupTags() }
             updateUI()
         }
     }
@@ -44,6 +43,7 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
         commentsStackView.axis = .vertical
         commentsStackView.spacing = 20
                 
+        tagsCollectionViewController.coordinator = coordinator
         tagsCollectionViewController.view.translatesAutoresizingMaskIntoConstraints = false
         addChild(tagsCollectionViewController)
         
@@ -75,9 +75,10 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         
+//        avPlayerViewController.entersFullScreenWhenPlaybackBegins = true
         
-        forceTouchGestureRecognizer = GTForceTouchGestureRecognizer(target: self, action: #selector(upVote))
-        view.addGestureRecognizer(forceTouchGestureRecognizer)
+//        forceTouchGestureRecognizer = GTForceTouchGestureRecognizer(target: self, action: #selector(upVote))
+//        view.addGestureRecognizer(forceTouchGestureRecognizer)
     }
     
     @objc
@@ -85,7 +86,7 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
         let navigationContoller = self.navigationController as! NavigationController
         if AppSettings.isLoggedIn {
             guard let id = item?.id else { return }
-            pr0grammConnector?.vote(itemId: "\(id)", value: 1)
+            coordinator?.pr0grammConnector.vote(itemId: "\(id)", value: 1)
             navigationContoller.showBanner(with: "Han blussert ⨁")
         } else {
             navigationContoller.showBanner(with: "Du musst eingeloggt sein, um dieses Feature zu nutzen")
@@ -105,7 +106,7 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
     
     @objc
     func showImageDetail(_ notificaiton: NSNotification) {
-        guard (notificaiton.object as? TapableImageView) == imageView else { return }
+        guard (notificaiton.object as? TapableImageView) === imageView else { return }
         guard let image = imageView.image else { return }
         coordinator?.showImageViewController(with: image, from: self)
     }
@@ -124,11 +125,11 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
         guard let item = item else { return }
         imageView.heightAnchor.constraint(equalTo: view.widthAnchor,
                                           multiplier: CGFloat(item.height) / CGFloat(item.width)).isActive = true
-        infoView.pointsLabel.text = "\(item.up - item.down)"
-        infoView.userNameLabel.text = item.user
-                
-
-        if let link = pr0grammConnector.imageLink(for: item) {
+        
+        infoView.item = item
+        infoView.pr0grammConnector = coordinator?.pr0grammConnector
+        
+        if let link = coordinator?.pr0grammConnector.imageLink(for: item) {
             imageView.downloadedFrom(link: link)
         } else {
             
@@ -151,7 +152,7 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
             stackView.removeArrangedSubview(imageView)
             stackView.insertArrangedSubview(avPlayerViewController.view, at: 0)
             avPlayerViewController.didMove(toParent: self)
-            let link = pr0grammConnector.videoLink(for: item)
+            guard let link = coordinator?.pr0grammConnector.videoLink(for: item) else { return }
             let url = URL(string: link)
             let playerItem = AVPlayerItem(url: url!)
             avPlayer.replaceCurrentItem(with: playerItem)
@@ -176,7 +177,7 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
         for comment in itemInfo.comments {
             DispatchQueue.main.async {
                 let commentView = CommentView.instantiateFromNib()
-                commentView.pr0grammConnector = self.pr0grammConnector
+                commentView.pr0grammConnector = self.coordinator?.pr0grammConnector
                 commentView.comment = comment
                 self.commentsStackView.addArrangedSubview(commentView)
             }
@@ -197,9 +198,9 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
         avPlayer = nil
         avPlayerViewController = nil
         NotificationCenter.default.removeObserver(self)
-        forceTouchGestureRecognizer.removeTarget(self, action: nil)
-        view.removeGestureRecognizer(forceTouchGestureRecognizer)
-        forceTouchGestureRecognizer = nil
+//        forceTouchGestureRecognizer.removeTarget(self, action: nil)
+//        view.removeGestureRecognizer(forceTouchGestureRecognizer)
+//        forceTouchGestureRecognizer = nil
     }
 }
 

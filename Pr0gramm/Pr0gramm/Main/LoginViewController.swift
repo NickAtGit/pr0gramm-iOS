@@ -17,7 +17,8 @@ class LoginViewController: UIViewController, StoryboardInitialViewController {
         userNameTextField.becomeFirstResponder()
     }
     
-    deinit {
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         coordinator?.pr0grammConnector.removeObserver(self)
     }
     

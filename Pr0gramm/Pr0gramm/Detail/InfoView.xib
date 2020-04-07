@@ -14,26 +14,54 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYp-gL-QPE">
-                    <rect key="frame" x="20" y="0.0" width="46" height="62"/>
+                    <rect key="frame" x="20" y="0.0" width="45.5" height="62"/>
                     <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="25"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DTY-Ga-v1E">
-                    <rect key="frame" x="86" y="19" width="93" height="24"/>
+                    <rect key="frame" x="85.5" y="19" width="93" height="24"/>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="FiG-1h-MxZ">
+                    <rect key="frame" x="303.5" y="20" width="90.5" height="22"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nlf-jk-WA2" customClass="HapticFeedbackButton" customModule="Pr0gramm" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="20" height="22"/>
+                            <state key="normal" image="plus.circle" catalog="system"/>
+                            <connections>
+                                <action selector="upvoteTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="pcD-cv-sxA"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4p2-8H-bwM" customClass="HapticFeedbackButton" customModule="Pr0gramm" customModuleProvider="target">
+                            <rect key="frame" x="35" y="0.0" width="20.5" height="22"/>
+                            <state key="normal" image="heart" catalog="system"/>
+                            <connections>
+                                <action selector="favoriteTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="XJG-h0-9TT"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gnB-LX-WFX" customClass="HapticFeedbackButton" customModule="Pr0gramm" customModuleProvider="target">
+                            <rect key="frame" x="70.5" y="0.0" width="20" height="22"/>
+                            <state key="normal" image="minus.circle" catalog="system"/>
+                            <connections>
+                                <action selector="downvoteTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="Sv6-Y7-gJw"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="DTY-Ga-v1E" secondAttribute="trailing" constant="20" id="8tA-Ek-se8"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="aYp-gL-QPE" secondAttribute="bottom" id="I7Y-1j-BEZ"/>
-                <constraint firstItem="aYp-gL-QPE" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="WqL-JY-dlT"/>
+                <constraint firstItem="aYp-gL-QPE" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="U1y-UE-Kob"/>
                 <constraint firstItem="aYp-gL-QPE" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="XaU-LQ-eAb"/>
                 <constraint firstItem="DTY-Ga-v1E" firstAttribute="leading" secondItem="aYp-gL-QPE" secondAttribute="trailing" constant="20" id="cOt-Fi-FWl"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="FiG-1h-MxZ" secondAttribute="trailing" constant="20" id="j1V-bc-FYY"/>
+                <constraint firstItem="FiG-1h-MxZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DTY-Ga-v1E" secondAttribute="trailing" constant="8" id="nne-ub-7GL"/>
                 <constraint firstItem="DTY-Ga-v1E" firstAttribute="centerY" secondItem="aYp-gL-QPE" secondAttribute="centerY" id="ohT-GI-vu8"/>
+                <constraint firstItem="FiG-1h-MxZ" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="qbo-9h-IeC"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
@@ -44,4 +72,9 @@
             <point key="canvasLocation" x="105.59999999999999" y="-37.781109445277366"/>
         </view>
     </objects>
+    <resources>
+        <image name="heart" catalog="system" width="64" height="54"/>
+        <image name="minus.circle" catalog="system" width="64" height="60"/>
+        <image name="plus.circle" catalog="system" width="64" height="60"/>
+    </resources>
 </document>
