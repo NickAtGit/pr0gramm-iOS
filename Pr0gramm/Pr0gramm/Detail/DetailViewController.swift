@@ -133,7 +133,6 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
         if let link = coordinator?.pr0grammConnector.imageLink(for: item) {
             imageView.downloadedFrom(link: link)
         } else {
-            
             avPlayer = AVPlayer()
             avPlayerViewController = TapableAVPlayerViewController()
             avPlayerViewController?.delegate = self

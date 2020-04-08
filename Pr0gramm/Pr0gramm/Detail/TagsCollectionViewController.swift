@@ -5,10 +5,12 @@ class TagsCollectionViewController: UICollectionViewController, StoryboardInitia
     
     weak var coordinator: Coordinator?
     var viewHeightConstraint: NSLayoutConstraint?
+    var expanded = false
+
     var tags: [Tags]? {
         didSet {
             collectionView.reloadData()
-            view.layoutIfNeeded()
+            view.layoutSubviews()
         }
     }
     
@@ -19,15 +21,17 @@ class TagsCollectionViewController: UICollectionViewController, StoryboardInitia
     }
     
     override func viewDidLayoutSubviews() {
-        let height = self.collectionView.collectionViewLayout.collectionViewContentSize.height
-        viewHeightConstraint?.constant = height
-        viewHeightConstraint?.isActive = true
+        setContentHeight()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(expandTags(_:)))
+        tapGesture.numberOfTapsRequired = 2
+        view.addGestureRecognizer(tapGesture)
         view.backgroundColor = .clear
-        viewHeightConstraint = view.heightAnchor.constraint(equalToConstant: 0)
+        viewHeightConstraint = view.heightAnchor.constraint(equalToConstant: 105)
+        viewHeightConstraint?.isActive = true
         view.translatesAutoresizingMaskIntoConstraints = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .clear
@@ -36,6 +40,25 @@ class TagsCollectionViewController: UICollectionViewController, StoryboardInitia
         let alignedFlowLayout = AlignedCollectionViewFlowLayout(horizontalAlignment: .left, verticalAlignment: .center)
         alignedFlowLayout.estimatedItemSize = CGSize(width: 100, height: 30)
         collectionView.collectionViewLayout = alignedFlowLayout
+    }
+    
+    @objc
+    func expandTags(_ sender: Any) {
+        expanded = !expanded
+        setContentHeight()
+        view.layoutIfNeeded()
+    }
+    
+    private func setContentHeight() {
+        
+        let contentHeight = collectionView.collectionViewLayout.collectionViewContentSize.height
+
+        if expanded {
+            viewHeightConstraint?.constant = contentHeight
+        } else {
+            let height: CGFloat = 105
+            viewHeightConstraint?.constant = contentHeight < height ? contentHeight : height
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
