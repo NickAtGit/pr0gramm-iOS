@@ -20,13 +20,13 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DTY-Ga-v1E">
-                    <rect key="frame" x="85.5" y="19" width="93" height="24"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <rect key="frame" x="85.5" y="21.5" width="77" height="19.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="FiG-1h-MxZ">
-                    <rect key="frame" x="303.5" y="20" width="90.5" height="22"/>
+                    <rect key="frame" x="266" y="20" width="128" height="22"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nlf-jk-WA2" customClass="HapticFeedbackButton" customModule="Pr0gramm" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="20" height="22"/>
@@ -35,18 +35,25 @@
                                 <action selector="upvoteTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="pcD-cv-sxA"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gnB-LX-WFX" customClass="HapticFeedbackButton" customModule="Pr0gramm" customModuleProvider="target">
+                            <rect key="frame" x="35" y="0.0" width="20" height="22"/>
+                            <state key="normal" image="minus.circle" catalog="system"/>
+                            <connections>
+                                <action selector="downvoteTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="Sv6-Y7-gJw"/>
+                            </connections>
+                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4p2-8H-bwM" customClass="HapticFeedbackButton" customModule="Pr0gramm" customModuleProvider="target">
-                            <rect key="frame" x="35" y="0.0" width="20.5" height="22"/>
+                            <rect key="frame" x="70" y="0.0" width="20.5" height="22"/>
                             <state key="normal" image="heart" catalog="system"/>
                             <connections>
                                 <action selector="favoriteTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="XJG-h0-9TT"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gnB-LX-WFX" customClass="HapticFeedbackButton" customModule="Pr0gramm" customModuleProvider="target">
-                            <rect key="frame" x="70.5" y="0.0" width="20" height="22"/>
-                            <state key="normal" image="minus.circle" catalog="system"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3dJ-S0-pff" customClass="HapticFeedbackButton" customModule="Pr0gramm" customModuleProvider="target">
+                            <rect key="frame" x="105.5" y="0.0" width="22.5" height="22"/>
+                            <state key="normal" image="text.bubble" catalog="system"/>
                             <connections>
-                                <action selector="downvoteTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="Sv6-Y7-gJw"/>
+                                <action selector="showCommentsTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="atb-ow-thR"/>
                             </connections>
                         </button>
                     </subviews>
@@ -68,6 +75,9 @@
             <connections>
                 <outlet property="pointsLabel" destination="aYp-gL-QPE" id="b9b-q1-5DD"/>
                 <outlet property="userNameLabel" destination="DTY-Ga-v1E" id="eu2-h3-8Ij"/>
+                <outletCollection property="voteButtons" destination="Nlf-jk-WA2" collectionClass="NSMutableArray" id="frz-zj-oGA"/>
+                <outletCollection property="voteButtons" destination="4p2-8H-bwM" collectionClass="NSMutableArray" id="bTw-TY-08w"/>
+                <outletCollection property="voteButtons" destination="gnB-LX-WFX" collectionClass="NSMutableArray" id="H5H-G3-ovd"/>
             </connections>
             <point key="canvasLocation" x="105.59999999999999" y="-37.781109445277366"/>
         </view>
@@ -76,5 +86,6 @@
         <image name="heart" catalog="system" width="64" height="54"/>
         <image name="minus.circle" catalog="system" width="64" height="60"/>
         <image name="plus.circle" catalog="system" width="64" height="60"/>
+        <image name="text.bubble" catalog="system" width="64" height="54"/>
     </resources>
 </document>

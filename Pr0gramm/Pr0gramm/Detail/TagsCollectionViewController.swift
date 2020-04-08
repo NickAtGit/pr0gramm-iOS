@@ -4,12 +4,11 @@ import UIKit
 class TagsCollectionViewController: UICollectionViewController, StoryboardInitialViewController {
     
     weak var coordinator: Coordinator?
-    
+    var viewHeightConstraint: NSLayoutConstraint?
     var tags: [Tags]? {
         didSet {
             collectionView.reloadData()
-            collectionView.layoutIfNeeded()
-            collectionView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+            view.layoutIfNeeded()
         }
     }
     
@@ -18,14 +17,23 @@ class TagsCollectionViewController: UICollectionViewController, StoryboardInitia
             return tags?.sorted { $0.confidence! > $1.confidence! }
         }
     }
-
+    
+    override func viewDidLayoutSubviews() {
+        let height = self.collectionView.collectionViewLayout.collectionViewContentSize.height
+        viewHeightConstraint?.constant = height
+        viewHeightConstraint?.isActive = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
+        viewHeightConstraint = view.heightAnchor.constraint(equalToConstant: 0)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .clear
         collectionView.collectionViewLayout.invalidateLayout()
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
-        let alignedFlowLayout = AlignedCollectionViewFlowLayout(horizontalAlignment: .left, verticalAlignment: .top)
+        let alignedFlowLayout = AlignedCollectionViewFlowLayout(horizontalAlignment: .left, verticalAlignment: .center)
         alignedFlowLayout.estimatedItemSize = CGSize(width: 100, height: 30)
         collectionView.collectionViewLayout = alignedFlowLayout
     }

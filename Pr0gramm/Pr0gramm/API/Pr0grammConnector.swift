@@ -49,6 +49,12 @@ enum PostType {
     case voteItem
 }
 
+enum Vote: Int {
+    case upvote = 1
+    case downvote = -1
+    case favorite = 2
+}
+
 class Pr0grammConnector {
 
     var observers: [Pr0grammConnectorObserver] = []

@@ -18,16 +18,20 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
     private var avPlayerViewController: TapableAVPlayerViewController?
     private let loadCommentsButton = UIButton()
     private var forceTouchGestureRecognizer: GTForceTouchGestureRecognizer!
+    private var commentsAreShown = false
+    private var itemInfo: ItemInfo?
     
     var item: Item? {
         didSet {
             guard let item = item else { return }
-            coordinator?.pr0grammConnector.loadItemInfo(for: item.id) { self.itemInfo = $0; self.setupTags() }
+            coordinator?.pr0grammConnector.loadItemInfo(for: item.id) { [weak self] in
+                self?.itemInfo = $0
+                self?.setupTags()
+            }
             updateUI()
         }
     }
     
-    private var itemInfo: ItemInfo?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,31 +41,27 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
                                                name: Notification.Name("showImageDetail"),
                                                object: nil)
         
+        scrollView.showsVerticalScrollIndicator = false
         imageView.isUserInteractionEnabled = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .top
+        
         commentsStackView.axis = .vertical
-        commentsStackView.spacing = 20
+        commentsStackView.spacing = 25
                 
         tagsCollectionViewController.coordinator = coordinator
         tagsCollectionViewController.view.translatesAutoresizingMaskIntoConstraints = false
         addChild(tagsCollectionViewController)
-        
-        loadCommentsButton.setTitle("Kommentare anzeigen", for: .normal)
-        loadCommentsButton.addTarget(self, action: #selector(showComments), for: .touchUpInside)
-        loadCommentsButton.isHidden = !AppSettings.isLoggedIn
-        
+                
         stackView = UIStackView(arrangedSubviews: [imageView,
                                                    infoView,
                                                    tagsCollectionViewController.view,
-                                                   loadCommentsButton,
                                                    commentsStackView])
-        
-        tagsCollectionViewController.didMove(toParent: self)
-
-        stackView.spacing = 20
+        stackView.spacing = 40
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
+
+        tagsCollectionViewController.didMove(toParent: self)
 
         let hostView = UIView()
         hostView.translatesAutoresizingMaskIntoConstraints = false
@@ -76,9 +76,6 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
         stackView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         
 //        avPlayerViewController.entersFullScreenWhenPlaybackBegins = true
-        
-//        forceTouchGestureRecognizer = GTForceTouchGestureRecognizer(target: self, action: #selector(upVote))
-//        view.addGestureRecognizer(forceTouchGestureRecognizer)
     }
     
     @objc
@@ -128,6 +125,10 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
         
         infoView.item = item
         infoView.pr0grammConnector = coordinator?.pr0grammConnector
+        infoView.showCommentsAction = { [weak self] in self?.showComments() }
+
+        infoView.upvoteAction = { [weak self] in self?.navigation?.showBanner(with: "Han blussert") }
+        infoView.downvoteAction = { [weak self] in self?.navigation?.showBanner(with: "Han miesert") }
         
         if let link = coordinator?.pr0grammConnector.imageLink(for: item) {
             imageView.downloadedFrom(link: link)
@@ -168,7 +169,9 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
     
     @objc
     func showComments() {
+        guard !commentsAreShown else { return }
         guard let itemInfo = itemInfo else { return }
+        commentsAreShown = true
         self.addComments(for: itemInfo)
         loadCommentsButton.isHidden = true
     }
@@ -198,9 +201,6 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
         avPlayer = nil
         avPlayerViewController = nil
         NotificationCenter.default.removeObserver(self)
-//        forceTouchGestureRecognizer.removeTarget(self, action: nil)
-//        view.removeGestureRecognizer(forceTouchGestureRecognizer)
-//        forceTouchGestureRecognizer = nil
     }
 }
 

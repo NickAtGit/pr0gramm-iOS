@@ -4,7 +4,7 @@ import UIKit
 class InfoView: UIView, NibView {
     
     var pr0grammConnector: Pr0grammConnector?
-    
+        
     var item: Item? {
         didSet {
             guard let item = item else { return }
@@ -13,8 +13,14 @@ class InfoView: UIView, NibView {
         }
     }
     
+    var showCommentsAction: (() -> Void)?
+    var upvoteAction: (() -> Void)?
+    var downvoteAction: (() -> Void)?
+    var favoriteAction: (() -> Void)?
+    
     @IBOutlet private var pointsLabel: UILabel!
     @IBOutlet private var userNameLabel: UILabel!
+    @IBOutlet private var voteButtons: [HapticFeedbackButton]!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,20 +29,34 @@ class InfoView: UIView, NibView {
         userNameLabel.textColor = .white
     }
     
-    @IBAction func upvoteTapped(_ sender: Any) {
-        vote(1)
+    @IBAction func upvoteTapped(_ sender: HapticFeedbackButton) {
+        vote(.upvote)
+        changeSelectedStateFor(button: sender)
+        upvoteAction?()
     }
     
-    @IBAction func favoriteTapped(_ sender: Any) {
-        vote(2)
+    @IBAction func favoriteTapped(_ sender: HapticFeedbackButton) {
+        vote(.favorite)
+        changeSelectedStateFor(button: sender)
+        favoriteAction?()
     }
     
-    @IBAction func downvoteTapped(_ sender: Any) {
-        vote(-1)
+    @IBAction func downvoteTapped(_ sender: HapticFeedbackButton) {
+        vote(.downvote)
+        changeSelectedStateFor(button: sender)
+        downvoteAction?()
     }
     
-    private func vote(_ vote: Int) {
+    @IBAction func showCommentsTapped(_ sender: Any) {
+        showCommentsAction?()
+    }
+    
+    private func vote(_ vote: Vote) {
         guard let item = item else { return }
-        pr0grammConnector?.vote(itemId: "\(item.id)", value: vote)
+        pr0grammConnector?.vote(itemId: "\(item.id)", value: vote.rawValue)
+    }
+    
+    private func changeSelectedStateFor(button: HapticFeedbackButton) {
+        voteButtons.forEach { $0 === button ? ($0.imageView?.tintColor = .green) : ($0.imageView?.tintColor = nil )}
     }
 }

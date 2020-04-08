@@ -70,7 +70,7 @@ extension AppSettings: SortingSettingsConfigurable {
 
 extension AppSettings: UserSettingsConfigurable {
     static var selectedTheme: Int {
-        get { return AppSettings.value(for: #keyPath(selectedTheme)) ?? 1 }
+        get { return AppSettings.value(for: #keyPath(selectedTheme)) ?? 0 }
         set { AppSettings.updateDefaults(for: #keyPath(selectedTheme), value: newValue) }
     }
     
