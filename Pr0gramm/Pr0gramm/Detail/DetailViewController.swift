@@ -19,7 +19,11 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
     private let loadCommentsButton = UIButton()
     private var forceTouchGestureRecognizer: GTForceTouchGestureRecognizer!
     private var commentsAreShown = false
-    private var itemInfo: ItemInfo?
+    private var itemInfo: ItemInfo? {
+        didSet {
+            infoView.itemInfo = itemInfo
+        }
+    }
     
     var item: Item? {
         didSet {
@@ -50,7 +54,6 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
         commentsStackView.spacing = 25
                 
         tagsCollectionViewController.coordinator = coordinator
-        tagsCollectionViewController.view.translatesAutoresizingMaskIntoConstraints = false
         addChild(tagsCollectionViewController)
                 
         stackView = UIStackView(arrangedSubviews: [imageView,
@@ -78,18 +81,14 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
 //        avPlayerViewController.entersFullScreenWhenPlaybackBegins = true
     }
     
-    @objc
-    func upVote() {
-        let navigationContoller = self.navigationController as! NavigationController
-        if AppSettings.isLoggedIn {
-            guard let id = item?.id else { return }
-            coordinator?.pr0grammConnector.vote(itemId: "\(id)", value: 1)
-            navigationContoller.showBanner(with: "Han blussert ⨁")
-        } else {
-            navigationContoller.showBanner(with: "Du musst eingeloggt sein, um dieses Feature zu nutzen")
+    func toogleTagsExpansion() {
+        tagsCollectionViewController.toggleExpansion()
+
+        UIView.animate(withDuration: 0.25) {
+            self.view.layoutIfNeeded()
         }
     }
-    
+        
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         avPlayer?.pause()
@@ -129,6 +128,7 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
 
         infoView.upvoteAction = { [weak self] in self?.navigation?.showBanner(with: "Han blussert") }
         infoView.downvoteAction = { [weak self] in self?.navigation?.showBanner(with: "Han miesert") }
+        infoView.expandTagsAction = { [weak self] in self?.toogleTagsExpansion() }
         
         if let link = coordinator?.pr0grammConnector.imageLink(for: item) {
             imageView.downloadedFrom(link: link)

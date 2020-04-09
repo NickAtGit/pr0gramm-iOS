@@ -13,14 +13,23 @@ class InfoView: UIView, NibView {
         }
     }
     
+    var itemInfo: ItemInfo? {
+        didSet {
+            commentsButton.isHidden = itemInfo?.comments.count == 0
+        }
+    }
+    
     var showCommentsAction: (() -> Void)?
     var upvoteAction: (() -> Void)?
     var downvoteAction: (() -> Void)?
     var favoriteAction: (() -> Void)?
-    
+    var expandTagsAction: (() -> Void)?
+
     @IBOutlet private var pointsLabel: UILabel!
     @IBOutlet private var userNameLabel: UILabel!
     @IBOutlet private var voteButtons: [HapticFeedbackButton]!
+    @IBOutlet private var tagsButton: HapticFeedbackButton!
+    @IBOutlet private var commentsButton: HapticFeedbackButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -45,6 +54,10 @@ class InfoView: UIView, NibView {
         vote(.downvote)
         changeSelectedStateFor(button: sender)
         downvoteAction?()
+    }
+    
+    @IBAction func expandTagsTapped(_ sender: Any) {
+        expandTagsAction?()
     }
     
     @IBAction func showCommentsTapped(_ sender: Any) {

@@ -5,7 +5,7 @@ class TagsCollectionViewController: UICollectionViewController, StoryboardInitia
     
     weak var coordinator: Coordinator?
     var viewHeightConstraint: NSLayoutConstraint?
-    var expanded = false
+    var isExpanded = false
 
     var tags: [Tags]? {
         didSet {
@@ -23,16 +23,13 @@ class TagsCollectionViewController: UICollectionViewController, StoryboardInitia
     override func viewDidLayoutSubviews() {
         setContentHeight()
     }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(expandTags(_:)))
-        tapGesture.numberOfTapsRequired = 2
-        view.addGestureRecognizer(tapGesture)
+        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
         viewHeightConstraint = view.heightAnchor.constraint(equalToConstant: 105)
         viewHeightConstraint?.isActive = true
-        view.translatesAutoresizingMaskIntoConstraints = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .clear
         collectionView.collectionViewLayout.invalidateLayout()
@@ -42,18 +39,16 @@ class TagsCollectionViewController: UICollectionViewController, StoryboardInitia
         collectionView.collectionViewLayout = alignedFlowLayout
     }
     
-    @objc
-    func expandTags(_ sender: Any) {
-        expanded = !expanded
+    func toggleExpansion() {
+        isExpanded = !isExpanded
         setContentHeight()
-        view.layoutIfNeeded()
     }
     
     private func setContentHeight() {
-        
         let contentHeight = collectionView.collectionViewLayout.collectionViewContentSize.height
 
-        if expanded {
+        if isExpanded {
+            isExpanded = true
             viewHeightConstraint?.constant = contentHeight
         } else {
             let height: CGFloat = 105
