@@ -1,24 +1,32 @@
 PODS:
-  - GTForceTouchGestureRecognizer (1.1.2)
+  - Bond (7.6.6):
+    - Differ (~> 1.4)
+    - ReactiveKit (~> 3.14)
+  - Differ (1.4.5)
   - ImageScrollView (1.8)
+  - ReactiveKit (3.16.3)
   - ScrollingContentViewController (1.4.0)
 
 DEPENDENCIES:
-  - GTForceTouchGestureRecognizer
+  - Bond
   - ImageScrollView
   - ScrollingContentViewController
 
 SPEC REPOS:
   trunk:
-    - GTForceTouchGestureRecognizer
+    - Bond
+    - Differ
     - ImageScrollView
+    - ReactiveKit
     - ScrollingContentViewController
 
 SPEC CHECKSUMS:
-  GTForceTouchGestureRecognizer: bc95b71c0fc00aa22d9441398d1a17be527e4d86
+  Bond: 9e7d901cf4ed825b6004a93dd0a7f1c7479e2834
+  Differ: 3b6bd78e2b20cc795d9a86f7641d087524e4273e
   ImageScrollView: 82912273486297285682bdb2a806742f0d39940c
+  ReactiveKit: faec214ebc027b371b8037e0cf6336bacd42b889
   ScrollingContentViewController: 1bff026d6f32c15489dcd22821911eda5fda3801
 
-PODFILE CHECKSUM: 35cb12368c81bf2cd7cb6e715aba8367d3d74887
+PODFILE CHECKSUM: 4a9000fa5777f931efd7bf8fdfd74349f9166546
 
 COCOAPODS: 1.8.4

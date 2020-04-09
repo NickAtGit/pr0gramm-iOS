@@ -7,6 +7,6 @@ target 'Pr0gramm' do
 
   pod 'ScrollingContentViewController'
   pod 'ImageScrollView'
-  pod "GTForceTouchGestureRecognizer"
-
+  pod 'Bond'
+  
 end

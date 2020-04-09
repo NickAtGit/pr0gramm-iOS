@@ -3,7 +3,6 @@ import UIKit
 import AVFoundation
 import ScrollingContentViewController
 import AVKit
-import GTForceTouchGestureRecognizer
 
 class DetailViewController: ScrollingContentViewController, StoryboardInitialViewController {
 
@@ -17,7 +16,6 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
     private var avPlayer: AVPlayer?
     private var avPlayerViewController: TapableAVPlayerViewController?
     private let loadCommentsButton = UIButton()
-    private var forceTouchGestureRecognizer: GTForceTouchGestureRecognizer!
     private var commentsAreShown = false
     private var itemInfo: ItemInfo? {
         didSet {

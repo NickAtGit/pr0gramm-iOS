@@ -1,6 +1,0 @@
-framework module GTForceTouchGestureRecognizer {
-  umbrella header "GTForceTouchGestureRecognizer-umbrella.h"
-
-  export *
-  module * { export * }
-}
