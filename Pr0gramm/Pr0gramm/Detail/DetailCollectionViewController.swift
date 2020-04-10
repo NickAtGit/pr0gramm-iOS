@@ -56,9 +56,9 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
     @objc
     func downloadItem() {
         guard let connector = coordinator?.pr0grammConnector,
-            let cell = collectionView.visibleCells.first as? DetailCollectionViewCell,
-            let item = cell.detailViewController.item else { return }
+            let cell = collectionView.visibleCells.first as? DetailCollectionViewCell else { return }
         
+        let item = cell.detailViewController.viewModel.item.value
         let link = connector.imageLink(for: item) ?? connector.videoLink(for: item)
         let downloader = Downloader()
         let url = URL(string: link)!
@@ -97,9 +97,11 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailLargeCell", for: indexPath) as! DetailCollectionViewCell
         
+        guard let item = items?[indexPath.row],
+            let connector = coordinator?.pr0grammConnector else { return cell }
         cell.detailViewController = DetailViewController.fromStoryboard()
+        cell.detailViewController.viewModel = DetailViewModel(item: item, connector: connector)
         cell.detailViewController.coordinator = coordinator
-        cell.detailViewController.item = items?[indexPath.row]
         embed(cell.detailViewController, in: cell.content)
         
         return cell

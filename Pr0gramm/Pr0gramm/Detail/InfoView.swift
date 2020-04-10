@@ -1,29 +1,24 @@
 
 import UIKit
+import Bond
 
 class InfoView: UIView, NibView {
     
-    var pr0grammConnector: Pr0grammConnector?
+    var viewModel: DetailViewModel! {
+        didSet {
+            viewModel.points.bind(to: pointsLabel.reactive.text)
+            viewModel.userName.bind(to: userNameLabel.reactive.text)
+            viewModel.isTagsExpandButtonHidden.bind(to: tagsButton.reactive.isHidden)
+            let _ = viewModel.isTagsExpanded.observeNext { [weak self] isExpanded in
+                self?.tagsButton.setImage(isExpanded ? UIImage(systemName: "tag.fill") : UIImage(systemName: "tag"), for: .normal)
+            }
+        }
+    }
         
-    var item: Item? {
-        didSet {
-            guard let item = item else { return }
-            pointsLabel.text = "\(item.up - item.down)"
-            userNameLabel.text = item.user
-        }
-    }
-    
-    var itemInfo: ItemInfo? {
-        didSet {
-            commentsButton.isHidden = itemInfo?.comments.count == 0
-        }
-    }
-    
     var showCommentsAction: (() -> Void)?
     var upvoteAction: (() -> Void)?
     var downvoteAction: (() -> Void)?
     var favoriteAction: (() -> Void)?
-    var expandTagsAction: (() -> Void)?
 
     @IBOutlet private var pointsLabel: UILabel!
     @IBOutlet private var userNameLabel: UILabel!
@@ -39,34 +34,29 @@ class InfoView: UIView, NibView {
     }
     
     @IBAction func upvoteTapped(_ sender: HapticFeedbackButton) {
-        vote(.upvote)
+        viewModel.vote(.upvote)
         changeSelectedStateFor(button: sender)
         upvoteAction?()
     }
     
     @IBAction func favoriteTapped(_ sender: HapticFeedbackButton) {
-        vote(.favorite)
+        viewModel.vote(.favorite)
         changeSelectedStateFor(button: sender)
         favoriteAction?()
     }
     
     @IBAction func downvoteTapped(_ sender: HapticFeedbackButton) {
-        vote(.downvote)
+        viewModel.vote(.downvote)
         changeSelectedStateFor(button: sender)
         downvoteAction?()
     }
     
     @IBAction func expandTagsTapped(_ sender: Any) {
-        expandTagsAction?()
+        viewModel.isTagsExpanded.value = !viewModel.isTagsExpanded.value
     }
     
     @IBAction func showCommentsTapped(_ sender: Any) {
         showCommentsAction?()
-    }
-    
-    private func vote(_ vote: Vote) {
-        guard let item = item else { return }
-        pr0grammConnector?.vote(itemId: "\(item.id)", value: vote.rawValue)
     }
     
     private func changeSelectedStateFor(button: HapticFeedbackButton) {

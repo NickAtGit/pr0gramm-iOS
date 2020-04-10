@@ -1,35 +1,34 @@
 
 import UIKit
+import Bond
 
 class TagsCollectionViewController: UICollectionViewController, StoryboardInitialViewController {
     
     weak var coordinator: Coordinator?
-    var viewHeightConstraint: NSLayoutConstraint?
-    var isExpanded = false
-
-    var tags: [Tags]? {
+    private var viewHeightConstraint: NSLayoutConstraint?
+    private var collectionViewContentHeight: CGFloat = 0
+    private var collapsedHeight: CGFloat = 0
+    
+    var viewModel: DetailViewModel! {
         didSet {
-            collectionView.reloadData()
-            view.layoutSubviews()
+            let _ = viewModel.isTagsExpanded.observeNext(with: { [weak self] isExpanded in
+                self?.setContentHeight(isExpanded: isExpanded)
+            })
         }
     }
-    
-    private var sortedTags: [Tags]? {
-        get {
-            return tags?.sorted { $0.confidence! > $1.confidence! }
+    private var tags: [Tags]? {
+        didSet {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+                self.view.layoutSubviews()
+            }
         }
     }
-    
-    override func viewDidLayoutSubviews() {
-        setContentHeight()
-    }
-        
+     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
-        viewHeightConstraint = view.heightAnchor.constraint(equalToConstant: 105)
-        viewHeightConstraint?.isActive = true
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .clear
         collectionView.collectionViewLayout.invalidateLayout()
@@ -37,32 +36,36 @@ class TagsCollectionViewController: UICollectionViewController, StoryboardInitia
         let alignedFlowLayout = AlignedCollectionViewFlowLayout(horizontalAlignment: .left, verticalAlignment: .center)
         alignedFlowLayout.estimatedItemSize = CGSize(width: 100, height: 30)
         collectionView.collectionViewLayout = alignedFlowLayout
-    }
-    
-    func toggleExpansion() {
-        isExpanded = !isExpanded
-        setContentHeight()
-    }
-    
-    private func setContentHeight() {
-        let contentHeight = collectionView.collectionViewLayout.collectionViewContentSize.height
+        collapsedHeight = alignedFlowLayout.estimatedItemSize.height * 3 + alignedFlowLayout.minimumLineSpacing * 2
+        viewHeightConstraint = view.heightAnchor.constraint(equalToConstant: collapsedHeight)
+        viewHeightConstraint?.isActive = true
 
+        
+        let _ = viewModel.itemInfo.observeNext { [weak self] itemInfo in
+            self?.tags = itemInfo?.tags.sorted { $0.confidence! > $1.confidence! }
+        }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        collectionViewContentHeight = collectionView.collectionViewLayout.collectionViewContentSize.height
+        viewModel.isTagsExpandButtonHidden.value = !(collectionViewContentHeight > collapsedHeight)
+    }
+    
+    private func setContentHeight(isExpanded: Bool) {
         if isExpanded {
-            isExpanded = true
-            viewHeightConstraint?.constant = contentHeight
+            viewHeightConstraint?.constant = collectionViewContentHeight
         } else {
-            let height: CGFloat = 105
-            viewHeightConstraint?.constant = contentHeight < height ? contentHeight : height
+            viewHeightConstraint?.constant = collectionViewContentHeight < collapsedHeight ? collectionViewContentHeight : collapsedHeight
         }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sortedTags?.count ?? 0
+        return tags?.count ?? 0
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "tagCell", for: indexPath) as! TagCollectionViewCell
-        cell.tagLabel.text = sortedTags?[indexPath.row].tag
+        cell.tagLabel.text = tags?[indexPath.row].tag
         cell.tagLabel.sizeToFit()
         return cell
     }

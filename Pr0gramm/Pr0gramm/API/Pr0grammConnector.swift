@@ -307,12 +307,6 @@ class Pr0grammConnector {
         return link
     }
 
-    func imageLink(for indexPath: IndexPath) -> String? {
-        guard indexPath.row <= allItems.count - 1 else { return nil }
-        let link = http + img + baseURL + allItems[indexPath.row].image
-        return link
-    }
-
     func imageLink(for item: Item) -> String? {
         guard !item.image.hasSuffix(".mp4") else { return nil }
         let link = http + img + baseURL + item.image
@@ -322,10 +316,6 @@ class Pr0grammConnector {
     func videoLink(for item: Item) -> String {
         let link = http + vid + baseURL + item.image
         return link
-    }
-
-    func item(for indexPath: IndexPath) -> Item? {
-        return allItems[indexPath.row]
     }
 
     func loadItemInfo(for id: Int, completion: @escaping (ItemInfo?) -> Void) {

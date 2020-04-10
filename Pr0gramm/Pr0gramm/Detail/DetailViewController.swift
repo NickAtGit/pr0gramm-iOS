@@ -7,7 +7,13 @@ import AVKit
 class DetailViewController: ScrollingContentViewController, StoryboardInitialViewController {
 
     weak var coordinator: Coordinator?
-
+    var viewModel: DetailViewModel! {
+        didSet {
+            infoView.viewModel = viewModel
+            tagsCollectionViewController.viewModel = viewModel
+        }
+    }
+    
     private var stackView: UIStackView!
     private let imageView = TapableImageView()
     private let tagsCollectionViewController = TagsCollectionViewController.fromStoryboard()
@@ -17,27 +23,10 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
     private var avPlayerViewController: TapableAVPlayerViewController?
     private let loadCommentsButton = UIButton()
     private var commentsAreShown = false
-    private var itemInfo: ItemInfo? {
-        didSet {
-            infoView.itemInfo = itemInfo
-        }
-    }
-    
-    var item: Item? {
-        didSet {
-            guard let item = item else { return }
-            coordinator?.pr0grammConnector.loadItemInfo(for: item.id) { [weak self] in
-                self?.itemInfo = $0
-                self?.setupTags()
-            }
-            updateUI()
-        }
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(showImageDetail),
                                                name: Notification.Name("showImageDetail"),
@@ -77,13 +66,15 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
         stackView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         
 //        avPlayerViewController.entersFullScreenWhenPlaybackBegins = true
-    }
-    
-    func toogleTagsExpansion() {
-        tagsCollectionViewController.toggleExpansion()
-
-        UIView.animate(withDuration: 0.25) {
-            self.view.layoutIfNeeded()
+        
+        let _ = viewModel.isTagsExpanded.observeNext(with: { [weak self] isExpanded in
+            UIView.animate(withDuration: 0.25) {
+                self?.view.layoutIfNeeded()
+            }
+        })
+        
+        let _ = viewModel.item.observeNext { [weak self] item in
+            self?.updateUI(with: item)
         }
     }
         
@@ -94,7 +85,6 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
     }
     
     override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
         scrollView.contentSize = CGSize(width: stackView.frame.width, height: stackView.frame.height)
     }
     
@@ -114,21 +104,18 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
         avPlayer?.pause()
     }
         
-    private func updateUI() {
+    private func updateUI(with item: Item) {
+
         avPlayer?.pause()
-        guard let item = item else { return }
         imageView.heightAnchor.constraint(equalTo: view.widthAnchor,
                                           multiplier: CGFloat(item.height) / CGFloat(item.width)).isActive = true
         
-        infoView.item = item
-        infoView.pr0grammConnector = coordinator?.pr0grammConnector
         infoView.showCommentsAction = { [weak self] in self?.showComments() }
 
         infoView.upvoteAction = { [weak self] in self?.navigation?.showBanner(with: "Han blussert") }
         infoView.downvoteAction = { [weak self] in self?.navigation?.showBanner(with: "Han miesert") }
-        infoView.expandTagsAction = { [weak self] in self?.toogleTagsExpansion() }
         
-        if let link = coordinator?.pr0grammConnector.imageLink(for: item) {
+        if let link = viewModel.imageLink() {
             imageView.downloadedFrom(link: link)
         } else {
             avPlayer = AVPlayer()
@@ -150,27 +137,20 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
             stackView.removeArrangedSubview(imageView)
             stackView.insertArrangedSubview(avPlayerViewController.view, at: 0)
             avPlayerViewController.didMove(toParent: self)
-            guard let link = coordinator?.pr0grammConnector.videoLink(for: item) else { return }
+            guard let link = viewModel.videoLink() else { return }
             let url = URL(string: link)
             let playerItem = AVPlayerItem(url: url!)
             avPlayer.replaceCurrentItem(with: playerItem)
         }
     }
-    
-    private func setupTags() {
-        guard let itemInfo = itemInfo else { return }
-        DispatchQueue.main.async {
-            self.tagsCollectionViewController.tags = itemInfo.tags
-        }
-    }
-    
+        
     @objc
     func showComments() {
-        guard !commentsAreShown else { return }
-        guard let itemInfo = itemInfo else { return }
-        commentsAreShown = true
-        self.addComments(for: itemInfo)
-        loadCommentsButton.isHidden = true
+//        guard !commentsAreShown else { return }
+//        guard let itemInfo = itemInfo else { return }
+//        commentsAreShown = true
+//        self.addComments(for: itemInfo)
+//        loadCommentsButton.isHidden = true
     }
     
     private func addComments(for itemInfo: ItemInfo) {
