@@ -30,7 +30,7 @@ class InfoView: UIView, NibView {
         super.awakeFromNib()
         backgroundColor = .clear
         pointsLabel.textColor = .white
-        userNameLabel.textColor = .white
+        userNameLabel.textColor = #colorLiteral(red: 0.5333333333, green: 0.5333333333, blue: 0.5333333333, alpha: 1)
     }
     
     @IBAction func upvoteTapped(_ sender: HapticFeedbackButton) {
