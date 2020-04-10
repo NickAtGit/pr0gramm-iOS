@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8ZP-C4-k0x">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Comments View Controller-->
+        <scene sceneID="zB9-H7-fsq">
+            <objects>
+                <viewController id="8ZP-C4-k0x" customClass="CommentsViewController" customModule="Pr0gramm" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ixf-B1-I9L">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bFB-td-O6Q">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="commentCell" rowHeight="125" id="xMg-BV-wsZ" customClass="CommentCell" customModule="Pr0gramm" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="125"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xMg-BV-wsZ" id="Hzv-5X-snf">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="125"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="cPz-Yc-eOz">
+                                                    <rect key="frame" x="20" y="10" width="20" height="49"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i1I-rm-F1o">
+                                                            <rect key="frame" x="0.0" y="0.0" width="20" height="22"/>
+                                                            <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <state key="normal" image="plus.circle" catalog="system"/>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6hG-fb-u4W">
+                                                            <rect key="frame" x="0.0" y="27" width="20" height="22"/>
+                                                            <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <state key="normal" image="minus.circle" catalog="system"/>
+                                                        </button>
+                                                    </subviews>
+                                                </stackView>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Comment" translatesAutoresizingMaskIntoConstraints="NO" id="6f3-J3-sbA">
+                                                    <rect key="frame" x="48" y="10" width="346" height="72"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                                </textView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pwI-7D-vTq">
+                                                    <rect key="frame" x="48" y="97" width="48" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Points" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RWq-gP-22D">
+                                                    <rect key="frame" x="104" y="97" width="41.5" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="cPz-Yc-eOz" firstAttribute="leading" secondItem="Hzv-5X-snf" secondAttribute="leading" constant="20" id="2mg-lt-0bP"/>
+                                                <constraint firstItem="6f3-J3-sbA" firstAttribute="leading" secondItem="cPz-Yc-eOz" secondAttribute="trailing" constant="8" id="Dii-Gc-cnR"/>
+                                                <constraint firstAttribute="bottom" secondItem="pwI-7D-vTq" secondAttribute="bottom" constant="10" id="I0t-s1-Il8"/>
+                                                <constraint firstItem="cPz-Yc-eOz" firstAttribute="top" secondItem="Hzv-5X-snf" secondAttribute="top" constant="10" id="Po1-Ww-snA"/>
+                                                <constraint firstItem="pwI-7D-vTq" firstAttribute="top" secondItem="6f3-J3-sbA" secondAttribute="bottom" constant="15" id="Wyg-xf-Et7"/>
+                                                <constraint firstAttribute="trailing" secondItem="6f3-J3-sbA" secondAttribute="trailing" constant="20" id="d71-wM-0jz"/>
+                                                <constraint firstItem="6f3-J3-sbA" firstAttribute="top" secondItem="Hzv-5X-snf" secondAttribute="top" constant="10" id="gf8-fI-ysA"/>
+                                                <constraint firstItem="RWq-gP-22D" firstAttribute="leading" secondItem="pwI-7D-vTq" secondAttribute="trailing" constant="8" id="sdO-EV-WhO"/>
+                                                <constraint firstItem="RWq-gP-22D" firstAttribute="centerY" secondItem="pwI-7D-vTq" secondAttribute="centerY" id="v9E-bR-aRl"/>
+                                                <constraint firstItem="pwI-7D-vTq" firstAttribute="leading" secondItem="6f3-J3-sbA" secondAttribute="leading" id="yNJ-iy-ZNi"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="authorLabel" destination="pwI-7D-vTq" id="GyR-r0-hTj"/>
+                                            <outlet property="leadingConstraint" destination="2mg-lt-0bP" id="0QO-Qe-vZN"/>
+                                            <outlet property="messageTextView" destination="6f3-J3-sbA" id="Fq8-HD-cns"/>
+                                            <outlet property="pointsLabel" destination="RWq-gP-22D" id="ptJ-i3-tqb"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="bFB-td-O6Q" firstAttribute="leading" secondItem="Ppy-rY-1tY" secondAttribute="leading" id="MiG-tS-SQU"/>
+                            <constraint firstItem="bFB-td-O6Q" firstAttribute="trailing" secondItem="Ppy-rY-1tY" secondAttribute="trailing" id="s3t-gj-SxH"/>
+                            <constraint firstItem="bFB-td-O6Q" firstAttribute="top" secondItem="Ppy-rY-1tY" secondAttribute="top" id="wC8-Kw-92C"/>
+                            <constraint firstItem="bFB-td-O6Q" firstAttribute="bottom" secondItem="Ppy-rY-1tY" secondAttribute="bottom" id="zdn-ll-PfE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ppy-rY-1tY"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="bFB-td-O6Q" id="Ctc-Ou-S1b"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Oj-oo-aRB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-323.1884057971015" y="178.79464285714286"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="minus.circle" catalog="system" width="128" height="121"/>
+        <image name="plus.circle" catalog="system" width="128" height="121"/>
+    </resources>
+</document>

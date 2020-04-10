@@ -1,7 +1,7 @@
 
 import UIKit
 
-final class CommentView: UIView, NibView {
+class CommentCell: UITableViewCell {
     
     var pr0grammConnector: Pr0grammConnector?
     
@@ -10,7 +10,6 @@ final class CommentView: UIView, NibView {
     @IBOutlet var pointsLabel: UILabel!
     @IBOutlet var leadingConstraint: NSLayoutConstraint!
     let feedback = UISelectionFeedbackGenerator()
-
     var comment: Comments! {
         didSet {
             authorLabel.text = comment.name

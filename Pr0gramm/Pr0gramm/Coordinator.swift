@@ -97,6 +97,14 @@ class Coordinator {
         }
     }
     
+    func showComments(viewModel: DetailViewModel, from presentingViewController: UIViewController) {
+        let viewController = CommentsViewController.fromStoryboard()
+        viewController.viewModel = viewModel
+        let navigationController = NavigationController(rootViewController: viewController)
+        navigationController.style = .dragable
+        presentingViewController.present(navigationController, animated: true)
+    }
+    
     @objc
     func logout() {
         pr0grammConnector.logout()

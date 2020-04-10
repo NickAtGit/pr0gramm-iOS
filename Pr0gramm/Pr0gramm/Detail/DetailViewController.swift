@@ -110,7 +110,10 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
         imageView.heightAnchor.constraint(equalTo: view.widthAnchor,
                                           multiplier: CGFloat(item.height) / CGFloat(item.width)).isActive = true
         
-        infoView.showCommentsAction = { [weak self] in self?.showComments() }
+        infoView.showCommentsAction = { [weak self] in
+            guard let self = self else { return }
+            self.coordinator?.showComments(viewModel: self.viewModel, from: self)
+        }
 
         infoView.upvoteAction = { [weak self] in self?.navigation?.showBanner(with: "Han blussert") }
         infoView.downvoteAction = { [weak self] in self?.navigation?.showBanner(with: "Han miesert") }
@@ -144,25 +147,25 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
         }
     }
         
-    @objc
-    func showComments() {
+//    @objc
+//    func showComments() {
 //        guard !commentsAreShown else { return }
 //        guard let itemInfo = itemInfo else { return }
 //        commentsAreShown = true
 //        self.addComments(for: itemInfo)
 //        loadCommentsButton.isHidden = true
-    }
+//    }
     
-    private func addComments(for itemInfo: ItemInfo) {
-        for comment in itemInfo.comments {
-            DispatchQueue.main.async {
-                let commentView = CommentView.instantiateFromNib()
-                commentView.pr0grammConnector = self.coordinator?.pr0grammConnector
-                commentView.comment = comment
-                self.commentsStackView.addArrangedSubview(commentView)
-            }
-        }
-    }
+//    private func addComments(for itemInfo: ItemInfo) {
+//        for comment in itemInfo.comments {
+//            DispatchQueue.main.async {
+//                let commentView = CommentCell.instantiateFromNib()
+//                commentView.pr0grammConnector = self.coordinator?.pr0grammConnector
+//                commentView.comment = comment
+//                self.commentsStackView.addArrangedSubview(commentView)
+//            }
+//        }
+//    }
     
     @objc
     func playerItemDidReachEnd(_ notification: NSNotification) {

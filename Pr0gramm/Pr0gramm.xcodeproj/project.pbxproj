@@ -14,6 +14,8 @@
 		03076A6E2059E80F00168E62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03076A6C2059E80F00168E62 /* LaunchScreen.storyboard */; };
 		03076A772059E8B900168E62 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03076A752059E8B800168E62 /* Item.swift */; };
 		03076A782059E8B900168E62 /* AllItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03076A762059E8B800168E62 /* AllItems.swift */; };
+		030CAF542440B76400D6885C /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030CAF532440B76400D6885C /* CommentsViewController.swift */; };
+		030CAF562440B76A00D6885C /* CommentsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 030CAF552440B76A00D6885C /* CommentsViewController.storyboard */; };
 		031EE8302065C59B0030CA68 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031EE82F2065C59B0030CA68 /* AppDelegate.swift */; };
 		031EE8322065C59B0030CA68 /* TVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031EE8312065C59B0030CA68 /* TVViewController.swift */; };
 		031EE8352065C59B0030CA68 /* Pr0grammTV.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 031EE8332065C59B0030CA68 /* Pr0grammTV.xcdatamodeld */; };
@@ -36,8 +38,7 @@
 		033CF1C2205BFF9A00627321 /* Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033CF1C0205BFF9A00627321 /* Comments.swift */; };
 		033CF1C3205BFF9A00627321 /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033CF1C1205BFF9A00627321 /* Tags.swift */; };
 		033CF1C5205C0F7400627321 /* ItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033CF1C4205C0F7400627321 /* ItemInfo.swift */; };
-		033CF1C7205ED95500627321 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033CF1C6205ED95500627321 /* CommentView.swift */; };
-		033CF1C9205EDD7900627321 /* CommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 033CF1C8205EDD7900627321 /* CommentView.xib */; };
+		033CF1C7205ED95500627321 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033CF1C6205ED95500627321 /* CommentCell.swift */; };
 		033CF1CB205FCB4500627321 /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033CF1CA205FCB4500627321 /* NibView.swift */; };
 		0354AAEE24311CE6009C35E0 /* DownloadedFilesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0354AAED24311CE6009C35E0 /* DownloadedFilesTableViewController.swift */; };
 		0354AAF024311D08009C35E0 /* DownloadedFilesTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0354AAEF24311D08009C35E0 /* DownloadedFilesTableViewController.storyboard */; };
@@ -82,6 +83,8 @@
 		03076A6F2059E80F00168E62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03076A752059E8B800168E62 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		03076A762059E8B800168E62 /* AllItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllItems.swift; sourceTree = "<group>"; };
+		030CAF532440B76400D6885C /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		030CAF552440B76A00D6885C /* CommentsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommentsViewController.storyboard; sourceTree = "<group>"; };
 		031EE82D2065C59B0030CA68 /* PR0GRAMM TV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PR0GRAMM TV.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		031EE82F2065C59B0030CA68 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		031EE8312065C59B0030CA68 /* TVViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVViewController.swift; sourceTree = "<group>"; };
@@ -99,8 +102,7 @@
 		033CF1C0205BFF9A00627321 /* Comments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comments.swift; sourceTree = "<group>"; };
 		033CF1C1205BFF9A00627321 /* Tags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
 		033CF1C4205C0F7400627321 /* ItemInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemInfo.swift; sourceTree = "<group>"; };
-		033CF1C6205ED95500627321 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
-		033CF1C8205EDD7900627321 /* CommentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentView.xib; sourceTree = "<group>"; };
+		033CF1C6205ED95500627321 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		033CF1CA205FCB4500627321 /* NibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
 		0354AAED24311CE6009C35E0 /* DownloadedFilesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadedFilesTableViewController.swift; sourceTree = "<group>"; };
 		0354AAEF24311D08009C35E0 /* DownloadedFilesTableViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DownloadedFilesTableViewController.storyboard; sourceTree = "<group>"; };
@@ -205,6 +207,36 @@
 			path = Pr0gramm;
 			sourceTree = "<group>";
 		};
+		030CAF502440B70700D6885C /* InfoView */ = {
+			isa = PBXGroup;
+			children = (
+				03B0628B2428CFE100CA657A /* InfoView.swift */,
+				03B062892428CFD600CA657A /* InfoView.xib */,
+			);
+			path = InfoView;
+			sourceTree = "<group>";
+		};
+		030CAF512440B71300D6885C /* Tags */ = {
+			isa = PBXGroup;
+			children = (
+				03B0628D2428E9FF00CA657A /* TagsCollectionViewController.swift */,
+				03B062912428EB6E00CA657A /* TagsCollectionViewController.storyboard */,
+				03B062932428EC3600CA657A /* TagCollectionViewCell.swift */,
+				03A93325243BC82000A16E1B /* AlignedCollectionViewFlowLayout.swift */,
+			);
+			path = Tags;
+			sourceTree = "<group>";
+		};
+		030CAF522440B72300D6885C /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				033CF1C6205ED95500627321 /* CommentCell.swift */,
+				030CAF532440B76400D6885C /* CommentsViewController.swift */,
+				030CAF552440B76A00D6885C /* CommentsViewController.storyboard */,
+			);
+			path = Comments;
+			sourceTree = "<group>";
+		};
 		031EE82E2065C59B0030CA68 /* Pr0grammTV */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,17 +270,12 @@
 				0331B2852427ED4D0040D1D1 /* DetailCollectionViewController.swift */,
 				03D4B02B2427EDF30041DCC9 /* DetailCollectionViewCell.swift */,
 				0331B2872427ED680040D1D1 /* DetailCollectionViewController.storyboard */,
-				033CF1BB205BE5AC00627321 /* DetailViewController.swift */,
 				032E62FE243F8E9900FA6C00 /* DetailViewModel.swift */,
+				033CF1BB205BE5AC00627321 /* DetailViewController.swift */,
 				035EBA832427790C009185E9 /* DetailViewController.storyboard */,
-				03B0628B2428CFE100CA657A /* InfoView.swift */,
-				03B062892428CFD600CA657A /* InfoView.xib */,
-				03B0628D2428E9FF00CA657A /* TagsCollectionViewController.swift */,
-				03B062912428EB6E00CA657A /* TagsCollectionViewController.storyboard */,
-				03B062932428EC3600CA657A /* TagCollectionViewCell.swift */,
-				03A93325243BC82000A16E1B /* AlignedCollectionViewFlowLayout.swift */,
-				033CF1C6205ED95500627321 /* CommentView.swift */,
-				033CF1C8205EDD7900627321 /* CommentView.xib */,
+				030CAF502440B70700D6885C /* InfoView */,
+				030CAF512440B71300D6885C /* Tags */,
+				030CAF522440B72300D6885C /* Comments */,
 				0388A0B424293BE0006E86A3 /* TapableImage+Video.swift */,
 				0354AAF424312E52009C35E0 /* ImageDetailViewController.swift */,
 				0354AAF224312E37009C35E0 /* ImageDetailViewController.storyboard */,
@@ -385,11 +412,11 @@
 				0354AAF024311D08009C35E0 /* DownloadedFilesTableViewController.storyboard in Resources */,
 				03076A6E2059E80F00168E62 /* LaunchScreen.storyboard in Resources */,
 				03076A6B2059E80F00168E62 /* Assets.xcassets in Resources */,
+				030CAF562440B76A00D6885C /* CommentsViewController.storyboard in Resources */,
 				0354AAF324312E37009C35E0 /* ImageDetailViewController.storyboard in Resources */,
 				03D2AC48243212C40082D4C9 /* FlagsViewController.storyboard in Resources */,
 				03B0628A2428CFD600CA657A /* InfoView.xib in Resources */,
 				035EBA7F24262CA3009185E9 /* LoginViewController.storyboard in Resources */,
-				033CF1C9205EDD7900627321 /* CommentView.xib in Resources */,
 				035EBA842427790C009185E9 /* DetailViewController.storyboard in Resources */,
 				03B062922428EB6E00CA657A /* TagsCollectionViewController.storyboard in Resources */,
 				0331B2882427ED680040D1D1 /* DetailCollectionViewController.storyboard in Resources */,
@@ -466,6 +493,7 @@
 			files = (
 				03076A662059E80F00168E62 /* UIImageView+Extension.swift in Sources */,
 				03D2AC50243264740082D4C9 /* With.swift in Sources */,
+				030CAF542440B76400D6885C /* CommentsViewController.swift in Sources */,
 				035EBA7D24262C7E009185E9 /* StoryboardViewController.swift in Sources */,
 				0388A0B524293BE0006E86A3 /* TapableImage+Video.swift in Sources */,
 				03B062942428EC3600CA657A /* TagCollectionViewCell.swift in Sources */,
@@ -483,7 +511,7 @@
 				03A93328243CEFE100A16E1B /* HapticFeedbackButton.swift in Sources */,
 				0354AAEE24311CE6009C35E0 /* DownloadedFilesTableViewController.swift in Sources */,
 				03D4B02C2427EDF30041DCC9 /* DetailCollectionViewCell.swift in Sources */,
-				033CF1C7205ED95500627321 /* CommentView.swift in Sources */,
+				033CF1C7205ED95500627321 /* CommentCell.swift in Sources */,
 				035EBA822426DA5E009185E9 /* Coordinator.swift in Sources */,
 				03C1FA242427854600E6AEE4 /* NavigationController.swift in Sources */,
 				03B0628C2428CFE100CA657A /* InfoView.swift in Sources */,
