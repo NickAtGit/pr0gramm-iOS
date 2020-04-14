@@ -146,26 +146,6 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
             avPlayer.replaceCurrentItem(with: playerItem)
         }
     }
-        
-//    @objc
-//    func showComments() {
-//        guard !commentsAreShown else { return }
-//        guard let itemInfo = itemInfo else { return }
-//        commentsAreShown = true
-//        self.addComments(for: itemInfo)
-//        loadCommentsButton.isHidden = true
-//    }
-    
-//    private func addComments(for itemInfo: ItemInfo) {
-//        for comment in itemInfo.comments {
-//            DispatchQueue.main.async {
-//                let commentView = CommentCell.instantiateFromNib()
-//                commentView.pr0grammConnector = self.coordinator?.pr0grammConnector
-//                commentView.comment = comment
-//                self.commentsStackView.addArrangedSubview(commentView)
-//            }
-//        }
-//    }
     
     @objc
     func playerItemDidReachEnd(_ notification: NSNotification) {
@@ -191,5 +171,30 @@ extension DetailViewController: AVPlayerViewControllerDelegate {
     
     func playerViewController(_ playerViewController: AVPlayerViewController, willEndFullScreenPresentationWithAnimationCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         playerViewController.player?.play()
+    }
+}
+
+extension DetailViewController: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController,
+                                presenting: UIViewController?,
+                                source: UIViewController) -> UIPresentationController? {
+        
+        return HalfSizePresentationController(presentedViewController: presented,
+                                              presenting: presenting)
+    }
+}
+
+class HalfSizePresentationController : UIPresentationController {
+    override var frameOfPresentedViewInContainerView: CGRect {
+        get {
+            guard let containerView = containerView else {
+                return CGRect.zero
+            }
+
+            return CGRect(x: 0,
+                          y: containerView.bounds.height/2,
+                          width: containerView.bounds.width,
+                          height: containerView.bounds.height/2)
+        }
     }
 }

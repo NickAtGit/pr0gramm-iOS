@@ -13,6 +13,8 @@ class DetailViewModel {
     let isTagsExpanded = Observable<Bool>(false)
     let isTagsExpandButtonHidden = Observable<Bool>(true)
     
+    var comments: [Comments]?
+    
     init(item: Item, connector: Pr0grammConnector) {
         self.item = Observable<Item>(item)
         self.connector = connector
@@ -20,8 +22,10 @@ class DetailViewModel {
         points.value = "\(item.up - item.down)"
         userName.value = item.user
         
-        connector.loadItemInfo(for: item.id) { [weak self] in
-            self?.itemInfo.value = $0
+        connector.loadItemInfo(for: item.id) { [weak self] itemInfo in
+            guard let itemInfo = itemInfo else { return }
+            self?.itemInfo.value = itemInfo
+            self?.comments = itemInfo.comments
         }
     }
     

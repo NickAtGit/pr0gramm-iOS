@@ -49,4 +49,8 @@ class CommentCell: UITableViewCell {
         pr0grammConnector?.vote(commentId: "\(id)", value: -1)
         feedback.selectionChanged()
     }
+    
+    override func prepareForReuse() {
+        leadingConstraint.constant = 20
+    }
 }

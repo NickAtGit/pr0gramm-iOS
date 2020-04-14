@@ -9,6 +9,7 @@ class InfoView: UIView, NibView {
             viewModel.points.bind(to: pointsLabel.reactive.text)
             viewModel.userName.bind(to: userNameLabel.reactive.text)
             viewModel.isTagsExpandButtonHidden.bind(to: tagsButton.reactive.isHidden)
+            viewModel.isCommentsButtonHidden.bind(to: commentsButton.reactive.isHidden)
             let _ = viewModel.isTagsExpanded.observeNext { [weak self] isExpanded in
                 self?.tagsButton.setImage(isExpanded ? UIImage(systemName: "tag.fill") : UIImage(systemName: "tag"), for: .normal)
             }
