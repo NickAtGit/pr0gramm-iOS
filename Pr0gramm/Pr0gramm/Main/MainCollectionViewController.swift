@@ -30,6 +30,8 @@ class MainCollectionViewController: UICollectionViewController, StoryboardInitia
             collectionView?.refreshControl = refreshControl
             refresh()
         }
+        
+        updateTabBarItem(for: Sorting(rawValue: AppSettings.sorting)!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,6 +42,20 @@ class MainCollectionViewController: UICollectionViewController, StoryboardInitia
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         coordinator?.pr0grammConnector.removeObserver(self)
+    }
+    
+    func updateTabBarItem(for sorting: Sorting) {
+        
+        switch sorting {
+        case .top:
+            tabBarItem = UITabBarItem(title: "Top",
+                                      image: UIImage(systemName: "list.bullet"),
+                                      selectedImage: nil)
+        case .neu:
+            tabBarItem = UITabBarItem(title: "Neu",
+                                      image: UIImage(systemName: "list.bullet"),
+                                      selectedImage: nil)
+        }
     }
 
     @objc

@@ -115,6 +115,11 @@ class NavigationController: UINavigationController, UIPopoverPresentationControl
         coordinator?.pr0grammConnector.clearItems()
         coordinator?.pr0grammConnector.fetchItems(sorting: Sorting(rawValue: AppSettings.sorting)!,
                                                   flags: AppSettings.currentFlags)
+
+        
+        if let mainCollectionViewController = topViewController as? MainCollectionViewController {
+            mainCollectionViewController.updateTabBarItem(for: Sorting(rawValue: AppSettings.sorting)!)
+        }
     }
 }
 

@@ -13,7 +13,7 @@ class FlagsViewController: UIViewController, StoryboardInitialViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        sortingSegmentedControl.selectedSegmentIndex = AppSettings.sorting == 1 ? 0 : 1
+        sortingSegmentedControl.selectedSegmentIndex = AppSettings.sorting == Sorting.top.rawValue ? 0 : 1
         sfwSwitch.isOn = AppSettings.sfwActive || !AppSettings.isLoggedIn
         nsfwSwitch.isOn = AppSettings.nsfwActive && AppSettings.isLoggedIn
         nsflSwitch.isOn = AppSettings.nsflActive && AppSettings.isLoggedIn
@@ -28,7 +28,7 @@ class FlagsViewController: UIViewController, StoryboardInitialViewController {
     }
     
     @IBAction func sortingSegmentedControlChanged(_ sender: UISegmentedControl) {
-        AppSettings.sorting = sender.selectedSegmentIndex == 0 ? 1 : 0
+        AppSettings.sorting = sender.selectedSegmentIndex == 0 ? Sorting.top.rawValue : Sorting.neu.rawValue
     }
     
     @IBAction func sfwSwitchChanged(_ sender: UISwitch) {

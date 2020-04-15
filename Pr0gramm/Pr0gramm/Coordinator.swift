@@ -52,10 +52,7 @@ class Coordinator {
         viewController.isSearch = isSearch
         viewController.coordinator = self
         viewController.items = items
-        let detailNavigationController = NavigationController(rootViewController: viewController)
-        detailNavigationController.style = .dismissable
-        detailNavigationController.modalPresentationStyle = .fullScreen
-        navigationController.topVisibleViewController?.present(detailNavigationController, animated: true)
+        navigationController.pushViewController(viewController, animated: true)
         viewController.scrollTo(indexPath: indexPath)
     }
     

@@ -29,7 +29,7 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
                                                     target: self,
                                                     action: #selector(downloadItem))
                 
-        navigationItem.leftBarButtonItem = downloadBarButtonItem
+        navigationItem.rightBarButtonItem = downloadBarButtonItem
     }
     
     override func viewWillAppear(_ animated: Bool) {

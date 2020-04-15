@@ -12,7 +12,8 @@ class DetailViewModel {
     let userName = Observable<String?>(nil)
     let isTagsExpanded = Observable<Bool>(false)
     let isTagsExpandButtonHidden = Observable<Bool>(true)
-    
+    let isCommentsButtonHidden = Observable<Bool>(true)
+
     var comments: [Comments]?
     
     init(item: Item, connector: Pr0grammConnector) {
@@ -25,6 +26,7 @@ class DetailViewModel {
         connector.loadItemInfo(for: item.id) { [weak self] itemInfo in
             guard let itemInfo = itemInfo else { return }
             self?.itemInfo.value = itemInfo
+            self?.isCommentsButtonHidden.value = itemInfo.comments.count == 0
             self?.comments = itemInfo.comments
         }
     }
