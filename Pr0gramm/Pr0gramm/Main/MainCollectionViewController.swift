@@ -6,11 +6,7 @@ private let reuseIdentifier = "thumbCell"
 class MainCollectionViewController: UICollectionViewController, StoryboardInitialViewController {
 
     weak var coordinator: Coordinator?
-    var items: [Item]? {
-        didSet {
-            collectionView.reloadData()
-        }
-    }
+    var items: [Item]?
     var isSearch = false
     private let numberOfCellsPerRow: CGFloat = 3
     private let refreshControl = UIRefreshControl()
@@ -49,12 +45,12 @@ class MainCollectionViewController: UICollectionViewController, StoryboardInitia
         switch sorting {
         case .top:
             tabBarItem = UITabBarItem(title: "Top",
-                                      image: UIImage(systemName: "list.bullet"),
-                                      selectedImage: nil)
+                                      image: UIImage(systemName: "circle.grid.3x3"),
+                                      selectedImage: UIImage(systemName: "circle.grid.3x3.fill"))
         case .neu:
             tabBarItem = UITabBarItem(title: "Neu",
-                                      image: UIImage(systemName: "list.bullet"),
-                                      selectedImage: nil)
+                                      image: UIImage(systemName: "circle.grid.3x3"),
+                                      selectedImage: UIImage(systemName: "circle.grid.3x3.fill"))
         }
     }
 

@@ -84,12 +84,12 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="commentsButton" destination="3dJ-S0-pff" id="bw7-Ps-jrJ"/>
+                <outlet property="downvoteButton" destination="gnB-LX-WFX" id="Qd9-vT-9Jf"/>
+                <outlet property="favoriteButton" destination="4p2-8H-bwM" id="CPo-9p-LEC"/>
                 <outlet property="pointsLabel" destination="aYp-gL-QPE" id="b9b-q1-5DD"/>
                 <outlet property="tagsButton" destination="S43-mO-YX6" id="V7v-YS-NaP"/>
+                <outlet property="upvoteButton" destination="Nlf-jk-WA2" id="LwO-eR-Hsh"/>
                 <outlet property="userNameLabel" destination="DTY-Ga-v1E" id="eu2-h3-8Ij"/>
-                <outletCollection property="voteButtons" destination="Nlf-jk-WA2" collectionClass="NSMutableArray" id="frz-zj-oGA"/>
-                <outletCollection property="voteButtons" destination="4p2-8H-bwM" collectionClass="NSMutableArray" id="bTw-TY-08w"/>
-                <outletCollection property="voteButtons" destination="gnB-LX-WFX" collectionClass="NSMutableArray" id="H5H-G3-ovd"/>
             </connections>
             <point key="canvasLocation" x="105.59999999999999" y="-38.680659670164921"/>
         </view>

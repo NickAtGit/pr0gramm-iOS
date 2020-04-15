@@ -13,13 +13,13 @@ class DetailViewModel {
     let isTagsExpanded = Observable<Bool>(false)
     let isTagsExpandButtonHidden = Observable<Bool>(true)
     let isCommentsButtonHidden = Observable<Bool>(true)
-
+    let initialPointCount: Int
     var comments: [Comments]?
     
     init(item: Item, connector: Pr0grammConnector) {
         self.item = Observable<Item>(item)
         self.connector = connector
-        
+        self.initialPointCount = item.up - item.down
         points.value = "\(item.up - item.down)"
         userName.value = item.user
         
@@ -32,7 +32,7 @@ class DetailViewModel {
     }
     
     func vote(_ vote: Vote) {
-        connector.vote(itemId: "\(item.value.id)", value: vote.rawValue)
+        connector.vote(itemId: item.value.id, value: vote.rawValue)
     }
     
     func imageLink() -> String? {

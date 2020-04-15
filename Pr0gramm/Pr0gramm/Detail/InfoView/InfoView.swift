@@ -20,10 +20,12 @@ class InfoView: UIView, NibView {
     var upvoteAction: (() -> Void)?
     var downvoteAction: (() -> Void)?
     var favoriteAction: (() -> Void)?
-
+    
     @IBOutlet private var pointsLabel: UILabel!
     @IBOutlet private var userNameLabel: UILabel!
-    @IBOutlet private var voteButtons: [HapticFeedbackButton]!
+    @IBOutlet private var upvoteButton: HapticFeedbackButton!
+    @IBOutlet private var downvoteButton: HapticFeedbackButton!
+    @IBOutlet private var favoriteButton: HapticFeedbackButton!
     @IBOutlet private var tagsButton: HapticFeedbackButton!
     @IBOutlet private var commentsButton: HapticFeedbackButton!
     
@@ -36,20 +38,29 @@ class InfoView: UIView, NibView {
     
     @IBAction func upvoteTapped(_ sender: HapticFeedbackButton) {
         viewModel.vote(.upvote)
-        changeSelectedStateFor(button: sender)
         upvoteAction?()
+        pointsLabel.text = "\(viewModel.initialPointCount + 1)"
+        upvoteButton.imageView?.tintColor = .green
+        favoriteButton.imageView?.tintColor = nil
+        downvoteButton.imageView?.tintColor = nil
     }
     
     @IBAction func favoriteTapped(_ sender: HapticFeedbackButton) {
         viewModel.vote(.favorite)
-        changeSelectedStateFor(button: sender)
         favoriteAction?()
+        pointsLabel.text = "\(viewModel.initialPointCount + 1)"
+        upvoteButton.imageView?.tintColor = nil
+        favoriteButton.imageView?.tintColor = .red
+        downvoteButton.imageView?.tintColor = nil
     }
     
     @IBAction func downvoteTapped(_ sender: HapticFeedbackButton) {
         viewModel.vote(.downvote)
-        changeSelectedStateFor(button: sender)
         downvoteAction?()
+        pointsLabel.text = "\(viewModel.initialPointCount - 1)"
+        upvoteButton.imageView?.tintColor = nil
+        favoriteButton.imageView?.tintColor = nil
+        downvoteButton.imageView?.tintColor = .red
     }
     
     @IBAction func expandTagsTapped(_ sender: Any) {
@@ -58,9 +69,5 @@ class InfoView: UIView, NibView {
     
     @IBAction func showCommentsTapped(_ sender: Any) {
         showCommentsAction?()
-    }
-    
-    private func changeSelectedStateFor(button: HapticFeedbackButton) {
-        voteButtons.forEach { $0 === button ? ($0.imageView?.tintColor = .green) : ($0.imageView?.tintColor = nil )}
     }
 }

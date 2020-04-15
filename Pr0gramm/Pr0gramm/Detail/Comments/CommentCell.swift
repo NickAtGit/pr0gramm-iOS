@@ -5,20 +5,26 @@ class CommentCell: UITableViewCell {
     
     var pr0grammConnector: Pr0grammConnector?
     
-    @IBOutlet var messageTextView: UITextView!
-    @IBOutlet var authorLabel: UILabel!
-    @IBOutlet var pointsLabel: UILabel!
-    @IBOutlet var leadingConstraint: NSLayoutConstraint!
-    let feedback = UISelectionFeedbackGenerator()
+    @IBOutlet private var messageTextView: UITextView!
+    @IBOutlet private var authorLabel: UILabel!
+    @IBOutlet private var pointsLabel: UILabel!
+    @IBOutlet private var leadingConstraint: NSLayoutConstraint!
+    @IBOutlet private var upvoteButton: UIButton!
+    @IBOutlet private var downVoteButton: UIButton!
+    @IBOutlet private var favoriteButton: UIButton!
+    
+    private let feedback = UISelectionFeedbackGenerator()
+    private var initialPointCount = 0
+    
     var comment: Comments! {
         didSet {
             authorLabel.text = comment.name
             messageTextView.text = comment.content
-            let points = comment.up - comment.down
-            pointsLabel.text = "\(points)"
+            initialPointCount =  comment.up - comment.down
+            pointsLabel.text = "\(initialPointCount)"
 
             if comment.parent != 0 {
-                leadingConstraint.constant = leadingConstraint.constant + 15
+                leadingConstraint.constant = leadingConstraint.constant + 20
             }
         }
     }
@@ -28,8 +34,8 @@ class CommentCell: UITableViewCell {
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .clear
         messageTextView.textColor = .white
-        authorLabel.textColor = .lightGray
-        pointsLabel.textColor = #colorLiteral(red: 0.9333333333, green: 0.3019607843, blue: 0.1803921569, alpha: 1)
+        authorLabel.textColor = #colorLiteral(red: 0.5333333333, green: 0.5333333333, blue: 0.5333333333, alpha: 1)
+        pointsLabel.textColor = .white
         messageTextView.isScrollEnabled = false
         messageTextView.backgroundColor = .clear
         messageTextView.textContainerInset = .zero
@@ -39,18 +45,40 @@ class CommentCell: UITableViewCell {
     @IBAction func upvoteTapped(_ sender: Any) {
         guard let comment = comment,
             let id = comment.id else { return }
-        pr0grammConnector?.vote(commentId: "\(id)", value: 1)
+        pr0grammConnector?.vote(commentId: id, value: .upvote)
         feedback.selectionChanged()
+        upvoteButton.imageView?.tintColor = .green
+        downVoteButton.imageView?.tintColor = nil
+        pointsLabel.text = "\(initialPointCount + 1)"
+        favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
     }
     
     @IBAction func downVoteTapped(_ sender: Any) {
         guard let comment = comment,
             let id = comment.id else { return }
-        pr0grammConnector?.vote(commentId: "\(id)", value: -1)
+        pr0grammConnector?.vote(commentId: id, value: .downvote)
         feedback.selectionChanged()
+        upvoteButton.imageView?.tintColor = nil
+        downVoteButton.imageView?.tintColor = .red
+        pointsLabel.text = "\(initialPointCount - 1)"
+        favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+    }
+    
+    @IBAction func favoriteButtonTapped(_ sender: Any) {
+        guard let comment = comment,
+            let id = comment.id else { return }
+        pr0grammConnector?.vote(commentId: id, value: .favorite)
+        feedback.selectionChanged()
+        favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        upvoteButton.imageView?.tintColor = nil
+        downVoteButton.imageView?.tintColor = nil
+        pointsLabel.text = "\(initialPointCount + 1)"
     }
     
     override func prepareForReuse() {
         leadingConstraint.constant = 20
+        upvoteButton.imageView?.tintColor = nil
+        downVoteButton.imageView?.tintColor = nil
+        favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
     }
 }

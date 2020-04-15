@@ -169,10 +169,10 @@ class Pr0grammConnector {
     }
     
     //"description": "-1 = Minus, 1 = Plus, 2 = Fav, 0 = Kein Vote/Vote zurückziehen",
-    func vote(commentId: String, value: Int) {
+    func vote(commentId: Int, value: Vote) {
         guard let nonce = nonce else { return }
-        let data: [String: String] = ["id": commentId,
-                                      "vote": "\(value)",
+        let data: [String: String] = ["id": "\(commentId)",
+                                      "vote": "\(value.rawValue)",
                                       "_nonce": nonce]
 
         let url = URL(string: http + baseURL + "api/comments/vote")!
@@ -181,9 +181,9 @@ class Pr0grammConnector {
         }
     }
     
-    func vote(itemId: String, value: Int) {
+    func vote(itemId: Int, value: Int) {
         guard let nonce = nonce else { return }
-        let data: [String: String] = ["id": itemId,
+        let data: [String: String] = ["id": "\(itemId)",
                                       "vote": "\(value)",
                                       "_nonce": nonce]
 

@@ -13,6 +13,9 @@ class DownloadedFilesTableViewController: UITableViewController, StoryboardIniti
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Downloads"
+        tabBarItem = UITabBarItem(title: "Downloads",
+                                  image: UIImage(systemName: "square.and.arrow.down"),
+                                  selectedImage: UIImage(systemName: "square.and.arrow.down.fill"))
     }
     
     override func viewWillAppear(_ animated: Bool) {
