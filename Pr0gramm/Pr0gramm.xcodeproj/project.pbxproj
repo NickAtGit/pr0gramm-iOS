@@ -16,6 +16,7 @@
 		03076A782059E8B900168E62 /* AllItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03076A762059E8B800168E62 /* AllItems.swift */; };
 		030CAF542440B76400D6885C /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030CAF532440B76400D6885C /* CommentsViewController.swift */; };
 		030CAF562440B76A00D6885C /* CommentsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 030CAF552440B76A00D6885C /* CommentsViewController.storyboard */; };
+		030CAF5E2449183F00D6885C /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030CAF5D2449183F00D6885C /* UIImage+Gif.swift */; };
 		031EE8302065C59B0030CA68 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031EE82F2065C59B0030CA68 /* AppDelegate.swift */; };
 		031EE8322065C59B0030CA68 /* TVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031EE8312065C59B0030CA68 /* TVViewController.swift */; };
 		031EE8352065C59B0030CA68 /* Pr0grammTV.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 031EE8332065C59B0030CA68 /* Pr0grammTV.xcdatamodeld */; };
@@ -85,6 +86,7 @@
 		03076A762059E8B800168E62 /* AllItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllItems.swift; sourceTree = "<group>"; };
 		030CAF532440B76400D6885C /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		030CAF552440B76A00D6885C /* CommentsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommentsViewController.storyboard; sourceTree = "<group>"; };
+		030CAF5D2449183F00D6885C /* UIImage+Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
 		031EE82D2065C59B0030CA68 /* PR0GRAMM TV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PR0GRAMM TV.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		031EE82F2065C59B0030CA68 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		031EE8312065C59B0030CA68 /* TVViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVViewController.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				0354AAF12431287A009C35E0 /* DownloadedFiles */,
 				033CF1BF205BFD3A00627321 /* API */,
 				03076A652059E80F00168E62 /* UIImageView+Extension.swift */,
+				030CAF5D2449183F00D6885C /* UIImage+Gif.swift */,
 				03A93327243CEFE100A16E1B /* HapticFeedbackButton.swift */,
 				03D2AC4F243264740082D4C9 /* Theme.swift */,
 				03D2AC4E243264740082D4C9 /* UIWindow.swift */,
@@ -525,6 +528,7 @@
 				033CF1B8205BDC6B00627321 /* Pr0grammConnector.swift in Sources */,
 				03A93326243BC82000A16E1B /* AlignedCollectionViewFlowLayout.swift in Sources */,
 				0388A0B724297C70006E86A3 /* Downloader.swift in Sources */,
+				030CAF5E2449183F00D6885C /* UIImage+Gif.swift in Sources */,
 				033CF1CB205FCB4500627321 /* NibView.swift in Sources */,
 				0354AAF524312E52009C35E0 /* ImageDetailViewController.swift in Sources */,
 				033CF1C3205BFF9A00627321 /* Tags.swift in Sources */,

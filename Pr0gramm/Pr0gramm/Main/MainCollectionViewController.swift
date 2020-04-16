@@ -42,12 +42,16 @@ class MainCollectionViewController: UICollectionViewController, StoryboardInitia
     
     func updateTabBarItem(for sorting: Sorting) {
         
+        guard !isSearch else { return }
+        
         switch sorting {
         case .top:
+            title = "Top"
             tabBarItem = UITabBarItem(title: "Top",
                                       image: UIImage(systemName: "circle.grid.3x3"),
                                       selectedImage: UIImage(systemName: "circle.grid.3x3.fill"))
         case .neu:
+            title = "Neu"
             tabBarItem = UITabBarItem(title: "Neu",
                                       image: UIImage(systemName: "circle.grid.3x3"),
                                       selectedImage: UIImage(systemName: "circle.grid.3x3.fill"))

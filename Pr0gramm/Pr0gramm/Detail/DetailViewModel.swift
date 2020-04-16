@@ -2,6 +2,10 @@
 import Foundation
 import Bond
 
+enum MediaType {
+    case image, gif, video
+}
+
 class DetailViewModel {
     
     let item: Observable<Item>
@@ -15,6 +19,8 @@ class DetailViewModel {
     let isCommentsButtonHidden = Observable<Bool>(true)
     let initialPointCount: Int
     var comments: [Comments]?
+    let link: String
+    let mediaType: MediaType
     
     init(item: Item, connector: Pr0grammConnector) {
         self.item = Observable<Item>(item)
@@ -22,6 +28,9 @@ class DetailViewModel {
         self.initialPointCount = item.up - item.down
         points.value = "\(item.up - item.down)"
         userName.value = item.user
+        let link = connector.link(for: item)
+        self.link = link.link
+        mediaType = link.mediaType
         
         connector.loadItemInfo(for: item.id) { [weak self] itemInfo in
             guard let itemInfo = itemInfo else { return }
@@ -32,14 +41,6 @@ class DetailViewModel {
     }
     
     func vote(_ vote: Vote) {
-        connector.vote(itemId: item.value.id, value: vote.rawValue)
-    }
-    
-    func imageLink() -> String? {
-        return connector.imageLink(for: item.value)
-    }
-    
-    func videoLink() -> String? {
-        return connector.videoLink(for: item.value)
+        connector.vote(id: item.value.id, value: vote, type: .voteItem)
     }
 }

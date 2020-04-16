@@ -3,7 +3,7 @@ import UIKit
 
 class CommentCell: UITableViewCell {
     
-    var pr0grammConnector: Pr0grammConnector?
+    var detailViewModel: DetailViewModel!
     
     @IBOutlet private var messageTextView: UITextView!
     @IBOutlet private var authorLabel: UILabel!
@@ -45,7 +45,7 @@ class CommentCell: UITableViewCell {
     @IBAction func upvoteTapped(_ sender: Any) {
         guard let comment = comment,
             let id = comment.id else { return }
-        pr0grammConnector?.vote(commentId: id, value: .upvote)
+        detailViewModel.connector.vote(id: id, value: .upvote, type: .voteComment)
         feedback.selectionChanged()
         upvoteButton.imageView?.tintColor = .green
         downVoteButton.imageView?.tintColor = nil
@@ -56,7 +56,7 @@ class CommentCell: UITableViewCell {
     @IBAction func downVoteTapped(_ sender: Any) {
         guard let comment = comment,
             let id = comment.id else { return }
-        pr0grammConnector?.vote(commentId: id, value: .downvote)
+        detailViewModel.connector.vote(id: id, value: .downvote, type: .voteComment)
         feedback.selectionChanged()
         upvoteButton.imageView?.tintColor = nil
         downVoteButton.imageView?.tintColor = .red
@@ -67,7 +67,7 @@ class CommentCell: UITableViewCell {
     @IBAction func favoriteButtonTapped(_ sender: Any) {
         guard let comment = comment,
             let id = comment.id else { return }
-        pr0grammConnector?.vote(commentId: id, value: .favorite)
+        detailViewModel.connector.vote(id: id, value: .favorite, type: .voteComment)
         feedback.selectionChanged()
         favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         upvoteButton.imageView?.tintColor = nil

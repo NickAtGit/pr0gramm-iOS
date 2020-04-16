@@ -47,6 +47,20 @@ enum PostType {
     case login
     case voteComment
     case voteItem
+    case voteTag
+    
+    var path: String {
+        switch self {
+        case .login:
+           return ""
+        case .voteComment:
+           return "comments"
+        case .voteItem:
+           return "items"
+        case .voteTag:
+           return "tags"
+        }
+    }
 }
 
 enum Vote: Int {
@@ -169,27 +183,16 @@ class Pr0grammConnector {
     }
     
     //"description": "-1 = Minus, 1 = Plus, 2 = Fav, 0 = Kein Vote/Vote zurückziehen",
-    func vote(commentId: Int, value: Vote) {
+    
+    func vote(id: Int, value: Vote, type: PostType) {
         guard let nonce = nonce else { return }
-        let data: [String: String] = ["id": "\(commentId)",
+        let data: [String: String] = ["id": "\(id)",
                                       "vote": "\(value.rawValue)",
                                       "_nonce": nonce]
-
-        let url = URL(string: http + baseURL + "api/comments/vote")!
-        post(data: data, to: url, postType: .voteComment) { success in
-            print("Voted: \(success)")
-        }
-    }
-    
-    func vote(itemId: Int, value: Int) {
-        guard let nonce = nonce else { return }
-        let data: [String: String] = ["id": "\(itemId)",
-                                      "vote": "\(value)",
-                                      "_nonce": nonce]
-
-        let url = URL(string: http + baseURL + "api/items/vote")!
+        
+        let url = URL(string: http + baseURL + "api/\(type.path)/vote")!
         post(data: data, to: url, postType: .voteItem) { success in
-            print("Voted: \(success)")
+            print("Voted \(type.path): \(success)")
         }
     }
     
@@ -211,9 +214,7 @@ class Pr0grammConnector {
                 case .login:
                     let responseModel = try jsonDecoder.decode(Login.self, from: data)
                     completion(responseModel.success ?? false)
-                case .voteComment:
-                    completion(true)
-                case .voteItem:
+                case .voteTag, .voteItem, .voteComment:
                     completion(true)
                 }
             } catch {
@@ -306,16 +307,15 @@ class Pr0grammConnector {
         let link = http + thumb + baseURL + item.thumb
         return link
     }
-
-    func imageLink(for item: Item) -> String? {
-        guard !item.image.hasSuffix(".mp4") else { return nil }
-        let link = http + img + baseURL + item.image
-        return link
-    }
     
-    func videoLink(for item: Item) -> String {
-        let link = http + vid + baseURL + item.image
-        return link
+    func link(for item: Item) -> (link: String, mediaType: MediaType) {
+        if item.image.hasSuffix(".mp4") {
+            return (http + vid + baseURL + item.image, .video)
+        } else if item.image.hasSuffix(".gif") {
+            return (http + img + baseURL + item.image, .gif)
+        } else {
+            return (http + img + baseURL + item.image, .image)
+        }
     }
 
     func loadItemInfo(for id: Int, completion: @escaping (ItemInfo?) -> Void) {

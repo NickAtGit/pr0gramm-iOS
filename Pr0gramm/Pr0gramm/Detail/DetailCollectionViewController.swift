@@ -23,13 +23,6 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
         layout.minimumLineSpacing = 25
         layout.scrollDirection = .horizontal
         collectionView.collectionViewLayout = layout
-                
-        let downloadBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.down"),
-                                                    style: .plain,
-                                                    target: self,
-                                                    action: #selector(downloadItem))
-                
-        navigationItem.rightBarButtonItem = downloadBarButtonItem
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,24 +45,7 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
         coordinator?.pr0grammConnector.removeObserver(self)
         NotificationCenter.default.removeObserver(self)
     }
-            
-    @objc
-    func downloadItem() {
-        guard let connector = coordinator?.pr0grammConnector,
-            let cell = collectionView.visibleCells.first as? DetailCollectionViewCell else { return }
-        
-        let item = cell.detailViewController.viewModel.item.value
-        let link = connector.imageLink(for: item) ?? connector.videoLink(for: item)
-        let downloader = Downloader()
-        let url = URL(string: link)!
-        downloader.loadFileAsync(url: url) { successfully in
-            DispatchQueue.main.async {
-                let navigationContoller = self.navigationController as! NavigationController
-                navigationContoller.showBanner(with: successfully ? "Download abgeschlossen" : "Download fehlgeschlagen")
-            }
-        }
-    }
-    
+                
     @objc
     func nextItem() {
         guard let cell = collectionView.visibleCells.first else { return }

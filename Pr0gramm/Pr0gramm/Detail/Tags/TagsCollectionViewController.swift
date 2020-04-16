@@ -65,8 +65,8 @@ class TagsCollectionViewController: UICollectionViewController, StoryboardInitia
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "tagCell", for: indexPath) as! TagCollectionViewCell
-        cell.tagLabel.text = tags?[indexPath.row].tag
-        cell.tagLabel.sizeToFit()
+        cell.connector = coordinator?.pr0grammConnector
+        cell.tags = tags?[indexPath.row]
         return cell
     }
     

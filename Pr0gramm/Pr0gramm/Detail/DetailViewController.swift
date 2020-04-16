@@ -23,15 +23,11 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
     private var avPlayerViewController: TapableAVPlayerViewController?
     private let loadCommentsButton = UIButton()
     private var commentsAreShown = false
-    
+    private lazy var contextMenuInteraction = UIContextMenuInteraction(delegate: self)
+
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(showImageDetail),
-                                               name: Notification.Name("showImageDetail"),
-                                               object: nil)
-        
+                    
         scrollView.showsVerticalScrollIndicator = false
         imageView.isUserInteractionEnabled = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -64,87 +60,98 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
         contentView = hostView
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        //avPlayerViewController.entersFullScreenWhenPlaybackBegins = true
         
-//        avPlayerViewController.entersFullScreenWhenPlaybackBegins = true
-        
-        let _ = viewModel.isTagsExpanded.observeNext(with: { [weak self] isExpanded in
+        let _ = viewModel.isTagsExpanded.observeNext(with: { [unowned self] _ in
             UIView.animate(withDuration: 0.25) {
-                self?.view.layoutIfNeeded()
+                self.view.layoutIfNeeded()
             }
         })
         
-        let _ = viewModel.item.observeNext { [weak self] item in
-            self?.updateUI(with: item)
+        let _ = viewModel.item.observeNext { [unowned self] item in
+            self.setup(with: item)
         }
     }
-        
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         avPlayer?.pause()
         NotificationCenter.default.removeObserver(self)
     }
-    
+            
     override func viewDidLayoutSubviews() {
         scrollView.contentSize = CGSize(width: stackView.frame.width, height: stackView.frame.height)
     }
     
-    @objc
-    func showImageDetail(_ notificaiton: NSNotification) {
-        guard (notificaiton.object as? TapableImageView) === imageView else { return }
+    func showImageDetail() {
         guard let image = imageView.image else { return }
         coordinator?.showImageViewController(with: image, from: self)
     }
-    
-    @objc
-    func play() {
-        avPlayer?.play()
-    }
-    
-    func stop() {
-        avPlayer?.pause()
-    }
         
-    private func updateUI(with item: Item) {
-
-        avPlayer?.pause()
+    private func setup(with item: Item) {
         imageView.heightAnchor.constraint(equalTo: view.widthAnchor,
                                           multiplier: CGFloat(item.height) / CGFloat(item.width)).isActive = true
         
-        infoView.showCommentsAction = { [weak self] in
-            guard let self = self else { return }
-            self.coordinator?.showComments(viewModel: self.viewModel, from: self)
-        }
-
+        infoView.showCommentsAction = { [unowned self] in self.coordinator?.showComments(viewModel: self.viewModel, from: self) }
         infoView.upvoteAction = { [weak self] in self?.navigation?.showBanner(with: "Han blussert") }
         infoView.downvoteAction = { [weak self] in self?.navigation?.showBanner(with: "Han miesert") }
         
-        if let link = viewModel.imageLink() {
-            imageView.downloadedFrom(link: link)
-        } else {
-            avPlayer = AVPlayer()
-            avPlayerViewController = TapableAVPlayerViewController()
-            avPlayerViewController?.delegate = self
-            guard let avPlayer = avPlayer else { return }
-            guard let avPlayerViewController = avPlayerViewController else { return }
-
-            NotificationCenter.default.addObserver(self,
-                                                   selector: #selector(DetailViewController.playerItemDidReachEnd(_:)),
-                                                   name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
-                                                   object: avPlayer.currentItem)
-
-            avPlayer.isMuted = false
-            avPlayerViewController.player = avPlayer
-            avPlayerViewController.view.translatesAutoresizingMaskIntoConstraints = false
-            avPlayerViewController.view.heightAnchor.constraint(equalToConstant: view.bounds.width * CGFloat(item.height) / CGFloat(item.width)).isActive = true
-            addChild(avPlayerViewController)
-            stackView.removeArrangedSubview(imageView)
-            stackView.insertArrangedSubview(avPlayerViewController.view, at: 0)
-            avPlayerViewController.didMove(toParent: self)
-            guard let link = viewModel.videoLink() else { return }
-            let url = URL(string: link)
-            let playerItem = AVPlayerItem(url: url!)
-            avPlayer.replaceCurrentItem(with: playerItem)
+        switch viewModel.mediaType {
+        case .image:
+            setupImage()
+        case .gif:
+            setupGif()
+        case .video:
+            setupVideo(for: item)
         }
+    }
+        
+    func cleanup() {
+        avPlayer = nil
+        avPlayerViewController = nil
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    private func setupImage() {
+        imageView.downloadedFrom(link: viewModel.link)
+        imageView.addInteraction(contextMenuInteraction)
+    }
+    
+    private func setupGif() {
+        DispatchQueue.global().async { [unowned self] in
+            let gif = UIImage.gif(url: self.viewModel.link)
+            DispatchQueue.main.async {
+                self.imageView.image = gif
+            }
+        }
+        imageView.contentMode = .scaleAspectFit
+        imageView.addInteraction(contextMenuInteraction)
+    }
+    
+    private func setupVideo(for item: Item) {
+        avPlayer = AVPlayer()
+        avPlayerViewController = TapableAVPlayerViewController()
+        avPlayerViewController?.delegate = self
+        guard let avPlayer = avPlayer else { return }
+        guard let avPlayerViewController = avPlayerViewController else { return }
+        avPlayerViewController.view.addInteraction(contextMenuInteraction)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(DetailViewController.playerItemDidReachEnd(_:)),
+                                               name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
+                                               object: avPlayer.currentItem)
+
+        avPlayer.isMuted = false
+        avPlayerViewController.player = avPlayer
+        avPlayerViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        avPlayerViewController.view.heightAnchor.constraint(equalToConstant: view.bounds.width * CGFloat(item.height) / CGFloat(item.width)).isActive = true
+        addChild(avPlayerViewController)
+        stackView.removeArrangedSubview(imageView)
+        stackView.insertArrangedSubview(avPlayerViewController.view, at: 0)
+        avPlayerViewController.didMove(toParent: self)
+        let url = URL(string: viewModel.link)
+        let playerItem = AVPlayerItem(url: url!)
+        avPlayer.replaceCurrentItem(with: playerItem)
     }
     
     @objc
@@ -157,12 +164,59 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
         }
     }
     
-    func cleanup() {
-        avPlayer = nil
-        avPlayerViewController = nil
-        NotificationCenter.default.removeObserver(self)
+    @objc
+    func play() {
+        avPlayer?.play()
+    }
+    
+    func stop() {
+        avPlayer?.pause()
     }
 }
+
+
+
+extension DetailViewController: UIContextMenuInteractionDelegate {
+    func contextMenuInteraction(_ interaction: UIContextMenuInteraction,
+                                configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ -> UIMenu? in
+            return self.createContextMenu()
+        }
+    }
+    
+    func createContextMenu() -> UIMenu {
+        let downloadAction = UIAction(title: "Download", image: UIImage(systemName: "square.and.arrow.down")) { [unowned self] _ in
+            self.download()
+        }
+        
+        let fullscreenAction = UIAction(title: "Vollbild", image: UIImage(systemName: "rectangle.expand.vertical")) { [unowned self] _ in
+            self.showImageDetail()
+            self.avPlayerViewController?.goFullScreen()
+        }
+                
+        return UIMenu(title: "", children: [downloadAction, fullscreenAction])
+    }
+}
+
+
+
+extension DetailViewController {
+    
+    func download() {
+        guard let connector = coordinator?.pr0grammConnector else { return }
+        let item = viewModel.item.value
+        let link = connector.link(for: item)
+        let downloader = Downloader()
+        let url = URL(string: link.link)!
+        downloader.loadFileAsync(url: url) { [weak self] successfully in
+            DispatchQueue.main.async {
+                self?.navigation?.showBanner(with: successfully ? "Download abgeschlossen" : "Download fehlgeschlagen")
+            }
+        }
+    }
+}
+
+
 
 extension DetailViewController: AVPlayerViewControllerDelegate {
     func playerViewController(_ playerViewController: AVPlayerViewController, willBeginFullScreenPresentationWithAnimationCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -186,15 +240,10 @@ extension DetailViewController: UIViewControllerTransitioningDelegate {
 
 class HalfSizePresentationController : UIPresentationController {
     override var frameOfPresentedViewInContainerView: CGRect {
-        get {
-            guard let containerView = containerView else {
-                return CGRect.zero
-            }
-
-            return CGRect(x: 0,
-                          y: containerView.bounds.height/2,
-                          width: containerView.bounds.width,
-                          height: containerView.bounds.height/2)
-        }
+        guard let containerView = containerView else { return CGRect.zero }
+        return CGRect(x: 0,
+                      y: containerView.bounds.height / 2,
+                      width: containerView.bounds.width,
+                      height: containerView.bounds.height / 2)
     }
 }
