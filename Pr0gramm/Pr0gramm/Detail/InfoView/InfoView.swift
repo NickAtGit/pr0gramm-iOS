@@ -34,6 +34,10 @@ class InfoView: UIView, NibView {
         backgroundColor = .clear
         pointsLabel.textColor = .white
         userNameLabel.textColor = #colorLiteral(red: 0.5333333333, green: 0.5333333333, blue: 0.5333333333, alpha: 1)
+        
+        let interaction = UIContextMenuInteraction(delegate: self)
+        pointsLabel.addInteraction(interaction)
+        pointsLabel.isUserInteractionEnabled = true
     }
     
     @IBAction func upvoteTapped(_ sender: HapticFeedbackButton) {
@@ -69,5 +73,30 @@ class InfoView: UIView, NibView {
     
     @IBAction func showCommentsTapped(_ sender: Any) {
         showCommentsAction?()
+    }
+}
+
+
+extension InfoView: UIContextMenuInteractionDelegate {
+    func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ -> UIMenu? in
+            return self.createContextMenu()
+        }
+    }
+    
+    func createContextMenu() -> UIMenu {
+        let upvoteAction = UIAction(title: "Plus", image: UIImage(systemName: "plus.circle")) { [unowned self] _ in
+            self.viewModel.vote(.upvote)
+        }
+        
+        let favoriteAction = UIAction(title: "Favorit", image: UIImage(systemName: "heart")) { [unowned self] _ in
+            self.viewModel.vote(.favorite)
+        }
+
+        let downvoteAction = UIAction(title: "Minus", image: UIImage(systemName: "minus.circle")) { [unowned self] _ in
+            self.viewModel.vote(.downvote)
+        }
+                
+        return UIMenu(title: "", children: [upvoteAction, favoriteAction, downvoteAction])
     }
 }
