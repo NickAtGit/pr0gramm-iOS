@@ -32,39 +32,50 @@
                     </subviews>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="FiG-1h-MxZ">
-                    <rect key="frame" x="228" y="4" width="166" height="22"/>
+                    <rect key="frame" x="207" y="2.5" width="187" height="25.5"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nlf-jk-WA2" customClass="HapticFeedbackButton" customModule="Pr0gramm" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="20" height="22"/>
-                            <state key="normal" image="plus.circle" catalog="system"/>
+                            <rect key="frame" x="0.0" y="0.0" width="24" height="25.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <state key="normal" image="plus.circle" catalog="system">
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="thin"/>
+                            </state>
                             <connections>
                                 <action selector="upvoteTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="pcD-cv-sxA"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gnB-LX-WFX" customClass="HapticFeedbackButton" customModule="Pr0gramm" customModuleProvider="target">
-                            <rect key="frame" x="35" y="0.0" width="20" height="22"/>
-                            <state key="normal" image="minus.circle" catalog="system"/>
+                            <rect key="frame" x="39" y="0.0" width="24" height="25.5"/>
+                            <state key="normal" image="minus.circle" catalog="system">
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="thin"/>
+                            </state>
                             <connections>
                                 <action selector="downvoteTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="Sv6-Y7-gJw"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4p2-8H-bwM" customClass="HapticFeedbackButton" customModule="Pr0gramm" customModuleProvider="target">
-                            <rect key="frame" x="70" y="0.0" width="20.5" height="22"/>
-                            <state key="normal" image="heart" catalog="system"/>
+                            <rect key="frame" x="78" y="0.0" width="24.5" height="25.5"/>
+                            <state key="normal" image="heart" catalog="system">
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="thin"/>
+                            </state>
                             <connections>
                                 <action selector="favoriteTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="XJG-h0-9TT"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S43-mO-YX6" customClass="HapticFeedbackButton" customModule="Pr0gramm" customModuleProvider="target">
-                            <rect key="frame" x="105.5" y="0.0" width="23" height="22"/>
-                            <state key="normal" image="tag" catalog="system"/>
+                            <rect key="frame" x="117.5" y="0.0" width="27.5" height="25.5"/>
+                            <state key="normal" image="tag" catalog="system">
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="thin"/>
+                            </state>
                             <connections>
                                 <action selector="expandTagsTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="nDN-a1-8Nf"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3dJ-S0-pff" customClass="HapticFeedbackButton" customModule="Pr0gramm" customModuleProvider="target">
-                            <rect key="frame" x="143.5" y="0.0" width="22.5" height="22"/>
-                            <state key="normal" image="text.bubble" catalog="system"/>
+                            <rect key="frame" x="160" y="0.0" width="27" height="25.5"/>
+                            <state key="normal" image="text.bubble" catalog="system">
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="thin"/>
+                            </state>
                             <connections>
                                 <action selector="showCommentsTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="atb-ow-thR"/>
                             </connections>
