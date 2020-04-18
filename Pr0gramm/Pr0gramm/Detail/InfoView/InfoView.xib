@@ -82,6 +82,12 @@
                         </button>
                     </subviews>
                 </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZIN-aa-biM">
+                    <rect key="frame" x="359.5" y="40.5" width="34.5" height="19.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" name="Schriftfarbe ausgegraut"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -89,12 +95,15 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="lZI-SO-vmQ" secondAttribute="bottom" id="6Ic-So-sCQ"/>
                 <constraint firstItem="lZI-SO-vmQ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="CxE-eg-Ra6"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="FiG-1h-MxZ" secondAttribute="trailing" constant="20" id="E3p-Re-pm9"/>
+                <constraint firstItem="ZIN-aa-biM" firstAttribute="trailing" secondItem="FiG-1h-MxZ" secondAttribute="trailing" id="s9i-xt-8Vl"/>
+                <constraint firstItem="ZIN-aa-biM" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="sGe-eb-Hcy"/>
                 <constraint firstItem="lZI-SO-vmQ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="uLx-XS-8se"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="commentsButton" destination="3dJ-S0-pff" id="bw7-Ps-jrJ"/>
+                <outlet property="dateLabel" destination="ZIN-aa-biM" id="mMI-pO-Z0g"/>
                 <outlet property="downvoteButton" destination="gnB-LX-WFX" id="Qd9-vT-9Jf"/>
                 <outlet property="favoriteButton" destination="4p2-8H-bwM" id="CPo-9p-LEC"/>
                 <outlet property="pointsLabel" destination="aYp-gL-QPE" id="b9b-q1-5DD"/>

@@ -43,6 +43,7 @@ class MainCollectionViewController: UICollectionViewController, StoryboardInitia
     func updateTabBarItem(for sorting: Sorting) {
         
         guard !isSearch else { return }
+        tabBarItem = nil
         
         switch sorting {
         case .top:

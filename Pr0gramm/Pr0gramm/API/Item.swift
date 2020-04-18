@@ -17,6 +17,9 @@ struct Item : Codable {
 	let flags : Int
 	let user : String
 	let mark : Int
+    var date: Date {
+        return Date(timeIntervalSince1970: TimeInterval(created))
+    }
 
 	enum CodingKeys: String, CodingKey {
 
