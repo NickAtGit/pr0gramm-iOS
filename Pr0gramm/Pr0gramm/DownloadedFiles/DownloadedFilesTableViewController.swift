@@ -42,7 +42,12 @@ class DownloadedFilesTableViewController: UITableViewController, StoryboardIniti
         if fileURL.lastPathComponent.hasSuffix(".mp4") {
             cell.previewImageView.thumbnailImageFromVideoUrl(url: fileURL)
         } else {
-            cell.previewImageView.image = UIImage(contentsOfFile: fileURL.path)
+            DispatchQueue.global().async {
+                let image = UIImage(contentsOfFile: fileURL.path)
+                DispatchQueue.main.async {
+                    cell.previewImageView.image = image
+                }
+            }
         }
         
         return cell
