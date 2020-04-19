@@ -8,6 +8,7 @@ protocol SettingsConfigurable {}
 protocol UserSettingsConfigurable {
     static var isLoggedIn: Bool { get set }
     static var selectedTheme: Int { get set }
+    static var isVideoMuted: Bool { get set }
 }
 
 @objc
@@ -77,5 +78,10 @@ extension AppSettings: UserSettingsConfigurable {
     static var isLoggedIn: Bool {
         get { return AppSettings.value(for: #keyPath(isLoggedIn)) ?? false }
         set { AppSettings.updateDefaults(for: #keyPath(isLoggedIn), value: newValue) }
+    }
+    
+    static var isVideoMuted: Bool {
+        get { return AppSettings.value(for: #keyPath(isVideoMuted)) ?? false }
+        set { AppSettings.updateDefaults(for: #keyPath(isVideoMuted), value: newValue) }
     }
 }

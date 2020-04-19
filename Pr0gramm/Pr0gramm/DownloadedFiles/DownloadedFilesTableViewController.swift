@@ -7,7 +7,9 @@ class DownloadedFilesTableViewController: UITableViewController, StoryboardIniti
     weak var coordinator: Coordinator?
     private let cellIdentifier = "downloadedFileCell"
     private var files: [URL]? {
-        return FileManager.default.urls(for: .documentDirectory)?.sorted { $0.creationDate > $1.creationDate }
+        didSet {
+            tableView.reloadData()
+        }
     }
     
     override func viewDidLoad() {
@@ -19,7 +21,13 @@ class DownloadedFilesTableViewController: UITableViewController, StoryboardIniti
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        tableView.reloadData()
+        super.viewWillAppear(animated)
+        DispatchQueue.global().async {
+            let files = FileManager.default.urls(for: .documentDirectory)?.sorted { $0.creationDate > $1.creationDate }
+            DispatchQueue.main.async {
+                self.files = files
+            }
+        }
     }
         
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -60,7 +60,6 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
         contentView = hostView
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        //avPlayerViewController.entersFullScreenWhenPlaybackBegins = true
         
         let _ = viewModel.isTagsExpanded.observeNext(with: { [unowned self] _ in
             UIView.animate(withDuration: 0.25) {
@@ -152,6 +151,7 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
         let url = URL(string: viewModel.link)
         let playerItem = AVPlayerItem(url: url!)
         avPlayer.replaceCurrentItem(with: playerItem)
+        avPlayer.isMuted = AppSettings.isVideoMuted
     }
     
     @objc

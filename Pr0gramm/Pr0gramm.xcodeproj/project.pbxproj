@@ -18,6 +18,8 @@
 		030CAF562440B76A00D6885C /* CommentsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 030CAF552440B76A00D6885C /* CommentsViewController.storyboard */; };
 		030CAF5E2449183F00D6885C /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030CAF5D2449183F00D6885C /* UIImage+Gif.swift */; };
 		030CAF61244CD75E00D6885C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030CAF60244CD75E00D6885C /* SettingsViewController.swift */; };
+		030CAF66244CD93D00D6885C /* ThemeSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030CAF64244CD93D00D6885C /* ThemeSelectionCell.swift */; };
+		030CAF67244CD93D00D6885C /* ThemeSelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 030CAF65244CD93D00D6885C /* ThemeSelectionCell.xib */; };
 		031EE8302065C59B0030CA68 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031EE82F2065C59B0030CA68 /* AppDelegate.swift */; };
 		031EE8322065C59B0030CA68 /* TVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031EE8312065C59B0030CA68 /* TVViewController.swift */; };
 		031EE8352065C59B0030CA68 /* Pr0grammTV.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 031EE8332065C59B0030CA68 /* Pr0grammTV.xcdatamodeld */; };
@@ -90,6 +92,8 @@
 		030CAF5D2449183F00D6885C /* UIImage+Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
 		030CAF60244CD75E00D6885C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		030CAF62244CD7B600D6885C /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		030CAF64244CD93D00D6885C /* ThemeSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeSelectionCell.swift; sourceTree = "<group>"; };
+		030CAF65244CD93D00D6885C /* ThemeSelectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThemeSelectionCell.xib; sourceTree = "<group>"; };
 		031EE82D2065C59B0030CA68 /* PR0GRAMM TV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PR0GRAMM TV.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		031EE82F2065C59B0030CA68 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		031EE8312065C59B0030CA68 /* TVViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +198,8 @@
 				03C1FA232427854600E6AEE4 /* NavigationController.swift */,
 				03D2AC4A24321DB40082D4C9 /* Settings.swift */,
 				030CAF60244CD75E00D6885C /* SettingsViewController.swift */,
+				030CAF64244CD93D00D6885C /* ThemeSelectionCell.swift */,
+				030CAF65244CD93D00D6885C /* ThemeSelectionCell.xib */,
 				033CF1BD205BFD2A00627321 /* Main */,
 				033CF1BE205BFD3200627321 /* Detail */,
 				0354AAF12431287A009C35E0 /* DownloadedFiles */,
@@ -430,6 +436,7 @@
 				03076A6B2059E80F00168E62 /* Assets.xcassets in Resources */,
 				030CAF562440B76A00D6885C /* CommentsViewController.storyboard in Resources */,
 				0354AAF324312E37009C35E0 /* ImageDetailViewController.storyboard in Resources */,
+				030CAF67244CD93D00D6885C /* ThemeSelectionCell.xib in Resources */,
 				03D2AC48243212C40082D4C9 /* FlagsViewController.storyboard in Resources */,
 				03B0628A2428CFD600CA657A /* InfoView.xib in Resources */,
 				035EBA7F24262CA3009185E9 /* LoginViewController.storyboard in Resources */,
@@ -511,6 +518,7 @@
 			files = (
 				03076A662059E80F00168E62 /* UIImageView+Extension.swift in Sources */,
 				03D2AC50243264740082D4C9 /* With.swift in Sources */,
+				030CAF66244CD93D00D6885C /* ThemeSelectionCell.swift in Sources */,
 				030CAF542440B76400D6885C /* CommentsViewController.swift in Sources */,
 				035EBA7D24262C7E009185E9 /* StoryboardViewController.swift in Sources */,
 				0388A0B524293BE0006E86A3 /* TapableImage+Video.swift in Sources */,

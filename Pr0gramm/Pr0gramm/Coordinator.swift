@@ -21,8 +21,17 @@ class Coordinator {
         let downloadedFilesTableViewController = DownloadedFilesTableViewController.fromStoryboard()
         downloadedFilesTableViewController.coordinator = self
         downloadedFilesTableViewController.loadViewIfNeeded()
-        tabbarController.setViewControllers([navigationController, downloadedFilesTableViewController], animated: false)
+        let downloadedFilesNavigationController = NavigationController()
+        downloadedFilesNavigationController.viewControllers = [downloadedFilesTableViewController]
         
+        let settingsViewController = SettingsViewController()
+        settingsViewController.loadViewIfNeeded()
+        let settingsNavigationController = NavigationController()
+        settingsNavigationController.viewControllers = [settingsViewController]
+        
+        tabbarController.setViewControllers([navigationController,
+                                             downloadedFilesNavigationController,
+                                             settingsNavigationController], animated: false)
         return tabbarController
     }
     
