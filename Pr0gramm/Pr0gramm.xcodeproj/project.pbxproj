@@ -17,6 +17,7 @@
 		030CAF542440B76400D6885C /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030CAF532440B76400D6885C /* CommentsViewController.swift */; };
 		030CAF562440B76A00D6885C /* CommentsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 030CAF552440B76A00D6885C /* CommentsViewController.storyboard */; };
 		030CAF5E2449183F00D6885C /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030CAF5D2449183F00D6885C /* UIImage+Gif.swift */; };
+		030CAF61244CD75E00D6885C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030CAF60244CD75E00D6885C /* SettingsViewController.swift */; };
 		031EE8302065C59B0030CA68 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031EE82F2065C59B0030CA68 /* AppDelegate.swift */; };
 		031EE8322065C59B0030CA68 /* TVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031EE8312065C59B0030CA68 /* TVViewController.swift */; };
 		031EE8352065C59B0030CA68 /* Pr0grammTV.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 031EE8332065C59B0030CA68 /* Pr0grammTV.xcdatamodeld */; };
@@ -87,6 +88,8 @@
 		030CAF532440B76400D6885C /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		030CAF552440B76A00D6885C /* CommentsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommentsViewController.storyboard; sourceTree = "<group>"; };
 		030CAF5D2449183F00D6885C /* UIImage+Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
+		030CAF60244CD75E00D6885C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		030CAF62244CD7B600D6885C /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		031EE82D2065C59B0030CA68 /* PR0GRAMM TV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PR0GRAMM TV.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		031EE82F2065C59B0030CA68 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		031EE8312065C59B0030CA68 /* TVViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +167,7 @@
 		03076A572059E80F00168E62 = {
 			isa = PBXGroup;
 			children = (
+				030CAF62244CD7B600D6885C /* Podfile */,
 				03076A622059E80F00168E62 /* Pr0gramm */,
 				031EE82E2065C59B0030CA68 /* Pr0grammTV */,
 				03076A612059E80F00168E62 /* Products */,
@@ -189,20 +193,12 @@
 				035EBA812426DA5E009185E9 /* Coordinator.swift */,
 				03C1FA232427854600E6AEE4 /* NavigationController.swift */,
 				03D2AC4A24321DB40082D4C9 /* Settings.swift */,
+				030CAF60244CD75E00D6885C /* SettingsViewController.swift */,
 				033CF1BD205BFD2A00627321 /* Main */,
 				033CF1BE205BFD3200627321 /* Detail */,
 				0354AAF12431287A009C35E0 /* DownloadedFiles */,
 				033CF1BF205BFD3A00627321 /* API */,
-				03076A652059E80F00168E62 /* UIImageView+Extension.swift */,
-				030CAF5D2449183F00D6885C /* UIImage+Gif.swift */,
-				03A93327243CEFE100A16E1B /* HapticFeedbackButton.swift */,
-				03D2AC4F243264740082D4C9 /* Theme.swift */,
-				03D2AC4E243264740082D4C9 /* UIWindow.swift */,
-				03D2AC532432649C0082D4C9 /* Appearance.swift */,
-				03D2AC4D243264740082D4C9 /* With.swift */,
-				03C1FA2A2427D27600E6AEE4 /* UIViewController+Extension.swift */,
-				035EBA7C24262C7E009185E9 /* StoryboardViewController.swift */,
-				033CF1CA205FCB4500627321 /* NibView.swift */,
+				030CAF5F244CD72000D6885C /* Misc */,
 				03076A6A2059E80F00168E62 /* Assets.xcassets */,
 				03076A6C2059E80F00168E62 /* LaunchScreen.storyboard */,
 				03076A6F2059E80F00168E62 /* Info.plist */,
@@ -238,6 +234,23 @@
 				030CAF552440B76A00D6885C /* CommentsViewController.storyboard */,
 			);
 			path = Comments;
+			sourceTree = "<group>";
+		};
+		030CAF5F244CD72000D6885C /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				03076A652059E80F00168E62 /* UIImageView+Extension.swift */,
+				030CAF5D2449183F00D6885C /* UIImage+Gif.swift */,
+				03A93327243CEFE100A16E1B /* HapticFeedbackButton.swift */,
+				03D2AC4F243264740082D4C9 /* Theme.swift */,
+				03D2AC4E243264740082D4C9 /* UIWindow.swift */,
+				03D2AC532432649C0082D4C9 /* Appearance.swift */,
+				03D2AC4D243264740082D4C9 /* With.swift */,
+				03C1FA2A2427D27600E6AEE4 /* UIViewController+Extension.swift */,
+				035EBA7C24262C7E009185E9 /* StoryboardViewController.swift */,
+				033CF1CA205FCB4500627321 /* NibView.swift */,
+			);
+			path = Misc;
 			sourceTree = "<group>";
 		};
 		031EE82E2065C59B0030CA68 /* Pr0grammTV */ = {
@@ -451,6 +464,7 @@
 				"${BUILT_PRODUCTS_DIR}/ImageScrollView/ImageScrollView.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveKit/ReactiveKit.framework",
 				"${BUILT_PRODUCTS_DIR}/ScrollingContentViewController/ScrollingContentViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/Static/Static.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -459,6 +473,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageScrollView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ScrollingContentViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Static.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -501,6 +516,7 @@
 				0388A0B524293BE0006E86A3 /* TapableImage+Video.swift in Sources */,
 				03B062942428EC3600CA657A /* TagCollectionViewCell.swift in Sources */,
 				033CF1B6205BDBED00627321 /* MainCollectionViewController.swift in Sources */,
+				030CAF61244CD75E00D6885C /* SettingsViewController.swift in Sources */,
 				033CF1C2205BFF9A00627321 /* Comments.swift in Sources */,
 				032E62FF243F8E9900FA6C00 /* DetailViewModel.swift in Sources */,
 				035EBA7B24262C0B009185E9 /* LoginViewController.swift in Sources */,
