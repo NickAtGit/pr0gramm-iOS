@@ -20,9 +20,7 @@ class DetailViewModel {
     var comments: [Comments]?
     let link: String
     let mediaType: MediaType
-    lazy var postTime = {
-        return Strings.timeString(for: self.item.value.date)
-    }()
+    let postTime = Observable<String?>(nil)
     
     init(item: Item, connector: Pr0grammConnector) {
         self.item = Observable<Item>(item)
@@ -34,6 +32,7 @@ class DetailViewModel {
         let link = connector.link(for: item)
         self.link = link.link
         self.mediaType = link.mediaType
+        self.postTime.value = Strings.timeString(for: self.item.value.date)
         
         connector.loadItemInfo(for: item.id) { [weak self] itemInfo in
             guard let itemInfo = itemInfo else { return }
@@ -56,8 +55,8 @@ class Strings {
     static let months = "Monaten"
     static let week = "Woche"
     static let weeks = "Wochen"
-    static let day = "Day"
-    static let days = "Days"
+    static let day = "Tag"
+    static let days = "Tagen"
     static let hour = "Stunde"
     static let hours = "Stunden"
     static let minute = "Minute"
