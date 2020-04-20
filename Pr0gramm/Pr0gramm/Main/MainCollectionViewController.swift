@@ -13,6 +13,8 @@ class MainCollectionViewController: UICollectionViewController, StoryboardInitia
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView?.contentInsetAdjustmentBehavior = .always
+
         if let flowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
             let horizontalSpacing = flowLayout.scrollDirection == .vertical ? flowLayout.minimumInteritemSpacing : flowLayout.minimumLineSpacing
             let cellWidth = (view.frame.width - max(0, numberOfCellsPerRow - 1) * horizontalSpacing) / numberOfCellsPerRow
@@ -38,6 +40,11 @@ class MainCollectionViewController: UICollectionViewController, StoryboardInitia
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         coordinator?.pr0grammConnector.removeObserver(self)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        collectionView.collectionViewLayout.invalidateLayout()
     }
     
     func updateTabBarItem(for sorting: Sorting) {

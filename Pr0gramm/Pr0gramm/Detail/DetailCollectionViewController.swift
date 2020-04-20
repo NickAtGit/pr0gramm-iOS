@@ -16,7 +16,7 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
         edgesForExtendedLayout = []
         view.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
         collectionView.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
-        
+
         let layout: UICollectionViewFlowLayout = SnapCenterLayout()
         layout.itemSize = CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
         layout.minimumInteritemSpacing = 0
@@ -25,6 +25,11 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
         collectionView.collectionViewLayout = layout
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        collectionView.collectionViewLayout.invalidateLayout()
+    }
+        
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         coordinator?.pr0grammConnector.addObserver(self)
@@ -114,7 +119,7 @@ extension DetailCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width,
+        return CGSize(width: view.frame.width - (view.safeAreaInsets.left + view.safeAreaInsets.right),
                       height: view.frame.height - (view.safeAreaInsets.top + view.safeAreaInsets.bottom))
     }
 }

@@ -24,8 +24,8 @@ extension UIViewController {
         viewController.view.translatesAutoresizingMaskIntoConstraints = false
         view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            viewController.view.leftAnchor.constraint(equalTo: view.leftAnchor),
-            viewController.view.rightAnchor.constraint(equalTo: view.rightAnchor),
+            viewController.view.safeAreaLayoutGuide.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+            viewController.view.safeAreaLayoutGuide.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
             viewController.view.safeAreaLayoutGuide.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             viewController.view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
