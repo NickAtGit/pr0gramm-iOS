@@ -9,8 +9,8 @@ class SettingsViewController: TableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         title = "Einstellungen"
+        view.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
         tabBarItem = UITabBarItem(title: "Einstellungen",
                                   image: UIImage(systemName: "gear"),
                                   selectedImage: nil)

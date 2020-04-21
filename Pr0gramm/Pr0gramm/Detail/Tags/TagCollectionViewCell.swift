@@ -43,7 +43,13 @@ class TagCollectionViewCell: UICollectionViewCell, UIContextMenuInteractionDeleg
             guard let id = self.tags?.id else { return }
             self.connector?.vote(id: id, value: .downvote, type: .voteTag)
         }
+        
+        let saveAction = UIAction(title: "Speichern", image: UIImage(systemName: "text.append")) { [unowned self] _ in
+            guard let text = self.tagLabel.text else { return }
+            AppSettings.latestSearchStrings = AppSettings.latestSearchStrings + [text]
+        }
+
                 
-        return UIMenu(title: "", children: [upvoteAction, downvoteAction])
+        return UIMenu(title: "", children: [upvoteAction, downvoteAction, saveAction])
     }
 }

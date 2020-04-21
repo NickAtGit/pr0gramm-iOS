@@ -91,7 +91,7 @@ class MainCollectionViewController: UICollectionViewController, StoryboardInitia
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let items = items else { return }
-        coordinator?.showDetail(with: items, at: indexPath, isSearch: isSearch)
+        coordinator?.showDetail(from: self, with: items, at: indexPath, isSearch: isSearch)
     }
     
 

@@ -44,6 +44,8 @@
 		033CF1C5205C0F7400627321 /* ItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033CF1C4205C0F7400627321 /* ItemInfo.swift */; };
 		033CF1C7205ED95500627321 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033CF1C6205ED95500627321 /* CommentCell.swift */; };
 		033CF1CB205FCB4500627321 /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033CF1CA205FCB4500627321 /* NibView.swift */; };
+		03460AD7244F9ABE007F16DB /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03460AD6244F9ABE007F16DB /* SearchTableViewController.swift */; };
+		03460AD9244F9AEA007F16DB /* SearchTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03460AD8244F9AEA007F16DB /* SearchTableViewController.storyboard */; };
 		0354AAEE24311CE6009C35E0 /* DownloadedFilesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0354AAED24311CE6009C35E0 /* DownloadedFilesTableViewController.swift */; };
 		0354AAF024311D08009C35E0 /* DownloadedFilesTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0354AAEF24311D08009C35E0 /* DownloadedFilesTableViewController.storyboard */; };
 		0354AAF324312E37009C35E0 /* ImageDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0354AAF224312E37009C35E0 /* ImageDetailViewController.storyboard */; };
@@ -113,6 +115,8 @@
 		033CF1C4205C0F7400627321 /* ItemInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemInfo.swift; sourceTree = "<group>"; };
 		033CF1C6205ED95500627321 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		033CF1CA205FCB4500627321 /* NibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
+		03460AD6244F9ABE007F16DB /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
+		03460AD8244F9AEA007F16DB /* SearchTableViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchTableViewController.storyboard; sourceTree = "<group>"; };
 		0354AAED24311CE6009C35E0 /* DownloadedFilesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadedFilesTableViewController.swift; sourceTree = "<group>"; };
 		0354AAEF24311D08009C35E0 /* DownloadedFilesTableViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DownloadedFilesTableViewController.storyboard; sourceTree = "<group>"; };
 		0354AAF224312E37009C35E0 /* ImageDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ImageDetailViewController.storyboard; sourceTree = "<group>"; };
@@ -203,6 +207,7 @@
 				033CF1BD205BFD2A00627321 /* Main */,
 				033CF1BE205BFD3200627321 /* Detail */,
 				0354AAF12431287A009C35E0 /* DownloadedFiles */,
+				03460ADA244F9B16007F16DB /* Search */,
 				033CF1BF205BFD3A00627321 /* API */,
 				030CAF5F244CD72000D6885C /* Misc */,
 				03076A6A2059E80F00168E62 /* Assets.xcassets */,
@@ -321,6 +326,15 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		03460ADA244F9B16007F16DB /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				03460AD6244F9ABE007F16DB /* SearchTableViewController.swift */,
+				03460AD8244F9AEA007F16DB /* SearchTableViewController.storyboard */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		0354AAF12431287A009C35E0 /* DownloadedFiles */ = {
 			isa = PBXGroup;
 			children = (
@@ -433,6 +447,7 @@
 			files = (
 				0354AAF024311D08009C35E0 /* DownloadedFilesTableViewController.storyboard in Resources */,
 				03076A6E2059E80F00168E62 /* LaunchScreen.storyboard in Resources */,
+				03460AD9244F9AEA007F16DB /* SearchTableViewController.storyboard in Resources */,
 				03076A6B2059E80F00168E62 /* Assets.xcassets in Resources */,
 				030CAF562440B76A00D6885C /* CommentsViewController.storyboard in Resources */,
 				0354AAF324312E37009C35E0 /* ImageDetailViewController.storyboard in Resources */,
@@ -557,6 +572,7 @@
 				0354AAF524312E52009C35E0 /* ImageDetailViewController.swift in Sources */,
 				033CF1C3205BFF9A00627321 /* Tags.swift in Sources */,
 				033CF1BC205BE5AC00627321 /* DetailViewController.swift in Sources */,
+				03460AD7244F9ABE007F16DB /* SearchTableViewController.swift in Sources */,
 				03D2AC52243264740082D4C9 /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

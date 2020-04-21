@@ -9,6 +9,7 @@ protocol UserSettingsConfigurable {
     static var isLoggedIn: Bool { get set }
     static var selectedTheme: Int { get set }
     static var isVideoMuted: Bool { get set }
+    static var latestSearchStrings: [String] { get set }
 }
 
 @objc
@@ -83,5 +84,10 @@ extension AppSettings: UserSettingsConfigurable {
     static var isVideoMuted: Bool {
         get { return AppSettings.value(for: #keyPath(isVideoMuted)) ?? false }
         set { AppSettings.updateDefaults(for: #keyPath(isVideoMuted), value: newValue) }
+    }
+    
+    static var latestSearchStrings: [String] {
+        get { return AppSettings.value(for: #keyPath(latestSearchStrings)) ?? [] }
+        set { AppSettings.updateDefaults(for: #keyPath(latestSearchStrings), value: newValue) }
     }
 }

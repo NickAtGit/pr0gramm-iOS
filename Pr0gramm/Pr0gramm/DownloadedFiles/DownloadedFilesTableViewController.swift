@@ -15,6 +15,7 @@ class DownloadedFilesTableViewController: UITableViewController, StoryboardIniti
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Downloads"
+        view.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
         tabBarItem = UITabBarItem(title: "Downloads",
                                   image: UIImage(systemName: "square.and.arrow.down"),
                                   selectedImage: UIImage(systemName: "square.and.arrow.down.fill"))

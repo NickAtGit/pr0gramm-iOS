@@ -29,7 +29,15 @@ class Coordinator {
         let settingsNavigationController = NavigationController()
         settingsNavigationController.viewControllers = [settingsViewController]
         
+        let searchViewController = SearchTableViewController.fromStoryboard()
+        searchViewController.coordinator = self
+        searchViewController.connector = pr0grammConnector
+        searchViewController.loadViewIfNeeded()
+        let searchNavigationController = NavigationController()
+        searchNavigationController.viewControllers = [searchViewController]
+        
         tabbarController.setViewControllers([navigationController,
+                                             searchNavigationController,
                                              downloadedFilesNavigationController,
                                              settingsNavigationController], animated: false)
         return tabbarController
@@ -50,13 +58,17 @@ class Coordinator {
         navigationController.viewControllers = [viewController]
     }
     
-    func showDetail(with items: [Item], at indexPath: IndexPath, isSearch: Bool = false) {
-        let viewController = DetailCollectionViewController.fromStoryboard()
-        viewController.isSearch = isSearch
-        viewController.coordinator = self
-        viewController.items = items
-        navigationController.pushViewController(viewController, animated: true)
-        viewController.scrollTo(indexPath: indexPath)
+    func showDetail(from viewController: UIViewController,
+                    with items: [Item],
+                    at indexPath: IndexPath,
+                    isSearch: Bool = false) {
+        
+        let detailViewController = DetailCollectionViewController.fromStoryboard()
+        detailViewController.isSearch = isSearch
+        detailViewController.coordinator = self
+        detailViewController.items = items
+        viewController.navigationController?.pushViewController(detailViewController, animated: true)
+        detailViewController.scrollTo(indexPath: indexPath)
     }
     
     func showShareSheet(with items: [Any]) {
@@ -83,14 +95,14 @@ class Coordinator {
         viewController.present(navigationController, animated: true)
     }
     
-    func showSearchResult(for tag: String, from presentingViewController: UIViewController) {
+    func showSearchResult(for tag: String, from viewController: UIViewController) {
         pr0grammConnector.searchItems(for: [tag]) { [unowned self] items in
-            let viewController = MainCollectionViewController.fromStoryboard()
-            viewController.title = tag
-            viewController.isSearch = true
-            viewController.coordinator = self
-            viewController.items = items
-            self.navigationController.pushViewController(viewController, animated: true)
+            let searchResultViewController = MainCollectionViewController.fromStoryboard()
+            searchResultViewController.title = tag
+            searchResultViewController.isSearch = true
+            searchResultViewController.coordinator = self
+            searchResultViewController.items = items
+            viewController.navigationController?.pushViewController(searchResultViewController, animated: true)
         }
     }
     
