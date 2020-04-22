@@ -39,7 +39,8 @@ class DownloadedFilesTableViewController: UITableViewController, StoryboardIniti
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! DownloadedFileTableViewCell
         guard let fileURL = files?[indexPath.row] else { return cell }
-        cell.fileNameLabel.text = fileURL.lastPathComponent + "\n" + (fileURL.filesizeNicelyformatted ?? "") + "\n" + "\(fileURL.creationDate)"
+        cell.fileNameLabel.text = fileURL.lastPathComponent
+        cell.fileInfoLabel.text = "\(Strings.timeString(for: fileURL.creationDate))" + ", " + (fileURL.filesizeNicelyformatted ?? "")
         
         if fileURL.lastPathComponent.hasSuffix(".mp4") {
             cell.previewImageView.thumbnailImageFromVideoUrl(url: fileURL)
@@ -115,4 +116,6 @@ class DownloadedFilesTableViewController: UITableViewController, StoryboardIniti
 class DownloadedFileTableViewCell: UITableViewCell {
     @IBOutlet var previewImageView: UIImageView!
     @IBOutlet var fileNameLabel: UILabel!
+    @IBOutlet var fileInfoLabel: UILabel!
+    
 }

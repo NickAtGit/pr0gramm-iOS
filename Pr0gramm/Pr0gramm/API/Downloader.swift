@@ -3,13 +3,13 @@ import Foundation
 
 class Downloader {
     /// Downloads a file asynchronously
-    func loadFileAsync(url: URL, completion: @escaping (Bool) -> Void) {
+    func loadFileAsync(url: URL, fileName: String, completion: @escaping (Bool) -> Void) {
 
         // create your document folder url
         let documentsUrl = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
 
         // your destination file url
-        let destination = documentsUrl.appendingPathComponent(url.lastPathComponent)
+        let destination = documentsUrl.appendingPathComponent(fileName + "." + url.pathExtension)
 
         print("downloading file from URL: \(url.absoluteString)")
         

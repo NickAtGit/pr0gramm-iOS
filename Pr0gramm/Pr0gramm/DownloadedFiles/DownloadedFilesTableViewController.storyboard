@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FDf-eo-CcJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FDf-eo-CcJ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -28,24 +29,34 @@
                                                 <constraint firstAttribute="width" secondItem="zgP-Ng-WJj" secondAttribute="height" multiplier="1:1" id="BqH-8E-xlt"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UaB-6B-IDW">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="middleTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UaB-6B-IDW">
                                             <rect key="frame" x="158" y="11" width="236" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQ4-dt-Zig">
+                                            <rect key="frame" x="158" y="39.5" width="236" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" name="Schriftfarbe ausgegraut"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="UaB-6B-IDW" firstAttribute="top" secondItem="meV-PP-JxA" secondAttribute="top" constant="11" id="2rn-mp-mEC"/>
                                         <constraint firstItem="UaB-6B-IDW" firstAttribute="leading" secondItem="zgP-Ng-WJj" secondAttribute="trailing" constant="8" id="6ov-hC-hQk"/>
+                                        <constraint firstItem="gQ4-dt-Zig" firstAttribute="trailing" secondItem="UaB-6B-IDW" secondAttribute="trailing" id="CoE-ge-bCD"/>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="gQ4-dt-Zig" secondAttribute="bottom" constant="11" id="EZj-pd-GpR"/>
+                                        <constraint firstItem="gQ4-dt-Zig" firstAttribute="leading" secondItem="UaB-6B-IDW" secondAttribute="leading" id="KDg-Sz-n4O"/>
                                         <constraint firstAttribute="bottom" secondItem="zgP-Ng-WJj" secondAttribute="bottom" id="Qgt-UF-dwx"/>
-                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="UaB-6B-IDW" secondAttribute="bottom" constant="11" id="Yt9-OS-Z6u"/>
+                                        <constraint firstItem="gQ4-dt-Zig" firstAttribute="top" secondItem="UaB-6B-IDW" secondAttribute="bottom" constant="8" id="XDA-2n-okf"/>
                                         <constraint firstItem="zgP-Ng-WJj" firstAttribute="top" secondItem="meV-PP-JxA" secondAttribute="top" id="ZzJ-LU-fAz"/>
                                         <constraint firstItem="zgP-Ng-WJj" firstAttribute="leading" secondItem="meV-PP-JxA" secondAttribute="leading" id="lUc-18-cSh"/>
                                         <constraint firstAttribute="trailing" secondItem="UaB-6B-IDW" secondAttribute="trailing" constant="20" id="lmO-pm-jOS"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="fileInfoLabel" destination="gQ4-dt-Zig" id="Odg-Kf-7nU"/>
                                     <outlet property="fileNameLabel" destination="UaB-6B-IDW" id="fSS-wW-XP2"/>
                                     <outlet property="previewImageView" destination="zgP-Ng-WJj" id="Cnm-Bo-uak"/>
                                 </connections>
@@ -62,4 +73,9 @@
             <point key="canvasLocation" x="240.57971014492756" y="51.5625"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="Schriftfarbe ausgegraut">
+            <color red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

@@ -203,12 +203,14 @@ extension DetailViewController: UIContextMenuInteractionDelegate {
 extension DetailViewController {
     
     func download() {
-        guard let connector = coordinator?.pr0grammConnector else { return }
+        guard let connector = coordinator?.pr0grammConnector, let itemInfo = viewModel.itemInfo.value else { return }
         let item = viewModel.item.value
+        let firstThreeTags = itemInfo.tags.prefix(3).reduce("", {$0 + ($1.tag ?? "") + "," }).dropLast()
+        let fileName = String(firstThreeTags)
         let link = connector.link(for: item)
         let downloader = Downloader()
         let url = URL(string: link.link)!
-        downloader.loadFileAsync(url: url) { [weak self] successfully in
+        downloader.loadFileAsync(url: url, fileName: fileName) { [weak self] successfully in
             DispatchQueue.main.async {
                 self?.navigation?.showBanner(with: successfully ? "Download abgeschlossen" : "Download fehlgeschlagen")
             }
