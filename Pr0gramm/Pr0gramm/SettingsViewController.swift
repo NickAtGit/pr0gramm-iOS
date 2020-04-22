@@ -23,7 +23,7 @@ class SettingsViewController: TableViewController {
             ], footer: ""),
             
             Section(header: .autoLayoutView(CustomExtremityView("Video", uppercased: false)), rows: [
-                Row(text: "Videos starten stumm", accessory: .switchToggle(value: AppSettings.isVideoMuted) {
+                Row(text: "Videos stumm starten", accessory: .switchToggle(value: AppSettings.isVideoMuted) {
                     AppSettings.isVideoMuted = $0
                 }, cellClass: MultiLineTableViewCell.self)
             ], footer: ""),

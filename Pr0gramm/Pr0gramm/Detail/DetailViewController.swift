@@ -117,7 +117,8 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
     }
     
     private func setupGif() {
-        DispatchQueue.global().async { [unowned self] in
+        DispatchQueue.global().async { [weak self] in
+            guard let self = self else { return }
             let gif = UIImage.gif(url: self.viewModel.link)
             DispatchQueue.main.async {
                 self.imageView.image = gif
