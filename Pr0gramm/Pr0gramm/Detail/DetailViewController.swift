@@ -140,7 +140,6 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
                                                name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
                                                object: avPlayer.currentItem)
 
-        avPlayer.isMuted = false
         avPlayerViewController.player = avPlayer
         avPlayerViewController.view.translatesAutoresizingMaskIntoConstraints = false
         avPlayerViewController.view.heightAnchor.constraint(equalToConstant: view.bounds.width * CGFloat(item.height) / CGFloat(item.width)).isActive = true
@@ -151,7 +150,6 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
         let url = URL(string: viewModel.link)
         let playerItem = AVPlayerItem(url: url!)
         avPlayer.replaceCurrentItem(with: playerItem)
-        avPlayer.isMuted = AppSettings.isVideoMuted
     }
     
     @objc
@@ -166,6 +164,7 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
     
     @objc
     func play() {
+        avPlayer?.isMuted = AppSettings.isVideoMuted
         avPlayer?.play()
     }
     

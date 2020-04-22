@@ -6,11 +6,7 @@ class DownloadedFilesTableViewController: UITableViewController, StoryboardIniti
     
     weak var coordinator: Coordinator?
     private let cellIdentifier = "downloadedFileCell"
-    private var files: [URL]? {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    private var files: [URL]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,16 +19,21 @@ class DownloadedFilesTableViewController: UITableViewController, StoryboardIniti
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        DispatchQueue.global().async {
-            let files = FileManager.default.urls(for: .documentDirectory)?.sorted { $0.creationDate > $1.creationDate }
-            DispatchQueue.main.async {
-                self.files = files
-            }
-        }
+        loadFiles()
     }
         
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return files?.count ?? 0
+    }
+    
+    private func loadFiles() {
+        DispatchQueue.global().async {
+            let files = FileManager.default.urls(for: .documentDirectory)?.sorted { $0.creationDate > $1.creationDate }
+            DispatchQueue.main.async {
+                self.files = files
+                self.tableView.reloadData()
+            }
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -70,7 +71,10 @@ class DownloadedFilesTableViewController: UITableViewController, StoryboardIniti
           handler: { (action, view, completionHandler) in
             do {
                 try FileManager.default.removeItem(at: fileURL)
+                self.tableView.beginUpdates()
                 tableView.deleteRows(at: [indexPath], with: .automatic)
+                self.files?.remove(at: indexPath.row)
+                self.tableView.endUpdates()
             } catch {
                 print(error)
             }
@@ -80,7 +84,9 @@ class DownloadedFilesTableViewController: UITableViewController, StoryboardIniti
         
         let shareAction = UIContextualAction(style: .normal, title: "Teilen",
           handler: { (action, view, completionHandler) in
-            self.shareFile(at: fileURL)
+            DispatchQueue.main.async {
+                self.shareFile(at: fileURL)
+            }
             completionHandler(true)
         })
         shareAction.backgroundColor = .blue
@@ -101,9 +107,7 @@ class DownloadedFilesTableViewController: UITableViewController, StoryboardIniti
         }
 
         let items = [file]
-        DispatchQueue.main.async {
-            self.coordinator?.showShareSheet(with: items)
-        }
+        self.coordinator?.showShareSheet(with: items)
     }
 }
 
