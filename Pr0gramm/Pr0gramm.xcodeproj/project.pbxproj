@@ -80,7 +80,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		03076A602059E80F00168E62 /* Pr0gramm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pr0gramm.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		03076A602059E80F00168E62 /* pr0gramm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pr0gramm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03076A632059E80F00168E62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03076A652059E80F00168E62 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		03076A682059E80F00168E62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainCollectionViewController.storyboard; sourceTree = "<group>"; };
@@ -187,7 +187,7 @@
 		03076A612059E80F00168E62 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				03076A602059E80F00168E62 /* Pr0gramm.app */,
+				03076A602059E80F00168E62 /* pr0gramm.app */,
 				031EE82D2065C59B0030CA68 /* PR0GRAMM TV.app */,
 			);
 			name = Products;
@@ -380,7 +380,7 @@
 			);
 			name = Pr0gramm;
 			productName = Pr0gramm;
-			productReference = 03076A602059E80F00168E62 /* Pr0gramm.app */;
+			productReference = 03076A602059E80F00168E62 /* pr0gramm.app */;
 			productType = "com.apple.product-type.application";
 		};
 		031EE82C2065C59B0030CA68 /* PR0GRAMM TV */ = {
@@ -748,7 +748,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pr0gramm.Pr0grammApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = pr0gramm;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -768,7 +768,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pr0gramm.Pr0grammApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = pr0gramm;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
