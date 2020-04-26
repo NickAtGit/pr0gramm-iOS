@@ -3,23 +3,22 @@ import UIKit
 
 class FlagsViewController: UIViewController, StoryboardInitialViewController {
         
-    @IBOutlet var stackView: UIStackView!
-    @IBOutlet var sortingSegmentedControl: UISegmentedControl!
-    @IBOutlet var sfwSwitch: UISwitch!
-    @IBOutlet var nsfwSwitch: UISwitch!
-    @IBOutlet var nsflSwitch: UISwitch!
+    @IBOutlet private var stackView: UIStackView!
+    @IBOutlet private var sortingSegmentedControl: UISegmentedControl!
+    @IBOutlet private var sfwSwitch: UISwitch!
+    @IBOutlet private var nsfwSwitch: UISwitch!
+    @IBOutlet private var nsflSwitch: UISwitch!
+    @IBOutlet private var flagStackViews: [UIStackView]!
     
     var currentFlags: [Flags] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         sortingSegmentedControl.selectedSegmentIndex = AppSettings.sorting == Sorting.top.rawValue ? 0 : 1
-        sfwSwitch.isOn = AppSettings.sfwActive || !AppSettings.isLoggedIn
-        nsfwSwitch.isOn = AppSettings.nsfwActive && AppSettings.isLoggedIn
-        nsflSwitch.isOn = AppSettings.nsflActive && AppSettings.isLoggedIn
-        sfwSwitch.isEnabled = AppSettings.isLoggedIn
-        nsfwSwitch.isEnabled = AppSettings.isLoggedIn
-        nsflSwitch.isEnabled = AppSettings.isLoggedIn
+        sfwSwitch.isOn = AppSettings.sfwActive
+        nsfwSwitch.isOn = AppSettings.nsfwActive
+        nsflSwitch.isOn = AppSettings.nsflActive
+        flagStackViews.forEach { $0.isHidden = !AppSettings.isLoggedIn }
     }
     
     override func viewWillAppear(_ animated: Bool) {

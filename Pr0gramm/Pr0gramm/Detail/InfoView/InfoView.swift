@@ -100,6 +100,7 @@ extension InfoView: UIContextMenuInteractionDelegate {
             self.viewModel.vote(.downvote)
         }
                 
-        return UIMenu(title: "", children: [upvoteAction, favoriteAction, downvoteAction])
+        return UIMenu(title: "↑: \(viewModel.upvotes)\n↓: \(viewModel.downvotes)",
+                      children: [upvoteAction, favoriteAction, downvoteAction])
     }
 }

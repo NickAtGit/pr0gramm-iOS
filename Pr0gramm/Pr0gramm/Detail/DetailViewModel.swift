@@ -21,7 +21,9 @@ class DetailViewModel {
     let link: String
     let mediaType: MediaType
     let postTime = Observable<String?>(nil)
-    
+    lazy var upvotes = item.value.up
+    lazy var downvotes = item.value.down
+
     init(item: Item, connector: Pr0grammConnector) {
         self.item = Observable<Item>(item)
         self.connector = connector

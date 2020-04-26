@@ -10,7 +10,7 @@
         <!--Flags View Controller-->
         <scene sceneID="tWk-YD-7N5">
             <objects>
-                <viewController id="32q-aa-G1h" customClass="FlagsViewController" customModule="Pr0gramm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="32q-aa-G1h" customClass="FlagsViewController" customModule="pr0gramm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5lp-b6-vUm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="220"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -18,16 +18,21 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="nRD-He-h6d">
                                 <rect key="frame" x="20" y="20" width="374" height="180"/>
                                 <subviews>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6u8-tB-KpF">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="31.5"/>
-                                        <segments>
-                                            <segment title="Top"/>
-                                            <segment title="Neu"/>
-                                        </segments>
-                                        <connections>
-                                            <action selector="sortingSegmentedControlChanged:" destination="32q-aa-G1h" eventType="valueChanged" id="gvd-OW-sVZ"/>
-                                        </connections>
-                                    </segmentedControl>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="P1i-fr-pNe">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="30.5"/>
+                                        <subviews>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6u8-tB-KpF">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="31.5"/>
+                                                <segments>
+                                                    <segment title="Top"/>
+                                                    <segment title="Neu"/>
+                                                </segments>
+                                                <connections>
+                                                    <action selector="sortingSegmentedControlChanged:" destination="32q-aa-G1h" eventType="valueChanged" id="gvd-OW-sVZ"/>
+                                                </connections>
+                                            </segmentedControl>
+                                        </subviews>
+                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YWb-1z-VUy">
                                         <rect key="frame" x="0.0" y="50.5" width="374" height="30"/>
                                         <subviews>
@@ -101,6 +106,9 @@
                         <outlet property="sfwSwitch" destination="5VW-fR-MlX" id="6M1-A8-Sax"/>
                         <outlet property="sortingSegmentedControl" destination="6u8-tB-KpF" id="kAK-Nf-ins"/>
                         <outlet property="stackView" destination="nRD-He-h6d" id="iHD-wE-12g"/>
+                        <outletCollection property="flagStackViews" destination="YWb-1z-VUy" collectionClass="NSMutableArray" id="H9s-M5-VI1"/>
+                        <outletCollection property="flagStackViews" destination="KxZ-tC-guf" collectionClass="NSMutableArray" id="COs-wJ-df7"/>
+                        <outletCollection property="flagStackViews" destination="cco-Jh-6Jg" collectionClass="NSMutableArray" id="uBY-tB-YGO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OHZ-ae-ftj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
