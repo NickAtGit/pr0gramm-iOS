@@ -62,10 +62,12 @@ class NavigationController: UINavigationController, UIPopoverPresentationControl
                                                  action: #selector(Coordinator.logout))
                 topViewController?.navigationItem.rightBarButtonItem = logoutItem
             } else {
-                let loginItem = UIBarButtonItem(image: UIImage(systemName: "person.crop.circle.badge.plus"),
-                                                 style: .plain,
-                                                 target: coordinator,
-                                                 action: #selector(Coordinator.showLogin))
+                //UIImage(systemName: "person.crop.circle.badge.plus")
+                let loginItem = UIBarButtonItem(image: nil,
+                                                style: .plain,
+                                                target: coordinator,
+                                                action: #selector(Coordinator.showLogin))
+                
                 topViewController?.navigationItem.rightBarButtonItem = loginItem
             }
 
