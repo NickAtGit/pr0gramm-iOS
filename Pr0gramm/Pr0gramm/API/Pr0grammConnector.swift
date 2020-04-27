@@ -197,13 +197,11 @@ class Pr0grammConnector {
     }
     
     private func post(data: [String: String], to url: URL, postType: PostType, completion: @escaping (Bool) -> Void) {
-        let jsonString = data.reduce("") { "\($0)\($1.0)=\($1.1)&" }
-        let jsonData = jsonString.data(using: .utf8, allowLossyConversion: false)!
-        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.httpBody = jsonData
+        request.addValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        let body = HTTPUtils.formUrlencode(data)
+        request.httpBody = body.data(using: .utf8)
 
         let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
             guard let data = data else { completion(false); return }
@@ -332,5 +330,27 @@ class Pr0grammConnector {
             }
         }
         task.resume()
+    }
+}
+
+
+extension String {
+    static let formUrlencodedAllowedCharacters =
+        CharacterSet(charactersIn: "0123456789" +
+            "abcdefghijklmnopqrstuvwxyz" +
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+            "-._* ")
+
+    public func formUrlencoded() -> String {
+        let encoded = addingPercentEncoding(withAllowedCharacters: String.formUrlencodedAllowedCharacters)
+        return encoded?.replacingOccurrences(of: " ", with: "+") ?? ""
+    }
+}
+
+class HTTPUtils {
+    public class func formUrlencode(_ values: [String: String]) -> String {
+        return values.map { key, value in
+            return "\(key.formUrlencoded())=\(value.formUrlencoded())"
+        }.joined(separator: "&")
     }
 }
