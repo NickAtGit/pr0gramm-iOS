@@ -123,6 +123,10 @@ class NavigationController: UINavigationController, UIPopoverPresentationControl
             mainCollectionViewController.updateTabBarItem(for: Sorting(rawValue: AppSettings.sorting)!)
         }
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
+    }
 }
 
 extension NavigationController: Pr0grammConnectorObserver {
