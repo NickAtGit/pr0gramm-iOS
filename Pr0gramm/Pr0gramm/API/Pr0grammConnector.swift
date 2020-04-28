@@ -197,15 +197,24 @@ class Pr0grammConnector {
     }
     
     private func post(data: [String: String], to url: URL, postType: PostType, completion: @escaping (Bool) -> Void) {
+        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.addValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        let body = HTTPUtils.formUrlencode(data)
-        request.httpBody = body.data(using: .utf8)
+        request.addValue("application/x-www-form-urlencoded;", forHTTPHeaderField: "Content-Type")
+
+        switch postType {
+        case .login:
+            let body = HTTPUtils.formUrlencode(data)
+            request.httpBody = body.data(using: .utf8)
+        case .voteComment, .voteItem, .voteTag:
+            let jsonString = data.reduce("") { "\($0)\($1.0)=\($1.1)&" }
+            let jsonData = jsonString.data(using: .utf8, allowLossyConversion: false)!
+            request.httpBody = jsonData
+        }
 
         let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
             guard let data = data else { completion(false); return }
-            
+            print(String(data: data, encoding: .utf8) ?? "Nope")
             do {
                 let jsonDecoder = JSONDecoder()
                 switch postType {
