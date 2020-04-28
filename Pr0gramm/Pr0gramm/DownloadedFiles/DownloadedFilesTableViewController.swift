@@ -125,4 +125,9 @@ class DownloadedFileTableViewCell: UITableViewCell {
     @IBOutlet var fileNameLabel: UILabel!
     @IBOutlet var fileInfoLabel: UILabel!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        fileNameLabel.textColor = #colorLiteral(red: 0.9490196078, green: 0.9607843137, blue: 0.9568627451, alpha: 1)
+        fileInfoLabel.textColor = #colorLiteral(red: 0.5333333333, green: 0.5333333333, blue: 0.5333333333, alpha: 1)
+    }
 }

@@ -37,6 +37,8 @@ class CommentCell: UITableViewCell {
         messageTextView.backgroundColor = .clear
         messageTextView.textContainerInset = .zero
         messageTextView.textContainer.lineFragmentPadding = 0
+        authorLabel.textColor = #colorLiteral(red: 0.5333333333, green: 0.5333333333, blue: 0.5333333333, alpha: 1)
+        pointsLabel.textColor = #colorLiteral(red: 0.9490196078, green: 0.9607843137, blue: 0.9568627451, alpha: 1)
     }
     
     @IBAction func upvoteTapped(_ sender: Any) {

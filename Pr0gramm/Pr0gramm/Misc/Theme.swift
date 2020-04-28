@@ -160,18 +160,10 @@ extension Theme {
             $0.separatorColor = separatorColor
         }
         
-        UITableViewHeaderFooterView.appearance().with {
-            $0.backgroundColor = backgroundColor
-        }
-        
         UITableViewCell.appearance().with {
             $0.backgroundColor = .clear
         }
-        
-        UILabel.appearance().with {
-            $0.textColor = labelColor
-        }
-        
+                
         UIButton.appearance().with {
             $0.setTitleColor(tint, for: .normal)
         }
@@ -181,6 +173,8 @@ extension Theme {
         }
         
         UISegmentedControl.appearance().with {
+            $0.setTitleTextAttributes([.font: font12,
+                                       .foregroundColor: #colorLiteral(red: 0.9490196078, green: 0.9607843137, blue: 0.9568627451, alpha: 1)], for: .normal)
             $0.backgroundColor = tint
             $0.selectedSegmentTintColor = backgroundColor
         }

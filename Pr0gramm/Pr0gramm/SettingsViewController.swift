@@ -36,6 +36,7 @@ class SettingsViewController: TableViewController {
 class CustomExtremityView: UIView {
     lazy var label: UILabel = {
         let label = UILabel()
+        label.textColor = #colorLiteral(red: 0.9490196078, green: 0.9607843137, blue: 0.9568627451, alpha: 1)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -64,6 +65,7 @@ final class MultiLineTableViewCell: UITableViewCell, Cell {
 
     private lazy var label: UILabel = {
         let label = UILabel()
+        label.textColor = #colorLiteral(red: 0.9490196078, green: 0.9607843137, blue: 0.9568627451, alpha: 1)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
