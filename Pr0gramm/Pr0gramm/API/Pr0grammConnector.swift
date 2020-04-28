@@ -185,6 +185,7 @@ class Pr0grammConnector {
     //"description": "-1 = Minus, 1 = Plus, 2 = Fav, 0 = Kein Vote/Vote zurückziehen",
     
     func vote(id: Int, value: Vote, type: PostType) {
+        guard isLoggedIn else { return }
         guard let nonce = nonce else { return }
         let data: [String: String] = ["id": "\(id)",
                                       "vote": "\(value.rawValue)",
