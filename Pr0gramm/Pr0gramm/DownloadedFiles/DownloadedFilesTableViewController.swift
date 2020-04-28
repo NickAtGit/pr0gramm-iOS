@@ -90,7 +90,7 @@ class DownloadedFilesTableViewController: UITableViewController, StoryboardIniti
             }
             completionHandler(true)
         })
-        shareAction.backgroundColor = .black
+        shareAction.backgroundColor = UIColor.green.withAlphaComponent(0.25)
         
         let configuration = UISwipeActionsConfiguration(actions: [deleteAction, shareAction])
         return configuration
