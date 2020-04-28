@@ -11,6 +11,7 @@ class CommentsViewController: UIViewController, StoryboardInitialViewController 
         tableView.dataSource = self
         tableView.delegate = self
         tableView.reloadData()
+        view.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
     }
 }
 
