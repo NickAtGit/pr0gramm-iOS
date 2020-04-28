@@ -17,6 +17,7 @@ class SearchTableViewController: UITableViewController, StoryboardInitialViewCon
         let searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
+        searchController.searchBar.searchBarStyle = .minimal
         navigationItem.searchController = searchController
         definesPresentationContext = true
     }
@@ -33,6 +34,7 @@ class SearchTableViewController: UITableViewController, StoryboardInitialViewCon
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchTextCell")!
         cell.textLabel?.text = AppSettings.latestSearchStrings[indexPath.row]
+        cell.textLabel?.textColor = #colorLiteral(red: 0.9490196078, green: 0.9607843137, blue: 0.9568627451, alpha: 1)
         return cell
     }
     
@@ -47,14 +49,16 @@ class SearchTableViewController: UITableViewController, StoryboardInitialViewCon
             AppSettings.latestSearchStrings = AppSettings.latestSearchStrings.filter { $0 != AppSettings.latestSearchStrings[indexPath.row] }
             tableView.deleteRows(at: [indexPath], with: .automatic)
         })
-        deleteAction.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
+        deleteAction.backgroundColor = UIColor.red.withAlphaComponent(0.25)
                 
         let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
         return configuration
     }
 
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return nil
+        let view = UIView()
+        view.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
+        return view
     }
 }
 
@@ -65,7 +69,11 @@ extension SearchTableViewController: UISearchBarDelegate {
             !searchText.isEmpty else { return }
         searchBar.resignFirstResponder()
         coordinator?.showSearchResult(for: searchText, from: self)
-        AppSettings.latestSearchStrings = AppSettings.latestSearchStrings + [searchText]
+        
+        if !AppSettings.latestSearchStrings.contains(searchText) {
+            AppSettings.latestSearchStrings = AppSettings.latestSearchStrings + [searchText]
+        }
+        
         tableView.reloadData()
     }
 }

@@ -14,6 +14,7 @@ class FlagsViewController: UIViewController, StoryboardInitialViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
         sortingSegmentedControl.selectedSegmentIndex = AppSettings.sorting == Sorting.top.rawValue ? 0 : 1
         sfwSwitch.isOn = AppSettings.sfwActive
         nsfwSwitch.isOn = AppSettings.nsfwActive

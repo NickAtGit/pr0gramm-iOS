@@ -43,7 +43,6 @@ class CustomExtremityView: UIView {
 
     init(_ string: String, uppercased: Bool = false) {
         super.init(frame: .zero)
-        backgroundColor = .secondarySystemBackground
         layoutMargins = UIEdgeInsets(top: 5, left: 20, bottom: 5, right: 20)
         addSubview(label)
         label.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).isActive = true
@@ -65,7 +64,6 @@ final class MultiLineTableViewCell: UITableViewCell, Cell {
 
     private lazy var label: UILabel = {
         let label = UILabel()
-        label.textColor = .label
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

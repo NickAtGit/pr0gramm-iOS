@@ -152,7 +152,6 @@ class NavigationBannerView: UIView {
         backgroundColor = #colorLiteral(red: 0.9333333333, green: 0.3019607843, blue: 0.1803921569, alpha: 1)
         messageTextLabel.translatesAutoresizingMaskIntoConstraints = false
         messageTextLabel.numberOfLines = 0
-        messageTextLabel.textColor = .white
         messageTextLabel.textAlignment = .center
         addSubview(messageTextLabel)
         

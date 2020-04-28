@@ -20,7 +20,6 @@ class TagCollectionViewCell: UICollectionViewCell, UIContextMenuInteractionDeleg
         containerView.backgroundColor = #colorLiteral(red: 0.1647058824, green: 0.1803921569, blue: 0.1921568627, alpha: 1)
         containerView.layer.cornerRadius = tagLabel.intrinsicContentSize.height / 2
         containerView.clipsToBounds = true
-        tagLabel.textColor = .white
         
         let interaction = UIContextMenuInteraction(delegate: self)
         containerView.addInteraction(interaction)

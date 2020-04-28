@@ -81,7 +81,7 @@ class DownloadedFilesTableViewController: UITableViewController, StoryboardIniti
             }
             completionHandler(true)
         })
-        deleteAction.backgroundColor = .red
+        deleteAction.backgroundColor = UIColor.red.withAlphaComponent(0.25)
         
         let shareAction = UIContextualAction(style: .normal, title: "Teilen",
           handler: { (action, view, completionHandler) in
@@ -90,11 +90,18 @@ class DownloadedFilesTableViewController: UITableViewController, StoryboardIniti
             }
             completionHandler(true)
         })
-        shareAction.backgroundColor = .blue
+        shareAction.backgroundColor = .black
         
         let configuration = UISwipeActionsConfiguration(actions: [deleteAction, shareAction])
         return configuration
     }
+    
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
+        return view
+    }
+
     
     private func shareFile(at url: URL) {
         let path = url.path

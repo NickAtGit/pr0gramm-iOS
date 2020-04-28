@@ -10,13 +10,13 @@
         <!--Downloaded Files Table View Controller-->
         <scene sceneID="4Z9-vg-gGP">
             <objects>
-                <tableViewController id="FDf-eo-CcJ" customClass="DownloadedFilesTableViewController" customModule="Pr0gramm" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="FDf-eo-CcJ" customClass="DownloadedFilesTableViewController" customModule="pr0gramm" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="GLg-LU-BAU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="downloadedFileCell" rowHeight="150" id="txa-ht-drA" customClass="DownloadedFileTableViewCell" customModule="Pr0gramm" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="downloadedFileCell" rowHeight="150" id="txa-ht-drA" customClass="DownloadedFileTableViewCell" customModule="pr0gramm" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="txa-ht-drA" id="meV-PP-JxA">

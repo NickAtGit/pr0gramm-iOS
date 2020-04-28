@@ -1,7 +1,8 @@
 
 import UIKit
+import ScrollingContentViewController
 
-class LoginViewController: UIViewController, StoryboardInitialViewController {
+class LoginViewController: ScrollingContentViewController, StoryboardInitialViewController {
     
     weak var coordinator: Coordinator?
     
@@ -10,6 +11,13 @@ class LoginViewController: UIViewController, StoryboardInitialViewController {
     @IBOutlet var captchaTextField: UITextField!
     @IBOutlet var captchaImageView: UIImageView!
         
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "Login"
+        view.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
+        contentView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         coordinator?.pr0grammConnector.addObserver(self)
@@ -42,6 +50,7 @@ extension LoginViewController: Pr0grammConnectorObserver {
             } else {
                 let navigationContoller = self.navigationController as! NavigationController
                 navigationContoller.showBanner(with: "Login fehlgeschlagen")
+                coordinator?.pr0grammConnector.getCaptcha()
             }
         case .captcha(let image):
             self.captchaImageView.image = image

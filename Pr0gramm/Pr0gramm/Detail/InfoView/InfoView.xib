@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="InfoView" customModule="Pr0gramm" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="InfoView" customModule="pr0gramm" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -34,7 +34,7 @@
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="FiG-1h-MxZ">
                     <rect key="frame" x="207" y="2.5" width="187" height="25.5"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nlf-jk-WA2" customClass="HapticFeedbackButton" customModule="Pr0gramm" customModuleProvider="target">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nlf-jk-WA2" customClass="HapticFeedbackButton" customModule="pr0gramm" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="24" height="25.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <state key="normal" image="plus.circle" catalog="system">
@@ -44,7 +44,7 @@
                                 <action selector="upvoteTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="pcD-cv-sxA"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gnB-LX-WFX" customClass="HapticFeedbackButton" customModule="Pr0gramm" customModuleProvider="target">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gnB-LX-WFX" customClass="HapticFeedbackButton" customModule="pr0gramm" customModuleProvider="target">
                             <rect key="frame" x="39" y="0.0" width="24" height="25.5"/>
                             <state key="normal" image="minus.circle" catalog="system">
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="thin"/>
@@ -53,7 +53,7 @@
                                 <action selector="downvoteTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="Sv6-Y7-gJw"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4p2-8H-bwM" customClass="HapticFeedbackButton" customModule="Pr0gramm" customModuleProvider="target">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4p2-8H-bwM" customClass="HapticFeedbackButton" customModule="pr0gramm" customModuleProvider="target">
                             <rect key="frame" x="78" y="0.0" width="24.5" height="25.5"/>
                             <state key="normal" image="heart" catalog="system">
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="thin"/>
@@ -62,7 +62,7 @@
                                 <action selector="favoriteTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="XJG-h0-9TT"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S43-mO-YX6" customClass="HapticFeedbackButton" customModule="Pr0gramm" customModuleProvider="target">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S43-mO-YX6" customClass="HapticFeedbackButton" customModule="pr0gramm" customModuleProvider="target">
                             <rect key="frame" x="117.5" y="0.0" width="27.5" height="25.5"/>
                             <state key="normal" image="tag" catalog="system">
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="thin"/>
@@ -71,7 +71,7 @@
                                 <action selector="expandTagsTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="nDN-a1-8Nf"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3dJ-S0-pff" customClass="HapticFeedbackButton" customModule="Pr0gramm" customModuleProvider="target">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3dJ-S0-pff" customClass="HapticFeedbackButton" customModule="pr0gramm" customModuleProvider="target">
                             <rect key="frame" x="160" y="0.0" width="27" height="25.5"/>
                             <state key="normal" image="text.bubble" catalog="system">
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="thin"/>
@@ -89,7 +89,7 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="FiG-1h-MxZ" firstAttribute="centerY" secondItem="aYp-gL-QPE" secondAttribute="centerY" id="4dP-gD-HZW"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="lZI-SO-vmQ" secondAttribute="bottom" id="6Ic-So-sCQ"/>

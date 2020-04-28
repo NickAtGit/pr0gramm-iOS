@@ -19,11 +19,11 @@ protocol Theme {
 struct AngenehmesGruenTheme: Theme {
     let tint: UIColor = Appearance.angenehmesGruen
     
-    let backgroundColor: UIColor = .systemBackground
+    let backgroundColor: UIColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
     let separatorColor: UIColor = Appearance.angenehmesGruen
     let selectionColor: UIColor = .init(red: 38/255, green: 38/255, blue: 40/255, alpha: 1)
     
-    let labelColor: UIColor = .label
+    let labelColor: UIColor = #colorLiteral(red: 0.9490196078, green: 0.9607843137, blue: 0.9568627451, alpha: 1)
     let secondaryLabelColor: UIColor = .lightGray
     let subtleLabelColor: UIColor = .darkGray
     
@@ -33,11 +33,11 @@ struct AngenehmesGruenTheme: Theme {
 struct OrangeTheme: Theme {
     let tint: UIColor = Appearance.orange
     
-    let backgroundColor: UIColor = .systemBackground
+    let backgroundColor: UIColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
     let separatorColor: UIColor = Appearance.orange
     let selectionColor: UIColor = .init(red: 38/255, green: 38/255, blue: 40/255, alpha: 1)
     
-    let labelColor: UIColor = .label
+    let labelColor: UIColor = #colorLiteral(red: 0.9490196078, green: 0.9607843137, blue: 0.9568627451, alpha: 1)
     let secondaryLabelColor: UIColor = .lightGray
     let subtleLabelColor: UIColor = .darkGray
     
@@ -47,11 +47,11 @@ struct OrangeTheme: Theme {
 struct MegaEpischesBlau: Theme {
     let tint: UIColor = Appearance.megaEpischesBlau
     
-    let backgroundColor: UIColor = .systemBackground
+    let backgroundColor: UIColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
     let separatorColor: UIColor = Appearance.megaEpischesBlau
     let selectionColor: UIColor = .init(red: 38/255, green: 38/255, blue: 40/255, alpha: 1)
     
-    let labelColor: UIColor = .label
+    let labelColor: UIColor = #colorLiteral(red: 0.9490196078, green: 0.9607843137, blue: 0.9568627451, alpha: 1)
     let secondaryLabelColor: UIColor = .lightGray
     let subtleLabelColor: UIColor = .darkGray
     
@@ -61,11 +61,11 @@ struct MegaEpischesBlau: Theme {
 struct PinkTheme: Theme {
     let tint: UIColor = Appearance.pink
     
-    let backgroundColor: UIColor = .systemBackground
+    let backgroundColor: UIColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
     let separatorColor: UIColor = Appearance.pink
     let selectionColor: UIColor = .init(red: 38/255, green: 38/255, blue: 40/255, alpha: 1)
     
-    let labelColor: UIColor = .label
+    let labelColor: UIColor = #colorLiteral(red: 0.9490196078, green: 0.9607843137, blue: 0.9568627451, alpha: 1)
     let secondaryLabelColor: UIColor = .lightGray
     let subtleLabelColor: UIColor = .darkGray
     
@@ -75,11 +75,11 @@ struct PinkTheme: Theme {
 struct YellowTheme: Theme {
     let tint: UIColor = Appearance.yellow
     
-    let backgroundColor: UIColor = .systemBackground
+    let backgroundColor: UIColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
     let separatorColor: UIColor = Appearance.yellow
     let selectionColor: UIColor = .init(red: 38/255, green: 38/255, blue: 40/255, alpha: 1)
     
-    let labelColor: UIColor = .label
+    let labelColor: UIColor = #colorLiteral(red: 0.9490196078, green: 0.9607843137, blue: 0.9568627451, alpha: 1)
     let secondaryLabelColor: UIColor = .lightGray
     let subtleLabelColor: UIColor = .darkGray
     
@@ -111,7 +111,7 @@ extension Theme {
         let titilliumWebRegular = "HelveticaNeue"
         let font15 = UIFont(name: titilliumWebRegular, size: 15)!
         let font12 =  UIFont(name: titilliumWebRegular, size: 12)!
-        let font24 =  UIFont(name: titilliumWebRegular, size: 24)!
+//        let font24 =  UIFont(name: titilliumWebRegular, size: 24)!
 
         UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: font15],
                                                             for: .normal)
@@ -125,8 +125,8 @@ extension Theme {
         
         UISegmentedControl.appearance().setTitleTextAttributes([.font: font12], for: .normal)
         
-        
         UITextView.appearance().with {
+            $0.textColor = labelColor
             $0.font = font15
         }
         
@@ -149,6 +149,10 @@ extension Theme {
             $0.barTintColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
         }
         
+        UISearchTextField.appearance().with {
+            $0.textColor = labelColor
+        }
+        
         UICollectionView.appearance().backgroundColor = backgroundColor
         
         UITableView.appearance().with {
@@ -156,16 +160,17 @@ extension Theme {
             $0.separatorColor = separatorColor
         }
         
+        UITableViewHeaderFooterView.appearance().with {
+            $0.backgroundColor = backgroundColor
+        }
+        
         UITableViewCell.appearance().with {
             $0.backgroundColor = .clear
         }
         
-        UIView.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self])
-            .backgroundColor = .secondarySystemBackground
-            
-        
-        UILabel.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self])
-            .textColor = secondaryLabelColor
+        UILabel.appearance().with {
+            $0.textColor = labelColor
+        }
         
         UIButton.appearance().with {
             $0.setTitleColor(tint, for: .normal)
@@ -177,6 +182,7 @@ extension Theme {
         
         UISegmentedControl.appearance().with {
             $0.backgroundColor = tint
+            $0.selectedSegmentTintColor = backgroundColor
         }
         
         application.windows.reload()

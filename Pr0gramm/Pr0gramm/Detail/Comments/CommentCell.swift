@@ -33,9 +33,6 @@ class CommentCell: UITableViewCell {
         super.awakeFromNib()
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .clear
-        messageTextView.textColor = .white
-        authorLabel.textColor = #colorLiteral(red: 0.5333333333, green: 0.5333333333, blue: 0.5333333333, alpha: 1)
-        pointsLabel.textColor = .white
         messageTextView.isScrollEnabled = false
         messageTextView.backgroundColor = .clear
         messageTextView.textContainerInset = .zero

@@ -49,6 +49,7 @@ class Coordinator {
         viewController.coordinator = self
         let detailNavigationController = NavigationController(rootViewController: viewController)
         detailNavigationController.style = .dismissable
+        detailNavigationController.isModalInPresentation = true
         navigationController.present(detailNavigationController, animated: true)
     }
     
