@@ -3,13 +3,13 @@ import Foundation
 
 class Downloader {
     /// Downloads a file asynchronously
-    func loadFileAsync(url: URL, fileName: String, completion: @escaping (Bool) -> Void) {
+    func loadFileAsync(url: URL, fileName: String, directory: FileManager.SearchPathDirectory = .documentDirectory, completion: @escaping (Bool, String?) -> Void) {
 
         // create your document folder url
-        let documentsUrl = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+        let directoryUrl = try! FileManager.default.url(for: directory, in: .userDomainMask, appropriateFor: nil, create: true)
 
         // your destination file url
-        let destination = documentsUrl.appendingPathComponent(fileName + "." + url.pathExtension)
+        let destination = directoryUrl.appendingPathComponent(fileName + "." + url.pathExtension)
 
         print("downloading file from URL: \(url.absoluteString)")
         
@@ -22,9 +22,9 @@ class Downloader {
                     print("previous file deleted")
                     self.saveFile(url: url, destination: destination) { (complete) in
                         if complete{
-                            completion(true)
+                            completion(true, destination.path)
                         }else{
-                            completion(false)
+                            completion(false, nil)
                         }
                     }
                 }catch{
@@ -35,9 +35,9 @@ class Downloader {
         } else {
             self.saveFile(url: url, destination: destination) { (complete) in
                 if complete{
-                    completion(true)
+                    completion(true, destination.path)
                 }else{
-                    completion(false)
+                    completion(false, nil)
                 }
             }
         }

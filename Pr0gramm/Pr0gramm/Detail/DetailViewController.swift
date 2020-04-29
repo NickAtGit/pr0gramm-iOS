@@ -186,15 +186,23 @@ extension DetailViewController: UIContextMenuInteractionDelegate {
     
     func createContextMenu() -> UIMenu {
         let downloadAction = UIAction(title: "Download", image: UIImage(systemName: "square.and.arrow.down")) { [unowned self] _ in
-            self.download()
+            self.download(directory: .documentDirectory)
         }
         
         let fullscreenAction = UIAction(title: "Vollbild", image: UIImage(systemName: "rectangle.expand.vertical")) { [unowned self] _ in
             self.showImageDetail()
             self.avPlayerViewController?.goFullScreen()
         }
+        
+        let saveToCameraRollAction = UIAction(title: "In Fotos speichern", image: UIImage(systemName: "photo")) { [unowned self] _ in
+            if let image = self.imageView.image {
+                UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+            } else {
+                self.download(directory: .cachesDirectory)
+            }
+        }
                 
-        return UIMenu(title: "", children: [downloadAction, fullscreenAction])
+        return UIMenu(title: "", children: [downloadAction, fullscreenAction, saveToCameraRollAction])
     }
 }
 
@@ -202,17 +210,22 @@ extension DetailViewController: UIContextMenuInteractionDelegate {
 
 extension DetailViewController {
     
-    func download() {
+    func download(directory: FileManager.SearchPathDirectory) {
         guard let connector = coordinator?.pr0grammConnector, let itemInfo = viewModel.itemInfo.value else { return }
         let item = viewModel.item.value
-        let firstThreeTags = itemInfo.tags.sorted { $0.confidence ?? 0 > $1.confidence ?? 0 }.prefix(4).reduce("", {$0 + ($1.tag ?? "") + "-" }).dropLast()
-        let fileName = String(firstThreeTags)
+        let firstFourTags = itemInfo.tags.sorted { $0.confidence ?? 0 > $1.confidence ?? 0 }.prefix(4).reduce("", {$0 + ($1.tag ?? "") + "-" }).dropLast()
+        let fileName = String(firstFourTags)
         let link = connector.link(for: item)
         let downloader = Downloader()
         let url = URL(string: link.link)!
-        downloader.loadFileAsync(url: url, fileName: fileName) { [weak self] successfully in
-            DispatchQueue.main.async {
-                self?.navigation?.showBanner(with: successfully ? "Download abgeschlossen" : "Download fehlgeschlagen")
+        downloader.loadFileAsync(url: url, fileName: fileName, directory: directory) { [weak self] successfully, toPath  in
+            if directory == .cachesDirectory {
+                guard let path = toPath else { return }
+                UISaveVideoAtPathToSavedPhotosAlbum(path, nil, nil, nil)
+            } else if directory == .documentDirectory {
+                DispatchQueue.main.async {
+                    self?.navigation?.showBanner(with: successfully ? "Download abgeschlossen" : "Download fehlgeschlagen")
+                }
             }
         }
     }
