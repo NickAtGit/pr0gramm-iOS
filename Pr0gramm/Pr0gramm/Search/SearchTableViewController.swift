@@ -5,7 +5,8 @@ class SearchTableViewController: UITableViewController, StoryboardInitialViewCon
     
     var connector: Pr0grammConnector!
     weak var coordinator: Coordinator?
-        
+    var searchController: UISearchController!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Suche"
@@ -14,15 +15,26 @@ class SearchTableViewController: UITableViewController, StoryboardInitialViewCon
                                   image: UIImage(systemName: "magnifyingglass.circle"),
                                   selectedImage: UIImage(systemName: "magnifyingglass.circle.fill"))
         
-        let searchController = UISearchController(searchResultsController: nil)
+        searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.delegate = self
-        navigationItem.titleView = searchController.searchBar
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        tableView.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        searchController.isActive = false
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -69,7 +81,7 @@ extension SearchTableViewController: UISearchBarDelegate {
         coordinator?.showSearchResult(for: searchText, from: self)
         
         if !AppSettings.latestSearchStrings.contains(searchText) {
-            AppSettings.latestSearchStrings = AppSettings.latestSearchStrings + [searchText]
+            AppSettings.latestSearchStrings = [searchText] + AppSettings.latestSearchStrings
         }
         tableView.reloadData()
     }
