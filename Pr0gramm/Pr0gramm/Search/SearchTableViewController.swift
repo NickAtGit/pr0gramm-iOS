@@ -17,9 +17,7 @@ class SearchTableViewController: UITableViewController, StoryboardInitialViewCon
         let searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
-        searchController.searchBar.searchBarStyle = .minimal
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
+        navigationItem.titleView = searchController.searchBar
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -73,7 +71,6 @@ extension SearchTableViewController: UISearchBarDelegate {
         if !AppSettings.latestSearchStrings.contains(searchText) {
             AppSettings.latestSearchStrings = AppSettings.latestSearchStrings + [searchText]
         }
-        
         tableView.reloadData()
     }
 }
