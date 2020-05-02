@@ -15,17 +15,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="lZI-SO-vmQ">
-                    <rect key="frame" x="20" y="0.0" width="77" height="60"/>
+                    <rect key="frame" x="20" y="0.0" width="68.5" height="60"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYp-gL-QPE">
-                            <rect key="frame" x="0.0" y="0.0" width="77" height="30"/>
+                            <rect key="frame" x="0.0" y="0.0" width="68.5" height="30"/>
                             <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="25"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DTY-Ga-v1E">
-                            <rect key="frame" x="0.0" y="40" width="77" height="20"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <rect key="frame" x="0.0" y="40" width="68.5" height="20"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" name="Schriftfarbe ausgegraut"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -83,8 +83,8 @@
                     </subviews>
                 </stackView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZIN-aa-biM">
-                    <rect key="frame" x="359.5" y="40.5" width="34.5" height="19.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <rect key="frame" x="363.5" y="43" width="30.5" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" name="Schriftfarbe ausgegraut"/>
                     <nil key="highlightedColor"/>
                 </label>

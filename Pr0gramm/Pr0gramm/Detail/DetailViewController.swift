@@ -17,7 +17,6 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
     private var stackView: UIStackView!
     private let imageView = TapableImageView()
     private let tagsCollectionViewController = TagsCollectionViewController.fromStoryboard()
-    private let commentsStackView = UIStackView()
     private let infoView = InfoView.instantiateFromNib()
     private var avPlayer: AVPlayer?
     private var avPlayerViewController: TapableAVPlayerViewController?
@@ -32,18 +31,14 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
         imageView.isUserInteractionEnabled = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .top
-        
-        commentsStackView.axis = .vertical
-        commentsStackView.spacing = 25
-                
+                        
         tagsCollectionViewController.coordinator = coordinator
         addChild(tagsCollectionViewController)
                 
         stackView = UIStackView(arrangedSubviews: [imageView,
                                                    infoView,
-                                                   tagsCollectionViewController.view,
-                                                   commentsStackView])
-        stackView.spacing = 40
+                                                   tagsCollectionViewController.view])
+        stackView.spacing = 30
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
 
