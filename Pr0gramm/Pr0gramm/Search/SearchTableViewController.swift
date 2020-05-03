@@ -3,10 +3,18 @@ import UIKit
 
 class SearchTableViewController: UITableViewController, StoryboardInitialViewController {
     
-    var connector: Pr0grammConnector!
+    var viewModel: SearchViewModel!
     weak var coordinator: Coordinator?
+
     var searchController: UISearchController!
 
+    lazy var searchScopeView: SearchScopeView = {
+        let searchScopeView = SearchScopeView.instantiateFromNib()
+        searchScopeView.viewModel = viewModel
+        return searchScopeView
+    }()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Suche"
@@ -20,6 +28,7 @@ class SearchTableViewController: UITableViewController, StoryboardInitialViewCon
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.delegate = self
         navigationItem.searchController = searchController
+        
         definesPresentationContext = true
     }
     
@@ -27,11 +36,7 @@ class SearchTableViewController: UITableViewController, StoryboardInitialViewCon
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
+        
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         searchController.isActive = false
@@ -49,7 +54,7 @@ class SearchTableViewController: UITableViewController, StoryboardInitialViewCon
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        coordinator?.showSearchResult(for: AppSettings.latestSearchStrings[indexPath.row], from: self)
+        search(searchString: AppSettings.latestSearchStrings[indexPath.row])
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -64,11 +69,22 @@ class SearchTableViewController: UITableViewController, StoryboardInitialViewCon
         let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
         return configuration
     }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return searchScopeView
+    }
 
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let view = UIView()
         view.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
         return view
+    }
+    
+    private func search(searchString: String) {
+        viewModel.search(for: searchString) { [unowned self] items in
+            guard let items = items else { return } //TODO: show error
+            self.coordinator?.showSearchResult(for: searchString, with: items, from: self)
+        }
     }
 }
 
@@ -78,8 +94,8 @@ extension SearchTableViewController: UISearchBarDelegate {
         guard let searchText = searchBar.text,
             !searchText.isEmpty else { return }
         searchBar.resignFirstResponder()
-        coordinator?.showSearchResult(for: searchText, from: self)
-        
+        search(searchString: searchText)
+
         if !AppSettings.latestSearchStrings.contains(searchText) {
             AppSettings.latestSearchStrings = [searchText] + AppSettings.latestSearchStrings
         }

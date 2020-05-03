@@ -30,8 +30,9 @@ class Coordinator {
         settingsNavigationController.viewControllers = [settingsViewController]
         
         let searchViewController = SearchTableViewController.fromStoryboard()
+        let searchViewModel = SearchViewModel(connector: pr0grammConnector)
+        searchViewController.viewModel = searchViewModel
         searchViewController.coordinator = self
-        searchViewController.connector = pr0grammConnector
         searchViewController.loadViewIfNeeded()
         let searchNavigationController = NavigationController()
         searchNavigationController.viewControllers = [searchViewController]
@@ -96,15 +97,13 @@ class Coordinator {
         viewController.present(navigationController, animated: true)
     }
     
-    func showSearchResult(for tag: String, from viewController: UIViewController) {
-        pr0grammConnector.searchItems(for: [tag]) { [unowned self] items in
-            let searchResultViewController = MainCollectionViewController.fromStoryboard()
-            searchResultViewController.title = tag
-            searchResultViewController.isSearch = true
-            searchResultViewController.coordinator = self
-            searchResultViewController.items = items
-            viewController.navigationController?.pushViewController(searchResultViewController, animated: true)
-        }
+    func showSearchResult(for tag: String, with items: [Item], from viewController: UIViewController) {
+        let searchResultViewController = MainCollectionViewController.fromStoryboard()
+        searchResultViewController.title = tag
+        searchResultViewController.isSearch = true
+        searchResultViewController.coordinator = self
+        searchResultViewController.items = items
+        viewController.navigationController?.pushViewController(searchResultViewController, animated: true)
     }
     
     func showComments(viewModel: DetailViewModel, from presentingViewController: DetailViewController) {

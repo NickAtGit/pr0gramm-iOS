@@ -278,9 +278,19 @@ class Pr0grammConnector {
         task.resume()
     }
         
-    func searchItems(for tags: [String], completion: @escaping ([Item]) -> Void) {
-        guard let tag = tags[0].addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {return}
-        let url = URL(string: "https://pr0gramm.com/api/items/get?flags=3&promoted=1&tags=\(tag)")!
+    func searchItems(for tags: [String], sorting: Sorting, completion: @escaping ([Item]?) -> Void) {
+        
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "pr0gramm.com"
+        components.path = "/api/items/get"
+        components.queryItems = [
+            URLQueryItem(name: "flags", value: "3"),
+            URLQueryItem(name: "promoted", value: "\(sorting.rawValue)"),
+            URLQueryItem(name: "tags", value: "\(tags.first ?? "")")
+        ]
+        guard let url = components.url else { completion(nil); return }
+
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -289,7 +299,7 @@ class Pr0grammConnector {
         let session = URLSession.shared
         
         let task = session.dataTask(with: request) { data, response, error in
-            guard let data = data else { return }
+            guard let data = data else { completion(nil); return }
             let jsonDecoder = JSONDecoder()
             do {
                 let searchResponse = try jsonDecoder.decode(AllItems.self, from: data)
@@ -297,6 +307,7 @@ class Pr0grammConnector {
                     completion(searchResponse.items)
                 }
             } catch {
+                completion(nil)
                 print(error.localizedDescription)
             }
         }

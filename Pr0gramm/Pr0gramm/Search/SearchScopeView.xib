@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SearchScopeView" customModule="pr0gramm" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="41"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Jbi-Nj-QF6">
+                    <rect key="frame" x="20" y="5" width="374" height="32"/>
+                    <segments>
+                        <segment title="neu"/>
+                        <segment title="beliebt"/>
+                    </segments>
+                </segmentedControl>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Jbi-Nj-QF6" secondAttribute="trailing" constant="20" id="WPr-1a-kGd"/>
+                <constraint firstItem="Jbi-Nj-QF6" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="fyb-cv-QpZ"/>
+                <constraint firstItem="Jbi-Nj-QF6" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="gpB-tK-omL"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Jbi-Nj-QF6" secondAttribute="bottom" constant="5" id="y8i-jf-Uee"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="segmentedControl" destination="Jbi-Nj-QF6" id="D88-RL-TJL"/>
+            </connections>
+            <point key="canvasLocation" x="-97.101449275362327" y="79.483695652173921"/>
+        </view>
+    </objects>
+</document>

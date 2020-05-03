@@ -48,6 +48,12 @@ class DetailViewModel {
         connector.vote(id: item.value.id, value: vote, type: .voteItem)
     }
     
+    func search(for tag: String, completion: @escaping ([Item]?) -> Void) {
+        connector.searchItems(for: [tag], sorting: .neu) { items in
+            completion(items)
+        }
+    }
+    
     private func sortComments(_ comments: [Comments]) {
         let parentNodes = comments.filter { $0.parent == 0 }.map { Node(value: $0) }
         let childNodes = comments.filter { $0.parent != 0 }.map { Node(value: $0) }
