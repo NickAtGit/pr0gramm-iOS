@@ -100,20 +100,20 @@ class DetailViewModel {
     
     private func convertCommentNodesToArray(nodes: [Node<Comments>], currentArray: [Comments]) {
         var nodes = nodes
-        var currentArray = currentArray
+        var commentsArray = currentArray
         
         if let firstNode = nodes.first {
-            currentArray.append(firstNode.value)
+            commentsArray.append(firstNode.value)
             
             if firstNode.children.count > 0 {
-                convertCommentNodesToArray(nodes: firstNode.children, currentArray: currentArray)
+                let remainingNodes = nodes.dropFirst()
+                convertCommentNodesToArray(nodes: firstNode.children + remainingNodes, currentArray: commentsArray)
             } else {
                 nodes.removeFirst()
-                convertCommentNodesToArray(nodes: nodes, currentArray: currentArray)
+                convertCommentNodesToArray(nodes: nodes, currentArray: commentsArray)
             }
         } else {
-            print(currentArray)
-            self.comments = currentArray
+            self.comments = commentsArray
         }
     }
 }
