@@ -16,8 +16,8 @@
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Jbi-Nj-QF6">
                     <rect key="frame" x="20" y="5" width="374" height="32"/>
                     <segments>
-                        <segment title="neu"/>
-                        <segment title="beliebt"/>
+                        <segment title="Neu"/>
+                        <segment title="Top"/>
                     </segments>
                 </segmentedControl>
             </subviews>
