@@ -17,7 +17,7 @@ class DetailViewModel {
     let isTagsExpandButtonHidden = Observable<Bool>(true)
     let isCommentsButtonHidden = Observable<Bool>(true)
     let initialPointCount: Int
-    var comments: [Comments]?
+    let comments = Observable<[Comments]?>(nil)
     let link: String
     let mediaType: MediaType
     let postTime = Observable<String?>(nil)
@@ -40,7 +40,6 @@ class DetailViewModel {
             guard let itemInfo = itemInfo else { return }
             self?.itemInfo.value = itemInfo
             self?.isCommentsButtonHidden.value = itemInfo.comments.count == 0
-//            self?.comments = itemInfo.comments
             self?.sortComments(itemInfo.comments)
         }
     }
@@ -49,10 +48,12 @@ class DetailViewModel {
         connector.vote(id: item.value.id, value: vote, type: .voteItem)
     }
     
-    func sortComments(_ comments: [Comments]) {
+    private func sortComments(_ comments: [Comments]) {
         let parentNodes = comments.filter { $0.parent == 0 }.map { Node(value: $0) }
         let childNodes = comments.filter { $0.parent != 0 }.map { Node(value: $0) }
-        sortComments(parentNodes: parentNodes, childNodes: childNodes)
+        DispatchQueue.global().async {
+            self.sortComments(parentNodes: parentNodes, childNodes: childNodes)
+        }
     }
     
     private func sortComments(parentNodes: [Node<Comments>], childNodes: [Node<Comments>]) {
@@ -107,18 +108,19 @@ class DetailViewModel {
             
             if firstNode.children.count > 0 {
                 let remainingNodes = nodes.dropFirst()
-                convertCommentNodesToArray(nodes: firstNode.children + remainingNodes, currentArray: commentsArray)
+                let sortedChildren = firstNode.children.sorted { $0.value.confidence ?? 0 > $1.value.confidence ?? 0 }
+                convertCommentNodesToArray(nodes: sortedChildren + remainingNodes, currentArray: commentsArray)
             } else {
                 nodes.removeFirst()
                 convertCommentNodesToArray(nodes: nodes, currentArray: commentsArray)
             }
         } else {
-            self.comments = commentsArray
+            self.comments.value = commentsArray
         }
     }
 }
 
-class Node<T> {
+fileprivate class Node<T> {
     var value: T
     weak var parent: Node?
     var children: [Node] = []
