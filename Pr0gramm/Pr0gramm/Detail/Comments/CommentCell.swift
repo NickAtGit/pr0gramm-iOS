@@ -23,7 +23,7 @@ class CommentCell: UITableViewCell {
             initialPointCount =  comment.up - comment.down
             pointsLabel.text = "\(initialPointCount)"
 
-            leadingConstraint.constant = leadingConstraint.constant + CGFloat(comment.depth * 10)
+            leadingConstraint.constant = leadingConstraint.constant + CGFloat(comment.depth * 15)
         }
     }
     
