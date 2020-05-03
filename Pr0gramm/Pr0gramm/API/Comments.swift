@@ -1,7 +1,8 @@
 
 import Foundation
 
-struct Comments : Codable {
+struct Comments : Codable, Equatable {
+    var depth = 0
 	let id : Int?
 	let parent : Int?
 	let content : String?

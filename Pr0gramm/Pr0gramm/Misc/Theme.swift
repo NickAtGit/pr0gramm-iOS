@@ -108,10 +108,8 @@ extension Theme {
     func apply(for application: UIApplication) {
         application.keyWindow?.tintColor = tint
         
-        let titilliumWebRegular = "HelveticaNeue"
-        let font15 = UIFont(name: titilliumWebRegular, size: 15)!
-        let font12 =  UIFont(name: titilliumWebRegular, size: 12)!
-//        let font24 =  UIFont(name: titilliumWebRegular, size: 24)!
+        let font15 = UIFont.systemFont(ofSize: 15)
+        let font12 =  UIFont.systemFont(ofSize: 12)
 
         UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: font15],
                                                             for: .normal)
@@ -144,7 +142,7 @@ extension Theme {
             $0.tintColor = tint
             $0.shadowImage = tint.as1ptImage()
             $0.titleTextAttributes = [.foregroundColor: labelColor,
-                                      .font: font15]
+                                      .font: UIFont.systemFont(ofSize: 17, weight: .bold)]
             $0.isTranslucent = false
             $0.barTintColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
         }
