@@ -51,7 +51,7 @@ class DetailViewModel {
     private func sortComments(_ comments: [Comments]) {
         let parentNodes = comments.filter { $0.parent == 0 }.map { Node(value: $0) }
         let childNodes = comments.filter { $0.parent != 0 }.map { Node(value: $0) }
-        DispatchQueue.global().async {
+        DispatchQueue.main.async {
             self.sortComments(parentNodes: parentNodes, childNodes: childNodes)
         }
     }
