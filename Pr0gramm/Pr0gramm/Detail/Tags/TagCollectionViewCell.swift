@@ -46,7 +46,7 @@ class TagCollectionViewCell: UICollectionViewCell, UIContextMenuInteractionDeleg
         
         let saveAction = UIAction(title: "Speichern", image: UIImage(systemName: "text.append")) { [unowned self] _ in
             guard let text = self.tagLabel.text else { return }
-            AppSettings.latestSearchStrings = AppSettings.latestSearchStrings + [text]
+            AppSettings.latestSearchStrings = [text] + AppSettings.latestSearchStrings
         }
 
                 
