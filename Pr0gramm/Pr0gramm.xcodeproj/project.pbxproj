@@ -71,6 +71,7 @@
 		03B062942428EC3600CA657A /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B062932428EC3600CA657A /* TagCollectionViewCell.swift */; };
 		03C1FA242427854600E6AEE4 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C1FA232427854600E6AEE4 /* NavigationController.swift */; };
 		03C1FA2B2427D27600E6AEE4 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C1FA2A2427D27600E6AEE4 /* UIViewController+Extension.swift */; };
+		03D115FD2460BCD90096ECFD /* OPLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D115FC2460BCD90096ECFD /* OPLabel.swift */; };
 		03D2AC46243212A70082D4C9 /* FlagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2AC45243212A70082D4C9 /* FlagsViewController.swift */; };
 		03D2AC48243212C40082D4C9 /* FlagsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03D2AC47243212C40082D4C9 /* FlagsViewController.storyboard */; };
 		03D2AC4B24321DB40082D4C9 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2AC4A24321DB40082D4C9 /* Settings.swift */; };
@@ -146,6 +147,7 @@
 		03B062932428EC3600CA657A /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
 		03C1FA232427854600E6AEE4 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		03C1FA2A2427D27600E6AEE4 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		03D115FC2460BCD90096ECFD /* OPLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPLabel.swift; sourceTree = "<group>"; };
 		03D2AC45243212A70082D4C9 /* FlagsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagsViewController.swift; sourceTree = "<group>"; };
 		03D2AC47243212C40082D4C9 /* FlagsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FlagsViewController.storyboard; sourceTree = "<group>"; };
 		03D2AC4A24321DB40082D4C9 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				033CF1C6205ED95500627321 /* CommentCell.swift */,
 				030CAF532440B76400D6885C /* CommentsViewController.swift */,
 				030CAF552440B76A00D6885C /* CommentsViewController.storyboard */,
+				03D115FC2460BCD90096ECFD /* OPLabel.swift */,
 			);
 			path = Comments;
 			sourceTree = "<group>";
@@ -580,6 +583,7 @@
 				03A93326243BC82000A16E1B /* AlignedCollectionViewFlowLayout.swift in Sources */,
 				0388A0B724297C70006E86A3 /* Downloader.swift in Sources */,
 				030CAF5E2449183F00D6885C /* UIImage+Gif.swift in Sources */,
+				03D115FD2460BCD90096ECFD /* OPLabel.swift in Sources */,
 				033CF1CB205FCB4500627321 /* NibView.swift in Sources */,
 				0354AAF524312E52009C35E0 /* ImageDetailViewController.swift in Sources */,
 				033CF1C3205BFF9A00627321 /* Tags.swift in Sources */,
