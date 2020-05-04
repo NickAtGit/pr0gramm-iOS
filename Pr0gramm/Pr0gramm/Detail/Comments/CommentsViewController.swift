@@ -33,8 +33,8 @@ extension CommentsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell") as! CommentCell
-        cell.comment = viewModel.comments.value?[indexPath.row]
         cell.detailViewModel = viewModel
+        cell.comment = viewModel.comments.value?[indexPath.row]
         return cell
     }
 }

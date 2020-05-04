@@ -96,7 +96,7 @@ class Theming {
         case 2: theme = AngenehmesGruenTheme()
         case 3: theme = PinkTheme()
         case 4: theme = YellowTheme()
-        default: theme = MegaEpischesBlau()
+        default: theme = OrangeTheme()
         }
         theme.apply(for: UIApplication.shared)
     }

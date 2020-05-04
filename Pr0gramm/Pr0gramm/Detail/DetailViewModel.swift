@@ -54,6 +54,8 @@ class DetailViewModel {
         }
     }
     
+    func isAuthorOP(for comment: Comments) -> Bool { comment.name == item.value.user }
+    
     private func sortComments(_ comments: [Comments]) {
         let parentNodes = comments.filter { $0.parent == 0 }.map { Node(value: $0) }
         let childNodes = comments.filter { $0.parent != 0 }.map { Node(value: $0) }

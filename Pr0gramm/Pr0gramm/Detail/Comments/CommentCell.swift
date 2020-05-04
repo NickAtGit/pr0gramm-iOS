@@ -8,6 +8,8 @@ class CommentCell: UITableViewCell {
     @IBOutlet private var messageTextView: UITextView!
     @IBOutlet private var authorLabel: UILabel!
     @IBOutlet private var pointsLabel: UILabel!
+    @IBOutlet private var opLabel: OPLabel!
+    
     @IBOutlet private var leadingConstraint: NSLayoutConstraint!
     @IBOutlet private var upvoteButton: UIButton!
     @IBOutlet private var downVoteButton: UIButton!
@@ -22,7 +24,7 @@ class CommentCell: UITableViewCell {
             messageTextView.text = comment.content
             initialPointCount =  comment.up - comment.down
             pointsLabel.text = "\(initialPointCount)"
-
+            opLabel.isHidden = !detailViewModel.isAuthorOP(for: comment)
             leadingConstraint.constant = leadingConstraint.constant + CGFloat(comment.depth * 15)
         }
     }
