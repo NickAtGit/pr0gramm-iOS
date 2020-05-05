@@ -3,6 +3,7 @@ import UIKit
 
 class CommentsViewController: UIViewController, StoryboardInitialViewController {
     
+    weak var coordinator: Coordinator?
     var viewModel: DetailViewModel!
     @IBOutlet var tableView: UITableView!
     
@@ -13,9 +14,9 @@ class CommentsViewController: UIViewController, StoryboardInitialViewController 
         tableView.reloadData()
         view.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
         
-        let _ = viewModel.comments.observeNext { [unowned self] _ in
+        let _ = viewModel.comments.observeNext { [weak self] _ in
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             }
         }
     }
@@ -35,6 +36,13 @@ extension CommentsViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell") as! CommentCell
         cell.detailViewModel = viewModel
         cell.comment = viewModel.comments.value?[indexPath.row]
+        cell.delegate = self
         return cell
+    }
+}
+
+extension CommentsViewController: CommentCellDelegate {
+    func requestedReply(for comment: Comment) {
+        coordinator?.showReply(for: comment, viewModel: viewModel, from: self)
     }
 }

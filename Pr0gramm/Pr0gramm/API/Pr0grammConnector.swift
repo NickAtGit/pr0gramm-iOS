@@ -49,6 +49,7 @@ enum PostType {
     case voteItem
     case voteTag
     
+    
     var path: String {
         switch self {
         case .login:
@@ -194,6 +195,25 @@ class Pr0grammConnector {
         let url = URL(string: http + baseURL + "api/\(type.path)/vote")!
         post(data: data, to: url, postType: .voteItem) { success in
             print("Voted \(type.path): \(success)")
+        }
+    }
+    
+    func postComment(to itemId: Int, parentId: Int = 0, comment: String) {
+        guard isLoggedIn else { return }
+        guard let nonce = nonce else { return }
+        let data: [String: String] = ["parentId": "\(parentId)",
+                                      "itemId": "\(itemId)",
+                                      "comment": "\(comment)",
+                                      "_nonce": nonce]
+        
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "pr0gramm.com"
+        components.path = "/api/comments/post"
+        guard let url = components.url else { return }
+
+        post(data: data, to: url, postType: .voteItem) { success in
+            print("Posted comment: \(success)")
         }
     }
     
