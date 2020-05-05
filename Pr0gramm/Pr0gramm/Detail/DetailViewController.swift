@@ -161,7 +161,9 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
     @objc
     func play() {
         avPlayer?.isMuted = AppSettings.isVideoMuted
-        avPlayer?.play()
+        if AppSettings.isAutoPlay {
+            avPlayer?.play()
+        }
     }
     
     func stop() {
