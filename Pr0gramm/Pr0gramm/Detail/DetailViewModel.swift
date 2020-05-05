@@ -17,7 +17,7 @@ class DetailViewModel {
     let isTagsExpandButtonHidden = Observable<Bool>(true)
     let isCommentsButtonHidden = Observable<Bool>(true)
     let initialPointCount: Int
-    let comments = Observable<[Comments]?>(nil)
+    let comments = Observable<[Comment]?>(nil)
     let link: String
     let mediaType: MediaType
     let postTime = Observable<String?>(nil)
@@ -44,6 +44,11 @@ class DetailViewModel {
         }
     }
     
+    func addComment(_ comment: Comment, parentComment: Comment) {
+        guard let index = comments.value?.firstIndex(of: parentComment) else { return }
+        comments.value?.insert(comment, at: index + 1)
+    }
+    
     func vote(_ vote: Vote) {
         connector.vote(id: item.value.id, value: vote, type: .voteItem)
     }
@@ -54,9 +59,9 @@ class DetailViewModel {
         }
     }
     
-    func isAuthorOP(for comment: Comments) -> Bool { comment.name == item.value.user }
+    func isAuthorOP(for comment: Comment) -> Bool { comment.name == item.value.user }
     
-    private func sortComments(_ comments: [Comments]) {
+    private func sortComments(_ comments: [Comment]) {
         let parentNodes = comments.filter { $0.parent == 0 }.map { Node(value: $0) }
         let childNodes = comments.filter { $0.parent != 0 }.map { Node(value: $0) }
         DispatchQueue.main.async {
@@ -64,7 +69,7 @@ class DetailViewModel {
         }
     }
     
-    private func sortComments(parentNodes: [Node<Comments>], childNodes: [Node<Comments>]) {
+    private func sortComments(parentNodes: [Node<Comment>], childNodes: [Node<Comment>]) {
         
         let parentNodes = parentNodes
         var childNodes = childNodes
@@ -107,7 +112,7 @@ class DetailViewModel {
         }
     }
     
-    private func convertCommentNodesToArray(nodes: [Node<Comments>], currentArray: [Comments]) {
+    private func convertCommentNodesToArray(nodes: [Node<Comment>], currentArray: [Comment]) {
         var nodes = nodes
         var commentsArray = currentArray
         
@@ -143,7 +148,7 @@ fileprivate class Node<T> {
     }
 }
 
-extension Node where T == Comments {
+extension Node where T == Comment {
     
     func search(id: Int) -> Node? {
         if id == self.value.id {

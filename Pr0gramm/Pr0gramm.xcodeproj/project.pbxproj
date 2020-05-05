@@ -29,7 +29,7 @@
 		031EE8402065C5B10030CA68 /* AllItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03076A762059E8B800168E62 /* AllItems.swift */; };
 		031EE8412065C5B10030CA68 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03076A752059E8B800168E62 /* Item.swift */; };
 		031EE8422065C5B10030CA68 /* ItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033CF1C4205C0F7400627321 /* ItemInfo.swift */; };
-		031EE8432065C5B10030CA68 /* Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033CF1C0205BFF9A00627321 /* Comments.swift */; };
+		031EE8432065C5B10030CA68 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033CF1C0205BFF9A00627321 /* Comment.swift */; };
 		031EE8442065C5B10030CA68 /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033CF1C1205BFF9A00627321 /* Tags.swift */; };
 		031EE8452065C5B10030CA68 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03076A652059E80F00168E62 /* UIImageView+Extension.swift */; };
 		032E62FF243F8E9900FA6C00 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032E62FE243F8E9900FA6C00 /* DetailViewModel.swift */; };
@@ -39,7 +39,7 @@
 		033CF1B8205BDC6B00627321 /* Pr0grammConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033CF1B7205BDC6B00627321 /* Pr0grammConnector.swift */; };
 		033CF1BA205BDE1500627321 /* ThumbCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033CF1B9205BDE1500627321 /* ThumbCollectionViewCell.swift */; };
 		033CF1BC205BE5AC00627321 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033CF1BB205BE5AC00627321 /* DetailViewController.swift */; };
-		033CF1C2205BFF9A00627321 /* Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033CF1C0205BFF9A00627321 /* Comments.swift */; };
+		033CF1C2205BFF9A00627321 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033CF1C0205BFF9A00627321 /* Comment.swift */; };
 		033CF1C3205BFF9A00627321 /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033CF1C1205BFF9A00627321 /* Tags.swift */; };
 		033CF1C5205C0F7400627321 /* ItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033CF1C4205C0F7400627321 /* ItemInfo.swift */; };
 		033CF1C7205ED95500627321 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033CF1C6205ED95500627321 /* CommentCell.swift */; };
@@ -114,7 +114,7 @@
 		033CF1B7205BDC6B00627321 /* Pr0grammConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pr0grammConnector.swift; sourceTree = "<group>"; };
 		033CF1B9205BDE1500627321 /* ThumbCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbCollectionViewCell.swift; sourceTree = "<group>"; };
 		033CF1BB205BE5AC00627321 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		033CF1C0205BFF9A00627321 /* Comments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comments.swift; sourceTree = "<group>"; };
+		033CF1C0205BFF9A00627321 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		033CF1C1205BFF9A00627321 /* Tags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
 		033CF1C4205C0F7400627321 /* ItemInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemInfo.swift; sourceTree = "<group>"; };
 		033CF1C6205ED95500627321 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
@@ -327,7 +327,7 @@
 				03076A762059E8B800168E62 /* AllItems.swift */,
 				03076A752059E8B800168E62 /* Item.swift */,
 				033CF1C4205C0F7400627321 /* ItemInfo.swift */,
-				033CF1C0205BFF9A00627321 /* Comments.swift */,
+				033CF1C0205BFF9A00627321 /* Comment.swift */,
 				033CF1C1205BFF9A00627321 /* Tags.swift */,
 				03A93323243BAFBB00A16E1B /* Login.swift */,
 				0388A0B624297C70006E86A3 /* Downloader.swift */,
@@ -555,7 +555,7 @@
 				03B062942428EC3600CA657A /* TagCollectionViewCell.swift in Sources */,
 				033CF1B6205BDBED00627321 /* MainCollectionViewController.swift in Sources */,
 				030CAF61244CD75E00D6885C /* SettingsViewController.swift in Sources */,
-				033CF1C2205BFF9A00627321 /* Comments.swift in Sources */,
+				033CF1C2205BFF9A00627321 /* Comment.swift in Sources */,
 				032E62FF243F8E9900FA6C00 /* DetailViewModel.swift in Sources */,
 				035EBA7B24262C0B009185E9 /* LoginViewController.swift in Sources */,
 				03C1FA2B2427D27600E6AEE4 /* UIViewController+Extension.swift in Sources */,
@@ -606,7 +606,7 @@
 				031EE8442065C5B10030CA68 /* Tags.swift in Sources */,
 				031EE8412065C5B10030CA68 /* Item.swift in Sources */,
 				031EE83F2065C5B10030CA68 /* Pr0grammConnector.swift in Sources */,
-				031EE8432065C5B10030CA68 /* Comments.swift in Sources */,
+				031EE8432065C5B10030CA68 /* Comment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

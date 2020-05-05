@@ -60,41 +60,11 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cPz-Yc-eOz">
-                                                    <rect key="frame" x="312.5" y="90" width="81.5" height="22"/>
-                                                    <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i1I-rm-F1o">
-                                                            <rect key="frame" x="0.0" y="0.0" width="20.5" height="22"/>
-                                                            <state key="normal" image="plus.circle" catalog="system"/>
-                                                            <connections>
-                                                                <action selector="upvoteTapped:" destination="xMg-BV-wsZ" eventType="touchUpInside" id="6c1-b8-FOf"/>
-                                                            </connections>
-                                                        </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6hG-fb-u4W">
-                                                            <rect key="frame" x="30.5" y="0.0" width="20.5" height="22"/>
-                                                            <state key="normal" image="minus.circle" catalog="system"/>
-                                                            <connections>
-                                                                <action selector="downVoteTapped:" destination="xMg-BV-wsZ" eventType="touchUpInside" id="ZmH-KQ-xyg"/>
-                                                            </connections>
-                                                        </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Sw-XY-Qpv">
-                                                            <rect key="frame" x="61" y="0.0" width="20.5" height="22"/>
-                                                            <state key="normal" image="heart" catalog="system"/>
-                                                            <connections>
-                                                                <action selector="downVoteTapped:" destination="xMg-BV-wsZ" eventType="touchUpInside" id="6TI-ZR-aZP"/>
-                                                                <action selector="favoriteButtonTapped:" destination="xMg-BV-wsZ" eventType="touchUpInside" id="eMX-SG-6FK"/>
-                                                            </connections>
-                                                        </button>
-                                                    </subviews>
-                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="cPz-Yc-eOz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="26S-Sv-wI6" secondAttribute="trailing" constant="10" id="0H8-CI-QR4"/>
-                                                <constraint firstAttribute="trailing" secondItem="cPz-Yc-eOz" secondAttribute="trailing" constant="20" id="2XT-R0-Vve"/>
                                                 <constraint firstAttribute="trailing" secondItem="6f3-J3-sbA" secondAttribute="trailing" constant="20" id="d71-wM-0jz"/>
                                                 <constraint firstAttribute="bottom" secondItem="26S-Sv-wI6" secondAttribute="bottom" constant="15" id="gSd-bq-9z2"/>
                                                 <constraint firstItem="6f3-J3-sbA" firstAttribute="top" secondItem="Hzv-5X-snf" secondAttribute="top" constant="15" id="gf8-fI-ysA"/>
-                                                <constraint firstItem="cPz-Yc-eOz" firstAttribute="centerY" secondItem="26S-Sv-wI6" secondAttribute="centerY" id="nDs-Sv-fmc"/>
                                                 <constraint firstItem="26S-Sv-wI6" firstAttribute="leading" secondItem="6f3-J3-sbA" secondAttribute="leading" id="pju-9W-Rtf"/>
                                                 <constraint firstItem="26S-Sv-wI6" firstAttribute="top" secondItem="6f3-J3-sbA" secondAttribute="bottom" constant="15" id="rW8-lL-4bq"/>
                                                 <constraint firstItem="6f3-J3-sbA" firstAttribute="leading" secondItem="Hzv-5X-snf" secondAttribute="leading" constant="20" id="tCr-fx-euN"/>
@@ -102,13 +72,10 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="authorLabel" destination="pwI-7D-vTq" id="GyR-r0-hTj"/>
-                                            <outlet property="downVoteButton" destination="6hG-fb-u4W" id="o1s-Ww-txB"/>
-                                            <outlet property="favoriteButton" destination="0Sw-XY-Qpv" id="AR2-iG-4f2"/>
                                             <outlet property="leadingConstraint" destination="tCr-fx-euN" id="Qok-Y6-DaH"/>
                                             <outlet property="messageTextView" destination="6f3-J3-sbA" id="Fq8-HD-cns"/>
                                             <outlet property="opLabel" destination="Kmw-hx-DI9" id="Tj2-Qm-A7j"/>
                                             <outlet property="pointsLabel" destination="RWq-gP-22D" id="ptJ-i3-tqb"/>
-                                            <outlet property="upvoteButton" destination="i1I-rm-F1o" id="e5a-zw-mFk"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -132,9 +99,4 @@
             <point key="canvasLocation" x="-323.1884057971015" y="178.79464285714286"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="heart" catalog="system" width="128" height="109"/>
-        <image name="minus.circle" catalog="system" width="128" height="121"/>
-        <image name="plus.circle" catalog="system" width="128" height="121"/>
-    </resources>
 </document>

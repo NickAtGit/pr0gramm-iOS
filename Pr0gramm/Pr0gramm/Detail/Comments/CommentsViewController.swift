@@ -13,9 +13,9 @@ class CommentsViewController: UIViewController, StoryboardInitialViewController 
         tableView.reloadData()
         view.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
         
-        let _ = viewModel.comments.observeNext { [unowned self] _ in
+        let _ = viewModel.comments.observeNext { [weak self] _ in
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             }
         }
     }
@@ -35,6 +35,15 @@ extension CommentsViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell") as! CommentCell
         cell.detailViewModel = viewModel
         cell.comment = viewModel.comments.value?[indexPath.row]
+        cell.delegate = self
         return cell
+    }
+}
+
+extension CommentsViewController: CommentCellDelegate {
+    func didPostReply(for comment: Comment) {
+        viewModel.addComment(Comment(with: "test", depth: comment.depth + 1), parentComment: comment)
+//        guard let index = viewModel.comments.value?.firstIndex(of: comment) else { return }
+//        tableView.insertRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
     }
 }
