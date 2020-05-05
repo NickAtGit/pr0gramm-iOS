@@ -47,6 +47,7 @@ class DetailViewModel {
     func addComment(_ comment: Comment, parentComment: Comment) {
         guard let index = comments.value?.firstIndex(of: parentComment) else { return }
         comments.value?.insert(comment, at: index + 1)
+        connector.postComment(to: item.value.id, parentId: parentComment.id ?? 0, comment: comment.content ?? "")
     }
     
     func vote(_ vote: Vote) {

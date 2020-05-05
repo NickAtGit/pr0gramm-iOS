@@ -109,10 +109,23 @@ class Coordinator {
     func showComments(viewModel: DetailViewModel, from presentingViewController: DetailViewController) {
         let viewController = CommentsViewController.fromStoryboard()
         viewController.viewModel = viewModel
+        viewController.coordinator = self
+
         let navigationController = NavigationController(rootViewController: viewController)
         navigationController.style = .dragable
         navigationController.transitioningDelegate = presentingViewController
         navigationController.modalPresentationStyle = .custom
+        presentingViewController.present(navigationController, animated: true)
+    }
+    
+    func showReply(for comment: Comment, viewModel: DetailViewModel, from presentingViewController: CommentsViewController) {
+        let viewController = ReplyViewController.fromStoryboard()
+        viewController.viewModel = viewModel
+        viewController.comment = comment
+        let navigationController = NavigationController(rootViewController: viewController)
+        navigationController.style = .dismissable
+        navigationController.isModalInPresentation = true
+        
         presentingViewController.present(navigationController, animated: true)
     }
     

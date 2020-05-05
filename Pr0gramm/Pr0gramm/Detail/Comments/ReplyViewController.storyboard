@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Sdj-QF-40W">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Reply View Controller-->
+        <scene sceneID="z3l-xz-eZU">
+            <objects>
+                <viewController id="Sdj-QF-40W" customClass="ReplyViewController" customModule="pr0gramm" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="d8W-kq-SaC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="I86-r6-7cD">
+                                <rect key="frame" x="20" y="64" width="374" height="778"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7ef-nP-FVm">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="128"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8tv-FX-dcp">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="100"/>
+                                                <color key="backgroundColor" name="Richtiges Grau"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="NZU-cg-oz7"/>
+                                                </constraints>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                <color key="textColor" name="Schriftfarbe"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gYk-08-QzI">
+                                                <rect key="frame" x="0.0" y="110" width="144.5" height="18"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nEa-rW-HAL">
+                                                        <rect key="frame" x="0.0" y="0.0" width="48" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                        <color key="textColor" name="Schriftfarbe ausgegraut"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Points" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VEM-4u-jjJ">
+                                                        <rect key="frame" x="58" y="0.0" width="46.5" height="18"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                        <color key="textColor" name="Schriftfarbe"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78H-k2-qR1" customClass="OPLabel" customModule="pr0gramm" customModuleProvider="target">
+                                                        <rect key="frame" x="114.5" y="0.0" width="30" height="18"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="30" id="uNi-JN-LmT"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                                        <color key="textColor" name="Schriftfarbe"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="8tv-FX-dcp" secondAttribute="trailing" id="7MJ-Ac-cQN"/>
+                                            <constraint firstItem="gYk-08-QzI" firstAttribute="top" secondItem="8tv-FX-dcp" secondAttribute="bottom" constant="10" id="8V2-Tt-wvx"/>
+                                            <constraint firstItem="8tv-FX-dcp" firstAttribute="width" secondItem="7ef-nP-FVm" secondAttribute="width" id="KH6-61-6zT"/>
+                                            <constraint firstItem="8tv-FX-dcp" firstAttribute="top" secondItem="7ef-nP-FVm" secondAttribute="top" id="Mgk-Xf-Bs1"/>
+                                            <constraint firstItem="8tv-FX-dcp" firstAttribute="leading" secondItem="7ef-nP-FVm" secondAttribute="leading" id="NIP-0P-zCa"/>
+                                            <constraint firstAttribute="bottom" secondItem="gYk-08-QzI" secondAttribute="bottom" id="a9y-JI-TGH"/>
+                                            <constraint firstItem="gYk-08-QzI" firstAttribute="leading" secondItem="7ef-nP-FVm" secondAttribute="leading" id="kt3-E7-mn8"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KZ6-cX-8gM" customClass="SeparatorView" customModule="pr0gramm" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="158" width="374" height="1"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="JlU-JQ-zdj"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SFi-3S-YZn">
+                                        <rect key="frame" x="0.0" y="189" width="374" height="589"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iTk-OW-Eqe">
+                                                <rect key="frame" x="0.0" y="28" width="374" height="561"/>
+                                                <color key="backgroundColor" name="Richtiges Grau"/>
+                                                <color key="textColor" name="Schriftfarbe"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deine Antwort:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bnf-yn-GAs">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                <color key="textColor" name="Schriftfarbe ausgegraut"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="iTk-OW-Eqe" secondAttribute="bottom" id="EJu-mq-vpb"/>
+                                            <constraint firstAttribute="trailing" secondItem="iTk-OW-Eqe" secondAttribute="trailing" id="M3s-Ao-X0u"/>
+                                            <constraint firstItem="iTk-OW-Eqe" firstAttribute="top" secondItem="Bnf-yn-GAs" secondAttribute="bottom" constant="10" id="T8H-zq-BPS"/>
+                                            <constraint firstItem="iTk-OW-Eqe" firstAttribute="width" secondItem="SFi-3S-YZn" secondAttribute="width" id="V5e-ZA-xOR"/>
+                                            <constraint firstItem="iTk-OW-Eqe" firstAttribute="leading" secondItem="SFi-3S-YZn" secondAttribute="leading" id="W1d-vY-guJ"/>
+                                            <constraint firstItem="Bnf-yn-GAs" firstAttribute="leading" secondItem="SFi-3S-YZn" secondAttribute="leading" id="ae6-2t-2r1"/>
+                                            <constraint firstAttribute="trailing" secondItem="Bnf-yn-GAs" secondAttribute="trailing" id="h1r-87-Hfj"/>
+                                            <constraint firstItem="Bnf-yn-GAs" firstAttribute="top" secondItem="SFi-3S-YZn" secondAttribute="top" id="ocz-PV-UCR"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="KZ6-cX-8gM" secondAttribute="trailing" id="AzU-TO-owJ"/>
+                                    <constraint firstItem="SFi-3S-YZn" firstAttribute="width" secondItem="I86-r6-7cD" secondAttribute="width" id="HvX-gN-SbM"/>
+                                    <constraint firstItem="7ef-nP-FVm" firstAttribute="width" secondItem="I86-r6-7cD" secondAttribute="width" id="Yzh-Oi-Pap"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" name="Richtiges Grau"/>
+                        <constraints>
+                            <constraint firstItem="I86-r6-7cD" firstAttribute="top" secondItem="bZ1-7h-ktl" secondAttribute="top" constant="20" id="0Tt-g4-2v7"/>
+                            <constraint firstItem="I86-r6-7cD" firstAttribute="leading" secondItem="bZ1-7h-ktl" secondAttribute="leading" constant="20" id="AXK-E8-dQg"/>
+                            <constraint firstItem="I86-r6-7cD" firstAttribute="trailing" secondItem="bZ1-7h-ktl" secondAttribute="trailing" constant="-20" id="L2f-jd-Dnu"/>
+                            <constraint firstItem="bZ1-7h-ktl" firstAttribute="bottom" secondItem="I86-r6-7cD" secondAttribute="bottom" constant="20" id="xFW-oh-rFM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bZ1-7h-ktl"/>
+                    </view>
+                    <connections>
+                        <outlet property="authorLabel" destination="nEa-rW-HAL" id="KhA-v0-Vvg"/>
+                        <outlet property="commentTextView" destination="8tv-FX-dcp" id="hKg-gS-ZQC"/>
+                        <outlet property="commentTextViewHeightConstraint" destination="NZU-cg-oz7" id="Sle-Nc-Mpk"/>
+                        <outlet property="contentView" destination="d8W-kq-SaC" id="86M-co-LKm"/>
+                        <outlet property="opLabel" destination="78H-k2-qR1" id="32X-zg-C1f"/>
+                        <outlet property="pointsLabel" destination="VEM-4u-jjJ" id="UG8-BR-0IC"/>
+                        <outlet property="replyTextView" destination="iTk-OW-Eqe" id="2tC-pe-m2R"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dnb-GB-0Oh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="Richtiges Grau">
+            <color red="0.086274509803921567" green="0.086274509803921567" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Schriftfarbe">
+            <color red="0.94901960784313721" green="0.96078431372549022" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Schriftfarbe ausgegraut">
+            <color red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

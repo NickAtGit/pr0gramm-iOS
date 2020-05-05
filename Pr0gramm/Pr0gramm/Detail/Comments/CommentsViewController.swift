@@ -3,6 +3,7 @@ import UIKit
 
 class CommentsViewController: UIViewController, StoryboardInitialViewController {
     
+    weak var coordinator: Coordinator?
     var viewModel: DetailViewModel!
     @IBOutlet var tableView: UITableView!
     
@@ -41,9 +42,7 @@ extension CommentsViewController: UITableViewDataSource {
 }
 
 extension CommentsViewController: CommentCellDelegate {
-    func didPostReply(for comment: Comment) {
-        viewModel.addComment(Comment(with: "test", depth: comment.depth + 1), parentComment: comment)
-//        guard let index = viewModel.comments.value?.firstIndex(of: comment) else { return }
-//        tableView.insertRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+    func requestedReply(for comment: Comment) {
+        coordinator?.showReply(for: comment, viewModel: viewModel, from: self)
     }
 }

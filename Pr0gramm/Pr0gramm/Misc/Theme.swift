@@ -177,6 +177,10 @@ extension Theme {
             $0.selectedSegmentTintColor = backgroundColor
         }
         
+        SeparatorView.appearance().with {
+            $0.backgroundColor = tint
+        }
+        
         application.windows.reload()
     }
 }

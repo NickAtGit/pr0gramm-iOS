@@ -2,7 +2,7 @@
 import UIKit
 
 protocol CommentCellDelegate: class {
-    func didPostReply(for comment: Comment)
+    func requestedReply(for comment: Comment)
 }
 
 class CommentCell: UITableViewCell, UIContextMenuInteractionDelegate {
@@ -68,15 +68,15 @@ class CommentCell: UITableViewCell, UIContextMenuInteractionDelegate {
         
         let voteMenu = UIMenu(title: "Vote", image: UIImage(systemName: "star.circle"), children: [upvoteAction,downvoteAction,favoriteAction])
         
-        let shrugAction = UIAction(title: "¯\\_(ツ)_/¯", image: UIImage(systemName: "arrowshape.turn.up.left")) { [unowned self] _ in
-            self.replyTapped()
-        }
+//        let shrugAction = UIAction(title: "¯\\_(ツ)_/¯", image: UIImage(systemName: "arrowshape.turn.up.left")) { [unowned self] _ in
+//            self.replyTapped()
+//        }
 
         let replyAction = UIAction(title: "Antworten", image: UIImage(systemName: "arrowshape.turn.up.left")) { [unowned self] _ in
             self.replyTapped()
         }
                 
-        return UIMenu(title: "", children: [shrugAction, replyAction, voteMenu])
+        return UIMenu(title: "", children: [replyAction, voteMenu])
     }
     
     func upvoteTapped() {
@@ -104,8 +104,7 @@ class CommentCell: UITableViewCell, UIContextMenuInteractionDelegate {
     }
     
     func replyTapped() {
-        delegate?.didPostReply(for: comment)
-//        detailViewModel.connector.postComment(to: detailViewModel.item.value.id, parentId: id, comment: "Nice")
+        delegate?.requestedReply(for: comment)
     }
     
     override func prepareForReuse() {
