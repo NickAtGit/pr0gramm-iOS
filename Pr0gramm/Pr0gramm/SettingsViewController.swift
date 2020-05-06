@@ -27,7 +27,7 @@ class SettingsViewController: TableViewController {
                     AppSettings.isVideoMuted = $0
                 }, cellClass: MultiLineTableViewCell.self),
                 
-                Row(text: "Videos automatisch starten", accessory: .switchToggle(value: AppSettings.isVideoMuted) {
+                Row(text: "Videos automatisch starten", accessory: .switchToggle(value: AppSettings.isAutoPlay) {
                     AppSettings.isAutoPlay = $0
                 }, cellClass: MultiLineTableViewCell.self)
             ], footer: ""),
