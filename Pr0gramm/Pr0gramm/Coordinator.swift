@@ -81,10 +81,10 @@ class Coordinator {
     func showVideo(with url: URL) {
         let avPlayerViewController = AVPlayerViewController()
         let avPlayer = AVPlayer()
-        avPlayer.isMuted = false
         avPlayerViewController.player = avPlayer
         let playerItem = AVPlayerItem(url: url)
         avPlayer.replaceCurrentItem(with: playerItem)
+        avPlayer.isMuted = AppSettings.isVideoMuted
         avPlayer.play()
         tabbarController.present(avPlayerViewController, animated: true)
     }
