@@ -52,7 +52,7 @@ class CommentCell: UITableViewCell, UIContextMenuInteractionDelegate {
         }
     }
     
-    func createContextMenu() -> UIMenu {
+    private func createContextMenu() -> UIMenu {
         
         let upvoteAction = UIAction(title: "Plus", image: UIImage(systemName: "plus.circle")) { [unowned self] _ in
             self.upvoteTapped()
@@ -79,7 +79,7 @@ class CommentCell: UITableViewCell, UIContextMenuInteractionDelegate {
         return UIMenu(title: "", children: [replyAction, voteMenu])
     }
     
-    func upvoteTapped() {
+    private func upvoteTapped() {
         guard let comment = comment,
             let id = comment.id else { return }
         detailViewModel.connector.vote(id: id, value: .upvote, type: .voteComment)
@@ -87,7 +87,7 @@ class CommentCell: UITableViewCell, UIContextMenuInteractionDelegate {
         pointsLabel.text = "\(initialPointCount + 1)"
     }
     
-    func downVoteTapped() {
+    private func downVoteTapped() {
         guard let comment = comment,
             let id = comment.id else { return }
         detailViewModel.connector.vote(id: id, value: .downvote, type: .voteComment)
@@ -95,7 +95,7 @@ class CommentCell: UITableViewCell, UIContextMenuInteractionDelegate {
         pointsLabel.text = "\(initialPointCount - 1)"
     }
     
-    func favoriteTapped() {
+    private func favoriteTapped() {
         guard let comment = comment,
             let id = comment.id else { return }
         detailViewModel.connector.vote(id: id, value: .favorite, type: .voteComment)
@@ -103,7 +103,7 @@ class CommentCell: UITableViewCell, UIContextMenuInteractionDelegate {
         pointsLabel.text = "\(initialPointCount + 1)"
     }
     
-    func replyTapped() {
+    private func replyTapped() {
         delegate?.requestedReply(for: comment)
     }
     

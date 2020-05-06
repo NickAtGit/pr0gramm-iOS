@@ -86,6 +86,7 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
         imageView.heightAnchor.constraint(equalTo: view.widthAnchor,
                                           multiplier: CGFloat(item.height) / CGFloat(item.width)).isActive = true
         
+        infoView.showReplyAction = { [unowned self] in self.coordinator?.showReplyForPost(viewModel: self.viewModel) }
         infoView.showCommentsAction = { [unowned self] in self.coordinator?.showComments(viewModel: self.viewModel, from: self) }
         infoView.upvoteAction = { [weak self] in self?.navigation?.showBanner(with: "Han blussert") }
         infoView.downvoteAction = { [weak self] in self?.navigation?.showBanner(with: "Han miesert") }

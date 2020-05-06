@@ -118,6 +118,16 @@ class Coordinator {
         presentingViewController.present(navigationController, animated: true)
     }
     
+    
+    func showReplyForPost(viewModel: DetailViewModel) {
+        let viewController = ReplyViewController.fromStoryboard()
+        viewController.viewModel = viewModel
+        let navigationController = NavigationController(rootViewController: viewController)
+        navigationController.style = .dismissable
+        navigationController.isModalInPresentation = true
+        self.navigationController.present(navigationController, animated: true)
+    }
+
     func showReply(for comment: Comment, viewModel: DetailViewModel, from presentingViewController: CommentsViewController) {
         let viewController = ReplyViewController.fromStoryboard()
         viewController.viewModel = viewModel
@@ -125,7 +135,6 @@ class Coordinator {
         let navigationController = NavigationController(rootViewController: viewController)
         navigationController.style = .dismissable
         navigationController.isModalInPresentation = true
-        
         presentingViewController.present(navigationController, animated: true)
     }
     

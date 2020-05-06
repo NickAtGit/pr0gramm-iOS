@@ -128,10 +128,12 @@
                         <outlet property="authorLabel" destination="nEa-rW-HAL" id="KhA-v0-Vvg"/>
                         <outlet property="commentTextView" destination="8tv-FX-dcp" id="hKg-gS-ZQC"/>
                         <outlet property="commentTextViewHeightConstraint" destination="NZU-cg-oz7" id="Sle-Nc-Mpk"/>
+                        <outlet property="commentView" destination="7ef-nP-FVm" id="9oK-m3-dk2"/>
                         <outlet property="contentView" destination="d8W-kq-SaC" id="86M-co-LKm"/>
                         <outlet property="opLabel" destination="78H-k2-qR1" id="32X-zg-C1f"/>
                         <outlet property="pointsLabel" destination="VEM-4u-jjJ" id="UG8-BR-0IC"/>
                         <outlet property="replyTextView" destination="iTk-OW-Eqe" id="2tC-pe-m2R"/>
+                        <outlet property="separatorView" destination="KZ6-cX-8gM" id="7PW-Lg-gPE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dnb-GB-0Oh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
