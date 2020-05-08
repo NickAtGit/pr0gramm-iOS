@@ -18,7 +18,8 @@ class PostsOverviewViewModel {
     private let connector: Pr0grammConnector
     private var sorting: Sorting { Sorting(rawValue: AppSettings.sorting)! }
     private var allItems: [AllItems] = []
-
+    private var isAtEnd = false
+    
     init(style: PostsOverviewStyle,
          connector: Pr0grammConnector,
          refreshable: Bool = false) {
@@ -68,6 +69,8 @@ class PostsOverviewViewModel {
     }
     
     func loadItems(more: Bool = false, isRefresh: Bool = false, completion: @escaping (Bool) -> Void) {
+        if !isRefresh { guard !isAtEnd else { return } }
+        
         let sorting = Sorting(rawValue: AppSettings.sorting)!
         let flags = AppSettings.currentFlags
         var afterId: Int?
@@ -84,6 +87,7 @@ class PostsOverviewViewModel {
                                     guard let items = items else { completion(false); return }
                                     if isRefresh { self?.allItems.removeAll() }
                                     self?.allItems.append(items)
+                                    self?.isAtEnd = items.atEnd
                                     completion(true)
             }
         case .search(let tags):
@@ -94,6 +98,7 @@ class PostsOverviewViewModel {
                                 guard let items = items else { completion(false); return }
                                 if isRefresh { self?.allItems.removeAll() }
                                 self?.allItems.append(items)
+                                self?.isAtEnd = items.atEnd
                                 completion(true)
             }
             break

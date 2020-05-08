@@ -6,7 +6,6 @@ private let reuseIdentifier = "thumbCell"
 class PostsOverviewCollectionViewController: UICollectionViewController, StoryboardInitialViewController {
 
     weak var coordinator: Coordinator?
-    var didReachEndAction: (() -> Void)?
     var viewModel: PostsOverviewViewModel!
     
     private let numberOfCellsPerRow: CGFloat = 3
