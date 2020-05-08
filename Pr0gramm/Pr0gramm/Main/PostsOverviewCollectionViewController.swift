@@ -28,7 +28,7 @@ class PostsOverviewCollectionViewController: UICollectionViewController, Storybo
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(updateUI),
-                                               name: Notification.Name("flagsChanged"),
+                                               name: Notification.Name("flagsChanged+\(String(describing: self))"),
                                                object: nil)
         updateUI()
     }

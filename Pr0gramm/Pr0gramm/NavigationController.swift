@@ -125,7 +125,10 @@ class NavigationController: UINavigationController, UIPopoverPresentationControl
     }
     
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
-        NotificationCenter.default.post(name: Notification.Name("flagsChanged"), object: nil)
+        guard let rootViewController = self.viewControllers.first else { return }
+        let name = String(describing: rootViewController)
+        NotificationCenter.default.post(name: Notification.Name("flagsChanged+\(name)"),
+                                        object: nil)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

@@ -25,7 +25,7 @@
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6u8-tB-KpF">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="31.5"/>
                                                 <segments>
-                                                    <segment title="Top"/>
+                                                    <segment title="Beliebt"/>
                                                     <segment title="Neu"/>
                                                 </segments>
                                                 <connections>
