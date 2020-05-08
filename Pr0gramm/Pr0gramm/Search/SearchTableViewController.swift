@@ -83,7 +83,9 @@ class SearchTableViewController: UITableViewController, StoryboardInitialViewCon
     private func search(searchString: String) {
         viewModel.search(for: searchString) { [unowned self] items in
             guard let items = items else { return } //TODO: show error
-            self.coordinator?.showSearchResult(for: searchString, with: items, from: self)
+            DispatchQueue.main.async {
+                self.coordinator?.showSearchResult(for: searchString, with: items, from: self)
+            }
         }
     }
 }

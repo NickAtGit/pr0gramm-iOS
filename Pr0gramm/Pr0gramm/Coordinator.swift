@@ -14,7 +14,7 @@ class Coordinator {
     
     func startViewController() -> UIViewController {
         let viewController = PostsOverviewCollectionViewController.fromStoryboard()
-        viewController.viewModel = PostsOverviewViewModel(style: .main, connector: pr0grammConnector, refreshable: true)
+        viewController.viewModel = PostsOverviewViewModel(style: .main, connector: pr0grammConnector)
         viewController.coordinator = self
         navigationController.style = .main
         navigationController.viewControllers = [viewController]
@@ -107,8 +107,7 @@ class Coordinator {
         let searchResultViewController = PostsOverviewCollectionViewController.fromStoryboard()
         searchResultViewController.title = tag
         searchResultViewController.viewModel = PostsOverviewViewModel(style: .search(tags: [tag]),
-                                                                      connector: pr0grammConnector,
-                                                                      refreshable: true)
+                                                                      connector: pr0grammConnector)
         searchResultViewController.coordinator = self
         viewController.navigationController?.pushViewController(searchResultViewController, animated: true)
     }
@@ -124,7 +123,6 @@ class Coordinator {
         navigationController.modalPresentationStyle = .custom
         presentingViewController.present(navigationController, animated: true)
     }
-    
     
     func showReplyForPost(viewModel: DetailViewModel) {
         let viewController = ReplyViewController.fromStoryboard()

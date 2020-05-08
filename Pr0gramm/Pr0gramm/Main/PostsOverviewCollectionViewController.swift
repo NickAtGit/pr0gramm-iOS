@@ -21,13 +21,11 @@ class PostsOverviewCollectionViewController: UICollectionViewController, Storybo
             flowLayout.itemSize = CGSize(width: cellWidth, height: cellWidth)
         }
         
-        if viewModel.refreshable {
-            refreshControl.addTarget(self,
-                                     action: #selector(PostsOverviewCollectionViewController.refresh),
-                                     for: .valueChanged)
-            collectionView?.refreshControl = refreshControl
-        }
-        
+        refreshControl.addTarget(self,
+                                 action: #selector(PostsOverviewCollectionViewController.refresh),
+                                 for: .valueChanged)
+        collectionView?.refreshControl = refreshControl
+            
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(updateUI),
                                                name: Notification.Name("flagsChanged"),

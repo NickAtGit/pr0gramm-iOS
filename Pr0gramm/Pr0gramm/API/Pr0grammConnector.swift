@@ -82,7 +82,6 @@ class Pr0grammConnector {
     let top = "api/items/get?flags=3&promoted=0"
     let itemInfo = "api/items/info?itemId="
     var responseModels: [AllItems?] = []
-    var searchResponseModel: AllItems?
     var captchaResponse: LoginCaptcha?
     var nonce: String?
     var userName: String?

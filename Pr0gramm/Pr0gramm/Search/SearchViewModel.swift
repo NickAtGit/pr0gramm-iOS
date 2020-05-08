@@ -12,8 +12,11 @@ class SearchViewModel {
     }
     
     func search(for tag: String, completion: @escaping ([Item]?) -> Void) {
-//        connector.searchItems(for: [tag], sorting: Sorting(rawValue: sorting.value)!) { items in
-//            completion(items)
-//        }
+        connector.search(sorting: Sorting(rawValue: sorting.value)!,
+                         flags: AppSettings.currentFlags,
+                         for: [tag]) { items in
+                            guard let items = items else { completion(nil); return }
+                            completion(items.items)
+        }
     }
 }

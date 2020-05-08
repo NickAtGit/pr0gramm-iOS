@@ -11,5 +11,4 @@ class SearchScopeView: UIView, NibView {
     }
     
     @IBOutlet var segmentedControl: UISegmentedControl!
-
 }
