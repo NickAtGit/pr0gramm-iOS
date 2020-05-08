@@ -10,7 +10,7 @@ class LoginViewController: ScrollingContentViewController, StoryboardInitialView
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var captchaTextField: UITextField!
     @IBOutlet var captchaImageView: UIImageView!
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Login"
@@ -54,8 +54,7 @@ extension LoginViewController: Pr0grammConnectorObserver {
             }
         case .captcha(let image):
             self.captchaImageView.image = image
-        
-         default:
+        default:
             break
         }
     }

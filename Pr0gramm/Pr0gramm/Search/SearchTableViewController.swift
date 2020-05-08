@@ -3,17 +3,8 @@ import UIKit
 
 class SearchTableViewController: UITableViewController, StoryboardInitialViewController {
     
-    var viewModel: SearchViewModel!
     weak var coordinator: Coordinator?
-
     var searchController: UISearchController!
-
-    lazy var searchScopeView: SearchScopeView = {
-        let searchScopeView = SearchScopeView.instantiateFromNib()
-        searchScopeView.viewModel = viewModel
-        return searchScopeView
-    }()
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,10 +61,6 @@ class SearchTableViewController: UITableViewController, StoryboardInitialViewCon
         return configuration
     }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return searchScopeView
-    }
-
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let view = UIView()
         view.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
@@ -81,10 +68,7 @@ class SearchTableViewController: UITableViewController, StoryboardInitialViewCon
     }
     
     private func search(searchString: String) {
-        viewModel.search(for: searchString) { [unowned self] items in
-            guard let items = items else { return } //TODO: show error
-            self.coordinator?.showSearchResult(for: searchString, with: items, from: self)
-        }
+        coordinator?.showSearchResult(for: searchString, from: self)
     }
 }
 

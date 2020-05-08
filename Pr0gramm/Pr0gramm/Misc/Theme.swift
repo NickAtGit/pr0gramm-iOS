@@ -181,6 +181,10 @@ extension Theme {
             $0.backgroundColor = tint
         }
         
+        UIRefreshControl.appearance().with {
+            $0.tintColor = tint
+        }
+        
         application.windows.reload()
     }
 }
