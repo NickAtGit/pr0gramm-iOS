@@ -37,19 +37,18 @@ class Coordinator {
         searchNavigationController.style = .search
         searchNavigationController.viewControllers = [searchViewController]
         
-//        let profileViewController = PostsOverviewCollectionViewController.fromStoryboard()
-//        profileViewController.viewModel = PostsOverviewViewModel(style: .user, connector: pr0grammConnector, refreshable: true)
-//        profileViewController.connector = pr0grammConnector
-//        profileViewController.coordinator = self
-//        profileViewController.loadViewIfNeeded()
-//        let profileNavigationController = NavigationController()
-//        profileNavigationController.style = .user
-//        profileNavigationController.viewControllers = [profileViewController]
+        let profileViewController = PostsOverviewCollectionViewController.fromStoryboard()
+        profileViewController.viewModel = PostsOverviewViewModel(style: .user, connector: pr0grammConnector)
+        profileViewController.coordinator = self
+        profileViewController.loadViewIfNeeded()
+        let profileNavigationController = NavigationController()
+        profileNavigationController.style = .user
+        profileNavigationController.viewControllers = [profileViewController]
 
         
         tabbarController.setViewControllers([navigationController,
                                              searchNavigationController,
-//                                             profileNavigationController,
+                                             profileNavigationController,
                                              downloadedFilesNavigationController,
                                              settingsNavigationController], animated: false)
         return tabbarController

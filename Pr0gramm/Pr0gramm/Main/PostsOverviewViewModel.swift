@@ -121,7 +121,13 @@ extension PostsLoadable {
         case .user:
             connector.fetchUserItems(sorting: sorting,
                                      flags: flags,
-                                     more: more)
+                                     afterId: afterId) { [weak self] items in
+                                        guard let items = items else { completion(false); return }
+                                        if isRefresh { self?.allItems.removeAll() }
+                                        self?.allItems.append(items)
+                                        self?.isAtEnd = items.atEnd
+                                        completion(true)
+            }
         }
     }
 }

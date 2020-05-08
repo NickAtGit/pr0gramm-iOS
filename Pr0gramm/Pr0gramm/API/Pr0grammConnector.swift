@@ -237,10 +237,13 @@ class Pr0grammConnector {
         task.resume()
     }
     
-    func fetchUserItems(sorting: Sorting, flags: [Flags], more: Bool = false) {
-//        guard let userName = userName else { fatalError() }
-//        let queryItem = URLQueryItem(name: "user", value: userName)
-//        fetchItems(sorting: sorting, flags: flags, additionalQueryItems: [queryItem], more: more)
+    func fetchUserItems(sorting: Sorting,
+                        flags: [Flags],
+                        afterId: Int? = nil,
+                        completion: @escaping (AllItems?) -> Void) {
+        guard let userName = userName else { fatalError() }
+        let queryItem = URLQueryItem(name: "user", value: userName)
+        fetchItems(sorting: sorting, flags: flags, additionalQueryItems: [queryItem], afterId: afterId, completion: completion)
     }
     
     func search(sorting: Sorting,
