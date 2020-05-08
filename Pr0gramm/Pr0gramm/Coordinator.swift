@@ -13,7 +13,8 @@ class Coordinator {
     }
     
     func startViewController() -> UIViewController {
-        let viewController = MainCollectionViewController.fromStoryboard()
+        let viewController = PostsOverviewCollectionViewController.fromStoryboard()
+        viewController.viewModel = PostsOverviewViewModel(style: .main, connector: pr0grammConnector, refreshable: true)
         viewController.coordinator = self
         navigationController.style = .main
         navigationController.viewControllers = [viewController]
@@ -37,8 +38,19 @@ class Coordinator {
         let searchNavigationController = NavigationController()
         searchNavigationController.viewControllers = [searchViewController]
         
+//        let profileViewController = PostsOverviewCollectionViewController.fromStoryboard()
+//        profileViewController.viewModel = PostsOverviewViewModel(style: .user, connector: pr0grammConnector, refreshable: true)
+//        profileViewController.connector = pr0grammConnector
+//        profileViewController.coordinator = self
+//        profileViewController.loadViewIfNeeded()
+//        let profileNavigationController = NavigationController()
+//        profileNavigationController.style = .user
+//        profileNavigationController.viewControllers = [profileViewController]
+
+        
         tabbarController.setViewControllers([navigationController,
                                              searchNavigationController,
+//                                             profileNavigationController,
                                              downloadedFilesNavigationController,
                                              settingsNavigationController], animated: false)
         return tabbarController
@@ -53,13 +65,7 @@ class Coordinator {
         detailNavigationController.isModalInPresentation = true
         navigationController.present(detailNavigationController, animated: true)
     }
-    
-    func showOverview() {
-        let viewController = MainCollectionViewController.fromStoryboard()
-        viewController.coordinator = self
-        navigationController.viewControllers = [viewController]
-    }
-    
+        
     func showDetail(from viewController: UIViewController,
                     with items: [Item],
                     at indexPath: IndexPath,
@@ -98,11 +104,12 @@ class Coordinator {
     }
     
     func showSearchResult(for tag: String, with items: [Item], from viewController: UIViewController) {
-        let searchResultViewController = MainCollectionViewController.fromStoryboard()
+        let searchResultViewController = PostsOverviewCollectionViewController.fromStoryboard()
         searchResultViewController.title = tag
-        searchResultViewController.isSearch = true
+        searchResultViewController.viewModel = PostsOverviewViewModel(style: .search(tags: [tag]),
+                                                                      connector: pr0grammConnector,
+                                                                      refreshable: true)
         searchResultViewController.coordinator = self
-        searchResultViewController.items = items
         viewController.navigationController?.pushViewController(searchResultViewController, animated: true)
     }
     

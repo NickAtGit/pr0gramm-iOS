@@ -3,11 +3,14 @@ import UIKit
 
 private let reuseIdentifier = "thumbCell"
 
-class MainCollectionViewController: UICollectionViewController, StoryboardInitialViewController {
+class PostsOverviewCollectionViewController: UICollectionViewController, StoryboardInitialViewController {
 
     weak var coordinator: Coordinator?
+    var connector: Pr0grammConnector?
     var items: [Item]?
     var isSearch = false
+    var didReachEndAction: (() -> Void)?
+    
     private let numberOfCellsPerRow: CGFloat = 3
     private let refreshControl = UIRefreshControl()
 
@@ -23,7 +26,7 @@ class MainCollectionViewController: UICollectionViewController, StoryboardInitia
 
         if !isSearch {
             refreshControl.addTarget(self,
-                                     action: #selector(MainCollectionViewController.refresh),
+                                     action: #selector(PostsOverviewCollectionViewController.refresh),
                                      for: .valueChanged)
             collectionView?.refreshControl = refreshControl
             refresh()
@@ -34,12 +37,12 @@ class MainCollectionViewController: UICollectionViewController, StoryboardInitia
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        coordinator?.pr0grammConnector.addObserver(self)
+        connector?.addObserver(self)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        coordinator?.pr0grammConnector.removeObserver(self)
+        connector?.removeObserver(self)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -68,8 +71,8 @@ class MainCollectionViewController: UICollectionViewController, StoryboardInitia
 
     @objc
     func refresh() {
-        coordinator?.pr0grammConnector.clearItems()
-        coordinator?.pr0grammConnector.fetchItems(sorting: Sorting(rawValue: AppSettings.sorting)!,
+        connector?.clearItems()
+        connector?.fetchItems(sorting: Sorting(rawValue: AppSettings.sorting)!,
                                                   flags: AppSettings.currentFlags)
     }
     
@@ -83,7 +86,7 @@ class MainCollectionViewController: UICollectionViewController, StoryboardInitia
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ThumbCollectionViewCell
         guard let item = items?[indexPath.row] else { return cell }
 
-        if let link = coordinator?.pr0grammConnector.thumbLink(for: item) {
+        if let link = connector?.thumbLink(for: item) {
             cell.imageView.downloadedFrom(link: link)
         }
         return cell
@@ -98,15 +101,16 @@ class MainCollectionViewController: UICollectionViewController, StoryboardInitia
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if !isSearch {
             guard let items = items else { return }
-            if indexPath.row + 1 == items.count {
-                coordinator?.pr0grammConnector.fetchItems(sorting: Sorting(rawValue: AppSettings.sorting)!,
-                                                          flags: AppSettings.currentFlags, more: true)
+            if indexPath.row == items.count {
+                connector?.fetchItems(sorting: Sorting(rawValue: AppSettings.sorting)!,
+                                      flags: AppSettings.currentFlags,
+                                      more: true)
             }
         }
     }
 }
 
-extension MainCollectionViewController: Pr0grammConnectorObserver {
+extension PostsOverviewCollectionViewController: Pr0grammConnectorObserver {
     
     func connectorDidUpdate(type: ConnectorUpdateType) {
         switch type {

@@ -12,8 +12,8 @@ class SearchViewModel {
     }
     
     func search(for tag: String, completion: @escaping ([Item]?) -> Void) {
-        connector.searchItems(for: [tag], sorting: Sorting(rawValue: sorting.value)!) { items in
-            completion(items)
-        }
+//        connector.searchItems(for: [tag], sorting: Sorting(rawValue: sorting.value)!) { items in
+//            completion(items)
+//        }
     }
 }

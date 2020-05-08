@@ -85,16 +85,8 @@ class Pr0grammConnector {
     var searchResponseModel: AllItems?
     var captchaResponse: LoginCaptcha?
     var nonce: String?
-    
-    private var allItems: [Item] {
-        var items = [Item]()
+    var userName: String?
         
-        for responseModel in responseModels {
-            items += responseModel?.items ?? []
-        }
-        return items
-    }
-    
     private var isLoggedIn: Bool {
         guard let cookies = HTTPCookieStorage.shared.cookies(for: URL(string: "https://pr0gramm.com/")!) else { return false }
             
@@ -107,6 +99,9 @@ class Pr0grammConnector {
                 if let json = try? JSONSerialization.jsonObject(with: value!, options: .mutableContainers) as? [String: Any] {
                     if let id = json["id"] as? String {
                         nonce = String(id.prefix(16))
+                    }
+                    if let userName = json["n"] as? String {
+                        self.userName = userName
                     }
                 }
 
@@ -244,12 +239,34 @@ class Pr0grammConnector {
         })
         task.resume()
     }
-
-    func clearItems() {
-        responseModels.removeAll()
+    
+    func fetchUserItems(sorting: Sorting, flags: [Flags], more: Bool = false) {
+//        guard let userName = userName else { fatalError() }
+//        let queryItem = URLQueryItem(name: "user", value: userName)
+//        fetchItems(sorting: sorting, flags: flags, additionalQueryItems: [queryItem], more: more)
     }
     
-    func fetchItems(sorting: Sorting, flags: [Flags], more: Bool = false) {
+    func search(sorting: Sorting,
+                flags: [Flags],
+                for tags: [String],
+                afterId: Int? = nil,
+                completion: @escaping (AllItems?) -> Void) {
+        
+        let queryItem = URLQueryItem(name: "tags", value: "\(tags.first ?? "")")
+        
+        fetchItems(sorting: sorting,
+                   flags: flags,
+                   additionalQueryItems: [queryItem],
+                   afterId: afterId,
+                   completion: completion)
+    }
+    
+    
+    func fetchItems(sorting: Sorting,
+                    flags: [Flags],
+                    additionalQueryItems: [URLQueryItem] = [],
+                    afterId: Int? = nil,
+                    completion: @escaping (AllItems?) -> Void = {_ in }) {
         
         let flagsCombined = flags.reduce(0, { $0 + $1.rawValue })
         
@@ -260,57 +277,13 @@ class Pr0grammConnector {
         components.queryItems = [
             URLQueryItem(name: "flags", value: "\(flagsCombined)"),
             URLQueryItem(name: "promoted", value: "\(sorting.rawValue)")
-        ]
-        
-        switch sorting {
-        case .top:
-            if more, let promotedId = allItems.last?.promoted {
-                components.queryItems?.append(URLQueryItem(name: "older", value: "\(promotedId)"))
-            }
-        case .neu:
-            if more, let lastId = allItems.last?.id {
-                components.queryItems?.append(URLQueryItem(name: "older", value: "\(lastId)"))
-            }
-        }
-        
-        
-        guard let url = components.url else { return }
-        var request = URLRequest(url: url)
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.httpMethod = "GET"
+            ] + additionalQueryItems
 
-        let session = URLSession.shared
-        
-        let task = session.dataTask(with: request) { data, response, error in
-            guard let data = data else { return }
-            let jsonDecoder = JSONDecoder()
-            do {
-                let responseModel = try jsonDecoder.decode(AllItems.self, from: data)
-                self.responseModels.append(responseModel)
-                DispatchQueue.main.async {
-                    self.observers.forEach { $0.connectorDidUpdate(type: .receivedData(items: self.allItems)) }
-                }
-            } catch {
-                print(error.localizedDescription)
-            }
+        if let afterId = afterId {
+            components.queryItems?.append(URLQueryItem(name: "older", value: "\(afterId)"))
         }
-        task.resume()
-    }
         
-    func searchItems(for tags: [String], sorting: Sorting, completion: @escaping ([Item]?) -> Void) {
-        
-        var components = URLComponents()
-        components.scheme = "https"
-        components.host = "pr0gramm.com"
-        components.path = "/api/items/get"
-        components.queryItems = [
-            URLQueryItem(name: "flags", value: "3"),
-            URLQueryItem(name: "promoted", value: "\(sorting.rawValue)"),
-            URLQueryItem(name: "tags", value: "\(tags.first ?? "")")
-        ]
         guard let url = components.url else { completion(nil); return }
-
         var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -322,18 +295,16 @@ class Pr0grammConnector {
             guard let data = data else { completion(nil); return }
             let jsonDecoder = JSONDecoder()
             do {
-                let searchResponse = try jsonDecoder.decode(AllItems.self, from: data)
-                DispatchQueue.main.async {
-                    completion(searchResponse.items)
-                }
+                let responseModel = try jsonDecoder.decode(AllItems.self, from: data)
+                completion(responseModel)
             } catch {
-                completion(nil)
                 print(error.localizedDescription)
+                completion(nil)
             }
         }
         task.resume()
     }
-    
+            
     func thumbLink(for item: Item) -> String {
         let link = http + thumb + baseURL + item.thumb
         return link

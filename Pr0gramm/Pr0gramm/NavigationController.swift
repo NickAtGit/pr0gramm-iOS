@@ -2,7 +2,7 @@
 import UIKit
 
 enum NavigationControllerStyle {
-    case main, dismissable, dragable
+    case main, dismissable, dragable, user
 }
 
 class NavigationController: UINavigationController, UIPopoverPresentationControllerDelegate {
@@ -69,6 +69,12 @@ class NavigationController: UINavigationController, UIPopoverPresentationControl
                 
                 topViewController?.navigationItem.rightBarButtonItem = loginItem
             }
+        case .user:
+            let flagsItem = UIBarButtonItem(image: UIImage(systemName: "list.dash"),
+                                             style: .plain,
+                                             target: self,
+                                             action: #selector(showFlagsPopover(_:)))
+            topViewController?.navigationItem.leftBarButtonItem = flagsItem
 
         case .dismissable:
             let flagsItem = UIBarButtonItem(image: UIImage(systemName: "xmark"),
@@ -113,14 +119,7 @@ class NavigationController: UINavigationController, UIPopoverPresentationControl
     }
     
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
-        coordinator?.pr0grammConnector.clearItems()
-        coordinator?.pr0grammConnector.fetchItems(sorting: Sorting(rawValue: AppSettings.sorting)!,
-                                                  flags: AppSettings.currentFlags)
-
-        
-        if let mainCollectionViewController = topViewController as? MainCollectionViewController {
-            mainCollectionViewController.updateTabBarItem(for: Sorting(rawValue: AppSettings.sorting)!)
-        }
+        NotificationCenter.default.post(name: Notification.Name("flagsChanged"), object: nil)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

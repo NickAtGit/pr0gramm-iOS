@@ -99,13 +99,13 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
         let cell = cell as! DetailCollectionViewCell
         cell.detailViewController.play()
         
-        if !isSearch {
-            if indexPath.row + 1 == items.count {
-                print("Loading more items")
-                coordinator?.pr0grammConnector.fetchItems(sorting: Sorting(rawValue: AppSettings.sorting)!,
-                                                          flags: AppSettings.currentFlags, more: true)
-            }
-        }
+//        if !isSearch {
+//            if indexPath.row + 1 == items.count {
+//                print("Loading more items")
+//                coordinator?.pr0grammConnector.fetchItems(sorting: Sorting(rawValue: AppSettings.sorting)!,
+//                                                          flags: AppSettings.currentFlags, more: true)
+//            }
+//        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
