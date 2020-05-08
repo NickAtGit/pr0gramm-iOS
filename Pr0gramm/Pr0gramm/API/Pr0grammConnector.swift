@@ -241,7 +241,8 @@ class Pr0grammConnector {
                         flags: [Flags],
                         afterId: Int? = nil,
                         completion: @escaping (AllItems?) -> Void) {
-        guard let userName = userName else { fatalError() }
+        guard isLoggedIn else { return }
+        guard let userName = userName else { return }
         let queryItem = URLQueryItem(name: "user", value: userName)
         fetchItems(sorting: sorting, flags: flags, additionalQueryItems: [queryItem], afterId: afterId, completion: completion)
     }
