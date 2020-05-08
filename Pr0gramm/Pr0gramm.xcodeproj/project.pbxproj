@@ -61,9 +61,6 @@
 		03A93324243BAFBB00A16E1B /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A93323243BAFBB00A16E1B /* Login.swift */; };
 		03A93326243BC82000A16E1B /* AlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A93325243BC82000A16E1B /* AlignedCollectionViewFlowLayout.swift */; };
 		03A93328243CEFE100A16E1B /* HapticFeedbackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A93327243CEFE100A16E1B /* HapticFeedbackButton.swift */; };
-		03ABD9DC245F5E6B00873A5C /* SearchScopeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03ABD9DB245F5E6B00873A5C /* SearchScopeView.xib */; };
-		03ABD9DE245F5E7C00873A5C /* SearchScopeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03ABD9DD245F5E7C00873A5C /* SearchScopeView.swift */; };
-		03ABD9E0245F610C00873A5C /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03ABD9DF245F610C00873A5C /* SearchViewModel.swift */; };
 		03B0628A2428CFD600CA657A /* InfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03B062892428CFD600CA657A /* InfoView.xib */; };
 		03B0628C2428CFE100CA657A /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B0628B2428CFE100CA657A /* InfoView.swift */; };
 		03B0628E2428E9FF00CA657A /* TagsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B0628D2428E9FF00CA657A /* TagsCollectionViewController.swift */; };
@@ -141,9 +138,6 @@
 		03A93323243BAFBB00A16E1B /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		03A93325243BC82000A16E1B /* AlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		03A93327243CEFE100A16E1B /* HapticFeedbackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedbackButton.swift; sourceTree = "<group>"; };
-		03ABD9DB245F5E6B00873A5C /* SearchScopeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchScopeView.xib; sourceTree = "<group>"; };
-		03ABD9DD245F5E7C00873A5C /* SearchScopeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScopeView.swift; sourceTree = "<group>"; };
-		03ABD9DF245F610C00873A5C /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		03B062892428CFD600CA657A /* InfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoView.xib; sourceTree = "<group>"; };
 		03B0628B2428CFE100CA657A /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		03B0628D2428E9FF00CA657A /* TagsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsCollectionViewController.swift; sourceTree = "<group>"; };
@@ -316,8 +310,8 @@
 			isa = PBXGroup;
 			children = (
 				0331B2852427ED4D0040D1D1 /* DetailCollectionViewController.swift */,
-				03D4B02B2427EDF30041DCC9 /* DetailCollectionViewCell.swift */,
 				0331B2872427ED680040D1D1 /* DetailCollectionViewController.storyboard */,
+				03D4B02B2427EDF30041DCC9 /* DetailCollectionViewCell.swift */,
 				032E62FE243F8E9900FA6C00 /* DetailViewModel.swift */,
 				033CF1BB205BE5AC00627321 /* DetailViewController.swift */,
 				035EBA832427790C009185E9 /* DetailViewController.storyboard */,
@@ -350,11 +344,8 @@
 		03460ADA244F9B16007F16DB /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				03ABD9DF245F610C00873A5C /* SearchViewModel.swift */,
 				03460AD6244F9ABE007F16DB /* SearchTableViewController.swift */,
 				03460AD8244F9AEA007F16DB /* SearchTableViewController.storyboard */,
-				03ABD9DD245F5E7C00873A5C /* SearchScopeView.swift */,
-				03ABD9DB245F5E6B00873A5C /* SearchScopeView.xib */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -479,7 +470,6 @@
 				030CAF67244CD93D00D6885C /* ThemeSelectionCell.xib in Resources */,
 				03D2AC48243212C40082D4C9 /* FlagsViewController.storyboard in Resources */,
 				03B0628A2428CFD600CA657A /* InfoView.xib in Resources */,
-				03ABD9DC245F5E6B00873A5C /* SearchScopeView.xib in Resources */,
 				035EBA7F24262CA3009185E9 /* LoginViewController.storyboard in Resources */,
 				035EBA842427790C009185E9 /* DetailViewController.storyboard in Resources */,
 				03B062922428EB6E00CA657A /* TagsCollectionViewController.storyboard in Resources */,
@@ -560,10 +550,8 @@
 				03076A662059E80F00168E62 /* UIImageView+Extension.swift in Sources */,
 				03D2AC50243264740082D4C9 /* With.swift in Sources */,
 				030CAF66244CD93D00D6885C /* ThemeSelectionCell.swift in Sources */,
-				03ABD9DE245F5E7C00873A5C /* SearchScopeView.swift in Sources */,
 				030CAF542440B76400D6885C /* CommentsViewController.swift in Sources */,
 				035EBA7D24262C7E009185E9 /* StoryboardViewController.swift in Sources */,
-				03ABD9E0245F610C00873A5C /* SearchViewModel.swift in Sources */,
 				0388A0B524293BE0006E86A3 /* TapableImage+Video.swift in Sources */,
 				03B062942428EC3600CA657A /* TagCollectionViewCell.swift in Sources */,
 				033CF1B6205BDBED00627321 /* PostsOverviewCollectionViewController.swift in Sources */,

@@ -4,10 +4,8 @@ import UIKit
 
 enum ConnectorUpdateType {
     case login(success: Bool)
-    case receivedData(items: [Item])
     case captcha(image: UIImage)
     case logout
-    case search(items: [Item])
 }
 
 protocol Pr0grammConnectorObserver: class {
@@ -265,7 +263,7 @@ class Pr0grammConnector {
                     flags: [Flags],
                     additionalQueryItems: [URLQueryItem] = [],
                     afterId: Int? = nil,
-                    completion: @escaping (AllItems?) -> Void = {_ in }) {
+                    completion: @escaping (AllItems?) -> Void) {
         
         let flagsCombined = flags.reduce(0, { $0 + $1.rawValue })
         

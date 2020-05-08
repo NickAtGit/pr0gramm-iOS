@@ -124,5 +124,4 @@ extension PostsLoadable {
                                      more: more)
         }
     }
-    
 }

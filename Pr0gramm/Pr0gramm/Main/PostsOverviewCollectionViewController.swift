@@ -4,17 +4,17 @@ import UIKit
 private let reuseIdentifier = "thumbCell"
 
 class PostsOverviewCollectionViewController: UICollectionViewController, StoryboardInitialViewController {
-
+    
     weak var coordinator: Coordinator?
     var viewModel: PostsOverviewViewModel!
     
     private let numberOfCellsPerRow: CGFloat = 3
     private let refreshControl = UIRefreshControl()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.contentInsetAdjustmentBehavior = .always
-
+        
         if let flowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
             let horizontalSpacing = flowLayout.scrollDirection == .vertical ? flowLayout.minimumInteritemSpacing : flowLayout.minimumLineSpacing
             let cellWidth = (view.frame.width - max(0, numberOfCellsPerRow - 1) * horizontalSpacing) / numberOfCellsPerRow
@@ -25,14 +25,14 @@ class PostsOverviewCollectionViewController: UICollectionViewController, Storybo
                                  action: #selector(PostsOverviewCollectionViewController.refresh),
                                  for: .valueChanged)
         collectionView?.refreshControl = refreshControl
-            
+        
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(updateUI),
                                                name: Notification.Name("flagsChanged"),
                                                object: nil)
         updateUI()
     }
-                
+    
     @objc
     func updateUI() {
         collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
@@ -58,20 +58,20 @@ class PostsOverviewCollectionViewController: UICollectionViewController, Storybo
     }
     
     // MARK: UICollectionViewDataSource
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.items.count
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ThumbCollectionViewCell
         let item = viewModel.items[indexPath.row]
         cell.imageView.downloadedFrom(link: viewModel.thumbLink(for: item))
         return cell
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        coordinator?.showDetail(from: self, with: viewModel.items, at: indexPath, isSearch: false)
+        coordinator?.showDetail(from: self, with: viewModel, at: indexPath)
     }
     
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

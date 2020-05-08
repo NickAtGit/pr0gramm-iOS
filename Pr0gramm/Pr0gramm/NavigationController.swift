@@ -2,14 +2,14 @@
 import UIKit
 
 enum NavigationControllerStyle {
-    case main, dismissable, dragable, user
+    case main, dismissable, dragable, user, search
 }
 
 class NavigationController: UINavigationController, UIPopoverPresentationControllerDelegate {
     
     weak var coordinator: Coordinator?
     private var navigationBannerView = NavigationBannerView(frame: .zero)
-
+    
     var style: NavigationControllerStyle? {
         didSet {
             setupBarButtonItems()
@@ -30,7 +30,7 @@ class NavigationController: UINavigationController, UIPopoverPresentationControl
         super.viewWillDisappear(animated)
         coordinator?.pr0grammConnector.removeObserver(self)
     }
-
+    
     override func setViewControllers(_ viewControllers: [UIViewController], animated: Bool) {
         super.setViewControllers(viewControllers, animated: animated)
         setupBarButtonItems()
@@ -40,20 +40,24 @@ class NavigationController: UINavigationController, UIPopoverPresentationControl
         
         guard let style = style else { return }
         
+        let setFlagsBarButtonItem = {
+            let flagsItem = UIBarButtonItem(image: UIImage(systemName: "list.dash"),
+                                            style: .plain,
+                                            target: self,
+                                            action: #selector(self.showFlagsPopover(_:)))
+            self.topViewController?.navigationItem.leftBarButtonItem = flagsItem
+        }
+        
         switch style {
         case .dragable:
             let flagsItem = UIBarButtonItem(image: UIImage(systemName: "chevron.down"),
-                                             style: .plain,
-                                             target: self,
-                                             action: #selector(dismissSelf))
+                                            style: .plain,
+                                            target: self,
+                                            action: #selector(dismissSelf))
             topViewController?.navigationItem.rightBarButtonItem = flagsItem
-
+            
         case .main:
-            let flagsItem = UIBarButtonItem(image: UIImage(systemName: "list.dash"),
-                                             style: .plain,
-                                             target: self,
-                                             action: #selector(showFlagsPopover(_:)))
-            topViewController?.navigationItem.leftBarButtonItem = flagsItem
+            setFlagsBarButtonItem()
             
             if AppSettings.isLoggedIn {
                 let logoutItem = UIBarButtonItem(image: UIImage(systemName: "person.crop.circle.badge.minus"),
@@ -71,21 +75,23 @@ class NavigationController: UINavigationController, UIPopoverPresentationControl
             }
         case .user:
             let flagsItem = UIBarButtonItem(image: UIImage(systemName: "list.dash"),
-                                             style: .plain,
-                                             target: self,
-                                             action: #selector(showFlagsPopover(_:)))
+                                            style: .plain,
+                                            target: self,
+                                            action: #selector(showFlagsPopover(_:)))
             topViewController?.navigationItem.leftBarButtonItem = flagsItem
-
+            
         case .dismissable:
             let flagsItem = UIBarButtonItem(image: UIImage(systemName: "xmark"),
-                                             style: .plain,
-                                             target: self,
-                                             action: #selector(dismissSelf))
+                                            style: .plain,
+                                            target: self,
+                                            action: #selector(dismissSelf))
             topViewController?.navigationItem.rightBarButtonItem = flagsItem
+        case .search:
+            setFlagsBarButtonItem()
         }
     }
     
-
+    
     private func setupBanner() {
         view.addSubview(navigationBannerView)
         view.bringSubviewToFront(navigationBannerView)
@@ -106,7 +112,7 @@ class NavigationController: UINavigationController, UIPopoverPresentationControl
         flagsViewController.modalPresentationStyle = .popover
         flagsViewController.popoverPresentationController?.sourceView = view
         flagsViewController.popoverPresentationController?.permittedArrowDirections = .up
-
+        
         let popover: UIPopoverPresentationController = flagsViewController.popoverPresentationController!
         popover.barButtonItem = sender
         popover.delegate = self
@@ -146,7 +152,7 @@ extension NavigationController: Pr0grammConnectorObserver {
 
 
 class NavigationBannerView: UIView {
-
+    
     private let messageTextLabel = UILabel()
     
     override init(frame: CGRect) {

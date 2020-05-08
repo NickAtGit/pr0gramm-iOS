@@ -73,10 +73,6 @@ class TagsCollectionViewController: UICollectionViewController, StoryboardInitia
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! TagCollectionViewCell
         guard let tag = cell.tagLabel.text else { return }
-        
-        viewModel.search(for: tag) { [unowned self] items in
-            guard let items = items else { return } // TODO Show error
-            self.coordinator?.showSearchResult(for: tag, with: items, from: self)
-        }
+        coordinator?.showSearchResult(for: tag, from: self)
     }
 }

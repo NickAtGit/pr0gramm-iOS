@@ -5,12 +5,8 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
     
     weak var coordinator: Coordinator?
     var isSearch = false
-    var items: [Item]? {
-        didSet {
-            collectionView.reloadData()
-        }
-    }
-    
+    var viewModel: PostsOverviewViewModel!
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         edgesForExtendedLayout = []
@@ -32,7 +28,6 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
         
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        coordinator?.pr0grammConnector.addObserver(self)
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(previousItem),
@@ -47,7 +42,6 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        coordinator?.pr0grammConnector.removeObserver(self)
         NotificationCenter.default.removeObserver(self)
     }
                 
@@ -55,6 +49,7 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
     func nextItem() {
         guard let cell = collectionView.visibleCells.first else { return }
         let indexPath = collectionView.indexPath(for: cell)!
+        guard indexPath.row != viewModel.items.count - 1 else { return }
         let newIndexPath = IndexPath(row: indexPath.row + 1, section: indexPath.section)
         collectionView.scrollToItem(at: newIndexPath, at: .centeredHorizontally, animated: true)
     }
@@ -63,6 +58,7 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
     func previousItem() {
         guard let cell = collectionView.visibleCells.first else { return }
         let indexPath = collectionView.indexPath(for: cell)!
+        guard indexPath.row != 0 else { return }
         let newIndexPath = IndexPath(row: indexPath.row - 1, section: indexPath.section)
         collectionView.scrollToItem(at: newIndexPath, at: .centeredHorizontally, animated: true)
     }
@@ -72,16 +68,15 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items?.count ?? 0
+        return viewModel.items.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailLargeCell", for: indexPath) as! DetailCollectionViewCell
         
-        guard let item = items?[indexPath.row],
-            let connector = coordinator?.pr0grammConnector else { return cell }
+        guard let connector = coordinator?.pr0grammConnector else { return cell }
         cell.detailViewController = DetailViewController.fromStoryboard()
-        cell.detailViewController.viewModel = DetailViewModel(item: item, connector: connector)
+        cell.detailViewController.viewModel = DetailViewModel(item: viewModel.items[indexPath.row], connector: connector)
         cell.detailViewController.coordinator = coordinator
         embed(cell.detailViewController, in: cell.content)
         
@@ -95,17 +90,22 @@ class DetailCollectionViewController: UICollectionViewController, StoryboardInit
     }
     
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard let items = items else { return }
         let cell = cell as! DetailCollectionViewCell
         cell.detailViewController.play()
         
-//        if !isSearch {
-//            if indexPath.row + 1 == items.count {
-//                print("Loading more items")
-//                coordinator?.pr0grammConnector.fetchItems(sorting: Sorting(rawValue: AppSettings.sorting)!,
-//                                                          flags: AppSettings.currentFlags, more: true)
-//            }
-//        }
+        if indexPath.row == viewModel.items.count - 1 {
+            loadItems(more: true)
+        }
+    }
+    
+    func loadItems(more: Bool = false, isRefresh: Bool = false) {
+        viewModel.loadItems(more: more, isRefresh: isRefresh) { [weak self] success in
+            guard success else { return }
+            print("Loaded items \(success), count: \(self?.viewModel.items.count ?? 0)")
+            DispatchQueue.main.async {
+                self?.collectionView?.reloadData()
+            }
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -121,19 +121,6 @@ extension DetailCollectionViewController: UICollectionViewDelegateFlowLayout {
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width - (view.safeAreaInsets.left + view.safeAreaInsets.right),
                       height: view.frame.height - (view.safeAreaInsets.top + view.safeAreaInsets.bottom))
-    }
-}
-
-extension DetailCollectionViewController: Pr0grammConnectorObserver {
-    
-    func connectorDidUpdate(type: ConnectorUpdateType) {
-        switch type {
-        case .receivedData(let newItems):
-            items = newItems
-            collectionView.reloadData()
-        default:
-            break
-        }
     }
 }
 

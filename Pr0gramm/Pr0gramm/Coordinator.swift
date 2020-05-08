@@ -31,11 +31,10 @@ class Coordinator {
         settingsNavigationController.viewControllers = [settingsViewController]
         
         let searchViewController = SearchTableViewController.fromStoryboard()
-        let searchViewModel = SearchViewModel(connector: pr0grammConnector)
-        searchViewController.viewModel = searchViewModel
         searchViewController.coordinator = self
         searchViewController.loadViewIfNeeded()
         let searchNavigationController = NavigationController()
+        searchNavigationController.style = .search
         searchNavigationController.viewControllers = [searchViewController]
         
 //        let profileViewController = PostsOverviewCollectionViewController.fromStoryboard()
@@ -67,14 +66,12 @@ class Coordinator {
     }
         
     func showDetail(from viewController: UIViewController,
-                    with items: [Item],
-                    at indexPath: IndexPath,
-                    isSearch: Bool = false) {
+                    with viewModel: PostsOverviewViewModel,
+                    at indexPath: IndexPath) {
         
         let detailViewController = DetailCollectionViewController.fromStoryboard()
-        detailViewController.isSearch = isSearch
         detailViewController.coordinator = self
-        detailViewController.items = items
+        detailViewController.viewModel = viewModel
         viewController.navigationController?.pushViewController(detailViewController, animated: true)
         detailViewController.scrollTo(indexPath: indexPath)
     }
@@ -103,7 +100,7 @@ class Coordinator {
         viewController.present(navigationController, animated: true)
     }
     
-    func showSearchResult(for tag: String, with items: [Item], from viewController: UIViewController) {
+    func showSearchResult(for tag: String, from viewController: UIViewController) {
         let searchResultViewController = PostsOverviewCollectionViewController.fromStoryboard()
         searchResultViewController.title = tag
         searchResultViewController.viewModel = PostsOverviewViewModel(style: .search(tags: [tag]),
