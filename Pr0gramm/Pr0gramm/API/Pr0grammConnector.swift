@@ -27,6 +27,7 @@ enum Flags: Int {
     case sfw = 1
     case nsfw = 2
     case nsfl = 4
+    case nsfp = 8
 }
 
 @objc

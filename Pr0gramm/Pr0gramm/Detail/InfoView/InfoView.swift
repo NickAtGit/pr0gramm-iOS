@@ -43,27 +43,27 @@ class InfoView: UIView, NibView {
         viewModel.vote(.upvote)
         upvoteAction?()
         pointsLabel.text = "\(viewModel.initialPointCount + 1)"
-        upvoteButton.imageView?.tintColor = .green
-        favoriteButton.imageView?.tintColor = nil
-        downvoteButton.imageView?.tintColor = nil
+        upvoteButton.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
+        favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        downvoteButton.setImage(UIImage(systemName: "minus.circle"), for: .normal)
     }
     
     @IBAction func favoriteTapped(_ sender: HapticFeedbackButton) {
         viewModel.vote(.favorite)
         favoriteAction?()
         pointsLabel.text = "\(viewModel.initialPointCount + 1)"
-        upvoteButton.imageView?.tintColor = nil
-        favoriteButton.imageView?.tintColor = .red
-        downvoteButton.imageView?.tintColor = nil
+        upvoteButton.setImage(UIImage(systemName: "plus.circle"), for: .normal)
+        favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        downvoteButton.setImage(UIImage(systemName: "minus.circle"), for: .normal)
     }
     
     @IBAction func downvoteTapped(_ sender: HapticFeedbackButton) {
         viewModel.vote(.downvote)
         downvoteAction?()
         pointsLabel.text = "\(viewModel.initialPointCount - 1)"
-        upvoteButton.imageView?.tintColor = nil
-        favoriteButton.imageView?.tintColor = nil
-        downvoteButton.imageView?.tintColor = .red
+        upvoteButton.setImage(UIImage(systemName: "plus.circle"), for: .normal)
+        favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        downvoteButton.setImage(UIImage(systemName: "minus.circle.fill"), for: .normal)
     }
     
     @IBAction func expandTagsTapped(_ sender: Any) {
