@@ -67,6 +67,10 @@ class PostsOverviewCollectionViewController: UICollectionViewController, Storybo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ThumbCollectionViewCell
         let item = viewModel.items[indexPath.row]
         cell.imageView.downloadedFrom(link: viewModel.thumbLink(for: item))
+        if ActionsManager.shared.retrieveAction(for: item.id)?.seen ?? false {
+            cell.imageView.addSeenBadge()
+        }
+        
         return cell
     }
     

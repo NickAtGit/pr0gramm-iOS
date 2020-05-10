@@ -16,6 +16,14 @@ class DetailViewModel {
     let isTagsExpanded = Observable<Bool>(false)
     let isTagsExpandButtonHidden = Observable<Bool>(true)
     let isCommentsButtonHidden = Observable<Bool>(true)
+    var isSeen: Bool {
+        get {
+            ActionsManager.shared.retrieveAction(for: item.value.id)?.seen ?? false
+        }
+        set {
+            ActionsManager.shared.saveAction(for: item.value.id, seen: newValue)
+        }
+    }
     let initialPointCount: Int
     let comments = Observable<[Comment]?>(nil)
     let link: String
@@ -24,7 +32,8 @@ class DetailViewModel {
     lazy var upvotes = item.value.up
     lazy var downvotes = item.value.down
     
-    init(item: Item, connector: Pr0grammConnector) {
+    init(item: Item,
+         connector: Pr0grammConnector) {
         self.item = Observable<Item>(item)
         self.connector = connector
         let points = item.up - item.down
@@ -35,7 +44,7 @@ class DetailViewModel {
         self.link = link.link
         self.mediaType = link.mediaType
         self.postTime.value = Strings.timeString(for: self.item.value.date)
-        
+                
         connector.loadItemInfo(for: item.id) { [weak self] itemInfo in
             guard let itemInfo = itemInfo else { return }
             self?.itemInfo.value = itemInfo

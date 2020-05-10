@@ -22,14 +22,22 @@ class SettingsViewController: TableViewController {
                 Row(cellClass: ThemeSelectionCell.self)
             ], footer: ""),
             
+            Section(header: .autoLayoutView(CustomExtremityView("Allgemein", uppercased: false)), rows: [
+                Row(text: "Gesehen Indikator anzeigen", accessory: .switchToggle(value: AppSettings.isShowSeenBagdes) {
+                    AppSettings.isShowSeenBagdes = $0
+                }),
+                Row(text: "Datenbank", detailText: "\(ActionsManager.shared.dataBaseSize ?? "Fehler")", accessory: .none)
+                
+            ], footer: ""),
+
             Section(header: .autoLayoutView(CustomExtremityView("Video", uppercased: false)), rows: [
                 Row(text: "Videos stumm starten", accessory: .switchToggle(value: AppSettings.isVideoMuted) {
                     AppSettings.isVideoMuted = $0
-                }, cellClass: MultiLineTableViewCell.self),
+                }),
                 
                 Row(text: "Videos automatisch starten", accessory: .switchToggle(value: AppSettings.isAutoPlay) {
                     AppSettings.isAutoPlay = $0
-                }, cellClass: MultiLineTableViewCell.self)
+                })
             ], footer: ""),
         ]
     }
@@ -59,50 +67,5 @@ class CustomExtremityView: UIView {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-}
-
-
-final class MultiLineTableViewCell: UITableViewCell, Cell {
-
-    // MARK: - Properties
-
-    private lazy var label: UILabel = {
-        let label = UILabel()
-        label.textColor = #colorLiteral(red: 0.9490196078, green: 0.9607843137, blue: 0.9568627451, alpha: 1)
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
-
-    // MARK: - Initialization
-
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.addSubview(label)
-
-        NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
-            label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20)
-        ])
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-
-    // MARK: - CellType
-
-    func configure(row: Row) {
-        accessibilityIdentifier = row.accessibilityIdentifier
-        label.text = row.text
-        detailTextLabel?.text = row.detailText
-        imageView?.image = row.image
-        accessoryType = row.accessory.type
-        accessoryView = row.accessory.view
     }
 }

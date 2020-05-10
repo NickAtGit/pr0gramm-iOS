@@ -15,7 +15,7 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
     }
     
     private var stackView: UIStackView!
-    private let imageView = TapableImageView()
+    private var imageView = TapableImageView()
     private let tagsCollectionViewController = TagsCollectionViewController.fromStoryboard()
     private let infoView = InfoView.instantiateFromNib()
     private var avPlayer: AVPlayer?
@@ -162,8 +162,13 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
     @objc
     func play() {
         avPlayer?.isMuted = AppSettings.isVideoMuted
-        if AppSettings.isAutoPlay {
-            avPlayer?.play()
+        if AppSettings.isAutoPlay { avPlayer?.play() }
+        
+        if viewModel.isSeen {
+            imageView.addSeenBadge()
+            avPlayerViewController?.addSeenBadge()
+        } else {
+            viewModel.isSeen = true
         }
     }
     

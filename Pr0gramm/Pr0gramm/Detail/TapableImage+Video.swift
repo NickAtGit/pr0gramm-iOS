@@ -2,8 +2,8 @@
 import UIKit
 import AVKit
  
-class TapableImageView: UIImageView {
-    
+class TapableImageView: UIImageView, SeenBadgeShowable {
+    var badgeView: UIView?
     private let nc = NotificationCenter.default
     private let feedback = UISelectionFeedbackGenerator()
 
@@ -22,11 +22,10 @@ class TapableImageView: UIImageView {
             nc.post(name: Notification.Name("showImageDetail"), object: self)
         }
     }
-
 }
 
-class TapableAVPlayerViewController: AVPlayerViewController {
-    
+class TapableAVPlayerViewController: AVPlayerViewController, SeenBadgeShowable {
+    var badgeView: UIView?
     private let nc = NotificationCenter.default
     private let feedback = UISelectionFeedbackGenerator()
 

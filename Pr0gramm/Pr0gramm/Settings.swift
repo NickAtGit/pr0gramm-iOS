@@ -10,6 +10,7 @@ protocol UserSettingsConfigurable {
     static var selectedTheme: Int { get set }
     static var isVideoMuted: Bool { get set }
     static var isAutoPlay: Bool { get set }
+    static var isShowSeenBagdes: Bool { get set }
     static var latestSearchStrings: [String] { get set }
 }
 
@@ -90,6 +91,11 @@ extension AppSettings: UserSettingsConfigurable {
     static var isAutoPlay: Bool {
         get { return AppSettings.value(for: #keyPath(isAutoPlay)) ?? false }
         set { AppSettings.updateDefaults(for: #keyPath(isAutoPlay), value: newValue) }
+    }
+    
+    static var isShowSeenBagdes: Bool {
+        get { return AppSettings.value(for: #keyPath(isShowSeenBagdes)) ?? false }
+        set { AppSettings.updateDefaults(for: #keyPath(isShowSeenBagdes), value: newValue) }
     }
     
     static var latestSearchStrings: [String] {
