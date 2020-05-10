@@ -15,7 +15,6 @@ class SettingsViewController: TableViewController {
                                   image: UIImage(systemName: "gear"),
                                   selectedImage: nil)
 
-        
         dataSource = DataSource(tableViewDelegate: nil)
         dataSource.sections = [
             Section(header: .autoLayoutView(CustomExtremityView("Theme", uppercased: false)), rows: [
@@ -25,24 +24,23 @@ class SettingsViewController: TableViewController {
             Section(header: .autoLayoutView(CustomExtremityView("Allgemein", uppercased: false)), rows: [
                 Row(text: "Gesehen Indikator anzeigen", accessory: .switchToggle(value: AppSettings.isShowSeenBagdes) {
                     AppSettings.isShowSeenBagdes = $0
-                }),
-                Row(text: "Datenbank", detailText: "\(ActionsManager.shared.dataBaseSize ?? "Fehler")", accessory: .none)
+                }, cellClass: SettingsCell.self),
+                Row(text: "Datenbank", detailText: "\(ActionsManager.shared.dataBaseSize ?? "Fehler")", accessory: .none, cellClass: SettingsCell.self)
                 
             ], footer: ""),
 
             Section(header: .autoLayoutView(CustomExtremityView("Video", uppercased: false)), rows: [
                 Row(text: "Videos stumm starten", accessory: .switchToggle(value: AppSettings.isVideoMuted) {
                     AppSettings.isVideoMuted = $0
-                }),
+                }, cellClass: SettingsCell.self),
                 
                 Row(text: "Videos automatisch starten", accessory: .switchToggle(value: AppSettings.isAutoPlay) {
                     AppSettings.isAutoPlay = $0
-                })
+                }, cellClass: SettingsCell.self)
             ], footer: ""),
         ]
     }
 }
-
 
 
 class CustomExtremityView: UIView {
@@ -67,5 +65,18 @@ class CustomExtremityView: UIView {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+class SettingsCell: Value1Cell {
+        
+    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: .value1, reuseIdentifier: reuseIdentifier)
+        textLabel?.textColor = #colorLiteral(red: 0.9490196078, green: 0.9607843137, blue: 0.9568627451, alpha: 1)
+        detailTextLabel?.textColor = #colorLiteral(red: 0.9490196078, green: 0.9607843137, blue: 0.9568627451, alpha: 1)
+    }
+
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
 }
