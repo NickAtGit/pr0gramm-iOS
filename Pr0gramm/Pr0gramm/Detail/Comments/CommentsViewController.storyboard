@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,8 +17,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bFB-td-O6Q">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <rect key="frame" x="0.0" y="75" width="414" height="787"/>
+                                <color key="backgroundColor" name="Richtiges Grau"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="commentCell" rowHeight="125" id="xMg-BV-wsZ" customClass="CommentCell" customModule="pr0gramm" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="125"/>
@@ -35,7 +36,7 @@
                                                     <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                                 </textView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="26S-Sv-wI6">
-                                                    <rect key="frame" x="20" y="92" width="144.5" height="18"/>
+                                                    <rect key="frame" x="20" y="92" width="104.5" height="18"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pwI-7D-vTq">
                                                             <rect key="frame" x="0.0" y="0.0" width="48" height="18"/>
@@ -49,8 +50,8 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kmw-hx-DI9" customClass="OPLabel" customModule="pr0gramm" customModuleProvider="target">
-                                                            <rect key="frame" x="114.5" y="0.0" width="30" height="18"/>
+                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kmw-hx-DI9" customClass="OPLabel" customModule="pr0gramm" customModuleProvider="target">
+                                                            <rect key="frame" x="104.5" y="0.0" width="30" height="18"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="Fhq-ct-lsx"/>
                                                             </constraints>
@@ -80,17 +81,48 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Wa-o1-ffU">
+                                <rect key="frame" x="0.0" y="44" width="414" height="30"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line.horizontal.3" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="C6b-U6-zfY">
+                                        <rect key="frame" x="194" y="3.5" width="26" height="23"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="regular"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" name="Richtiges Grau"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="C6b-U6-zfY" secondAttribute="bottom" id="3Yz-b9-W5A"/>
+                                    <constraint firstAttribute="height" constant="30" id="8HF-6G-ZjJ"/>
+                                    <constraint firstItem="C6b-U6-zfY" firstAttribute="centerX" secondItem="9Wa-o1-ffU" secondAttribute="centerX" id="HFM-gU-gXX"/>
+                                    <constraint firstItem="C6b-U6-zfY" firstAttribute="top" secondItem="9Wa-o1-ffU" secondAttribute="top" id="Rfy-AL-Rwf"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nrg-lp-6lx" customClass="SeparatorView" customModule="pr0gramm" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="74" width="414" height="1"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="999" constant="1" id="Cdu-d3-h0z"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" name="Richtiges Grau"/>
                         <constraints>
+                            <constraint firstItem="bFB-td-O6Q" firstAttribute="top" secondItem="Nrg-lp-6lx" secondAttribute="bottom" id="60b-vL-thM"/>
+                            <constraint firstItem="Nrg-lp-6lx" firstAttribute="leading" secondItem="Ppy-rY-1tY" secondAttribute="leading" id="Mdu-Jb-9i6"/>
                             <constraint firstItem="bFB-td-O6Q" firstAttribute="leading" secondItem="Ppy-rY-1tY" secondAttribute="leading" id="MiG-tS-SQU"/>
+                            <constraint firstItem="9Wa-o1-ffU" firstAttribute="top" secondItem="Ppy-rY-1tY" secondAttribute="top" id="N3Z-sv-aeW"/>
+                            <constraint firstItem="Nrg-lp-6lx" firstAttribute="trailing" secondItem="Ppy-rY-1tY" secondAttribute="trailing" id="RhC-1s-uCK"/>
+                            <constraint firstItem="Nrg-lp-6lx" firstAttribute="top" secondItem="9Wa-o1-ffU" secondAttribute="bottom" id="TQe-eN-PKs"/>
+                            <constraint firstItem="9Wa-o1-ffU" firstAttribute="leading" secondItem="Ppy-rY-1tY" secondAttribute="leading" id="hqT-Fb-xWb"/>
+                            <constraint firstItem="9Wa-o1-ffU" firstAttribute="trailing" secondItem="Ppy-rY-1tY" secondAttribute="trailing" id="nA8-jF-Sp3"/>
                             <constraint firstItem="bFB-td-O6Q" firstAttribute="trailing" secondItem="Ppy-rY-1tY" secondAttribute="trailing" id="s3t-gj-SxH"/>
-                            <constraint firstItem="bFB-td-O6Q" firstAttribute="top" secondItem="Ppy-rY-1tY" secondAttribute="top" id="wC8-Kw-92C"/>
                             <constraint firstItem="bFB-td-O6Q" firstAttribute="bottom" secondItem="Ppy-rY-1tY" secondAttribute="bottom" id="zdn-ll-PfE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ppy-rY-1tY"/>
                     </view>
                     <connections>
+                        <outlet property="draggerView" destination="9Wa-o1-ffU" id="dbQ-rI-af5"/>
                         <outlet property="tableView" destination="bFB-td-O6Q" id="Ctc-Ou-S1b"/>
                     </connections>
                 </viewController>
@@ -99,4 +131,10 @@
             <point key="canvasLocation" x="-323.1884057971015" y="178.79464285714286"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
+        <namedColor name="Richtiges Grau">
+            <color red="0.086274509803921567" green="0.086274509803921567" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

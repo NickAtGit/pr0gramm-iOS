@@ -26,6 +26,7 @@ class CommentCell: UITableViewCell, UIContextMenuInteractionDelegate {
             initialPointCount =  comment.up - comment.down
             pointsLabel.text = "\(initialPointCount)"
             opLabel.isHidden = !detailViewModel.isAuthorOP(for: comment)
+            print(opLabel.isHidden)
             leadingConstraint.constant = leadingConstraint.constant + CGFloat(comment.depth * 15)
         }
     }

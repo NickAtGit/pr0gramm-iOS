@@ -50,7 +50,7 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
         stackView.topAnchor.constraint(equalTo: hostView.topAnchor, constant: 2).isActive = true
         stackView.leftAnchor.constraint(equalTo: hostView.leftAnchor).isActive = true
         stackView.rightAnchor.constraint(equalTo: hostView.rightAnchor).isActive = true
-        stackView.bottomAnchor.constraint(lessThanOrEqualTo: hostView.bottomAnchor, constant: -20).isActive = true
+        stackView.bottomAnchor.constraint(lessThanOrEqualTo: hostView.bottomAnchor, constant: -50).isActive = true
         
         contentView = hostView
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -65,6 +65,8 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
         let _ = viewModel.item.observeNext { [unowned self] item in
             self.setup(with: item)
         }
+        
+        addComments()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -87,7 +89,7 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
                                           multiplier: CGFloat(item.height) / CGFloat(item.width)).isActive = true
         
         infoView.showReplyAction = { [unowned self] in self.coordinator?.showReplyForPost(viewModel: self.viewModel) }
-        infoView.showCommentsAction = { [unowned self] in self.coordinator?.showComments(viewModel: self.viewModel, from: self) }
+        infoView.showCommentsAction = { [unowned self] in self.showComments() }
         infoView.upvoteAction = { [weak self] in self?.navigation?.showBanner(with: "Han blussert") }
         infoView.downvoteAction = { [weak self] in self?.navigation?.showBanner(with: "Han miesert") }
         
@@ -175,6 +177,21 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
     func stop() {
         avPlayer?.pause()
     }
+    
+    private var topConstraint: NSLayoutConstraint!
+    private var comments: CommentsViewController?
+    private func addComments() {
+        let viewController = CommentsViewController.fromStoryboard()
+        viewController.viewModel = viewModel
+        viewController.coordinator = coordinator
+        comments = viewController
+        viewController.embed(in: self)
+    }
+    
+    
+    func showComments() {
+        comments?.show(from: view)
+    }
 }
 
 
@@ -246,22 +263,22 @@ extension DetailViewController: AVPlayerViewControllerDelegate {
     }
 }
 
-extension DetailViewController: UIViewControllerTransitioningDelegate {
-    func presentationController(forPresented presented: UIViewController,
-                                presenting: UIViewController?,
-                                source: UIViewController) -> UIPresentationController? {
-        
-        return HalfSizePresentationController(presentedViewController: presented,
-                                              presenting: presenting)
-    }
-}
-
-class HalfSizePresentationController : UIPresentationController {
-    override var frameOfPresentedViewInContainerView: CGRect {
-        guard let containerView = containerView else { return CGRect.zero }
-        return CGRect(x: 0,
-                      y: containerView.bounds.height / 2,
-                      width: containerView.bounds.width,
-                      height: containerView.bounds.height / 2)
-    }
-}
+//extension DetailViewController: UIViewControllerTransitioningDelegate {
+//    func presentationController(forPresented presented: UIViewController,
+//                                presenting: UIViewController?,
+//                                source: UIViewController) -> UIPresentationController? {
+//
+//        return HalfSizePresentationController(presentedViewController: presented,
+//                                              presenting: presenting)
+//    }
+//}
+//
+//class HalfSizePresentationController : UIPresentationController {
+//    override var frameOfPresentedViewInContainerView: CGRect {
+//        guard let containerView = containerView else { return CGRect.zero }
+//        return CGRect(x: 0,
+//                      y: containerView.bounds.height / 2,
+//                      width: containerView.bounds.width,
+//                      height: containerView.bounds.height / 2)
+//    }
+//}
