@@ -109,15 +109,15 @@ class Coordinator {
     }
     
     func showComments(viewModel: DetailViewModel, from presentingViewController: DetailViewController) {
-        let viewController = CommentsViewController.fromStoryboard()
-        viewController.viewModel = viewModel
-        viewController.coordinator = self
-
-        let navigationController = NavigationController(rootViewController: viewController)
-        navigationController.style = .dragable
-        navigationController.transitioningDelegate = presentingViewController
-        navigationController.modalPresentationStyle = .custom
-        presentingViewController.present(navigationController, animated: true)
+//        let viewController = CommentsViewController.fromStoryboard()
+//        viewController.viewModel = viewModel
+//        viewController.coordinator = self
+//
+//        let navigationController = NavigationController(rootViewController: viewController)
+//        navigationController.style = .dragable
+//        navigationController.transitioningDelegate = presentingViewController
+//        navigationController.modalPresentationStyle = .custom
+//        presentingViewController.present(navigationController, animated: true)
     }
     
     func showReplyForPost(viewModel: DetailViewModel) {
