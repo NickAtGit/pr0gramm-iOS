@@ -23,11 +23,10 @@ class CommentsViewController: UIViewController, StoryboardInitialViewController 
         panGesture.delaysTouchesBegan = false
         panGesture.delaysTouchesEnded = false
         draggerView.addGestureRecognizer(panGesture)
-
     }
     
     var height: NSLayoutConstraint?
-    var hostingViewController: UIViewController?
+    weak var hostingViewController: UIViewController?
     
     func embed(in viewController: UIViewController) {
         self.hostingViewController = viewController
