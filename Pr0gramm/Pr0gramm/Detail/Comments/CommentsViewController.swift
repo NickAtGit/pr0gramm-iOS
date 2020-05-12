@@ -7,7 +7,10 @@ class CommentsViewController: UIViewController, StoryboardInitialViewController 
     var viewModel: DetailViewModel!
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var draggerView: UIView!
-    
+    private var heightConstraint: NSLayoutConstraint!
+    private weak var hostingViewController: UIViewController?
+    private lazy var currentHeight: CGFloat = draggerView.bounds.height
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -25,9 +28,6 @@ class CommentsViewController: UIViewController, StoryboardInitialViewController 
         draggerView.addGestureRecognizer(panGesture)
     }
     
-    var height: NSLayoutConstraint?
-    weak var hostingViewController: UIViewController?
-    
     func embed(in viewController: UIViewController) {
         self.hostingViewController = viewController
         viewController.view.addSubview(view)
@@ -36,46 +36,47 @@ class CommentsViewController: UIViewController, StoryboardInitialViewController 
         viewController.view.translatesAutoresizingMaskIntoConstraints = false
         let left = view.leftAnchor.constraint(equalTo: viewController.view.leftAnchor)
         let right = view.rightAnchor.constraint(equalTo: viewController.view.rightAnchor)
-        let bottom = view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: viewController.view.safeAreaLayoutGuide.bottomAnchor)
-        height = view.heightAnchor.constraint(equalToConstant: draggerView.bounds.height)
-        NSLayoutConstraint.activate([left, right, bottom, height!])
+        let bottom = view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: viewController.view.bottomAnchor)
+        heightConstraint = view.heightAnchor.constraint(equalToConstant: draggerView.bounds.height)
+        NSLayoutConstraint.activate([left, right, bottom, heightConstraint])
         didMove(toParent: viewController)
     }
     
     func show(from view: UIView) {
-        self.height?.constant = view.bounds.height
+        self.heightConstraint.constant = view.bounds.height
         UIView.animate(withDuration: 0.25,
                        delay: 0,
                        usingSpringWithDamping: 0.9,
                        initialSpringVelocity: 0.2,
                        options: [],
                        animations: {
-                        view.layoutIfNeeded()
+                        self.view.layoutIfNeeded()
         })
     }
     
-    private var currentHeight: CGFloat = 30
 
     @objc
     func detectPan(sender: UIPanGestureRecognizer) {
         
+        guard let hostingViewController = self.hostingViewController else { return }
+        
         if sender.state == .began  {
-            currentHeight = height!.constant
+            currentHeight = heightConstraint.constant
         }
 
         if sender.state == .changed {
-            let drag = sender.location(in: self.hostingViewController?.view) // nach oben -100
-            var newHeight = (self.hostingViewController?.view.bounds.height)! - drag.y
+            let drag = sender.location(in: hostingViewController.view)
+            var newHeight = hostingViewController.view.bounds.height - drag.y
             
             if newHeight < draggerView.bounds.height + 20 {
-                newHeight = 30
+                newHeight = draggerView.bounds.height
             }
             
-            if newHeight > (self.hostingViewController?.view.bounds.height)! {
-                newHeight = (self.hostingViewController?.view.bounds.height)!
+            if newHeight > hostingViewController.view.bounds.height - 20 {
+                newHeight = hostingViewController.view.bounds.height
             }
             
-            height?.constant = newHeight
+            heightConstraint.constant = newHeight
             
             UIView.animate(withDuration: 0.1) {
                 self.view.layoutIfNeeded()
@@ -83,8 +84,7 @@ class CommentsViewController: UIViewController, StoryboardInitialViewController 
         }
 
         if sender.state == .ended || sender.state == .cancelled {
-            //Do Something if interested when dragging ended.
-            currentHeight = height!.constant
+            currentHeight = heightConstraint.constant
         }
     }
 }

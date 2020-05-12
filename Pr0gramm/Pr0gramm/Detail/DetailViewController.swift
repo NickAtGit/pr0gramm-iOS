@@ -23,6 +23,7 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
     private let loadCommentsButton = UIButton()
     private var commentsAreShown = false
     private lazy var contextMenuInteraction = UIContextMenuInteraction(delegate: self)
+    private var commentsViewController: CommentsViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,13 +48,13 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
         let hostView = UIView()
         hostView.translatesAutoresizingMaskIntoConstraints = false
         hostView.addSubview(stackView)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.topAnchor.constraint(equalTo: hostView.topAnchor, constant: 2).isActive = true
         stackView.leftAnchor.constraint(equalTo: hostView.leftAnchor).isActive = true
         stackView.rightAnchor.constraint(equalTo: hostView.rightAnchor).isActive = true
         stackView.bottomAnchor.constraint(lessThanOrEqualTo: hostView.bottomAnchor, constant: -50).isActive = true
         
         contentView = hostView
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         
         let _ = viewModel.isTagsExpanded.observeNext(with: { [unowned self] _ in
@@ -73,10 +74,6 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
         super.viewWillDisappear(animated)
         avPlayer?.pause()
         NotificationCenter.default.removeObserver(self)
-    }
-            
-    override func viewDidLayoutSubviews() {
-        scrollView.contentSize = CGSize(width: stackView.frame.width, height: stackView.frame.height)
     }
     
     func showImageDetail() {
@@ -178,19 +175,15 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
         avPlayer?.pause()
     }
     
-    private var topConstraint: NSLayoutConstraint!
-    private var comments: CommentsViewController?
     private func addComments() {
-        let viewController = CommentsViewController.fromStoryboard()
-        viewController.viewModel = viewModel
-        viewController.coordinator = coordinator
-        comments = viewController
-        viewController.embed(in: self)
+        commentsViewController = CommentsViewController.fromStoryboard()
+        commentsViewController?.viewModel = viewModel
+        commentsViewController?.coordinator = coordinator
+        commentsViewController?.embed(in: self)
     }
     
-    
-    func showComments() {
-        comments?.show(from: view)
+    private func showComments() {
+        commentsViewController?.show(from: view)
     }
 }
 
@@ -262,23 +255,3 @@ extension DetailViewController: AVPlayerViewControllerDelegate {
         playerViewController.player?.play()
     }
 }
-
-//extension DetailViewController: UIViewControllerTransitioningDelegate {
-//    func presentationController(forPresented presented: UIViewController,
-//                                presenting: UIViewController?,
-//                                source: UIViewController) -> UIPresentationController? {
-//
-//        return HalfSizePresentationController(presentedViewController: presented,
-//                                              presenting: presenting)
-//    }
-//}
-//
-//class HalfSizePresentationController : UIPresentationController {
-//    override var frameOfPresentedViewInContainerView: CGRect {
-//        guard let containerView = containerView else { return CGRect.zero }
-//        return CGRect(x: 0,
-//                      y: containerView.bounds.height / 2,
-//                      width: containerView.bounds.width,
-//                      height: containerView.bounds.height / 2)
-//    }
-//}
