@@ -183,7 +183,7 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
     }
     
     private func showComments() {
-        commentsViewController?.show(from: view)
+        commentsViewController?.expand()
     }
 }
 

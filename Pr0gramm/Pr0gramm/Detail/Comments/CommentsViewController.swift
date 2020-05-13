@@ -27,6 +27,10 @@ class CommentsViewController: UIViewController, StoryboardInitialViewController 
         panGesture.delaysTouchesBegan = false
         panGesture.delaysTouchesEnded = false
         draggerView.addGestureRecognizer(panGesture)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(expand))
+        tapGesture.numberOfTapsRequired = 2
+        draggerView.addGestureRecognizer(tapGesture)
     }
     
     func embed(in viewController: UIViewController) {
@@ -43,8 +47,11 @@ class CommentsViewController: UIViewController, StoryboardInitialViewController 
         didMove(toParent: viewController)
     }
     
-    func show(from view: UIView) {
-        self.heightConstraint.constant = view.bounds.height
+    @objc
+    func expand() {
+        guard let hostingViewController = self.hostingViewController else { return }
+        self.heightConstraint.constant = hostingViewController.view.bounds.height
+        
         UIView.animate(withDuration: 0.25,
                        delay: 0,
                        usingSpringWithDamping: 0.9,
@@ -52,6 +59,7 @@ class CommentsViewController: UIViewController, StoryboardInitialViewController 
                        options: [],
                        animations: {
                         self.view.layoutIfNeeded()
+                        self.draggerView.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
         })
     }
     
@@ -62,7 +70,10 @@ class CommentsViewController: UIViewController, StoryboardInitialViewController 
         
         if sender.state == .began  {
             feedback.impactOccurred()
-            currentHeight = heightConstraint.constant
+            
+            UIView.animate(withDuration: 0.25) {
+                self.draggerView.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
+            }
         }
 
         if sender.state == .changed {
@@ -71,9 +82,6 @@ class CommentsViewController: UIViewController, StoryboardInitialViewController 
             
             if newHeight < draggerView.bounds.height + 20 {
                 newHeight = draggerView.bounds.height
-                draggerView.backgroundColor = .clear
-            } else {
-                draggerView.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
             }
             
             if newHeight > hostingViewController.view.bounds.height - 20 {
@@ -82,14 +90,19 @@ class CommentsViewController: UIViewController, StoryboardInitialViewController 
             
             heightConstraint.constant = newHeight
             
-            UIView.animate(withDuration: 0.05) {
+            UIView.animate(withDuration: 0.01) {
                 self.view.layoutIfNeeded()
             }
         }
 
         if sender.state == .ended || sender.state == .cancelled {
             feedback.impactOccurred()
-            currentHeight = heightConstraint.constant
+            
+            if heightConstraint.constant < draggerView.bounds.height + 20 {
+                UIView.animate(withDuration: 0.25) {
+                    self.draggerView.backgroundColor = .clear
+                }
+            }
         }
     }
 }
