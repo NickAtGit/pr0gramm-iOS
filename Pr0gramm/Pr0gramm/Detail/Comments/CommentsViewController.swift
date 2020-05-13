@@ -10,6 +10,7 @@ class CommentsViewController: UIViewController, StoryboardInitialViewController 
     private var heightConstraint: NSLayoutConstraint!
     private weak var hostingViewController: UIViewController?
     private lazy var currentHeight: CGFloat = draggerView.bounds.height
+    private let feedback = UIImpactFeedbackGenerator(style: .soft)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,13 +55,13 @@ class CommentsViewController: UIViewController, StoryboardInitialViewController 
         })
     }
     
-
     @objc
     func detectPan(sender: UIPanGestureRecognizer) {
         
         guard let hostingViewController = self.hostingViewController else { return }
         
         if sender.state == .began  {
+            feedback.impactOccurred()
             currentHeight = heightConstraint.constant
         }
 
@@ -70,6 +71,9 @@ class CommentsViewController: UIViewController, StoryboardInitialViewController 
             
             if newHeight < draggerView.bounds.height + 20 {
                 newHeight = draggerView.bounds.height
+                draggerView.backgroundColor = .clear
+            } else {
+                draggerView.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
             }
             
             if newHeight > hostingViewController.view.bounds.height - 20 {
@@ -78,12 +82,13 @@ class CommentsViewController: UIViewController, StoryboardInitialViewController 
             
             heightConstraint.constant = newHeight
             
-            UIView.animate(withDuration: 0.1) {
+            UIView.animate(withDuration: 0.05) {
                 self.view.layoutIfNeeded()
             }
         }
 
         if sender.state == .ended || sender.state == .cancelled {
+            feedback.impactOccurred()
             currentHeight = heightConstraint.constant
         }
     }

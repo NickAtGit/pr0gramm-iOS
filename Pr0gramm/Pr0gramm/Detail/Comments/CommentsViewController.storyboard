@@ -90,7 +90,7 @@
                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="regular"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" name="Richtiges Grau"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="C6b-U6-zfY" secondAttribute="bottom" id="3Yz-b9-W5A"/>
                                     <constraint firstAttribute="height" constant="30" id="8HF-6G-ZjJ"/>
@@ -106,7 +106,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" name="Richtiges Grau"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="bFB-td-O6Q" firstAttribute="top" secondItem="Nrg-lp-6lx" secondAttribute="bottom" id="60b-vL-thM"/>
                             <constraint firstItem="Nrg-lp-6lx" firstAttribute="leading" secondItem="Ppy-rY-1tY" secondAttribute="leading" id="Mdu-Jb-9i6"/>

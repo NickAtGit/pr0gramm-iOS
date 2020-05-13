@@ -33,7 +33,7 @@ class CommentCell: UITableViewCell, UIContextMenuInteractionDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .clear
+        backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
         messageTextView.isScrollEnabled = false
         messageTextView.backgroundColor = .clear
         messageTextView.textContainerInset = .zero
@@ -65,18 +65,12 @@ class CommentCell: UITableViewCell, UIContextMenuInteractionDelegate {
         let favoriteAction = UIAction(title: "Favorit", image: UIImage(systemName: "heart")) { [unowned self] _ in
             self.favoriteTapped()
         }
-        
-        let voteMenu = UIMenu(title: "Vote", image: UIImage(systemName: "star.circle"), children: [upvoteAction,downvoteAction,favoriteAction])
-        
-//        let shrugAction = UIAction(title: "¯\\_(ツ)_/¯", image: UIImage(systemName: "arrowshape.turn.up.left")) { [unowned self] _ in
-//            self.replyTapped()
-//        }
 
         let replyAction = UIAction(title: "Antworten", image: UIImage(systemName: "arrowshape.turn.up.left")) { [unowned self] _ in
             self.replyTapped()
         }
                 
-        return UIMenu(title: "", children: [replyAction, voteMenu])
+        return UIMenu(title: "", children: [replyAction, favoriteAction, downvoteAction, upvoteAction])
     }
     
     private func upvoteTapped() {
