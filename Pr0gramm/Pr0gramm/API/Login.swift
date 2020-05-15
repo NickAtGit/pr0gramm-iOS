@@ -1,17 +1,16 @@
 
 import Foundation
 
-struct Login : Codable {
-	let error : String?
-	let success : Bool?
-	let ban : String?
-	let ts : Int?
-	let cache : String?
-	let rt : Int?
-	let qc : Int?
+struct Login: Codable {
+	let error: String?
+	let success: Bool?
+	let ban: String?
+	let ts: Int?
+	let cache: String?
+	let rt: Int?
+	let qc: Int?
 
 	enum CodingKeys: String, CodingKey {
-
 		case error = "error"
 		case success = "success"
 		case ban = "ban"

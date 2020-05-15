@@ -12,17 +12,6 @@ protocol Pr0grammConnectorObserver: class {
     func connectorDidUpdate(type: ConnectorUpdateType)
 }
 
-extension String {
-    func base64ToImage() -> UIImage? {
-        if let url = URL(string: self),
-            let data = try? Data(contentsOf: url),
-            let image = UIImage(data: data) {
-            return image
-        }
-        return nil
-    }
-}
-
 enum Flags: Int {
     case sfw = 1
     case nsfw = 2
@@ -47,7 +36,6 @@ enum PostType {
     case voteComment
     case voteItem
     case voteTag
-    
     
     var path: String {
         switch self {
@@ -80,7 +68,6 @@ class Pr0grammConnector {
     let baseURL = "pr0gramm.com/"
     let top = "api/items/get?flags=3&promoted=0"
     let itemInfo = "api/items/info?itemId="
-    var responseModels: [AllItems?] = []
     var captchaResponse: LoginCaptcha?
     var nonce: String?
     var userName: String?
@@ -144,7 +131,7 @@ class Pr0grammConnector {
                     }
                 }
             } catch let error {
-                print(error.localizedDescription)
+                print(error)
             }
         }
         task.resume()
@@ -231,10 +218,40 @@ class Pr0grammConnector {
                     completion(true)
                 }
             } catch {
-                print(error.localizedDescription)
+                print(error)
                 completion(false)
             }
         })
+        task.resume()
+    }
+    
+    func fetchUserInfo(completion: @escaping (UserInfo?) -> Void) {
+        guard let userName = userName else { return }
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "pr0gramm.com"
+        components.path = "/api/profile/info"
+        components.queryItems = [
+            URLQueryItem(name: "name", value: "\(userName)")
+        ]
+        
+        guard let url = components.url else { completion(nil); return }
+        var request = URLRequest(url: url)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.httpMethod = "GET"
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data else { completion(nil); return }
+            let jsonDecoder = JSONDecoder()
+            do {
+                let responseModel = try jsonDecoder.decode(UserInfo.self, from: data)
+                completion(responseModel)
+            } catch {
+                print(error)
+                completion(nil)
+            }
+        }
         task.resume()
     }
     
@@ -290,17 +307,15 @@ class Pr0grammConnector {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.httpMethod = "GET"
-
-        let session = URLSession.shared
         
-        let task = session.dataTask(with: request) { data, response, error in
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else { completion(nil); return }
             let jsonDecoder = JSONDecoder()
             do {
                 let responseModel = try jsonDecoder.decode(AllItems.self, from: data)
                 completion(responseModel)
             } catch {
-                print(error.localizedDescription)
+                print(error)
                 completion(nil)
             }
         }
@@ -331,7 +346,7 @@ class Pr0grammConnector {
                 let itemInfo = try jsonDecoder.decode(ItemInfo.self, from: data)
                 completion(itemInfo)
             } catch let error {
-                print(error.localizedDescription)
+                print(error)
                 completion(nil)
             }
         }
@@ -350,6 +365,17 @@ extension String {
     public func formUrlencoded() -> String {
         let encoded = addingPercentEncoding(withAllowedCharacters: String.formUrlencodedAllowedCharacters)
         return encoded?.replacingOccurrences(of: " ", with: "+") ?? ""
+    }
+}
+
+extension String {
+    func base64ToImage() -> UIImage? {
+        if let url = URL(string: self),
+            let data = try? Data(contentsOf: url),
+            let image = UIImage(data: data) {
+            return image
+        }
+        return nil
     }
 }
 

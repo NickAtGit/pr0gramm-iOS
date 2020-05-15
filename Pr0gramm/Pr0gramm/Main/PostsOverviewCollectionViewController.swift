@@ -3,16 +3,19 @@ import UIKit
 
 private let reuseIdentifier = "thumbCell"
 
-class PostsOverviewCollectionViewController: UICollectionViewController, StoryboardInitialViewController {
+class PostsOverviewCollectionViewController: UIViewController, StoryboardInitialViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     weak var coordinator: Coordinator?
     var viewModel: PostsOverviewViewModel!
     
+    @IBOutlet var collectionView: UICollectionView!
     private let numberOfCellsPerRow: CGFloat = 3
     private let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.delegate = self
+        collectionView.dataSource = self
         collectionView?.contentInsetAdjustmentBehavior = .always
         
         if let flowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
@@ -59,11 +62,11 @@ class PostsOverviewCollectionViewController: UICollectionViewController, Storybo
     
     // MARK: UICollectionViewDataSource
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.items.count
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ThumbCollectionViewCell
         let item = viewModel.items[indexPath.row]
         cell.imageView.downloadedFrom(link: viewModel.thumbLink(for: item))
@@ -74,11 +77,11 @@ class PostsOverviewCollectionViewController: UICollectionViewController, Storybo
         return cell
     }
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         coordinator?.showDetail(from: self, with: viewModel, at: indexPath)
     }
     
-    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.row == viewModel.items.count - 1 {
             loadItems(more: true)
         }

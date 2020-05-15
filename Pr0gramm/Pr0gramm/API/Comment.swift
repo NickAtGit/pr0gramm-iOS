@@ -1,20 +1,19 @@
 
 import Foundation
 
-struct Comment : Codable, Equatable {
+struct Comment: Codable, Equatable {
     var depth = 0
-	var id : Int?
-	var parent : Int?
-	var content : String?
-	var created : Int?
-	var up : Int = 0
-	var down : Int = 0
-	var confidence : Double?
-	var name : String?
-	var mark : Int?
+	var id: Int?
+	var parent: Int?
+	var content: String?
+	var created: Int?
+	var up: Int = 0
+	var down: Int = 0
+	var confidence: Double?
+	var name: String?
+	var mark: Int?
 
 	enum CodingKeys: String, CodingKey {
-
 		case id = "id"
 		case parent = "parent"
 		case content = "content"

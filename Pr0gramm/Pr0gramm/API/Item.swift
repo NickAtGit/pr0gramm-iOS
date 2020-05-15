@@ -1,28 +1,27 @@
 
 import Foundation
 
-struct Item : Codable {
-	let id : Int
-	let promoted : Int
-	let up : Int
-	let down : Int
-	let created : Int
-	let image : String
-	let thumb : String
-    let fullsize : String
-	let width : Int
-	let height : Int
-	let audio : Bool
-	let source : String
-	let flags : Int
-	let user : String
-	let mark : Int
+struct Item: Codable {
+	let id: Int
+	let promoted: Int
+	let up: Int
+	let down: Int
+	let created: Int
+	let image: String
+	let thumb: String
+    let fullsize: String
+	let width: Int
+	let height: Int
+	let audio: Bool
+	let source: String
+	let flags: Int
+	let user: String
+	let mark: Int
     var date: Date {
         return Date(timeIntervalSince1970: TimeInterval(created))
     }
 
 	enum CodingKeys: String, CodingKey {
-
 		case id = "id"
 		case promoted = "promoted"
 		case up = "up"
@@ -58,5 +57,4 @@ struct Item : Codable {
 		user = try values.decode(String.self, forKey: .user)
 		mark = try values.decode(Int.self, forKey: .mark)
 	}
-
 }

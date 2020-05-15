@@ -1,7 +1,7 @@
 
 import UIKit
 
-enum PostsOverviewStyle {
+enum PostsOverviewStyle: Equatable {
     case main, search(tags: [String]), user
 }
 
@@ -56,10 +56,6 @@ class PostsOverviewViewModel: PostsLoadable {
                                     image: UIImage(systemName: "circle.grid.3x3"),
                                     selectedImage: UIImage(systemName: "circle.grid.3x3.fill"))
             }
-        case .user:
-            return UITabBarItem(title: "Profil",
-                                image: UIImage(systemName: "person.circle"),
-                                selectedImage: UIImage(systemName: "person.circle.fill"))
         default:
             return nil
         }

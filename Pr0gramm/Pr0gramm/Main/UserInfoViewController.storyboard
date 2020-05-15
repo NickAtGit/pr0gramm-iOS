@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dep-Lf-aPW">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--User Info View Controller-->
+        <scene sceneID="2Gf-Yj-g2n">
+            <objects>
+                <viewController id="dep-Lf-aPW" customClass="UserInfoViewController" customModule="pr0gramm" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fy8-Fm-itj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Benis: 1337" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abD-HW-YCy">
+                                <rect key="frame" x="20" y="64" width="374" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
+                                <color key="textColor" name="Schriftfarbe"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="Richtiges Grau"/>
+                        <constraints>
+                            <constraint firstItem="NBK-Vx-LLT" firstAttribute="trailing" secondItem="abD-HW-YCy" secondAttribute="trailing" constant="20" id="1GT-c5-VTQ"/>
+                            <constraint firstItem="abD-HW-YCy" firstAttribute="top" secondItem="NBK-Vx-LLT" secondAttribute="top" constant="20" id="BLP-J4-sTI"/>
+                            <constraint firstItem="NBK-Vx-LLT" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="abD-HW-YCy" secondAttribute="bottom" constant="20" id="Og2-hT-bXt"/>
+                            <constraint firstItem="abD-HW-YCy" firstAttribute="leading" secondItem="NBK-Vx-LLT" secondAttribute="leading" constant="20" id="dOX-Cz-9eg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="NBK-Vx-LLT"/>
+                    </view>
+                    <connections>
+                        <outlet property="scoreLabel" destination="abD-HW-YCy" id="nWf-qu-GcL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nxn-nl-e0U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="Richtiges Grau">
+            <color red="0.086274509803921567" green="0.086274509803921567" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Schriftfarbe">
+            <color red="0.94901960784313721" green="0.96078431372549022" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

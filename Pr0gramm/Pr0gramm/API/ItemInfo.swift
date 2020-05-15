@@ -1,16 +1,15 @@
 
 import Foundation
 
-struct ItemInfo : Codable {
-	let tags : [Tags]
-	let comments : [Comment]
-	let ts : Int
-	let cache : String
-	let rt : Int
-	let qc : Int
+struct ItemInfo: Codable {
+	let tags: [Tags]
+	let comments: [Comment]
+	let ts: Int
+	let cache: String
+	let rt: Int
+	let qc: Int
 
 	enum CodingKeys: String, CodingKey {
-
 		case tags = "tags"
 		case comments = "comments"
 		case ts = "ts"
@@ -28,5 +27,4 @@ struct ItemInfo : Codable {
 		rt = try values.decode(Int.self, forKey: .rt)
 		qc = try values.decode(Int.self, forKey: .qc)
 	}
-
 }

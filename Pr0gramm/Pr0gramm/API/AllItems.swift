@@ -1,18 +1,17 @@
 
 import Foundation
 
-struct AllItems : Codable {
-	let atEnd : Bool
-	let atStart : Bool
-	let error : String?
-	let items : [Item]
-	let ts : Int
-	let cache : String
-	let rt : Int
-	let qc : Int
+struct AllItems: Codable {
+	let atEnd: Bool
+	let atStart: Bool
+	let error: String?
+	let items: [Item]
+	let ts: Int
+	let cache: String
+	let rt: Int
+	let qc: Int
 
 	enum CodingKeys: String, CodingKey {
-
 		case atEnd = "atEnd"
 		case atStart = "atStart"
 		case error = "error"
@@ -34,5 +33,4 @@ struct AllItems : Codable {
 		rt = try values.decode(Int.self, forKey: .rt)
 		qc = try values.decode(Int.self, forKey: .qc)
 	}
-
 }

@@ -37,13 +37,12 @@ class Coordinator {
         searchNavigationController.style = .search
         searchNavigationController.viewControllers = [searchViewController]
         
-        let profileViewController = PostsOverviewCollectionViewController.fromStoryboard()
-        profileViewController.viewModel = PostsOverviewViewModel(style: .user, connector: pr0grammConnector)
-        profileViewController.coordinator = self
-        profileViewController.loadViewIfNeeded()
+        let userInfoViewController = UserInfoViewController.fromStoryboard()
+        userInfoViewController.viewModel = UserInfoViewModel(connector: pr0grammConnector)
+        userInfoViewController.loadViewIfNeeded()
         let profileNavigationController = NavigationController()
         profileNavigationController.style = .user
-        profileNavigationController.viewControllers = [profileViewController]
+        profileNavigationController.viewControllers = [userInfoViewController]
 
         
         tabbarController.setViewControllers([navigationController,

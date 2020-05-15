@@ -7,7 +7,7 @@ extension UIViewController {
         return UIApplication.shared.windows.first?.topVisibleViewController?.navigationController as? NavigationController
     }
     
-    func embed(_ viewController: UIViewController){
+    func embed(_ viewController: UIViewController) {
         viewController.willMove(toParent: self)
         viewController.view.frame = view.bounds
         view.addSubview(viewController.view)
