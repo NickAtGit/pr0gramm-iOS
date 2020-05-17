@@ -1,15 +1,20 @@
 
 import UIKit
+import ScrollingContentViewController
 
-class UserInfoViewController: UIViewController, StoryboardInitialViewController {
+class UserInfoViewController: ScrollingContentViewController, StoryboardInitialViewController {
     
     var viewModel: UserInfoViewModel!
     @IBOutlet private var scoreLabel: UILabel!
+    @IBOutlet private var userClassDotView: UserClassDotView!
+    @IBOutlet private var userClassLabel: UILabel!
     
     var userInfo: UserInfo? {
         didSet {
             guard let userInfo = userInfo else { return }
             scoreLabel.text = "Benis: \(userInfo.user.score)"
+            userClassDotView.backgroundColor = Colors.color(for: userInfo.user.mark)
+            userClassLabel.text = Strings.userClass(for: userInfo.user.mark)
         }
     }
     

@@ -94,6 +94,9 @@
 		03DB22922466D5A8007E6B31 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 03DB22902466D5A8007E6B31 /* DataModel.xcdatamodeld */; };
 		03DB22952466DC91007E6B31 /* ActionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DB22942466DC91007E6B31 /* ActionsManager.swift */; };
 		03DB2297246881D9007E6B31 /* SeenBadgeShowable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DB2296246881D9007E6B31 /* SeenBadgeShowable.swift */; };
+		03F7604D247147B700E0A542 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F7604C247147B700E0A542 /* Colors.swift */; };
+		03F7604F2471489900E0A542 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F7604E2471489900E0A542 /* Strings.swift */; };
+		03F7605124714DC300E0A542 /* UserClassDotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F7605024714DC300E0A542 /* UserClassDotView.swift */; };
 		9F41A63FD0AD2BBEFBCBB0D8 /* Pods_Pr0gramm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55CDBC6EB3F96F0E3E6A68C0 /* Pods_Pr0gramm.framework */; };
 /* End PBXBuildFile section */
 
@@ -184,6 +187,9 @@
 		03DB22912466D5A8007E6B31 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		03DB22942466DC91007E6B31 /* ActionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsManager.swift; sourceTree = "<group>"; };
 		03DB2296246881D9007E6B31 /* SeenBadgeShowable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeenBadgeShowable.swift; sourceTree = "<group>"; };
+		03F7604C247147B700E0A542 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		03F7604E2471489900E0A542 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		03F7605024714DC300E0A542 /* UserClassDotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserClassDotView.swift; sourceTree = "<group>"; };
 		55CDBC6EB3F96F0E3E6A68C0 /* Pods_Pr0gramm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pr0gramm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8B6109EB9DAB3D7BC6F488C /* Pods-Pr0gramm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pr0gramm.release.xcconfig"; path = "Target Support Files/Pods-Pr0gramm/Pods-Pr0gramm.release.xcconfig"; sourceTree = "<group>"; };
 		CF40EF03453B6FC2E81BF011 /* Pods-Pr0gramm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pr0gramm.debug.xcconfig"; path = "Target Support Files/Pods-Pr0gramm/Pods-Pr0gramm.debug.xcconfig"; sourceTree = "<group>"; };
@@ -316,6 +322,8 @@
 				035EBA7C24262C7E009185E9 /* StoryboardViewController.swift */,
 				033CF1CA205FCB4500627321 /* NibView.swift */,
 				03DB2296246881D9007E6B31 /* SeenBadgeShowable.swift */,
+				03F7604C247147B700E0A542 /* Colors.swift */,
+				03F7604E2471489900E0A542 /* Strings.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -347,6 +355,7 @@
 				03C6BDAB246DFB7A005983AB /* UserInfoViewModel.swift */,
 				03083426246C7D1500F6B6CE /* UserInfoViewController.swift */,
 				03083428246C7D5D00F6B6CE /* UserInfoViewController.storyboard */,
+				03F7605024714DC300E0A542 /* UserClassDotView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -596,6 +605,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03083427246C7D1500F6B6CE /* UserInfoViewController.swift in Sources */,
+				03F7604D247147B700E0A542 /* Colors.swift in Sources */,
 				03076A662059E80F00168E62 /* UIImageView+Extension.swift in Sources */,
 				03D2AC50243264740082D4C9 /* With.swift in Sources */,
 				030CAF66244CD93D00D6885C /* ThemeSelectionCell.swift in Sources */,
@@ -613,8 +623,10 @@
 				03C6BDAC246DFB7A005983AB /* UserInfoViewModel.swift in Sources */,
 				035EBA7B24262C0B009185E9 /* LoginViewController.swift in Sources */,
 				03C1FA2B2427D27600E6AEE4 /* UIViewController+Extension.swift in Sources */,
+				03F7604F2471489900E0A542 /* Strings.swift in Sources */,
 				033CF1BA205BDE1500627321 /* ThumbCollectionViewCell.swift in Sources */,
 				035EBA792426261C009185E9 /* Captcha.swift in Sources */,
+				03F7605124714DC300E0A542 /* UserClassDotView.swift in Sources */,
 				033CF1C5205C0F7400627321 /* ItemInfo.swift in Sources */,
 				03076A782059E8B900168E62 /* AllItems.swift in Sources */,
 				03083421246C78C400F6B6CE /* Comments.swift in Sources */,
