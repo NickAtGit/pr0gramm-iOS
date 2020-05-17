@@ -25,6 +25,11 @@ class SettingsViewController: TableViewController {
                 Row(text: "Gesehen Indikator anzeigen", accessory: .switchToggle(value: AppSettings.isShowSeenBagdes) {
                     AppSettings.isShowSeenBagdes = $0
                 }, cellClass: SettingsCell.self),
+                
+                Row(text: "Nächster/Letzter Hochlad Tap aktivieren", accessory: .switchToggle(value: AppSettings.isUseLeftRightQuickTap) {
+                    AppSettings.isUseLeftRightQuickTap = $0
+                }, cellClass: SettingsCell.self),
+                
                 Row(text: "Datenbank", detailText: "\(ActionsManager.shared.dataBaseSize ?? "Fehler")", accessory: .none, cellClass: SettingsCell.self)
                 
             ], footer: ""),

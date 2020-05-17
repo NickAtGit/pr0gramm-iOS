@@ -8,7 +8,8 @@ class TapableImageView: UIImageView, SeenBadgeShowable {
     private let feedback = UISelectionFeedbackGenerator()
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let location = touches.first?.location(in: self) else { return }
+        guard let location = touches.first?.location(in: self),
+            AppSettings.isUseLeftRightQuickTap else { return }
 
         let touchAreaWidth: CGFloat = 80
 
@@ -30,7 +31,8 @@ class TapableAVPlayerViewController: AVPlayerViewController, SeenBadgeShowable {
     private let feedback = UISelectionFeedbackGenerator()
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let location = touches.first?.location(in: view) else { return }
+        guard let location = touches.first?.location(in: view),
+            AppSettings.isUseLeftRightQuickTap else { return }
 
         let touchAreaWidth: CGFloat = 80
 
