@@ -42,7 +42,7 @@ class TagsCollectionViewController: UICollectionViewController, StoryboardInitia
 
         
         let _ = viewModel.itemInfo.observeNext { [weak self] itemInfo in
-            self?.tags = itemInfo?.tags.sorted { $0.confidence ?? 0 > $1.confidence ?? 0 }
+            self?.tags = itemInfo?.tags.sorted { $0.confidence > $1.confidence }
         }
     }
     

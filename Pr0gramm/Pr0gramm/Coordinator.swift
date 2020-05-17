@@ -108,9 +108,9 @@ class Coordinator {
         viewController.navigationController?.pushViewController(searchResultViewController, animated: true)
     }
     
-    func showUserLikes(in navigationController: UINavigationController) {
+    func showUserPosts(for style: PostsOverviewStyle, navigationController: UINavigationController) {
         let searchResultViewController = PostsOverviewCollectionViewController.fromStoryboard()
-        searchResultViewController.viewModel = PostsOverviewViewModel(style: .likes,
+        searchResultViewController.viewModel = PostsOverviewViewModel(style: style,
                                                                       connector: pr0grammConnector)
         searchResultViewController.coordinator = self
         navigationController.pushViewController(searchResultViewController, animated: true)

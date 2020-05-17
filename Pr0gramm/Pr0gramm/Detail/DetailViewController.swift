@@ -226,7 +226,7 @@ extension DetailViewController {
     func download(directory: FileManager.SearchPathDirectory) {
         guard let connector = coordinator?.pr0grammConnector, let itemInfo = viewModel.itemInfo.value else { return }
         let item = viewModel.item.value
-        let firstFourTags = itemInfo.tags.sorted { $0.confidence ?? 0 > $1.confidence ?? 0 }.prefix(4).reduce("", {$0 + ($1.tag ?? "") + "-" }).dropLast()
+        let firstFourTags = itemInfo.tags.sorted { $0.confidence > $1.confidence }.prefix(4).reduce("", {$0 + ($1.tag) + "-" }).dropLast()
         let fileName = String(firstFourTags)
         let link = connector.link(for: item)
         let downloader = Downloader()

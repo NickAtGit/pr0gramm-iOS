@@ -35,6 +35,11 @@ class UserInfoViewController: ScrollingContentViewController, StoryboardInitialV
     
     @IBAction func showLikesButtonTapped(_ sender: Any) {
         guard let navigationController = navigationController else { return }
-        coordinator?.showUserLikes(in: navigationController)
+        coordinator?.showUserPosts(for: .likes, navigationController: navigationController)
+    }
+    
+    @IBAction func showUserUploadsButtonTapped(_ sender: Any) {
+        guard let navigationController = navigationController else { return }
+        coordinator?.showUserPosts(for: .user, navigationController: navigationController)
     }
 }

@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="QBy-ga-Jlg">
-                                <rect key="frame" x="20" y="64" width="374" height="126"/>
+                                <rect key="frame" x="20" y="64" width="374" height="176"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Benis: 1337" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abD-HW-YCy">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="36"/>
@@ -49,6 +49,13 @@
                                         <state key="normal" title="Favoriten"/>
                                         <connections>
                                             <action selector="showLikesButtonTapped:" destination="dep-Lf-aPW" eventType="touchUpInside" id="D52-P7-ikw"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iJ5-wn-Zxr">
+                                        <rect key="frame" x="0.0" y="146" width="374" height="30"/>
+                                        <state key="normal" title="Meine Hochlads"/>
+                                        <connections>
+                                            <action selector="showUserUploadsButtonTapped:" destination="dep-Lf-aPW" eventType="touchUpInside" id="1e3-N1-M6o"/>
                                         </connections>
                                     </button>
                                 </subviews>
