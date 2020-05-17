@@ -39,6 +39,7 @@ class Coordinator {
         
         let userInfoViewController = UserInfoViewController.fromStoryboard()
         userInfoViewController.viewModel = UserInfoViewModel(connector: pr0grammConnector)
+        userInfoViewController.coordinator = self
         userInfoViewController.loadViewIfNeeded()
         let profileNavigationController = NavigationController()
         profileNavigationController.style = .user
@@ -106,7 +107,15 @@ class Coordinator {
         searchResultViewController.coordinator = self
         viewController.navigationController?.pushViewController(searchResultViewController, animated: true)
     }
-        
+    
+    func showUserLikes(in navigationController: UINavigationController) {
+        let searchResultViewController = PostsOverviewCollectionViewController.fromStoryboard()
+        searchResultViewController.viewModel = PostsOverviewViewModel(style: .likes,
+                                                                      connector: pr0grammConnector)
+        searchResultViewController.coordinator = self
+        navigationController.pushViewController(searchResultViewController, animated: true)
+    }
+
     func showReplyForPost(viewModel: DetailViewModel) {
         let viewController = ReplyViewController.fromStoryboard()
         viewController.viewModel = viewModel

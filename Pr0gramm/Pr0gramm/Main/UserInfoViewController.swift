@@ -4,6 +4,7 @@ import ScrollingContentViewController
 
 class UserInfoViewController: ScrollingContentViewController, StoryboardInitialViewController {
     
+    weak var coordinator: Coordinator?
     var viewModel: UserInfoViewModel!
     @IBOutlet private var scoreLabel: UILabel!
     @IBOutlet private var userClassDotView: UserClassDotView!
@@ -30,5 +31,10 @@ class UserInfoViewController: ScrollingContentViewController, StoryboardInitialV
                 self.userInfo = self.viewModel.userInfo
             }
         }
+    }
+    
+    @IBAction func showLikesButtonTapped(_ sender: Any) {
+        guard let navigationController = navigationController else { return }
+        coordinator?.showUserLikes(in: navigationController)
     }
 }

@@ -2,7 +2,7 @@
 import UIKit
 
 enum PostsOverviewStyle: Equatable {
-    case main, search(tags: [String]), user
+    case main, search(tags: [String]), user, likes
 }
 
 class PostsOverviewViewModel: PostsLoadable {
@@ -38,6 +38,8 @@ class PostsOverviewViewModel: PostsLoadable {
             return tags.first ?? ""
         case .user:
             return connector.userName ?? ""
+        case .likes:
+            return "Favoriten"
         }
     }
     
@@ -116,6 +118,16 @@ extension PostsLoadable {
             }
         case .user:
             connector.fetchUserItems(sorting: sorting,
+                                     flags: flags,
+                                     afterId: afterId) { [weak self] items in
+                                        guard let items = items else { completion(false); return }
+                                        if isRefresh { self?.allItems.removeAll() }
+                                        self?.allItems.append(items)
+                                        self?.isAtEnd = items.atEnd
+                                        completion(true)
+            }
+        case .likes:
+            connector.fetchUserLikes(sorting: sorting,
                                      flags: flags,
                                      afterId: afterId) { [weak self] items in
                                         guard let items = items else { completion(false); return }

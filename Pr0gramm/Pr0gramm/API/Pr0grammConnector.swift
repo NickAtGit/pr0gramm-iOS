@@ -255,6 +255,16 @@ class Pr0grammConnector {
         task.resume()
     }
     
+    func fetchUserLikes(sorting: Sorting,
+                        flags: [Flags],
+                        afterId: Int? = nil,
+                        completion: @escaping (AllItems?) -> Void) {
+        guard isLoggedIn else { return }
+        guard let userName = userName else { return }
+        let queryItem = URLQueryItem(name: "likes", value: userName)
+        fetchItems(sorting: sorting, flags: flags, additionalQueryItems: [queryItem], afterId: afterId, completion: completion)
+    }
+    
     func fetchUserItems(sorting: Sorting,
                         flags: [Flags],
                         afterId: Int? = nil,
