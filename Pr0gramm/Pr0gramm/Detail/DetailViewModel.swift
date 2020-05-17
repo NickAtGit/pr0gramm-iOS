@@ -59,11 +59,12 @@ class DetailViewModel {
         if let parentComment = parentComment {
             guard let index = comments.value?.firstIndex(of: parentComment) else { return }
             comments.value?.insert(comment, at: index + 1)
+            connector.postComment(to: item.value.id, parentId: parentComment.id, comment: comment.content)
         } else {
             comments.value?.insert(comment, at: 0)
             isCommentsButtonHidden.value = false
+            connector.postComment(to: item.value.id, comment: comment.content)
         }
-        connector.postComment(to: item.value.id, parentId: parentComment?.id ?? 0, comment: comment.content ?? "")
     }
     
     func vote(_ vote: Vote) {
@@ -131,7 +132,7 @@ class DetailViewModel {
                     }
                 }
             } else {
-                let sortedNodes = parentNodes.sorted { $0.value.confidence ?? 0 > $1.value.confidence ?? 0 }
+                let sortedNodes = parentNodes.sorted { $0.value.confidence > $1.value.confidence }
                 self.convertCommentNodesToArray(nodes: sortedNodes, currentArray: [])
             }
         }
@@ -146,7 +147,7 @@ class DetailViewModel {
             
             if firstNode.children.count > 0 {
                 let remainingNodes = nodes.dropFirst()
-                let sortedChildren = firstNode.children.sorted { $0.value.confidence ?? 0 > $1.value.confidence ?? 0 }
+                let sortedChildren = firstNode.children.sorted { $0.value.confidence > $1.value.confidence }
                 convertCommentNodesToArray(nodes: sortedChildren + remainingNodes, currentArray: commentsArray)
             } else {
                 nodes.removeFirst()
@@ -188,7 +189,7 @@ extension Node where T == Comment {
     }
     
     var description: String {
-        "Id: \(value.id ?? -1), parent: \(value.parent ?? -1)"
+        "Id: \(value.id), parent: \(value.parent ?? -1)"
     }
 }
 
