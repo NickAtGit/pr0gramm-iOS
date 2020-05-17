@@ -185,6 +185,10 @@ extension Theme {
             $0.tintColor = tint
         }
         
+        NavigationBannerView.appearance().with {
+            $0.backgroundColor = tint
+        }
+        
         application.windows.reload()
     }
 }

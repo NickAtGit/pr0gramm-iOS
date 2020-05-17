@@ -160,10 +160,10 @@ class NavigationBannerView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = #colorLiteral(red: 0.9333333333, green: 0.3019607843, blue: 0.1803921569, alpha: 1)
         messageTextLabel.translatesAutoresizingMaskIntoConstraints = false
         messageTextLabel.numberOfLines = 0
         messageTextLabel.textAlignment = .center
+        messageTextLabel.textColor = #colorLiteral(red: 0.9490196078, green: 0.9607843137, blue: 0.9568627451, alpha: 1)
         addSubview(messageTextLabel)
         
         NSLayoutConstraint.activate([

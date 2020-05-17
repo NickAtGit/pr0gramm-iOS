@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,20 +15,33 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="lZI-SO-vmQ">
-                    <rect key="frame" x="20" y="0.0" width="68.5" height="65"/>
+                    <rect key="frame" x="20" y="0.0" width="86.5" height="65"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYp-gL-QPE">
-                            <rect key="frame" x="0.0" y="0.0" width="68.5" height="36"/>
+                            <rect key="frame" x="0.0" y="0.0" width="86.5" height="36"/>
                             <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
                             <color key="textColor" name="Schriftfarbe"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DTY-Ga-v1E">
-                            <rect key="frame" x="0.0" y="46" width="68.5" height="19"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <color key="textColor" name="Schriftfarbe ausgegraut"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="sHs-nM-5l6">
+                            <rect key="frame" x="0.0" y="46" width="86.5" height="19"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DTY-Ga-v1E">
+                                    <rect key="frame" x="0.0" y="1" width="68.5" height="17"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" name="Schriftfarbe ausgegraut"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mcp-Fc-Wtz" customClass="UserClassDotView" customModule="pr0gramm" customModuleProvider="target">
+                                    <rect key="frame" x="78.5" y="5.5" width="8" height="8"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="8" id="DkS-Hk-NHv"/>
+                                        <constraint firstAttribute="height" constant="8" id="g5g-WO-v5W"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                        </stackView>
                     </subviews>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="FiG-1h-MxZ">
@@ -118,18 +131,19 @@
                 <outlet property="pointsLabel" destination="aYp-gL-QPE" id="b9b-q1-5DD"/>
                 <outlet property="tagsButton" destination="S43-mO-YX6" id="V7v-YS-NaP"/>
                 <outlet property="upvoteButton" destination="Nlf-jk-WA2" id="LwO-eR-Hsh"/>
+                <outlet property="userClassDotView" destination="mcp-Fc-Wtz" id="ELX-M4-qAq"/>
                 <outlet property="userNameLabel" destination="DTY-Ga-v1E" id="eu2-h3-8Ij"/>
             </connections>
             <point key="canvasLocation" x="105.59999999999999" y="-36.431784107946029"/>
         </view>
     </objects>
     <resources>
-        <image name="arrowshape.turn.up.left" catalog="system" width="128" height="106"/>
-        <image name="heart" catalog="system" width="128" height="109"/>
-        <image name="minus.circle" catalog="system" width="128" height="121"/>
-        <image name="plus.circle" catalog="system" width="128" height="121"/>
-        <image name="tag" catalog="system" width="128" height="116"/>
-        <image name="text.bubble" catalog="system" width="128" height="110"/>
+        <image name="arrowshape.turn.up.left" catalog="system" width="64" height="52"/>
+        <image name="heart" catalog="system" width="64" height="54"/>
+        <image name="minus.circle" catalog="system" width="64" height="60"/>
+        <image name="plus.circle" catalog="system" width="64" height="60"/>
+        <image name="tag" catalog="system" width="64" height="58"/>
+        <image name="text.bubble" catalog="system" width="64" height="54"/>
         <namedColor name="Schriftfarbe">
             <color red="0.94901960784313721" green="0.96078431372549022" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

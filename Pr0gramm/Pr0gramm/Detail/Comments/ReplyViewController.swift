@@ -50,10 +50,12 @@ class ReplyViewController: ScrollingContentViewController, StoryboardInitialView
     
     @objc
     func didTapSend() {
-        guard let text = replyTextView.text, !text.isEmpty else { return }
+        guard let text = replyTextView.text,
+            !text.isEmpty,
+            let userName = viewModel.loggedInUserName else { return }
         
         let depth = (self.comment?.depth ?? -1) + 1
-        let comment = Comment(with: text, depth: depth)
+        let comment = Comment(with: text, name: userName, depth: depth)
         viewModel.addComment(comment, parentComment: self.comment)
         dismiss(animated: true)
     }

@@ -12,6 +12,7 @@ class CommentCell: UITableViewCell, UIContextMenuInteractionDelegate {
     
     @IBOutlet private var messageTextView: UITextView!
     @IBOutlet private var authorLabel: UILabel!
+    @IBOutlet private var userClassDotView: UserClassDotView!
     @IBOutlet private var pointsLabel: UILabel!
     @IBOutlet private var opLabel: OPLabel!
     @IBOutlet private var leadingConstraint: NSLayoutConstraint!
@@ -25,6 +26,7 @@ class CommentCell: UITableViewCell, UIContextMenuInteractionDelegate {
             messageTextView.text = comment.content
             initialPointCount =  comment.up - comment.down
             pointsLabel.text = "\(initialPointCount)"
+            userClassDotView.backgroundColor = Colors.color(for: comment.mark)
             opLabel.isHidden = !detailViewModel.isAuthorOP(for: comment)
             leadingConstraint.constant = leadingConstraint.constant + CGFloat(comment.depth * 15)
         }
@@ -74,25 +76,22 @@ class CommentCell: UITableViewCell, UIContextMenuInteractionDelegate {
     }
     
     private func upvoteTapped() {
-        guard let comment = comment,
-            let id = comment.id else { return }
-        detailViewModel.connector.vote(id: id, value: .upvote, type: .voteComment)
+        guard let comment = comment else { return }
+        detailViewModel.connector.vote(id: comment.id, value: .upvote, type: .voteComment)
         feedback.selectionChanged()
         pointsLabel.text = "\(initialPointCount + 1)"
     }
     
     private func downVoteTapped() {
-        guard let comment = comment,
-            let id = comment.id else { return }
-        detailViewModel.connector.vote(id: id, value: .downvote, type: .voteComment)
+        guard let comment = comment else { return }
+        detailViewModel.connector.vote(id: comment.id, value: .downvote, type: .voteComment)
         feedback.selectionChanged()
         pointsLabel.text = "\(initialPointCount - 1)"
     }
     
     private func favoriteTapped() {
-        guard let comment = comment,
-            let id = comment.id else { return }
-        detailViewModel.connector.vote(id: id, value: .favorite, type: .voteComment)
+        guard let comment = comment else { return }
+        detailViewModel.connector.vote(id: comment.id, value: .favorite, type: .voteComment)
         feedback.selectionChanged()
         pointsLabel.text = "\(initialPointCount + 1)"
     }

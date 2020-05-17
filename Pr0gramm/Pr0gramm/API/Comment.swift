@@ -3,15 +3,15 @@ import Foundation
 
 struct Comment: Codable, Equatable {
     var depth = 0
-	var id: Int?
+	var id: Int = 0
 	var parent: Int?
-	var content: String?
-	var created: Int?
+	var content: String = ""
+	var created: Int = 0
 	var up: Int = 0
 	var down: Int = 0
-	var confidence: Double?
-	var name: String?
-	var mark: Int?
+	var confidence: Double = 0
+	var name: String = ""
+	var mark: Int = 0
 
 	enum CodingKeys: String, CodingKey {
 		case id = "id"
@@ -27,21 +27,21 @@ struct Comment: Codable, Equatable {
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-		id = try values.decodeIfPresent(Int.self, forKey: .id)
+		id = try values.decode(Int.self, forKey: .id)
 		parent = try values.decodeIfPresent(Int.self, forKey: .parent)
-		content = try values.decodeIfPresent(String.self, forKey: .content)
-		created = try values.decodeIfPresent(Int.self, forKey: .created)
+		content = try values.decode(String.self, forKey: .content)
+		created = try values.decode(Int.self, forKey: .created)
 		up = try values.decode(Int.self, forKey: .up)
 		down = try values.decode(Int.self, forKey: .down)
-		confidence = try values.decodeIfPresent(Double.self, forKey: .confidence)
-		name = try values.decodeIfPresent(String.self, forKey: .name)
-		mark = try values.decodeIfPresent(Int.self, forKey: .mark)
+		confidence = try values.decode(Double.self, forKey: .confidence)
+		name = try values.decode(String.self, forKey: .name)
+		mark = try values.decode(Int.self, forKey: .mark)
 	}
     
-    init(with message: String, depth: Int) {
+    init(with message: String, name: String, depth: Int) {
         self.depth = depth
-        up = 1
-        content = message
-        name = "Arschrunzeln"
+        self.up = 1
+        self.content = message
+        self.name = name
     }
 }

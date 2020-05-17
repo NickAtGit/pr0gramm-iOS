@@ -8,6 +8,7 @@ enum MediaType {
 
 class DetailViewModel {
     
+    var loggedInUserName: String? { connector.userName }
     let item: Observable<Item>
     let itemInfo = Observable<ItemInfo?>(nil)
     let connector: Pr0grammConnector
