@@ -1,8 +1,10 @@
 
 import UIKit
+import Bond
 
 class SearchTableViewController: UITableViewController, StoryboardInitialViewController {
     
+    var viewModel: SearchViewModel!
     weak var coordinator: Coordinator?
     var searchController: UISearchController!
     
@@ -18,6 +20,7 @@ class SearchTableViewController: UITableViewController, StoryboardInitialViewCon
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.delegate = self
+        viewModel.searchText.bind(to: searchController.searchBar.reactive.text)
         navigationItem.searchController = searchController
         
         definesPresentationContext = true
@@ -59,6 +62,12 @@ class SearchTableViewController: UITableViewController, StoryboardInitialViewCon
                 
         let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
         return configuration
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let sliderView = MinScoreSliderHeaderView.fromNib()
+        sliderView.viewModel = viewModel
+        return sliderView
     }
     
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {

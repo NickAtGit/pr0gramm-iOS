@@ -189,6 +189,10 @@ extension Theme {
             $0.backgroundColor = tint
         }
         
+        UISlider.appearance().with {
+            $0.thumbTintColor = tint
+        }
+        
         application.windows.reload()
     }
 }

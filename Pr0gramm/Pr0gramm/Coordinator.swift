@@ -31,6 +31,7 @@ class Coordinator {
         settingsNavigationController.viewControllers = [settingsViewController]
         
         let searchViewController = SearchTableViewController.fromStoryboard()
+        searchViewController.viewModel = SearchViewModel(connector: pr0grammConnector)
         searchViewController.coordinator = self
         searchViewController.loadViewIfNeeded()
         let searchNavigationController = NavigationController()

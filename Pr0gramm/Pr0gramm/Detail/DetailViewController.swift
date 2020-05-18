@@ -17,7 +17,7 @@ class DetailViewController: ScrollingContentViewController, StoryboardInitialVie
     private var stackView: UIStackView!
     private var imageView = TapableImageView()
     private let tagsCollectionViewController = TagsCollectionViewController.fromStoryboard()
-    private let infoView = InfoView.instantiateFromNib()
+    private let infoView = InfoView.fromNib()
     private var avPlayer: AVPlayer?
     private var avPlayerViewController: TapableAVPlayerViewController?
     private let loadCommentsButton = UIButton()

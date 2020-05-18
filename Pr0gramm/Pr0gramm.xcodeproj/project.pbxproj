@@ -94,6 +94,9 @@
 		03DB22922466D5A8007E6B31 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 03DB22902466D5A8007E6B31 /* DataModel.xcdatamodeld */; };
 		03DB22952466DC91007E6B31 /* ActionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DB22942466DC91007E6B31 /* ActionsManager.swift */; };
 		03DB2297246881D9007E6B31 /* SeenBadgeShowable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DB2296246881D9007E6B31 /* SeenBadgeShowable.swift */; };
+		03E7B50C2471E6560038277A /* MinScoreSliderHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7B50B2471E6560038277A /* MinScoreSliderHeaderView.swift */; };
+		03E7B50E2471E6B70038277A /* MinScoreSliderHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03E7B50D2471E6B70038277A /* MinScoreSliderHeaderView.xib */; };
+		03E7B5102471EC650038277A /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7B50F2471EC650038277A /* SearchViewModel.swift */; };
 		03F7604D247147B700E0A542 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F7604C247147B700E0A542 /* Colors.swift */; };
 		03F7604F2471489900E0A542 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F7604E2471489900E0A542 /* Strings.swift */; };
 		03F7605124714DC300E0A542 /* UserClassDotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F7605024714DC300E0A542 /* UserClassDotView.swift */; };
@@ -187,6 +190,9 @@
 		03DB22912466D5A8007E6B31 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		03DB22942466DC91007E6B31 /* ActionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsManager.swift; sourceTree = "<group>"; };
 		03DB2296246881D9007E6B31 /* SeenBadgeShowable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeenBadgeShowable.swift; sourceTree = "<group>"; };
+		03E7B50B2471E6560038277A /* MinScoreSliderHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinScoreSliderHeaderView.swift; sourceTree = "<group>"; };
+		03E7B50D2471E6B70038277A /* MinScoreSliderHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MinScoreSliderHeaderView.xib; sourceTree = "<group>"; };
+		03E7B50F2471EC650038277A /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		03F7604C247147B700E0A542 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		03F7604E2471489900E0A542 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		03F7605024714DC300E0A542 /* UserClassDotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserClassDotView.swift; sourceTree = "<group>"; };
@@ -400,8 +406,11 @@
 		03460ADA244F9B16007F16DB /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				03E7B50F2471EC650038277A /* SearchViewModel.swift */,
 				03460AD6244F9ABE007F16DB /* SearchTableViewController.swift */,
 				03460AD8244F9AEA007F16DB /* SearchTableViewController.storyboard */,
+				03E7B50B2471E6560038277A /* MinScoreSliderHeaderView.swift */,
+				03E7B50D2471E6B70038277A /* MinScoreSliderHeaderView.xib */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -516,6 +525,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03E7B50E2471E6B70038277A /* MinScoreSliderHeaderView.xib in Resources */,
 				03D116012461F3CA0096ECFD /* ReplyViewController.storyboard in Resources */,
 				0354AAF024311D08009C35E0 /* DownloadedFilesTableViewController.storyboard in Resources */,
 				03076A6E2059E80F00168E62 /* LaunchScreen.storyboard in Resources */,
@@ -622,6 +632,7 @@
 				032E62FF243F8E9900FA6C00 /* DetailViewModel.swift in Sources */,
 				03C6BDAC246DFB7A005983AB /* UserInfoViewModel.swift in Sources */,
 				035EBA7B24262C0B009185E9 /* LoginViewController.swift in Sources */,
+				03E7B5102471EC650038277A /* SearchViewModel.swift in Sources */,
 				03C1FA2B2427D27600E6AEE4 /* UIViewController+Extension.swift in Sources */,
 				03F7604F2471489900E0A542 /* Strings.swift in Sources */,
 				033CF1BA205BDE1500627321 /* ThumbCollectionViewCell.swift in Sources */,
@@ -642,6 +653,7 @@
 				035EBA822426DA5E009185E9 /* Coordinator.swift in Sources */,
 				03C1FA242427854600E6AEE4 /* NavigationController.swift in Sources */,
 				03B0628C2428CFE100CA657A /* InfoView.swift in Sources */,
+				03E7B50C2471E6560038277A /* MinScoreSliderHeaderView.swift in Sources */,
 				03076A772059E8B900168E62 /* Item.swift in Sources */,
 				03A93324243BAFBB00A16E1B /* Login.swift in Sources */,
 				03D2AC4B24321DB40082D4C9 /* Settings.swift in Sources */,
