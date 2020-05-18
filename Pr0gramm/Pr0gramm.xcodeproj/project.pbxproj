@@ -14,7 +14,6 @@
 		03076A6E2059E80F00168E62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03076A6C2059E80F00168E62 /* LaunchScreen.storyboard */; };
 		03076A772059E8B900168E62 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03076A752059E8B800168E62 /* Item.swift */; };
 		03076A782059E8B900168E62 /* AllItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03076A762059E8B800168E62 /* AllItems.swift */; };
-		03083421246C78C400F6B6CE /* Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0308341C246C78C300F6B6CE /* Comments.swift */; };
 		03083427246C7D1500F6B6CE /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03083426246C7D1500F6B6CE /* UserInfoViewController.swift */; };
 		03083429246C7D5D00F6B6CE /* UserInfoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03083428246C7D5D00F6B6CE /* UserInfoViewController.storyboard */; };
 		030CAF542440B76400D6885C /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030CAF532440B76400D6885C /* CommentsViewController.swift */; };
@@ -59,6 +58,7 @@
 		035EBA7F24262CA3009185E9 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035EBA7E24262CA3009185E9 /* LoginViewController.storyboard */; };
 		035EBA822426DA5E009185E9 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035EBA812426DA5E009185E9 /* Coordinator.swift */; };
 		035EBA842427790C009185E9 /* DetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035EBA832427790C009185E9 /* DetailViewController.storyboard */; };
+		036D58862473372500982AB3 /* ProfileComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036D58852473372500982AB3 /* ProfileComments.swift */; };
 		0388A0B524293BE0006E86A3 /* TapableImage+Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0388A0B424293BE0006E86A3 /* TapableImage+Video.swift */; };
 		0388A0B724297C70006E86A3 /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0388A0B624297C70006E86A3 /* Downloader.swift */; };
 		038F7C97246E0DEE00D268BA /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038F7C91246E0DEE00D268BA /* UserInfo.swift */; };
@@ -113,7 +113,6 @@
 		03076A6F2059E80F00168E62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03076A752059E8B800168E62 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		03076A762059E8B800168E62 /* AllItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllItems.swift; sourceTree = "<group>"; };
-		0308341C246C78C300F6B6CE /* Comments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Comments.swift; path = ../../../../../../Downloads/codegen_5ebc4111a56dc/Comments.swift; sourceTree = "<group>"; };
 		03083426246C7D1500F6B6CE /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		03083428246C7D5D00F6B6CE /* UserInfoViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserInfoViewController.storyboard; sourceTree = "<group>"; };
 		030CAF532440B76400D6885C /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +153,7 @@
 		035EBA7E24262CA3009185E9 /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
 		035EBA812426DA5E009185E9 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		035EBA832427790C009185E9 /* DetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailViewController.storyboard; sourceTree = "<group>"; };
+		036D58852473372500982AB3 /* ProfileComments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileComments.swift; sourceTree = "<group>"; };
 		037A3F0924366F7800D68391 /* Pr0gramm.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pr0gramm.entitlements; sourceTree = "<group>"; };
 		0388A0B424293BE0006E86A3 /* TapableImage+Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TapableImage+Video.swift"; sourceTree = "<group>"; };
 		0388A0B624297C70006E86A3 /* Downloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
@@ -275,6 +275,7 @@
 				038F7C95246E0DEE00D268BA /* Badges.swift */,
 				038F7C93246E0DEE00D268BA /* CommentsLikes.swift */,
 				038F7C92246E0DEE00D268BA /* Likes.swift */,
+				036D58852473372500982AB3 /* ProfileComments.swift */,
 				038F7C94246E0DEE00D268BA /* Uploads.swift */,
 			);
 			path = UserInfo;
@@ -398,7 +399,6 @@
 				03A93323243BAFBB00A16E1B /* Login.swift */,
 				0388A0B624297C70006E86A3 /* Downloader.swift */,
 				03083424246C78D000F6B6CE /* UserInfo */,
-				0308341C246C78C300F6B6CE /* Comments.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -640,11 +640,11 @@
 				03F7605124714DC300E0A542 /* UserClassDotView.swift in Sources */,
 				033CF1C5205C0F7400627321 /* ItemInfo.swift in Sources */,
 				03076A782059E8B900168E62 /* AllItems.swift in Sources */,
-				03083421246C78C400F6B6CE /* Comments.swift in Sources */,
 				03B0628E2428E9FF00CA657A /* TagsCollectionViewController.swift in Sources */,
 				03D115FF2461F3C00096ECFD /* ReplyViewController.swift in Sources */,
 				03DB228D24647CFA007E6B31 /* PostsOverviewViewModel.swift in Sources */,
 				03D2AC51243264740082D4C9 /* UIWindow.swift in Sources */,
+				036D58862473372500982AB3 /* ProfileComments.swift in Sources */,
 				038F7C9A246E0DEE00D268BA /* Uploads.swift in Sources */,
 				03A93328243CEFE100A16E1B /* HapticFeedbackButton.swift in Sources */,
 				0354AAEE24311CE6009C35E0 /* DownloadedFilesTableViewController.swift in Sources */,

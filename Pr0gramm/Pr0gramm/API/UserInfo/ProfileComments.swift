@@ -1,7 +1,7 @@
 
 import Foundation
 
-struct Comments: Codable {
+struct ProfileComments: Codable {
 	let id: Int
 	let up: Int
 	let down: Int

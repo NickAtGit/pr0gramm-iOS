@@ -3,7 +3,7 @@ import Foundation
 
 struct UserInfo: Codable {
 	let user: User
-	let comments: [Comments]
+	let comments: [ProfileComments]
 	let commentCount: Int
 	let commentsLikes: [CommentsLikes]
 	let commentLikesCount: Int
@@ -49,7 +49,7 @@ struct UserInfo: Codable {
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		user = try values.decode(User.self, forKey: .user)
-		comments = try values.decode([Comments].self, forKey: .comments)
+		comments = try values.decode([ProfileComments].self, forKey: .comments)
 		commentCount = try values.decode(Int.self, forKey: .commentCount)
 		commentsLikes = try values.decode([CommentsLikes].self, forKey: .commentsLikes)
 		commentLikesCount = try values.decode(Int.self, forKey: .commentLikesCount)
