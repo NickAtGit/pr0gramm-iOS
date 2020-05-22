@@ -10,7 +10,6 @@ class SearchTableViewController: UITableViewController, StoryboardInitialViewCon
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Suche"
         view.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
         tabBarItem = UITabBarItem(title: "Suche",
                                   image: UIImage(systemName: "magnifyingglass.circle"),
@@ -22,8 +21,14 @@ class SearchTableViewController: UITableViewController, StoryboardInitialViewCon
         searchController.searchBar.delegate = self
         viewModel.searchText.bind(to: searchController.searchBar.reactive.text)
         navigationItem.searchController = searchController
-        
         definesPresentationContext = true
+
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(flagsChanged),
+                                               name: Notification.Name("flagsChanged+\(String(describing: self))"),
+                                               object: nil)
+        
+        setTitle()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,6 +83,15 @@ class SearchTableViewController: UITableViewController, StoryboardInitialViewCon
     
     private func search(searchString: String) {
         coordinator?.showSearchResult(for: searchString, from: self)
+    }
+    
+    @objc
+    func flagsChanged() {
+        setTitle()
+    }
+    
+    private func setTitle() {
+        title = "Suche (\(Sorting(rawValue: AppSettings.sorting)?.description ?? ""))"
     }
 }
 

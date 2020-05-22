@@ -23,6 +23,15 @@ enum Flags: Int {
 enum Sorting: Int {
     case top = 1
     case neu = 0
+    
+    var description: String {
+        switch self {
+        case .top:
+            return "Beliebt"
+        case .neu:
+            return "Neu"
+        }
+    }
 }
 
 enum FetchType {
