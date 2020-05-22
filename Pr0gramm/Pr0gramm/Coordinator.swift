@@ -59,10 +59,10 @@ class Coordinator {
     func showLogin() {
         let viewController = LoginViewController.fromStoryboard()
         viewController.coordinator = self
-        let detailNavigationController = NavigationController(rootViewController: viewController)
-        detailNavigationController.style = .dismissable
-        detailNavigationController.isModalInPresentation = true
-        navigationController.present(detailNavigationController, animated: true)
+        let navigationController = NavigationController(rootViewController: viewController)
+        navigationController.style = .dismissable
+        navigationController.isModalInPresentation = true
+        navigationController.present(navigationController, animated: true)
     }
         
     func showDetail(from viewController: UIViewController,

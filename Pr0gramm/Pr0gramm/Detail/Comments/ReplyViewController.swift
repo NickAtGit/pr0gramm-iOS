@@ -27,7 +27,7 @@ class ReplyViewController: ScrollingContentViewController, StoryboardInitialView
         replyTextView.becomeFirstResponder()
         
         let sendBarButtonItem = UIBarButtonItem(barButtonSystemItem: .reply, target: self, action: #selector(didTapSend))
-        navigationItem.leftBarButtonItem = sendBarButtonItem
+        navigationItem.rightBarButtonItem = sendBarButtonItem
 
         guard let comment = comment else {
             commentView.isHidden = true

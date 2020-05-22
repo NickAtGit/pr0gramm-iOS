@@ -85,7 +85,7 @@ class NavigationController: UINavigationController, UIPopoverPresentationControl
                                             style: .plain,
                                             target: self,
                                             action: #selector(dismissSelf))
-            topViewController?.navigationItem.rightBarButtonItem = flagsItem
+            topViewController?.navigationItem.leftBarButtonItem = flagsItem
         case .search:
             setFlagsBarButtonItem()
         }
