@@ -38,7 +38,6 @@ class PostsOverviewCollectionViewController: UIViewController, StoryboardInitial
     
     @objc
     func updateUI() {
-        collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
         tabBarItem = nil
         title = viewModel.title
         loadItems(isRefresh: true)
