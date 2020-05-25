@@ -61,7 +61,7 @@ class Coordinator {
         let navigationController = NavigationController(rootViewController: viewController)
         navigationController.style = .dismissable
         navigationController.isModalInPresentation = true
-        navigationController.present(navigationController, animated: true)
+        self.navigationController.present(navigationController, animated: true)
     }
         
     func showDetail(from viewController: UIViewController,
