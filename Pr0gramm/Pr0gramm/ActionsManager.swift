@@ -21,10 +21,18 @@ class ActionsManager {
         }
     }
     
-    func saveAction(for id: Int, action: Int = 0, seen: Bool) {
+    func saveAction(for id: Int, action: Int = 0, seen: Bool = true) {
         let context = ActionsManager.config.context
-        if let object = NSEntityDescription.insertNewObject(forEntityName: "Action", into: context) as? Action {
 
+        if let object = retrieveAction(for: id) {
+            object.setValue(Int64(action), forKey: "action")
+            object.setValue(seen, forKey: "seen")
+            do {
+                try context.save()
+            } catch {
+                print("Failed to update action for id: \(id)")
+            }
+        } else if let object = NSEntityDescription.insertNewObject(forEntityName: "Action", into: context) as? Action {
             object.id = Int64(id)
             object.action = Int64(action)
             object.seen = seen
@@ -71,4 +79,19 @@ class ActionsManager {
             return nil
         }
     }
+}
+
+enum VoteAction: Int {
+    case none = 0
+    case itemDown = 1
+    case itemNeutral = 2
+    case itemUp = 3
+    case commentDown = 4
+    case commentNeutral = 5
+    case commentUp = 6
+    case tagDown = 7
+    case tagNeutral = 8
+    case tagUp = 9
+    case itemFavorite = 10
+    case commentFavorite = 11
 }

@@ -16,6 +16,28 @@ class InfoView: UIView, NibView {
             let _ = viewModel.isTagsExpanded.observeNext { [weak self] isExpanded in
                 self?.tagsButton.setImage(isExpanded ? UIImage(systemName: "tag.fill") : UIImage(systemName: "tag"), for: .normal)
             }
+            
+            if let action = ActionsManager.shared.retrieveAction(for: viewModel.item.value.id)?.action,
+                let voteAction = VoteAction(rawValue: Int(action)) {
+                
+                switch voteAction {
+                    
+                case .itemDown:
+                    upvoteButton.setImage(UIImage(systemName: "plus.circle"), for: .normal)
+                    favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+                    downvoteButton.setImage(UIImage(systemName: "minus.circle.fill"), for: .normal)
+                case .itemUp:
+                    upvoteButton.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
+                    favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+                    downvoteButton.setImage(UIImage(systemName: "minus.circle"), for: .normal)
+                case .itemFavorite:
+                    upvoteButton.setImage(UIImage(systemName: "plus.circle"), for: .normal)
+                    favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                    downvoteButton.setImage(UIImage(systemName: "minus.circle"), for: .normal)
+                default:
+                    break
+                }
+            }
         }
     }
     var showReplyAction: (() -> Void)?

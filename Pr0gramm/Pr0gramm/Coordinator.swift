@@ -46,7 +46,6 @@ class Coordinator {
         profileNavigationController.style = .user
         profileNavigationController.viewControllers = [userInfoViewController]
 
-        
         tabbarController.setViewControllers([navigationController,
                                              searchNavigationController,
                                              profileNavigationController,

@@ -44,14 +44,16 @@ class DetailViewModel {
         let link = connector.link(for: item)
         self.link = link.link
         self.mediaType = link.mediaType
-        self.postTime.value = Strings.timeString(for: self.item.value.date)
+        self.postTime.value = Strings.timeString(for: item.date)
                 
         connector.loadItemInfo(for: item.id) { [weak self] itemInfo in
             guard let itemInfo = itemInfo else { return }
             self?.itemInfo.value = itemInfo
-            self?.isCommentsButtonHidden.value = itemInfo.comments.count == 0
-            self?.isCommentsButtonHidden.send(completion: .finished)
+            let hasComments = itemInfo.comments.count != 0
+            self?.isCommentsButtonHidden.value = !hasComments
+            guard hasComments else { return }
             self?.sortComments(itemInfo.comments)
+            self?.isCommentsButtonHidden.send(completion: .finished)
         }
     }
     
@@ -70,6 +72,15 @@ class DetailViewModel {
     
     func vote(_ vote: Vote) {
         connector.vote(id: item.value.id, value: vote, type: .voteItem)
+        
+        switch vote {
+        case .upvote:
+            ActionsManager.shared.saveAction(for: item.value.id, action: VoteAction.itemUp.rawValue)
+        case .downvote:
+            ActionsManager.shared.saveAction(for: item.value.id, action: VoteAction.itemDown.rawValue)
+        case .favorite:
+            ActionsManager.shared.saveAction(for: item.value.id, action: VoteAction.itemFavorite.rawValue)
+        }
     }
     
     func search(for tag: String, completion: @escaping ([Item]?) -> Void) {
@@ -89,9 +100,7 @@ class DetailViewModel {
     private func sortComments(_ comments: [Comment]) {
         let parentNodes = comments.filter { $0.parent == 0 }.map { Node(value: $0) }
         let childNodes = comments.filter { $0.parent != 0 }.map { Node(value: $0) }
-        DispatchQueue.main.async {
-            self.sortComments(parentNodes: parentNodes, childNodes: childNodes)
-        }
+        self.sortComments(parentNodes: parentNodes, childNodes: childNodes)
     }
     
     private func sortComments(parentNodes: [Node<Comment>], childNodes: [Node<Comment>]) {
@@ -113,7 +122,7 @@ class DetailViewModel {
                     //Search children for parent
                     //Search also parentNodes, they may have a child already that is the parent
                     //of the current child we are looking at
-                                
+                
                     parentNodes.forEach {
                         if let foundNode = $0.search(id: parentId) {
                             firstChild.value.depth = foundNode.value.depth + 1
@@ -145,7 +154,7 @@ class DetailViewModel {
         
         if let firstNode = nodes.first {
             commentsArray.append(firstNode.value)
-            
+
             if firstNode.children.count > 0 {
                 let remainingNodes = nodes.dropFirst()
                 let sortedChildren = firstNode.children.sorted { $0.value.confidence > $1.value.confidence }

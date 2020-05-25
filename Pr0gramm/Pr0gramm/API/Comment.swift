@@ -1,7 +1,8 @@
 
 import Foundation
 
-struct Comment: Codable, Equatable {
+class Comment: Codable, Equatable {
+    
     var depth = 0
 	var id: Int = 0
 	var parent: Int?
@@ -25,7 +26,7 @@ struct Comment: Codable, Equatable {
 		case mark = "mark"
 	}
 
-	init(from decoder: Decoder) throws {
+    required init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		id = try values.decode(Int.self, forKey: .id)
 		parent = try values.decodeIfPresent(Int.self, forKey: .parent)
@@ -43,5 +44,9 @@ struct Comment: Codable, Equatable {
         self.up = 1
         self.content = message
         self.name = name
+    }
+    
+    static func == (lhs: Comment, rhs: Comment) -> Bool {
+        lhs.id == rhs.id
     }
 }
