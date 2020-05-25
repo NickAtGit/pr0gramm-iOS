@@ -58,10 +58,19 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kmw-hx-DI9" customClass="OPLabel" customModule="pr0gramm" customModuleProvider="target">
+                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kmw-hx-DI9" customClass="BadgeLabel" customModule="pr0gramm" customModuleProvider="target">
                                                             <rect key="frame" x="122.5" y="16.5" width="30" height="18"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="Fhq-ct-lsx"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Du" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K5G-80-OpJ" customClass="BadgeLabel" customModule="pr0gramm" customModuleProvider="target">
+                                                            <rect key="frame" x="122.5" y="16.5" width="30" height="18"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="30" id="WGT-09-5vb"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                                             <nil key="textColor"/>
@@ -87,6 +96,7 @@
                                             <outlet property="opLabel" destination="Kmw-hx-DI9" id="Tj2-Qm-A7j"/>
                                             <outlet property="pointsLabel" destination="RWq-gP-22D" id="ptJ-i3-tqb"/>
                                             <outlet property="userClassDotView" destination="JVR-1H-bR1" id="xGM-JG-AIt"/>
+                                            <outlet property="youLabel" destination="K5G-80-OpJ" id="LWs-39-sjF"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

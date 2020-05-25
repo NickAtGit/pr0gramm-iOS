@@ -14,7 +14,8 @@ class CommentCell: UITableViewCell, UIContextMenuInteractionDelegate {
     @IBOutlet private var authorLabel: UILabel!
     @IBOutlet private var userClassDotView: UserClassDotView!
     @IBOutlet private var pointsLabel: UILabel!
-    @IBOutlet private var opLabel: OPLabel!
+    @IBOutlet private var opLabel: BadgeLabel!
+    @IBOutlet private var youLabel: BadgeLabel!
     @IBOutlet private var leadingConstraint: NSLayoutConstraint!
     
     private let feedback = UISelectionFeedbackGenerator()
@@ -28,7 +29,10 @@ class CommentCell: UITableViewCell, UIContextMenuInteractionDelegate {
             pointsLabel.text = "\(initialPointCount)"
             userClassDotView.backgroundColor = Colors.color(for: comment.mark)
             opLabel.isHidden = !detailViewModel.isAuthorOP(for: comment)
+            youLabel.isHidden = !detailViewModel.isAuthorUser(for: comment)
             leadingConstraint.constant = leadingConstraint.constant + CGFloat(comment.depth * 15)
+            opLabel.style = .op
+            youLabel.style = .you
         }
     }
     

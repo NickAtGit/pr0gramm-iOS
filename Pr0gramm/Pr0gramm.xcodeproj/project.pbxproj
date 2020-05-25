@@ -78,7 +78,7 @@
 		03C1FA242427854600E6AEE4 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C1FA232427854600E6AEE4 /* NavigationController.swift */; };
 		03C1FA2B2427D27600E6AEE4 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C1FA2A2427D27600E6AEE4 /* UIViewController+Extension.swift */; };
 		03C6BDAC246DFB7A005983AB /* UserInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C6BDAB246DFB7A005983AB /* UserInfoViewModel.swift */; };
-		03D115FD2460BCD90096ECFD /* OPLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D115FC2460BCD90096ECFD /* OPLabel.swift */; };
+		03D115FD2460BCD90096ECFD /* BadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D115FC2460BCD90096ECFD /* BadgeLabel.swift */; };
 		03D115FF2461F3C00096ECFD /* ReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D115FE2461F3C00096ECFD /* ReplyViewController.swift */; };
 		03D116012461F3CA0096ECFD /* ReplyViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03D116002461F3CA0096ECFD /* ReplyViewController.storyboard */; };
 		03D2AC46243212A70082D4C9 /* FlagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2AC45243212A70082D4C9 /* FlagsViewController.swift */; };
@@ -174,7 +174,7 @@
 		03C1FA232427854600E6AEE4 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		03C1FA2A2427D27600E6AEE4 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		03C6BDAB246DFB7A005983AB /* UserInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewModel.swift; sourceTree = "<group>"; };
-		03D115FC2460BCD90096ECFD /* OPLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPLabel.swift; sourceTree = "<group>"; };
+		03D115FC2460BCD90096ECFD /* BadgeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeLabel.swift; sourceTree = "<group>"; };
 		03D115FE2461F3C00096ECFD /* ReplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyViewController.swift; sourceTree = "<group>"; };
 		03D116002461F3CA0096ECFD /* ReplyViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReplyViewController.storyboard; sourceTree = "<group>"; };
 		03D2AC45243212A70082D4C9 /* FlagsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagsViewController.swift; sourceTree = "<group>"; };
@@ -307,7 +307,7 @@
 				033CF1C6205ED95500627321 /* CommentCell.swift */,
 				030CAF532440B76400D6885C /* CommentsViewController.swift */,
 				030CAF552440B76A00D6885C /* CommentsViewController.storyboard */,
-				03D115FC2460BCD90096ECFD /* OPLabel.swift */,
+				03D115FC2460BCD90096ECFD /* BadgeLabel.swift */,
 				03D115FE2461F3C00096ECFD /* ReplyViewController.swift */,
 				03D116002461F3CA0096ECFD /* ReplyViewController.storyboard */,
 				03DB228A246206C5007E6B31 /* SeparatorView.swift */,
@@ -665,7 +665,7 @@
 				03A93326243BC82000A16E1B /* AlignedCollectionViewFlowLayout.swift in Sources */,
 				0388A0B724297C70006E86A3 /* Downloader.swift in Sources */,
 				030CAF5E2449183F00D6885C /* UIImage+Gif.swift in Sources */,
-				03D115FD2460BCD90096ECFD /* OPLabel.swift in Sources */,
+				03D115FD2460BCD90096ECFD /* BadgeLabel.swift in Sources */,
 				033CF1CB205FCB4500627321 /* NibView.swift in Sources */,
 				03DB22952466DC91007E6B31 /* ActionsManager.swift in Sources */,
 				03DB228B246206C5007E6B31 /* SeparatorView.swift in Sources */,
@@ -846,7 +846,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pr0gramm/Pr0gramm.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = FMXL9R3NPC;
 				INFOPLIST_FILE = Pr0gramm/Info.plist;
@@ -867,7 +867,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pr0gramm/Pr0gramm.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = FMXL9R3NPC;
 				INFOPLIST_FILE = Pr0gramm/Info.plist;

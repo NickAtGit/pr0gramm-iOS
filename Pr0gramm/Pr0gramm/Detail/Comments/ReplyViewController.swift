@@ -12,7 +12,7 @@ class ReplyViewController: ScrollingContentViewController, StoryboardInitialView
     @IBOutlet private var commentTextView: UITextView!
     @IBOutlet private var authorLabel: UILabel!
     @IBOutlet private var pointsLabel: UILabel!
-    @IBOutlet private var opLabel: OPLabel!
+    @IBOutlet private var opLabel: BadgeLabel!
     @IBOutlet private var replyTextView: UITextView!
     @IBOutlet private var commentTextViewHeightConstraint: NSLayoutConstraint!
     
