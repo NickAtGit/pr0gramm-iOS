@@ -11,6 +11,8 @@ class CommentsViewController: UIViewController, StoryboardInitialViewController,
     private weak var hostingViewController: UIViewController?
     private lazy var currentHeight: CGFloat = draggerView.bounds.height
     private let feedback = UIImpactFeedbackGenerator(style: .soft)
+    private var isAnimating = false
+    private var firstDrag = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,35 +44,7 @@ class CommentsViewController: UIViewController, StoryboardInitialViewController,
         NSLayoutConstraint.activate([left, right, topConstraint, height])
         didMove(toParent: viewController)
     }
-    
-    @objc
-    func expand() {
-        self.topConstraint.constant = 0
         
-        UIView.animate(withDuration: 0.25,
-                       delay: 0.0,
-                       options: [.allowUserInteraction, .curveEaseInOut],
-                       animations: {
-                        self.hostingViewController?.view.layoutIfNeeded()
-                        self.draggerView.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
-        })
-        
-        updateInsets()
-    }
-    
-    private var firstDrag = true
-    private func reloadDataIfNeeded() {
-        guard firstDrag else { return }
-        firstDrag = false
-        tableView.reloadData()
-        
-        let _ = viewModel.comments.observeNext { [weak self] _ in
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()
-            }
-        }
-    }
-    
     @objc
     func detectPan(sender: UIPanGestureRecognizer) {
         
@@ -96,22 +70,22 @@ class CommentsViewController: UIViewController, StoryboardInitialViewController,
             let velocity = sender.velocity(in: hostingViewController.view)
             let translation = sender.translation(in: hostingViewController.view)
             let height =  hostingViewController.view.frame.maxY
-            
+                        
             if velocity.y >= 0 {
                 if y + translation.y >= height / 2 {
-                    self.topConstraint.constant = height - draggerView.frame.height
+                    topConstraint.constant = height - draggerView.frame.height
                     
                     UIView.animate(withDuration: 0.25) {
                         self.draggerView.backgroundColor = .clear
                     }
                 } else {
-                    self.topConstraint.constant = height / 2
+                    topConstraint.constant = height / 2
                 }
             } else {
                 if y + translation.y >= height / 2 {
-                    self.topConstraint.constant = height / 2
+                    topConstraint.constant = height / 2
                 } else {
-                    self.topConstraint.constant = 0
+                    topConstraint.constant = 0
                 }
             }
                         
@@ -131,7 +105,8 @@ class CommentsViewController: UIViewController, StoryboardInitialViewController,
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         if scrollView.contentOffset.y < -100 {
-            
+            guard !isAnimating else { return }
+            isAnimating = true
             //Kill further scrolls
             scrollView.panGestureRecognizer.isEnabled = false;
             scrollView.panGestureRecognizer.isEnabled = true;
@@ -147,11 +122,41 @@ class CommentsViewController: UIViewController, StoryboardInitialViewController,
                             self.draggerView.backgroundColor = .clear
             }, completion: { _ in
                 self.feedback.impactOccurred()
+                self.isAnimating = false
             })
             
             updateInsets()
         }
     }
+    
+    @objc
+    func expand() {
+        self.topConstraint.constant = 0
+        
+        UIView.animate(withDuration: 0.25,
+                       delay: 0.0,
+                       options: [.allowUserInteraction, .curveEaseInOut],
+                       animations: {
+                        self.hostingViewController?.view.layoutIfNeeded()
+                        self.draggerView.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
+        })
+        
+        reloadDataIfNeeded()
+        updateInsets()
+    }
+    
+    private func reloadDataIfNeeded() {
+        guard firstDrag else { return }
+        firstDrag = false
+        tableView.reloadData()
+        
+        let _ = viewModel.comments.observeNext { [weak self] _ in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
+    }
+
     
     private func updateInsets() {
         tableView.contentInset.bottom = self.topConstraint.constant
