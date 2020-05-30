@@ -2,10 +2,6 @@
 import Foundation
 import Bond
 
-enum MediaType {
-    case image, gif, video
-}
-
 class DetailViewModel {
     
     var loggedInUserName: String? { connector.userName }

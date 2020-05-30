@@ -1,25 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="13771" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="appleTV" orientation="landscape">
-        <adaptation id="light"/>
-    </device>
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="16096" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="appleTV" appearance="light"/>
     <dependencies>
-        <deployment identifier="tvOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="HelveticaNeue.ttc">
-            <string>HelveticaNeue</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="TVViewController" customModule="Pr0grammTV" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="TVViewController" customModule="PR0GRAMM_TV" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -28,81 +21,71 @@
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fgw-dn-pgU">
-                                <rect key="frame" x="0.0" y="0.0" width="1520" height="1080"/>
-                                <gestureRecognizers/>
-                            </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="r0o-fZ-dmi">
-                                <rect key="frame" x="1520" y="0.0" width="400" height="1080"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WQZ-dD-aK3">
-                                        <rect key="frame" x="0.0" y="0.0" width="400" height="200"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="69" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aF2-U2-xua">
-                                                <rect key="frame" x="0.0" y="25" width="400" height="59"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="50"/>
-                                                <color key="textColor" name="Schriftfarbe"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="User" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H9c-9g-y01">
-                                                <rect key="frame" x="0.0" y="92" width="400" height="83"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
-                                                <color key="textColor" name="Schriftfarbe"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="H9c-9g-y01" secondAttribute="bottom" constant="25" id="1V3-Eb-Dcj"/>
-                                            <constraint firstItem="H9c-9g-y01" firstAttribute="top" secondItem="aF2-U2-xua" secondAttribute="bottom" constant="8" id="4LX-Kx-iF5"/>
-                                            <constraint firstItem="aF2-U2-xua" firstAttribute="top" secondItem="WQZ-dD-aK3" secondAttribute="top" constant="25" id="4VY-Cw-tdi"/>
-                                            <constraint firstAttribute="trailing" secondItem="aF2-U2-xua" secondAttribute="trailing" id="DFJ-T8-RFH"/>
-                                            <constraint firstAttribute="trailing" secondItem="H9c-9g-y01" secondAttribute="trailing" id="Ebf-N4-5Ug"/>
-                                            <constraint firstAttribute="height" constant="200" id="Mcx-Jd-P35"/>
-                                            <constraint firstItem="H9c-9g-y01" firstAttribute="leading" secondItem="WQZ-dD-aK3" secondAttribute="leading" id="NML-vy-IWH"/>
-                                            <constraint firstItem="aF2-U2-xua" firstAttribute="leading" secondItem="WQZ-dD-aK3" secondAttribute="leading" id="UUt-4J-w4a"/>
-                                        </constraints>
-                                    </view>
-                                    <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" sectionHeaderHeight="66" sectionFooterHeight="66" translatesAutoresizingMaskIntoConstraints="NO" id="ezk-Pv-9PN">
-                                        <rect key="frame" x="0.0" y="200" width="400" height="880"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </tableView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="400" id="mL3-Wo-iLO"/>
-                                </constraints>
-                            </stackView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nWg-VP-TVE">
+                                <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                                <color key="backgroundColor" name="Richtiges Grau"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="300" id="PBc-a1-FAl">
+                                    <size key="itemSize" width="1740" height="960"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="tvCell" id="UBf-ME-1di" customClass="TVCollectionViewCell" customModule="PR0GRAMM_TV" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="60" width="1740" height="960"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="pd8-cP-g07">
+                                            <rect key="frame" x="0.0" y="0.0" width="1740" height="960"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1JM-ry-60g">
+                                                    <rect key="frame" x="0.0" y="0.0" width="1740" height="960"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="1JM-ry-60g" secondAttribute="bottom" id="4z5-do-CQB"/>
+                                                <constraint firstAttribute="trailing" secondItem="1JM-ry-60g" secondAttribute="trailing" id="5RA-2M-Lb1"/>
+                                                <constraint firstItem="1JM-ry-60g" firstAttribute="leading" secondItem="pd8-cP-g07" secondAttribute="leading" id="HRF-ZO-ZLm"/>
+                                                <constraint firstItem="1JM-ry-60g" firstAttribute="top" secondItem="pd8-cP-g07" secondAttribute="top" id="MOg-8e-Fxz"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="1740" height="960"/>
+                                        <connections>
+                                            <outlet property="imageView" destination="1JM-ry-60g" id="Zuh-4C-2cp"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="videoCell" id="0UQ-Rv-kUf" customClass="TVCollectionVideoCell" customModule="PR0GRAMM_TV" customModuleProvider="target">
+                                        <rect key="frame" x="1740" y="60" width="1740" height="960"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="578-4K-EcY">
+                                            <rect key="frame" x="0.0" y="0.0" width="1740" height="960"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" name="Richtiges Grau"/>
                         <constraints>
-                            <constraint firstItem="r0o-fZ-dmi" firstAttribute="leading" secondItem="fgw-dn-pgU" secondAttribute="trailing" id="LcD-B2-Gid"/>
-                            <constraint firstAttribute="bottom" secondItem="r0o-fZ-dmi" secondAttribute="bottom" id="MIl-5G-EH8"/>
-                            <constraint firstItem="fgw-dn-pgU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="aVD-cd-yOe"/>
-                            <constraint firstAttribute="trailing" secondItem="r0o-fZ-dmi" secondAttribute="trailing" id="dch-zE-Bfn"/>
-                            <constraint firstAttribute="bottom" secondItem="fgw-dn-pgU" secondAttribute="bottom" id="iEP-eK-cPo"/>
-                            <constraint firstItem="fgw-dn-pgU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="shc-Fc-ef1"/>
-                            <constraint firstItem="r0o-fZ-dmi" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="yGv-Gv-EG5"/>
+                            <constraint firstAttribute="bottom" secondItem="nWg-VP-TVE" secondAttribute="bottom" id="Ddr-rN-f1K"/>
+                            <constraint firstAttribute="trailing" secondItem="nWg-VP-TVE" secondAttribute="trailing" id="HKk-g5-HB5"/>
+                            <constraint firstItem="nWg-VP-TVE" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Xf0-g9-QDs"/>
+                            <constraint firstItem="nWg-VP-TVE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="eZb-gW-8fu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wu6-TO-1qx"/>
                     </view>
                     <connections>
-                        <outlet property="authorLabel" destination="H9c-9g-y01" id="pPH-Ye-WlD"/>
-                        <outlet property="imageView" destination="fgw-dn-pgU" id="Y3T-Ux-84d"/>
-                        <outlet property="pointsLabel" destination="aF2-U2-xua" id="xqo-J4-FXX"/>
-                        <outlet property="tagsTableView" destination="ezk-Pv-9PN" id="sIJ-Gh-VTC"/>
-                        <outlet property="tagsViewWidthConstraint" destination="mL3-Wo-iLO" id="kDc-AQ-ZfZ"/>
+                        <outlet property="collectionView" destination="nWg-VP-TVE" id="gVz-cy-GGD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="69" y="69"/>
         </scene>
     </scenes>
     <resources>
         <namedColor name="Richtiges Grau">
             <color red="0.086274509803921567" green="0.086274509803921567" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="Schriftfarbe">
-            <color red="0.94901960784313721" green="0.96078431372549022" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

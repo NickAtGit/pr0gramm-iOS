@@ -60,6 +60,10 @@ enum PostType {
     }
 }
 
+enum MediaType {
+    case image, gif, video
+}
+
 enum Vote: Int {
     case upvote = 1
     case downvote = -1
@@ -91,10 +95,10 @@ class Pr0grammConnector {
                 let value = cookie.value.removingPercentEncoding?.data(using: .utf8)!
                 
                 if let json = try? JSONSerialization.jsonObject(with: value!, options: .mutableContainers) as? [String: Any] {
-                    if let id = json["id"] as? String {
+                    if let id = json?["id"] as? String {
                         nonce = String(id.prefix(16))
                     }
-                    if let userName = json["n"] as? String {
+                    if let userName = json?["n"] as? String {
                         self.userName = userName
                     }
                 }
