@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dep-Lf-aPW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dep-Lf-aPW">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -44,14 +44,14 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKb-25-8d8">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKb-25-8d8">
                                         <rect key="frame" x="0.0" y="96" width="374" height="30"/>
                                         <state key="normal" title="Favoriten"/>
                                         <connections>
                                             <action selector="showLikesButtonTapped:" destination="dep-Lf-aPW" eventType="touchUpInside" id="D52-P7-ikw"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iJ5-wn-Zxr">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iJ5-wn-Zxr">
                                         <rect key="frame" x="0.0" y="146" width="374" height="30"/>
                                         <state key="normal" title="Meine Hochlads"/>
                                         <connections>
@@ -72,6 +72,7 @@
                     <connections>
                         <outlet property="contentView" destination="fy8-Fm-itj" id="Ap0-aI-wEf"/>
                         <outlet property="scoreLabel" destination="abD-HW-YCy" id="nWf-qu-GcL"/>
+                        <outlet property="stackView" destination="QBy-ga-Jlg" id="EQk-u3-fRi"/>
                         <outlet property="userClassDotView" destination="EO1-PB-rPJ" id="kRU-aL-vEa"/>
                         <outlet property="userClassLabel" destination="pZy-hE-VXT" id="yef-zB-XM2"/>
                     </connections>

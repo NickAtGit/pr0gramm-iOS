@@ -6,19 +6,11 @@ class UserInfoViewController: ScrollingContentViewController, StoryboardInitialV
     
     weak var coordinator: Coordinator?
     var viewModel: UserInfoViewModel!
+    @IBOutlet private var stackView: UIStackView!
     @IBOutlet private var scoreLabel: UILabel!
     @IBOutlet private var userClassDotView: UserClassDotView!
     @IBOutlet private var userClassLabel: UILabel!
-    
-    var userInfo: UserInfo? {
-        didSet {
-            guard let userInfo = userInfo else { return }
-            scoreLabel.text = "Benis: \(userInfo.user.score)"
-            userClassDotView.backgroundColor = Colors.color(for: userInfo.user.mark)
-            userClassLabel.text = Strings.userClass(for: userInfo.user.mark)
-        }
-    }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         title = viewModel.title
@@ -26,11 +18,18 @@ class UserInfoViewController: ScrollingContentViewController, StoryboardInitialV
                                   image: UIImage(systemName: "person.circle"),
                                   selectedImage: UIImage(systemName: "person.circle.fill"))
         
-        viewModel.loadUserInfo { success in
-            if success {
-                self.userInfo = self.viewModel.userInfo
-            }
-        }
+        let badgesCollectionViewController = BadgesCollectionViewController.fromStoryboard()
+        badgesCollectionViewController.viewModel = viewModel
+        addChild(badgesCollectionViewController)
+        stackView.insertArrangedSubview(badgesCollectionViewController.view, at: 2)
+        badgesCollectionViewController.didMove(toParent: self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        scoreLabel.text = "Benis: \(viewModel.score)"
+        userClassDotView.backgroundColor = Colors.color(for: viewModel.userClass)
+        userClassLabel.text = Strings.userClass(for: viewModel.userClass)
     }
     
     @IBAction func showLikesButtonTapped(_ sender: Any) {
