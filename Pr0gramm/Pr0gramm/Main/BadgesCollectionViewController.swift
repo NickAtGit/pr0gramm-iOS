@@ -15,6 +15,11 @@ class BadgesCollectionViewController: UICollectionViewController, StoryboardInit
         collectionView.collectionViewLayout = layout
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView.reloadData()
+    }
+    
     override func viewDidLayoutSubviews() {
         viewHeightConstraint?.constant = collectionView.contentSize.height
     }
