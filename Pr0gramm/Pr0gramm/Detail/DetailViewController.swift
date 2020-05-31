@@ -216,8 +216,16 @@ extension DetailViewController: UIContextMenuInteractionDelegate {
                 self.download(directory: .cachesDirectory)
             }
         }
-                
-        return UIMenu(title: "", children: [downloadAction, fullscreenAction, saveToCameraRollAction])
+        
+        let shareAction = UIAction(title: "Link teilen", image: UIImage(systemName: "square.and.arrow.up")) { [unowned self] _ in
+            self.coordinator?.showShareSheet(with: [self.viewModel.shareLink])
+        }
+        
+        let safariAction = UIAction(title: "In Safari öffnen", image: UIImage(systemName: "safari")) { [unowned self] _ in
+            UIApplication.shared.open(self.viewModel.shareLink)
+        }
+
+        return UIMenu(title: "", children: [downloadAction, fullscreenAction, saveToCameraRollAction, shareAction, safariAction])
     }
 }
 

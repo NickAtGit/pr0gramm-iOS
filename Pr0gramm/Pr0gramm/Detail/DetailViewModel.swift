@@ -33,6 +33,10 @@ class DetailViewModel {
     lazy var upvotes = item.value.up
     lazy var downvotes = item.value.down
     
+    var shareLink: URL {
+        URL(string: "https://pr0gramm.com/\(item.value.promoted == 0 ? "new" : "top")/\(item.value.id)")!
+    }
+    
     init(item: Item,
          connector: Pr0grammConnector) {
         self.item = Observable<Item>(item)
