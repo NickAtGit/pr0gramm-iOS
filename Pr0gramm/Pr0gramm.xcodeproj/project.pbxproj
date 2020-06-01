@@ -101,6 +101,7 @@
 		03D4B02C2427EDF30041DCC9 /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D4B02B2427EDF30041DCC9 /* DetailCollectionViewCell.swift */; };
 		03D7F1A324831A610014190B /* BadgesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D7F1A224831A610014190B /* BadgesCollectionViewController.swift */; };
 		03D7F1A524831A880014190B /* BadgesCollectionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03D7F1A424831A880014190B /* BadgesCollectionViewController.storyboard */; };
+		03D7F1A6248466890014190B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C1FA2A2427D27600E6AEE4 /* UIViewController+Extension.swift */; };
 		03DB228B246206C5007E6B31 /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DB228A246206C5007E6B31 /* SeparatorView.swift */; };
 		03DB228D24647CFA007E6B31 /* PostsOverviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DB228C24647CFA007E6B31 /* PostsOverviewViewModel.swift */; };
 		03DB22922466D5A8007E6B31 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 03DB22902466D5A8007E6B31 /* DataModel.xcdatamodeld */; };
@@ -721,6 +722,7 @@
 				031EE8412065C5B10030CA68 /* Item.swift in Sources */,
 				031EE83F2065C5B10030CA68 /* Pr0grammConnector.swift in Sources */,
 				03C1AF652481CB0300BB3487 /* Badges.swift in Sources */,
+				03D7F1A6248466890014190B /* UIViewController+Extension.swift in Sources */,
 				03C1AF5F2481CAD300BB3487 /* Settings.swift in Sources */,
 				031EE8432065C5B10030CA68 /* Comment.swift in Sources */,
 			);
@@ -921,7 +923,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.pr0gramm.Pr0grammTV;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 13.0;
 			};
@@ -939,7 +941,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.pr0gramm.Pr0grammTV;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 13.0;
 			};

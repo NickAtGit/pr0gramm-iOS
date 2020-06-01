@@ -22,9 +22,10 @@ class TVViewController: UIViewController {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
+        fullscreenLayout.maskInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         collectionView.collectionViewLayout = fullscreenLayout
         
-        connector.fetchItems(sorting: .top, flags: [.sfw]) { [unowned self] items in
+        connector.fetchItems(sorting: .neu, flags: [.sfw]) { [unowned self] items in
             guard let items = items else { return }
             
             DispatchQueue.main.async {
@@ -34,21 +35,26 @@ class TVViewController: UIViewController {
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        willDisplay cell: UICollectionViewCell,
-                        forItemAt indexPath: IndexPath) {
+    private func showVideo(for url: URL, delayed: Bool = false) {
+        let videoViewController = AVPlayerViewController()
+        let player = AVPlayer(url: url)
+        videoViewController.player = player
+        player.play()
         
-        if let cell = cell as? TVCollectionVideoCell {
-            cell.play()
+        DispatchQueue.main.asyncAfter(deadline: .now() + (delayed ? 1 : 0)) {
+            self.present(videoViewController, animated: true)
         }
     }
-    
+}
+
+extension TVViewController: TVCollectionViewDelegateFullScreenLayout {
     func collectionView(_ collectionView: UICollectionView,
-                        didEndDisplaying cell: UICollectionViewCell,
-                        forItemAt indexPath: IndexPath) {
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        didCenterCellAt indexPath: IndexPath) {
         
-        if let cell = cell as? TVCollectionVideoCell {
-            cell.pause()
+        if let cell = collectionView.cellForItem(at: indexPath) as? TVCollectionVideoCell,
+            let url = cell.url {
+            showVideo(for: url, delayed: true)
         }
     }
 }
@@ -74,6 +80,13 @@ extension TVViewController: UICollectionViewDelegate, UICollectionViewDataSource
             return cell
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? TVCollectionVideoCell,
+            let url = cell.url {
+            showVideo(for: url)
+        }
+    }
 }
 
 
@@ -87,31 +100,7 @@ class TVCollectionViewCell: TVCollectionViewFullScreenCell {
 }
 
 class TVCollectionVideoCell: TVCollectionViewFullScreenCell {
-        
-    private var player: AVPlayer?
-    private var playerLayer: AVPlayerLayer?
-    
-    var url: URL? {
-        didSet {
-            player = AVPlayer(url: url!)
-            playerLayer = AVPlayerLayer(player: player)
-            playerLayer?.frame = bounds
-            layer.addSublayer(playerLayer!)
-        }
-    }
-    
-    override func prepareForReuse() {
-        player = nil
-        playerLayer?.removeFromSuperlayer()
-    }
-    
-    func play() {
-        player?.play()
-    }
-    
-    func pause() {
-        player?.pause()
-    }
+    var url: URL?
 }
 
 
