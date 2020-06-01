@@ -60,6 +60,10 @@ enum PostType {
     }
 }
 
+enum MediaType {
+    case image, gif, video
+}
+
 enum Vote: Int {
     case upvote = 1
     case downvote = -1
