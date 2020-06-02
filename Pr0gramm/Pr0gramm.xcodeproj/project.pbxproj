@@ -103,6 +103,8 @@
 		03D7F1A524831A880014190B /* BadgesCollectionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03D7F1A424831A880014190B /* BadgesCollectionViewController.storyboard */; };
 		03D7F1A6248466890014190B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C1FA2A2427D27600E6AEE4 /* UIViewController+Extension.swift */; };
 		03D7F1A92486E8B70014190B /* TVViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D7F1A72486E7840014190B /* TVViewModel.swift */; };
+		03D7F1AA248712320014190B /* UserClassDotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F7605024714DC300E0A542 /* UserClassDotView.swift */; };
+		03D7F1AB248712370014190B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F7604C247147B700E0A542 /* Colors.swift */; };
 		03DB228B246206C5007E6B31 /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DB228A246206C5007E6B31 /* SeparatorView.swift */; };
 		03DB228D24647CFA007E6B31 /* PostsOverviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DB228C24647CFA007E6B31 /* PostsOverviewViewModel.swift */; };
 		03DB22922466D5A8007E6B31 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 03DB22902466D5A8007E6B31 /* DataModel.xcdatamodeld */; };
@@ -707,6 +709,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03D7F1AA248712320014190B /* UserClassDotView.swift in Sources */,
+				03D7F1AB248712370014190B /* Colors.swift in Sources */,
 				03C1AF692481CB0300BB3487 /* Uploads.swift in Sources */,
 				031EE8402065C5B10030CA68 /* AllItems.swift in Sources */,
 				03C1AF682481CB0300BB3487 /* ProfileComments.swift in Sources */,
