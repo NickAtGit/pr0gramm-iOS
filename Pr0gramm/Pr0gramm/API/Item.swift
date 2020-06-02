@@ -58,3 +58,18 @@ struct Item: Codable {
 		mark = try values.decode(Int.self, forKey: .mark)
 	}
 }
+
+extension Item {
+    
+    var url: URL {
+        if image.hasSuffix(".mp4") {
+            return URL(string: "https://vid.pr0gramm.com/\(image)")!
+        } else {
+            return URL(string: "https://img.pr0gramm.com/\(image)")!
+        }
+    }
+    
+    var isVideo: Bool {
+        return url.absoluteString.hasSuffix(".mp4")
+    }
+}

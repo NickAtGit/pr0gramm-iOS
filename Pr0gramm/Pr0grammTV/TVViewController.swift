@@ -6,17 +6,9 @@ import AVKit
 
 class TVViewController: UIViewController {
     
-    fileprivate let fullscreenLayout = TVCollectionViewFullScreenLayout()
-
-    private let connector = Pr0grammConnector()
+    private let fullscreenLayout = TVCollectionViewFullScreenLayout()
+    let viewModel = TVViewModel()
     @IBOutlet private var collectionView: UICollectionView!
-    private var allItems: [AllItems] = []
-    
-    var items: [Item] {
-        var items = [Item]()
-        allItems.forEach { items += $0.items }
-        return items
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +16,12 @@ class TVViewController: UIViewController {
         collectionView.dataSource = self
         fullscreenLayout.maskInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         collectionView.collectionViewLayout = fullscreenLayout
-        
-        connector.fetchItems(sorting: .neu, flags: [.sfw]) { [unowned self] items in
-            guard let items = items else { return }
-            
+        loadItems()
+    }
+    
+    func loadItems(more: Bool = false, isRefresh: Bool = false) {
+        viewModel.loadItems(more: more, isRefresh: isRefresh) { [unowned self] success in
             DispatchQueue.main.async {
-                self.allItems.append(items)
                 self.collectionView.reloadData()
             }
         }
@@ -52,8 +44,8 @@ extension TVViewController: TVCollectionViewDelegateFullScreenLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         didCenterCellAt indexPath: IndexPath) {
         
-        if let cell = collectionView.cellForItem(at: indexPath) as? TVCollectionVideoCell,
-            let url = cell.url {
+        if let cell = collectionView.cellForItem(at: indexPath) as? TVVideoCollectionCell,
+            let url = cell.item?.url {
             cell.prepareToPlay()
             showVideo(for: url, delayed: true)
         }
@@ -61,47 +53,61 @@ extension TVViewController: TVCollectionViewDelegateFullScreenLayout {
 }
 
 extension TVViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
+        return viewModel.items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let item = items[indexPath.row]
-        let link = connector.link(for: item)
-        if link.link.hasSuffix(".mp4") {
+        let item = viewModel.items[indexPath.row]
+        if item.isVideo {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "videoCell",
-                                                          for: indexPath) as! TVCollectionVideoCell
-            cell.url = URL(string: link.link)
+                                                          for: indexPath) as! TVVideoCollectionCell
+            cell.item = item
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "tvCell",
-                                                          for: indexPath) as! TVCollectionViewCell
-            cell.imageView.downloadedFrom(link: link.link)
+                                                          for: indexPath) as! TVImageCollectionViewCell
+            cell.item = item
             return cell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? TVCollectionVideoCell,
-            let url = cell.url {
+        if let cell = collectionView.cellForItem(at: indexPath) as? TVVideoCollectionCell,
+            let url = cell.item?.url {
             showVideo(for: url)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row == viewModel.items.count - 1 {
+            loadItems(more: true)
+            print("Loading more items")
         }
     }
 }
 
 
-class TVCollectionViewCell: TVCollectionViewFullScreenCell {
+class TVImageCollectionViewCell: TVCollectionViewFullScreenCell {
     
-    @IBOutlet var imageView: UIImageView!
+    var item: Item? {
+        didSet {
+            guard let item = item else { return }
+            imageView.downloadedFrom(url: item.url)
+        }
+    }
+    @IBOutlet private var imageView: UIImageView!
     
     override func prepareForReuse() {
         imageView.image = UIImage(systemName: "flame")
     }
 }
 
-class TVCollectionVideoCell: TVCollectionViewFullScreenCell {
-    var url: URL?
+class TVVideoCollectionCell: TVCollectionViewFullScreenCell {
+
+    var item: Item?
     @IBOutlet private var imageView: UIImageView!
     
     func prepareToPlay() {
