@@ -61,6 +61,8 @@ struct Item: Codable {
 
 extension Item {
     
+    var score: Int { up - down }
+    
     var url: URL {
         if image.hasSuffix(".mp4") {
             return URL(string: "https://vid.pr0gramm.com/\(image)")!

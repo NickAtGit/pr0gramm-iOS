@@ -19,7 +19,7 @@ class TVViewModel {
         
         if !isRefresh { guard !isAtEnd else { return } }
         
-        let sorting = Sorting(rawValue: AppSettings.sorting)!
+        let sorting = Sorting.neu
         let flags = AppSettings.currentFlags
         var afterId: Int?
         

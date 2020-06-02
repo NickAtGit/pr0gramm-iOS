@@ -90,25 +90,33 @@ extension TVViewController: UICollectionViewDelegate, UICollectionViewDataSource
 }
 
 
-class TVImageCollectionViewCell: TVCollectionViewFullScreenCell {
+class TVImageCollectionViewCell: TVCollectionViewFullScreenCell, ItemInfoDisplaying {
     
-    var item: Item? {
+    var item: Item! {
         didSet {
             guard let item = item else { return }
             imageView.downloadedFrom(url: item.url)
+            showItemInfo()
         }
     }
     @IBOutlet private var imageView: UIImageView!
-    
+    var itemInfoView: UIView!
+
     override func prepareForReuse() {
         imageView.image = UIImage(systemName: "flame")
+        itemInfoView.removeFromSuperview()
     }
 }
 
-class TVVideoCollectionCell: TVCollectionViewFullScreenCell {
+class TVVideoCollectionCell: TVCollectionViewFullScreenCell, ItemInfoDisplaying {
 
-    var item: Item?
+    var item: Item! {
+        didSet {
+            showItemInfo()
+        }
+    }
     @IBOutlet private var imageView: UIImageView!
+    var itemInfoView: UIView!
     
     func prepareToPlay() {
         UIView.transition(with: imageView, duration: 1, options: .transitionCrossDissolve, animations: {
@@ -118,6 +126,7 @@ class TVVideoCollectionCell: TVCollectionViewFullScreenCell {
     
     override func prepareForReuse() {
         imageView.image = UIImage(systemName: "video.circle")
+        itemInfoView.removeFromSuperview()
     }
 }
 
@@ -141,5 +150,32 @@ extension UIImageView {
     func downloadedFrom(link: String, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
         guard let url = URL(string: link) else { return }
         downloadedFrom(url: url, contentMode: mode)
+    }
+}
+
+protocol ItemInfoDisplaying: class {
+    var item: Item! { get set }
+    var itemInfoView: UIView! { get set }
+}
+
+extension ItemInfoDisplaying where Self: UIView {
+    
+    func showItemInfo() {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        view.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        view.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+        view.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        
+        let scoreLabel = UILabel()
+        scoreLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(scoreLabel)
+        scoreLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        scoreLabel.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        scoreLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
+        scoreLabel.text = "\(item.score)"
+        
+        self.itemInfoView = view
     }
 }
