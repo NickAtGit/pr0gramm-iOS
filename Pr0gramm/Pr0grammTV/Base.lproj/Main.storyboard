@@ -74,6 +74,9 @@
                                                 <constraint firstItem="9hu-DJ-OHB" firstAttribute="centerX" secondItem="578-4K-EcY" secondAttribute="centerX" id="wTz-iT-rjV"/>
                                             </constraints>
                                         </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="imageView" destination="9hu-DJ-OHB" id="ml2-A6-7Aq"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>

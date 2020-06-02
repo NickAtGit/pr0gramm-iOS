@@ -54,6 +54,7 @@ extension TVViewController: TVCollectionViewDelegateFullScreenLayout {
         
         if let cell = collectionView.cellForItem(at: indexPath) as? TVCollectionVideoCell,
             let url = cell.url {
+            cell.prepareToPlay()
             showVideo(for: url, delayed: true)
         }
     }
@@ -101,6 +102,17 @@ class TVCollectionViewCell: TVCollectionViewFullScreenCell {
 
 class TVCollectionVideoCell: TVCollectionViewFullScreenCell {
     var url: URL?
+    @IBOutlet private var imageView: UIImageView!
+    
+    func prepareToPlay() {
+        UIView.transition(with: imageView, duration: 1, options: .transitionCrossDissolve, animations: {
+            self.imageView.image = UIImage(systemName: "video.circle.fill")
+        })
+    }
+    
+    override func prepareForReuse() {
+        imageView.image = UIImage(systemName: "video.circle")
+    }
 }
 
 
