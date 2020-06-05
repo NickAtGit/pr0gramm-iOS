@@ -1,7 +1,7 @@
 
 import UIKit
 
-class DetailCollectionViewController: UICollectionViewController, StoryboardInitialViewController {
+class DetailCollectionViewController: UICollectionViewController, Storyboarded {
     
     weak var coordinator: Coordinator?
     var isSearch = false

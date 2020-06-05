@@ -2,7 +2,7 @@
 import UIKit
 import Bond
 
-class SearchTableViewController: UITableViewController, StoryboardInitialViewController {
+class SearchTableViewController: UITableViewController, Storyboarded {
     
     var viewModel: SearchViewModel!
     weak var coordinator: Coordinator?

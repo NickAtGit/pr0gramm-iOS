@@ -23,9 +23,9 @@ public extension StoryboardViewController {
     }
 }
 
-public protocol StoryboardInitialViewController: StoryboardViewController {}
+public protocol Storyboarded: StoryboardViewController {}
 
-public extension StoryboardInitialViewController {
+public extension Storyboarded {
     static func fromStoryboard() -> Self {
         return UIStoryboard(name: self.storyboardName, bundle: bundle).instantiateInitialViewController() as! Self
     }

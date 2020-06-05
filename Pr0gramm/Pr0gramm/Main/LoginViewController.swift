@@ -2,7 +2,7 @@
 import UIKit
 import ScrollingContentViewController
 
-class LoginViewController: ScrollingContentViewController, StoryboardInitialViewController {
+class LoginViewController: ScrollingContentViewController, Storyboarded {
     
     weak var coordinator: Coordinator?
     

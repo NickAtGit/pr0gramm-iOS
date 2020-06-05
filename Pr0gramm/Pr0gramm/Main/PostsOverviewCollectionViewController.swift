@@ -3,7 +3,7 @@ import UIKit
 
 private let reuseIdentifier = "thumbCell"
 
-class PostsOverviewCollectionViewController: UIViewController, StoryboardInitialViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class PostsOverviewCollectionViewController: UIViewController, Storyboarded, UICollectionViewDelegate, UICollectionViewDataSource {
     
     weak var coordinator: Coordinator?
     var viewModel: PostsOverviewViewModel!

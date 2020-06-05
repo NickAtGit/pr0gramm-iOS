@@ -1,7 +1,7 @@
 
 import UIKit
 
-class BadgesCollectionViewController: UICollectionViewController, StoryboardInitialViewController {
+class BadgesCollectionViewController: UICollectionViewController, Storyboarded {
     
     var viewModel: UserInfoViewModel!
     private var viewHeightConstraint: NSLayoutConstraint?

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="16096" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KQZ-TI-85K">
+    <device id="appleTV" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="IZY-ng-Ats">
+            <objects>
+                <viewController id="KQZ-TI-85K" customClass="TVLoginViewController" customModule="pr0gramm" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="c6T-kn-VAo"/>
+                        <viewControllerLayoutGuide type="bottom" id="rk6-ZM-yQC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="poh-Hy-y2v">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="kWc-34-QDJ">
+                                <rect key="frame" x="710" y="336.5" width="500" height="407"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HgK-Nh-qBi">
+                                        <rect key="frame" x="0.0" y="0.0" width="500" height="47"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="500" id="7L6-J4-TGo"/>
+                                        </constraints>
+                                        <color key="textColor" name="Schriftfarbe"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <textInputTraits key="textInputTraits" textContentType="username"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Passwort" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3cW-jb-JTl">
+                                        <rect key="frame" x="0.0" y="67" width="500" height="47"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="500" id="dft-Mf-GF7"/>
+                                        </constraints>
+                                        <color key="textColor" name="Schriftfarbe"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <textInputTraits key="textInputTraits" textContentType="password"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Captcha" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nhf-Oa-zpN">
+                                        <rect key="frame" x="0.0" y="134" width="500" height="47"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="500" id="6b4-xC-zAW"/>
+                                        </constraints>
+                                        <color key="textColor" name="Schriftfarbe"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <textInputTraits key="textInputTraits" textContentType="one-time-code"/>
+                                    </textField>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5V1-j7-Zv8">
+                                        <rect key="frame" x="0.0" y="201" width="500" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="SsT-Cg-fws"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ELN-hx-9Zk">
+                                        <rect key="frame" x="0.0" y="321" width="500" height="86"/>
+                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                        <state key="normal" title="Anmelden"/>
+                                        <connections>
+                                            <action selector="loginTapped:" destination="KQZ-TI-85K" eventType="primaryActionTriggered" id="3kk-Zk-ljw"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" name="Richtiges Grau"/>
+                        <constraints>
+                            <constraint firstItem="kWc-34-QDJ" firstAttribute="centerY" secondItem="poh-Hy-y2v" secondAttribute="centerY" id="5yD-3D-ZPq"/>
+                            <constraint firstItem="kWc-34-QDJ" firstAttribute="centerX" secondItem="poh-Hy-y2v" secondAttribute="centerX" id="HUr-36-r4F"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jkF-Qh-ZJR"/>
+                    </view>
+                    <connections>
+                        <outlet property="captchaImageView" destination="5V1-j7-Zv8" id="jaS-U1-FC3"/>
+                        <outlet property="captchaTextField" destination="nhf-Oa-zpN" id="8QR-QQ-8Dz"/>
+                        <outlet property="loginButton" destination="ELN-hx-9Zk" id="lqh-7s-HP7"/>
+                        <outlet property="passwordTextField" destination="3cW-jb-JTl" id="4bb-pt-lu0"/>
+                        <outlet property="userNameTextField" destination="HgK-Nh-qBi" id="hiu-oU-wL6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zVK-dh-T05" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="218" y="0.0"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="Richtiges Grau">
+            <color red="0.086274509803921567" green="0.086274509803921567" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Schriftfarbe">
+            <color red="0.94901960784313721" green="0.96078431372549022" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

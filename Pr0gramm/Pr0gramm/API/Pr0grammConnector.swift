@@ -85,7 +85,7 @@ class Pr0grammConnector {
     var nonce: String?
     var userName: String?
         
-    private var isLoggedIn: Bool {
+    var isLoggedIn: Bool {
         guard let cookies = HTTPCookieStorage.shared.cookies(for: URL(string: "https://pr0gramm.com/")!) else { return false }
             
         for cookie in cookies {

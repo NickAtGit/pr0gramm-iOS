@@ -4,10 +4,11 @@ import AVFoundation
 import TVUIKit
 import AVKit
 
-class TVViewController: UIViewController {
+class TVViewController: UIViewController, Storyboarded {
     
+    var viewModel: TVViewModel!
+
     private let fullscreenLayout = TVCollectionViewFullScreenLayout()
-    let viewModel = TVViewModel()
     @IBOutlet private var collectionView: UICollectionView!
     let voteImageView = UIImageView()
 

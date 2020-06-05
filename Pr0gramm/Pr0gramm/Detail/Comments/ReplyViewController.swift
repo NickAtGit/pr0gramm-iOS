@@ -2,7 +2,7 @@
 import UIKit
 import ScrollingContentViewController
 
-class ReplyViewController: ScrollingContentViewController, StoryboardInitialViewController {
+class ReplyViewController: ScrollingContentViewController, Storyboarded {
     
     var viewModel: DetailViewModel!
     var comment: Comment?

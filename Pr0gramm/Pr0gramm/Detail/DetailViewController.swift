@@ -4,7 +4,7 @@ import AVFoundation
 import ScrollingContentViewController
 import AVKit
 
-class DetailViewController: ScrollingContentViewController, StoryboardInitialViewController {
+class DetailViewController: ScrollingContentViewController, Storyboarded {
 
     weak var coordinator: Coordinator?
     var viewModel: DetailViewModel! {

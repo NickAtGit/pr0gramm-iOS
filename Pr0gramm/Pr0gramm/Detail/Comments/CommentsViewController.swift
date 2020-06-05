@@ -1,7 +1,7 @@
 
 import UIKit
 
-class CommentsViewController: UIViewController, StoryboardInitialViewController, UIScrollViewDelegate, UITableViewDelegate {
+class CommentsViewController: UIViewController, Storyboarded, UIScrollViewDelegate, UITableViewDelegate {
     
     weak var coordinator: Coordinator?
     var viewModel: DetailViewModel!

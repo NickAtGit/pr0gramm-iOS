@@ -2,7 +2,7 @@
 import UIKit
 import ImageScrollView
 
-class ImageDetailViewController: UIViewController, StoryboardInitialViewController {
+class ImageDetailViewController: UIViewController, Storyboarded {
     
     @IBOutlet var imageScrollView: ImageScrollView!
     

@@ -2,7 +2,7 @@
 import UIKit
 import ScrollingContentViewController
 
-class UserInfoViewController: ScrollingContentViewController, StoryboardInitialViewController {
+class UserInfoViewController: ScrollingContentViewController, Storyboarded {
     
     weak var coordinator: Coordinator?
     var viewModel: UserInfoViewModel!

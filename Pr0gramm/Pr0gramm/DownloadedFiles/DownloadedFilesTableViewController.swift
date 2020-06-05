@@ -2,7 +2,7 @@
 import UIKit
 import AVKit
 
-class DownloadedFilesTableViewController: UITableViewController, StoryboardInitialViewController {
+class DownloadedFilesTableViewController: UITableViewController, Storyboarded {
     
     weak var coordinator: Coordinator?
     private let cellIdentifier = "downloadedFileCell"

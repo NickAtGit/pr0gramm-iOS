@@ -2,7 +2,7 @@
 import UIKit
 import Bond
 
-class TagsCollectionViewController: UICollectionViewController, StoryboardInitialViewController {
+class TagsCollectionViewController: UICollectionViewController, Storyboarded {
     
     weak var coordinator: Coordinator?
     private var viewHeightConstraint: NSLayoutConstraint?

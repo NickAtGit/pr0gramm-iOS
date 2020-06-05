@@ -25,7 +25,7 @@
 		031EE8302065C59B0030CA68 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031EE82F2065C59B0030CA68 /* AppDelegate.swift */; };
 		031EE8322065C59B0030CA68 /* TVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031EE8312065C59B0030CA68 /* TVViewController.swift */; };
 		031EE8352065C59B0030CA68 /* Pr0grammTV.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 031EE8332065C59B0030CA68 /* Pr0grammTV.xcdatamodeld */; };
-		031EE8382065C59B0030CA68 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 031EE8362065C59B0030CA68 /* Main.storyboard */; };
+		031EE8382065C59B0030CA68 /* TVViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 031EE8362065C59B0030CA68 /* TVViewController.storyboard */; };
 		031EE83A2065C59B0030CA68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 031EE8392065C59B0030CA68 /* Assets.xcassets */; };
 		031EE83F2065C5B10030CA68 /* Pr0grammConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033CF1B7205BDC6B00627321 /* Pr0grammConnector.swift */; };
 		031EE8402065C5B10030CA68 /* AllItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03076A762059E8B800168E62 /* AllItems.swift */; };
@@ -105,6 +105,10 @@
 		03D7F1A92486E8B70014190B /* TVViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D7F1A72486E7840014190B /* TVViewModel.swift */; };
 		03D7F1AA248712320014190B /* UserClassDotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F7605024714DC300E0A542 /* UserClassDotView.swift */; };
 		03D7F1AB248712370014190B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F7604C247147B700E0A542 /* Colors.swift */; };
+		03D7F1B024882FD00014190B /* StoryboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035EBA7C24262C7E009185E9 /* StoryboardViewController.swift */; };
+		03D7F1B5248833EB0014190B /* TVCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D7F1B3248833A80014190B /* TVCoordinator.swift */; };
+		03D7F1B6248833F10014190B /* TVLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D7F1AC24882F650014190B /* TVLoginViewController.swift */; };
+		03D7F1B7248833F80014190B /* TVLoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03D7F1B12488318C0014190B /* TVLoginViewController.storyboard */; };
 		03DB228B246206C5007E6B31 /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DB228A246206C5007E6B31 /* SeparatorView.swift */; };
 		03DB228D24647CFA007E6B31 /* PostsOverviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DB228C24647CFA007E6B31 /* PostsOverviewViewModel.swift */; };
 		03DB22922466D5A8007E6B31 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 03DB22902466D5A8007E6B31 /* DataModel.xcdatamodeld */; };
@@ -142,7 +146,7 @@
 		031EE82F2065C59B0030CA68 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		031EE8312065C59B0030CA68 /* TVViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVViewController.swift; sourceTree = "<group>"; };
 		031EE8342065C59B0030CA68 /* Pr0grammTV.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pr0grammTV.xcdatamodel; sourceTree = "<group>"; };
-		031EE8372065C59B0030CA68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		031EE8372065C59B0030CA68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/TVViewController.storyboard; sourceTree = "<group>"; };
 		031EE8392065C59B0030CA68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		031EE83B2065C59B0030CA68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		032E62FE243F8E9900FA6C00 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
@@ -204,6 +208,9 @@
 		03D7F1A224831A610014190B /* BadgesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesCollectionViewController.swift; sourceTree = "<group>"; };
 		03D7F1A424831A880014190B /* BadgesCollectionViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BadgesCollectionViewController.storyboard; sourceTree = "<group>"; };
 		03D7F1A72486E7840014190B /* TVViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVViewModel.swift; sourceTree = "<group>"; };
+		03D7F1AC24882F650014190B /* TVLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVLoginViewController.swift; sourceTree = "<group>"; };
+		03D7F1B12488318C0014190B /* TVLoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TVLoginViewController.storyboard; sourceTree = "<group>"; };
+		03D7F1B3248833A80014190B /* TVCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVCoordinator.swift; sourceTree = "<group>"; };
 		03DB228A246206C5007E6B31 /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
 		03DB228C24647CFA007E6B31 /* PostsOverviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsOverviewViewModel.swift; sourceTree = "<group>"; };
 		03DB22912466D5A8007E6B31 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
@@ -358,9 +365,12 @@
 			isa = PBXGroup;
 			children = (
 				031EE82F2065C59B0030CA68 /* AppDelegate.swift */,
+				03D7F1B3248833A80014190B /* TVCoordinator.swift */,
+				03D7F1AC24882F650014190B /* TVLoginViewController.swift */,
+				03D7F1B12488318C0014190B /* TVLoginViewController.storyboard */,
 				031EE8312065C59B0030CA68 /* TVViewController.swift */,
+				031EE8362065C59B0030CA68 /* TVViewController.storyboard */,
 				03D7F1A72486E7840014190B /* TVViewModel.swift */,
-				031EE8362065C59B0030CA68 /* Main.storyboard */,
 				031EE8392065C59B0030CA68 /* Assets.xcassets */,
 				031EE83B2065C59B0030CA68 /* Info.plist */,
 				031EE8332065C59B0030CA68 /* Pr0grammTV.xcdatamodeld */,
@@ -572,8 +582,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03D7F1B7248833F80014190B /* TVLoginViewController.storyboard in Resources */,
 				031EE83A2065C59B0030CA68 /* Assets.xcassets in Resources */,
-				031EE8382065C59B0030CA68 /* Main.storyboard in Resources */,
+				031EE8382065C59B0030CA68 /* TVViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -709,6 +720,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03D7F1B024882FD00014190B /* StoryboardViewController.swift in Sources */,
 				03D7F1AA248712320014190B /* UserClassDotView.swift in Sources */,
 				03D7F1AB248712370014190B /* Colors.swift in Sources */,
 				03C1AF692481CB0300BB3487 /* Uploads.swift in Sources */,
@@ -722,6 +734,8 @@
 				031EE8352065C59B0030CA68 /* Pr0grammTV.xcdatamodeld in Sources */,
 				03C1AF612481CAF500BB3487 /* UserInfo.swift in Sources */,
 				03D7F1A92486E8B70014190B /* TVViewModel.swift in Sources */,
+				03D7F1B5248833EB0014190B /* TVCoordinator.swift in Sources */,
+				03D7F1B6248833F10014190B /* TVLoginViewController.swift in Sources */,
 				031EE8422065C5B10030CA68 /* ItemInfo.swift in Sources */,
 				031EE8302065C59B0030CA68 /* AppDelegate.swift in Sources */,
 				03C1AF642481CB0300BB3487 /* User.swift in Sources */,
@@ -755,12 +769,12 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		031EE8362065C59B0030CA68 /* Main.storyboard */ = {
+		031EE8362065C59B0030CA68 /* TVViewController.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				031EE8372065C59B0030CA68 /* Base */,
 			);
-			name = Main.storyboard;
+			name = TVViewController.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -1,7 +1,7 @@
 
 import UIKit
 
-class FlagsViewController: UIViewController, StoryboardInitialViewController {
+class FlagsViewController: UIViewController, Storyboarded {
         
     @IBOutlet private var stackView: UIStackView!
     @IBOutlet private var sortingSegmentedControl: UISegmentedControl!

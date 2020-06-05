@@ -3,7 +3,8 @@ import Foundation
 
 class TVViewModel {
     
-    let connector = Pr0grammConnector()
+    let connector: Pr0grammConnector
+
     var isAtEnd = false
     var allItems: [AllItems] = []
 
@@ -13,14 +14,18 @@ class TVViewModel {
         return items
     }
     
+    init(connector: Pr0grammConnector) {
+        self.connector = connector
+    }
+    
     func loadItems(more: Bool = false,
                    isRefresh: Bool = false,
                    completion: @escaping (Bool) -> Void) {
         
         if !isRefresh { guard !isAtEnd else { return } }
         
-        let sorting = Sorting.neu
-        let flags = AppSettings.currentFlags
+        let sorting = Sorting.top
+        let flags = [Flags.nsfw, Flags.sfw]
         var afterId: Int?
         
         if more {
