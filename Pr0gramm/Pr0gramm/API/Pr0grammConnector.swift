@@ -274,8 +274,15 @@ class Pr0grammConnector {
                         completion: @escaping (AllItems?) -> Void) {
         guard isLoggedIn else { return }
         guard let userName = userName else { return }
-        let queryItem = URLQueryItem(name: "likes", value: userName)
-        fetchItems(sorting: sorting, flags: flags, additionalQueryItems: [queryItem], afterId: afterId, completion: completion)
+            
+        let userQueryItem = URLQueryItem(name: "user", value: userName)
+        let collectionQueryItem = URLQueryItem(name: "collection", value: "favoriten")
+
+        fetchItems(sorting: sorting,
+                   flags: flags,
+                   additionalQueryItems: [userQueryItem, collectionQueryItem],
+                   afterId: afterId,
+                   completion: completion)
     }
     
     func fetchUserItems(sorting: Sorting,
@@ -285,7 +292,12 @@ class Pr0grammConnector {
         guard isLoggedIn else { return }
         guard let userName = userName else { return }
         let queryItem = URLQueryItem(name: "user", value: userName)
-        fetchItems(sorting: sorting, flags: flags, additionalQueryItems: [queryItem], afterId: afterId, completion: completion)
+        
+        fetchItems(sorting: sorting,
+                   flags: flags,
+                   additionalQueryItems: [queryItem],
+                   afterId: afterId,
+                   completion: completion)
     }
     
     func search(sorting: Sorting,

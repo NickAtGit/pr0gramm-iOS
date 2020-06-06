@@ -10,7 +10,7 @@ struct UserInfo: Codable {
 	let uploads: [Uploads]
 	let uploadCount: Int
 	let likesArePublic: Bool
-	let likes: [Likes]
+    let collections: [Collections]?
 	let likeCount: Int
 	let tagCount: Int
 	let badges: [Badges]
@@ -32,7 +32,7 @@ struct UserInfo: Codable {
 		case uploads = "uploads"
 		case uploadCount = "uploadCount"
 		case likesArePublic = "likesArePublic"
-		case likes = "likes"
+		case collections = "collections"
 		case likeCount = "likeCount"
 		case tagCount = "tagCount"
 		case badges = "badges"
@@ -56,7 +56,7 @@ struct UserInfo: Codable {
 		uploads = try values.decode([Uploads].self, forKey: .uploads)
 		uploadCount = try values.decode(Int.self, forKey: .uploadCount)
 		likesArePublic = try values.decode(Bool.self, forKey: .likesArePublic)
-		likes = try values.decode([Likes].self, forKey: .likes)
+		collections = try values.decodeIfPresent([Collections].self, forKey: .collections)
 		likeCount = try values.decode(Int.self, forKey: .likeCount)
 		tagCount = try values.decode(Int.self, forKey: .tagCount)
 		badges = try values.decode([Badges].self, forKey: .badges)

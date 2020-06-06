@@ -1,7 +1,7 @@
 
 import Foundation
 
-struct Likes: Codable {
+struct CollectionItem: Codable {
 	let id: Int
 	let thumb: String
 
