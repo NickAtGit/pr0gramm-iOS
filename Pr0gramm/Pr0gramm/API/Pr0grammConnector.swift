@@ -248,11 +248,8 @@ class Pr0grammConnector {
         ]
         
         guard let url = components.url else { completion(nil); return }
-        var request = URLRequest(url: url)
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.httpMethod = "GET"
-        
+        let request = getRequest(with: url)
+
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else { completion(nil); return }
             let jsonDecoder = JSONDecoder()
@@ -338,10 +335,7 @@ class Pr0grammConnector {
         }
         
         guard let url = components.url else { completion(nil); return }
-        var request = URLRequest(url: url)
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.httpMethod = "GET"
+        let request = getRequest(with: url)
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else { completion(nil); return }
@@ -386,6 +380,14 @@ class Pr0grammConnector {
             }
         }
         task.resume()
+    }
+    
+    private func getRequest(with url: URL) -> URLRequest {
+        var request = URLRequest(url: url)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.httpMethod = "GET"
+        return request
     }
 }
 
