@@ -3,6 +3,8 @@ import UIKit
 import AVFoundation
 import CoreData
 
+typealias ActionClosure = () -> Void 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

@@ -81,14 +81,14 @@ class CommentCell: UITableViewCell, UIContextMenuInteractionDelegate {
     
     private func upvoteTapped() {
         guard let comment = comment else { return }
-        detailViewModel.connector.vote(id: comment.id, value: .upvote, type: .voteComment)
+        detailViewModel.connector.vote(id: comment.id, value: .up, type: .voteComment)
         feedback.selectionChanged()
         pointsLabel.text = "\(initialPointCount + 1)"
     }
     
     private func downVoteTapped() {
         guard let comment = comment else { return }
-        detailViewModel.connector.vote(id: comment.id, value: .downvote, type: .voteComment)
+        detailViewModel.connector.vote(id: comment.id, value: .down, type: .voteComment)
         feedback.selectionChanged()
         pointsLabel.text = "\(initialPointCount - 1)"
     }

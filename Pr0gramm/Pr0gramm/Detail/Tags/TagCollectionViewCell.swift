@@ -36,12 +36,12 @@ class TagCollectionViewCell: UICollectionViewCell, UIContextMenuInteractionDeleg
     func createContextMenu() -> UIMenu {
         let upvoteAction = UIAction(title: "Plus", image: UIImage(systemName: "plus.circle")) { [unowned self] _ in
             guard let id = self.tags?.id else { return }
-            self.connector?.vote(id: id, value: .upvote, type: .voteTag)
+            self.connector?.vote(id: id, value: .up, type: .voteTag)
         }
         
         let downvoteAction = UIAction(title: "Minus", image: UIImage(systemName: "minus.circle")) { [unowned self] _ in
             guard let id = self.tags?.id else { return }
-            self.connector?.vote(id: id, value: .downvote, type: .voteTag)
+            self.connector?.vote(id: id, value: .down, type: .voteTag)
         }
         
         let saveAction = UIAction(title: "Speichern", image: UIImage(systemName: "text.append")) { [unowned self] _ in

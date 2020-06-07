@@ -13,6 +13,7 @@ class DetailViewModel {
     let isTagsExpanded = Observable<Bool>(false)
     let isTagsExpandButtonHidden = Observable<Bool>(true)
     let isCommentsButtonHidden = Observable<Bool>(true)
+    let currentVote = Observable<Vote>(.neutral)
     var isSeen: Bool {
         get {
             ActionsManager.shared.retrieveAction(for: item.value.id)?.seen ?? false
@@ -71,12 +72,15 @@ class DetailViewModel {
     }
     
     func vote(_ vote: Vote) {
+        currentVote.value = vote
         connector.vote(id: item.value.id, value: vote, type: .voteItem)
         
         switch vote {
-        case .upvote:
+        case .neutral:
+            ActionsManager.shared.saveAction(for: item.value.id, action: VoteAction.itemNeutral.rawValue)
+        case .up:
             ActionsManager.shared.saveAction(for: item.value.id, action: VoteAction.itemUp.rawValue)
-        case .downvote:
+        case .down:
             ActionsManager.shared.saveAction(for: item.value.id, action: VoteAction.itemDown.rawValue)
         case .favorite:
             ActionsManager.shared.saveAction(for: item.value.id, action: VoteAction.itemFavorite.rawValue)

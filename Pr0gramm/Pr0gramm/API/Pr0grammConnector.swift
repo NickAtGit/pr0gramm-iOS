@@ -65,8 +65,9 @@ enum MediaType {
 }
 
 enum Vote: Int {
-    case upvote = 1
-    case downvote = -1
+    case neutral = 0
+    case up = 1
+    case down = -1
     case favorite = 2
 }
 
