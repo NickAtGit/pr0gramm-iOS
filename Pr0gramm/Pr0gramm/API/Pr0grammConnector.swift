@@ -176,9 +176,7 @@ class Pr0grammConnector {
         AppSettings.isLoggedIn = false
         observers.forEach { $0.connectorDidUpdate(type: .logout) }
     }
-    
-    //"description": "-1 = Minus, 1 = Plus, 2 = Fav, 0 = Kein Vote/Vote zurückziehen",
-    
+        
     func vote(id: Int, value: Vote, type: PostType) {
         guard isLoggedIn else { return }
         guard let nonce = nonce else { return }
@@ -269,15 +267,16 @@ class Pr0grammConnector {
         task.resume()
     }
     
-    func fetchUserLikes(sorting: Sorting,
-                        flags: [Flags],
-                        afterId: Int? = nil,
-                        completion: @escaping (AllItems?) -> Void) {
+    func fetchUserCollection(sorting: Sorting,
+                             flags: [Flags],
+                             collectionName: String,
+                             afterId: Int? = nil,
+                             completion: @escaping (AllItems?) -> Void) {
         guard isLoggedIn else { return }
         guard let userName = userName else { return }
             
         let userQueryItem = URLQueryItem(name: "user", value: userName)
-        let collectionQueryItem = URLQueryItem(name: "collection", value: "favoriten")
+        let collectionQueryItem = URLQueryItem(name: "collection", value: collectionName)
 
         fetchItems(sorting: sorting,
                    flags: flags,

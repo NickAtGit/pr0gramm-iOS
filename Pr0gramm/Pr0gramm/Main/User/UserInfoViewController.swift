@@ -34,11 +34,13 @@ class UserInfoViewController: ScrollingContentViewController, Storyboarded {
     
     @IBAction func showLikesButtonTapped(_ sender: Any) {
         guard let navigationController = navigationController else { return }
-        coordinator?.showUserPosts(for: .likes, navigationController: navigationController)
+        coordinator?.showCollections(viewModel: viewModel,
+                                     navigationController: navigationController)
     }
     
     @IBAction func showUserUploadsButtonTapped(_ sender: Any) {
         guard let navigationController = navigationController else { return }
-        coordinator?.showUserPosts(for: .user, navigationController: navigationController)
+        coordinator?.showUserPosts(for: .user,
+                                   navigationController: navigationController)
     }
 }

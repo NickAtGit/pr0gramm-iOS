@@ -60,6 +60,8 @@
 		036D58862473372500982AB3 /* ProfileComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036D58852473372500982AB3 /* ProfileComments.swift */; };
 		0388A0B524293BE0006E86A3 /* TapableImage+Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0388A0B424293BE0006E86A3 /* TapableImage+Video.swift */; };
 		0388A0B724297C70006E86A3 /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0388A0B624297C70006E86A3 /* Downloader.swift */; };
+		0389C64F248D9F240053AE51 /* CollectionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0389C64E248D9F240053AE51 /* CollectionsTableViewController.swift */; };
+		0389C651248D9FD20053AE51 /* CollectionsTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0389C650248D9FD20053AE51 /* CollectionsTableViewController.storyboard */; };
 		038F7C97246E0DEE00D268BA /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038F7C91246E0DEE00D268BA /* UserInfo.swift */; };
 		038F7C98246E0DEE00D268BA /* CollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038F7C92246E0DEE00D268BA /* CollectionItem.swift */; };
 		038F7C99246E0DEE00D268BA /* CommentsLikes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038F7C93246E0DEE00D268BA /* CommentsLikes.swift */; };
@@ -179,6 +181,8 @@
 		037A3F0924366F7800D68391 /* Pr0gramm.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pr0gramm.entitlements; sourceTree = "<group>"; };
 		0388A0B424293BE0006E86A3 /* TapableImage+Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TapableImage+Video.swift"; sourceTree = "<group>"; };
 		0388A0B624297C70006E86A3 /* Downloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
+		0389C64E248D9F240053AE51 /* CollectionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsTableViewController.swift; sourceTree = "<group>"; };
+		0389C650248D9FD20053AE51 /* CollectionsTableViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CollectionsTableViewController.storyboard; sourceTree = "<group>"; };
 		038F7C91246E0DEE00D268BA /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		038F7C92246E0DEE00D268BA /* CollectionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionItem.swift; sourceTree = "<group>"; };
 		038F7C93246E0DEE00D268BA /* CommentsLikes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsLikes.swift; sourceTree = "<group>"; };
@@ -393,12 +397,7 @@
 				033CF1B9205BDE1500627321 /* ThumbCollectionViewCell.swift */,
 				03D2AC45243212A70082D4C9 /* FlagsViewController.swift */,
 				03D2AC47243212C40082D4C9 /* FlagsViewController.storyboard */,
-				03C6BDAB246DFB7A005983AB /* UserInfoViewModel.swift */,
-				03083426246C7D1500F6B6CE /* UserInfoViewController.swift */,
-				03083428246C7D5D00F6B6CE /* UserInfoViewController.storyboard */,
-				03F7605024714DC300E0A542 /* UserClassDotView.swift */,
-				03D7F1A224831A610014190B /* BadgesCollectionViewController.swift */,
-				03D7F1A424831A880014190B /* BadgesCollectionViewController.storyboard */,
+				0389C64D248D9ED80053AE51 /* User */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -458,6 +457,21 @@
 				0354AAEF24311D08009C35E0 /* DownloadedFilesTableViewController.storyboard */,
 			);
 			path = DownloadedFiles;
+			sourceTree = "<group>";
+		};
+		0389C64D248D9ED80053AE51 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				03C6BDAB246DFB7A005983AB /* UserInfoViewModel.swift */,
+				03083426246C7D1500F6B6CE /* UserInfoViewController.swift */,
+				03083428246C7D5D00F6B6CE /* UserInfoViewController.storyboard */,
+				03F7605024714DC300E0A542 /* UserClassDotView.swift */,
+				03D7F1A224831A610014190B /* BadgesCollectionViewController.swift */,
+				03D7F1A424831A880014190B /* BadgesCollectionViewController.storyboard */,
+				0389C64E248D9F240053AE51 /* CollectionsTableViewController.swift */,
+				0389C650248D9FD20053AE51 /* CollectionsTableViewController.storyboard */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		2CBFB2BFB4CB393713D25893 /* Frameworks */ = {
@@ -574,6 +588,7 @@
 				030CAF67244CD93D00D6885C /* ThemeSelectionCell.xib in Resources */,
 				03D2AC48243212C40082D4C9 /* FlagsViewController.storyboard in Resources */,
 				03B0628A2428CFD600CA657A /* InfoView.xib in Resources */,
+				0389C651248D9FD20053AE51 /* CollectionsTableViewController.storyboard in Resources */,
 				035EBA7F24262CA3009185E9 /* LoginViewController.storyboard in Resources */,
 				035EBA842427790C009185E9 /* DetailViewController.storyboard in Resources */,
 				03B062922428EB6E00CA657A /* TagsCollectionViewController.storyboard in Resources */,
@@ -670,6 +685,7 @@
 				032E62FF243F8E9900FA6C00 /* DetailViewModel.swift in Sources */,
 				03C6BDAC246DFB7A005983AB /* UserInfoViewModel.swift in Sources */,
 				035EBA7B24262C0B009185E9 /* LoginViewController.swift in Sources */,
+				0389C64F248D9F240053AE51 /* CollectionsTableViewController.swift in Sources */,
 				03E7B5102471EC650038277A /* SearchViewModel.swift in Sources */,
 				03C1FA2B2427D27600E6AEE4 /* UIViewController+Extension.swift in Sources */,
 				03F7604F2471489900E0A542 /* Strings.swift in Sources */,

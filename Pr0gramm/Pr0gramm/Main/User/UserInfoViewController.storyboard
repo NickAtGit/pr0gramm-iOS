@@ -46,7 +46,7 @@
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKb-25-8d8">
                                         <rect key="frame" x="0.0" y="96" width="374" height="30"/>
-                                        <state key="normal" title="Favoriten"/>
+                                        <state key="normal" title="Sammlungen"/>
                                         <connections>
                                             <action selector="showLikesButtonTapped:" destination="dep-Lf-aPW" eventType="touchUpInside" id="D52-P7-ikw"/>
                                         </connections>

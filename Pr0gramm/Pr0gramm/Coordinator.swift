@@ -125,7 +125,8 @@ class Coordinator {
         self.navigationController.present(navigationController, animated: true)
     }
 
-    func showReply(for comment: Comment, viewModel: DetailViewModel, from presentingViewController: CommentsViewController) {
+    func showReply(for comment: Comment, viewModel: DetailViewModel,
+                   from presentingViewController: CommentsViewController) {
         let viewController = ReplyViewController.fromStoryboard()
         viewController.viewModel = viewModel
         viewController.comment = comment
@@ -133,6 +134,14 @@ class Coordinator {
         navigationController.style = .dismissable
         navigationController.modalPresentationStyle = .fullScreen
         presentingViewController.present(navigationController, animated: true)
+    }
+    
+    func showCollections(viewModel: UserInfoViewModel,
+                         navigationController: UINavigationController) {
+        let viewController = CollectionsTableViewController.fromStoryboard()
+        viewController.viewModel = viewModel
+        viewController.coordinator = self
+        navigationController.pushViewController(viewController, animated: true)
     }
     
     @objc
