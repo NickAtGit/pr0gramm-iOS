@@ -178,6 +178,7 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
     }
     
     private func addComments() {
+        guard commentsViewController == nil else { return }
         commentsViewController = CommentsViewController.fromStoryboard()
         commentsViewController?.viewModel = viewModel
         commentsViewController?.coordinator = coordinator

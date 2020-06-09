@@ -37,7 +37,7 @@ class CommentsViewController: UIViewController, Storyboarded, UIScrollViewDelega
         view.translatesAutoresizingMaskIntoConstraints = false
         viewController.view.translatesAutoresizingMaskIntoConstraints = false
         topConstraint = view.topAnchor.constraint(equalTo: viewController.view.topAnchor,
-                                                  constant: viewController.view.bounds.maxY - draggerView.bounds.height)
+                                                  constant: viewController.view.bounds.height - draggerView.bounds.height)
         let left = view.leftAnchor.constraint(equalTo: viewController.view.leftAnchor)
         let right = view.rightAnchor.constraint(equalTo: viewController.view.rightAnchor)
         let height = view.heightAnchor.constraint(equalToConstant: viewController.view.bounds.height)
@@ -69,7 +69,7 @@ class CommentsViewController: UIViewController, Storyboarded, UIScrollViewDelega
             let y = self.view.frame.minY
             let velocity = sender.velocity(in: hostingViewController.view)
             let translation = sender.translation(in: hostingViewController.view)
-            let height =  hostingViewController.view.frame.maxY
+            let height = hostingViewController.view.frame.height
                         
             if velocity.y >= 0 {
                 if y + translation.y >= height / 2 {
@@ -104,16 +104,18 @@ class CommentsViewController: UIViewController, Storyboarded, UIScrollViewDelega
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        if scrollView.contentOffset.y < -100 {
+        guard let hostingViewController = self.hostingViewController else { return }
+
+        if scrollView.contentOffset.y < -80 {
             guard !isAnimating else { return }
             isAnimating = true
             //Kill further scrolls
             scrollView.panGestureRecognizer.isEnabled = false;
             scrollView.panGestureRecognizer.isEnabled = true;
 
-            let height = hostingViewController?.view.frame.maxY ?? 0
-            self.topConstraint.constant = height - draggerView.frame.height
-            
+            let height = hostingViewController.view.frame.height
+            topConstraint.constant = height - draggerView.frame.height
+
             UIView.animate(withDuration: 0.25,
                            delay: 0.0,
                            options: [.allowUserInteraction, .curveEaseInOut],
