@@ -13,6 +13,9 @@ class Comment: Codable, Equatable {
 	var confidence: Double = 0
 	var name: String = ""
 	var mark: Int = 0
+    var date: Date {
+        return Date(timeIntervalSince1970: TimeInterval(created))
+    }
 
 	enum CodingKeys: String, CodingKey {
 		case id = "id"

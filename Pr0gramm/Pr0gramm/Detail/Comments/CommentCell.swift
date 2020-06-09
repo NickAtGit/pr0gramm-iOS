@@ -14,6 +14,7 @@ class CommentCell: UITableViewCell, UIContextMenuInteractionDelegate {
     @IBOutlet private var authorLabel: UILabel!
     @IBOutlet private var userClassDotView: UserClassDotView!
     @IBOutlet private var pointsLabel: UILabel!
+    @IBOutlet private var timeLabel: UILabel!
     @IBOutlet private var opLabel: BadgeLabel!
     @IBOutlet private var youLabel: BadgeLabel!
     @IBOutlet private var leadingConstraint: NSLayoutConstraint!
@@ -27,6 +28,7 @@ class CommentCell: UITableViewCell, UIContextMenuInteractionDelegate {
             messageTextView.text = comment.content
             initialPointCount =  comment.up - comment.down
             pointsLabel.text = "\(initialPointCount)"
+            timeLabel.text = Strings.timeString(for: comment.date)
             userClassDotView.backgroundColor = Colors.color(for: comment.mark)
             opLabel.isHidden = !detailViewModel.isAuthorOP(for: comment)
             youLabel.isHidden = !detailViewModel.isAuthorUser(for: comment)
@@ -44,8 +46,6 @@ class CommentCell: UITableViewCell, UIContextMenuInteractionDelegate {
         messageTextView.backgroundColor = .clear
         messageTextView.textContainerInset = .zero
         messageTextView.textContainer.lineFragmentPadding = 0
-        authorLabel.textColor = #colorLiteral(red: 0.5333333333, green: 0.5333333333, blue: 0.5333333333, alpha: 1)
-        pointsLabel.textColor = #colorLiteral(red: 0.9490196078, green: 0.9607843137, blue: 0.9568627451, alpha: 1)
         
         let interaction = UIContextMenuInteraction(delegate: self)
         addInteraction(interaction)
