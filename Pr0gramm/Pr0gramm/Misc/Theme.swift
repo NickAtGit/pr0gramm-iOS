@@ -160,6 +160,8 @@ extension Theme {
         
         UITableViewCell.appearance().with {
             $0.backgroundColor = .clear
+            $0.selectedBackgroundView = UIView()
+            $0.selectedBackgroundView?.backgroundColor = tint.withAlphaComponent(0.2)
         }
                 
         UIButton.appearance().with {

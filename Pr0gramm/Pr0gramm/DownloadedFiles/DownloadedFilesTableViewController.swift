@@ -63,6 +63,7 @@ class DownloadedFilesTableViewController: UITableViewController, Storyboarded {
         } else {
             coordinator?.showImageViewController(with: UIImage(contentsOfFile: fileURL.path)!, from: self)
         }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
             
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
