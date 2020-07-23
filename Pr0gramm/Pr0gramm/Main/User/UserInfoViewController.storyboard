@@ -24,6 +24,7 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Benis: 1337" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abD-HW-YCy">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="36"/>
+                                                <color key="backgroundColor" name="Richtiges Grau"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
                                                 <color key="textColor" name="Schriftfarbe"/>
                                                 <nil key="highlightedColor"/>

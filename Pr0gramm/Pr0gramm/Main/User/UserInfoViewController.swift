@@ -26,6 +26,10 @@ class UserInfoViewController: ScrollingContentViewController, Storyboarded {
         stackView.insertArrangedSubview(badgesCollectionViewController.view, at: 1)
         badgesCollectionViewController.didMove(toParent: self)
         
+        let interaction = UIContextMenuInteraction(delegate: self)
+        scoreLabel.addInteraction(interaction)
+        scoreLabel.isUserInteractionEnabled = true
+        
         let _ = viewModel.userInfo.observeNext { [unowned self] userInfo in
             guard let userInfo = userInfo else { return }
             self.scoreLabel.text = "Benis: \(userInfo.user.score)"
@@ -47,3 +51,23 @@ class UserInfoViewController: ScrollingContentViewController, Storyboarded {
                                    navigationController: navigationController)
     }
 }
+
+extension UserInfoViewController: UIContextMenuInteractionDelegate {
+    func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ -> UIMenu? in
+            return self.createContextMenu()
+        }
+    }
+    
+    func createContextMenu() -> UIMenu {
+        let okAction = UIAction(title: "Ok", image: UIImage(systemName: "checkmark.circle")) { _ in }
+        
+        let title = """
+        ↑ \(viewModel.userInfo.value?.user.up ?? 0)
+        ↓ \(viewModel.userInfo.value?.user.down ?? 0)
+        """
+        
+        return UIMenu(title: title, children: [okAction])
+    }
+}
+
