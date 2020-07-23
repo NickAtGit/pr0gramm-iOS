@@ -17,9 +17,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="QBy-ga-Jlg">
-                                <rect key="frame" x="20" y="64" width="374" height="176"/>
+                                <rect key="frame" x="20" y="64" width="374" height="181"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yZj-ba-EHl">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="yZj-ba-EHl">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="66"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Benis: 1337" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abD-HW-YCy">
@@ -29,18 +29,18 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="bwA-D3-LfC">
-                                                <rect key="frame" x="0.0" y="46" width="374" height="20"/>
+                                                <rect key="frame" x="0.0" y="51" width="374" height="15"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EO1-PB-rPJ" customClass="UserClassDotView" customModule="pr0gramm" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="20" id="IGA-IR-jEH"/>
-                                                            <constraint firstAttribute="width" constant="20" id="U3e-OB-Tsm"/>
+                                                            <constraint firstAttribute="height" constant="15" id="IGA-IR-jEH"/>
+                                                            <constraint firstAttribute="width" constant="15" id="U3e-OB-Tsm"/>
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schwuchtel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pZy-hE-VXT">
-                                                        <rect key="frame" x="40" y="0.0" width="334" height="20"/>
+                                                        <rect key="frame" x="35" y="0.0" width="339" height="15"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <color key="textColor" name="Schriftfarbe"/>
                                                         <nil key="highlightedColor"/>
@@ -49,8 +49,8 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="2Zc-m6-ngQ">
-                                        <rect key="frame" x="0.0" y="106" width="374" height="70"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="2Zc-m6-ngQ">
+                                        <rect key="frame" x="0.0" y="106" width="374" height="75"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKb-25-8d8">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
@@ -60,7 +60,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iJ5-wn-Zxr">
-                                                <rect key="frame" x="0.0" y="40" width="374" height="30"/>
+                                                <rect key="frame" x="0.0" y="45" width="374" height="30"/>
                                                 <state key="normal" title="Hochlads"/>
                                                 <connections>
                                                     <action selector="showUserUploadsButtonTapped:" destination="dep-Lf-aPW" eventType="touchUpInside" id="1e3-N1-M6o"/>
@@ -80,6 +80,7 @@
                         <viewLayoutGuide key="safeArea" id="NBK-Vx-LLT"/>
                     </view>
                     <connections>
+                        <outlet property="collectionsButton" destination="TKb-25-8d8" id="69W-8m-Zu5"/>
                         <outlet property="contentView" destination="fy8-Fm-itj" id="Ap0-aI-wEf"/>
                         <outlet property="scoreLabel" destination="abD-HW-YCy" id="nWf-qu-GcL"/>
                         <outlet property="stackView" destination="QBy-ga-Jlg" id="EQk-u3-fRi"/>

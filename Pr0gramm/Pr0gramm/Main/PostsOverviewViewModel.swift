@@ -2,7 +2,7 @@
 import UIKit
 
 enum PostsOverviewStyle: Equatable {
-    case main, search(tags: [String]), user(name: String), collection(user: String, name: String)
+    case main, search(tags: [String]), user(name: String), collection(user: String, name: String, keyword: String)
 }
 
 class PostsOverviewViewModel: PostsLoadable {
@@ -38,7 +38,7 @@ class PostsOverviewViewModel: PostsLoadable {
             return tags.first ?? ""
         case .user(let name):
             return name
-        case .collection(_, let collectionName):
+        case .collection(_, let collectionName, _):
             return collectionName
         }
     }
@@ -127,11 +127,11 @@ extension PostsLoadable {
                                         self?.isAtEnd = items.atEnd
                                         completion(true)
             }
-        case .collection(let userName, let collectionName):
+        case .collection(let userName, _, let keyword):
             connector.fetchUserCollection(sorting: sorting,
                                           flags: flags,
                                           userName: userName,
-                                          collectionName: collectionName,
+                                          collectionName: keyword,
                                           afterId: afterId) { [weak self] items in
                                             guard let items = items else { completion(false); return }
                                             if isRefresh { self?.allItems.removeAll() }

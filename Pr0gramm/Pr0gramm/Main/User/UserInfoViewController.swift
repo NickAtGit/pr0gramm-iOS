@@ -10,7 +10,8 @@ class UserInfoViewController: ScrollingContentViewController, Storyboarded {
     @IBOutlet private var scoreLabel: UILabel!
     @IBOutlet private var userClassDotView: UserClassDotView!
     @IBOutlet private var userClassLabel: UILabel!
-        
+    @IBOutlet private var collectionsButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
@@ -30,6 +31,7 @@ class UserInfoViewController: ScrollingContentViewController, Storyboarded {
             self.scoreLabel.text = "Benis: \(userInfo.user.score)"
             self.userClassDotView.backgroundColor = Colors.color(for: userInfo.user.mark)
             self.userClassLabel.text = Strings.userClass(for: userInfo.user.mark)
+            self.collectionsButton.setTitle("Sammlungen (\(userInfo.collections?.count ?? 0))", for: .normal)
         }
     }
     
