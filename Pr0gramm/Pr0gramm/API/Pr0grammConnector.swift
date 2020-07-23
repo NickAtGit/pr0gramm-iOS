@@ -237,14 +237,13 @@ class Pr0grammConnector {
         task.resume()
     }
     
-    func fetchUserInfo(completion: @escaping (UserInfo?) -> Void) {
-        guard let userName = userName else { return }
+    func fetchUserInfo(for name: String, completion: @escaping (UserInfo?) -> Void) {
         var components = URLComponents()
         components.scheme = "https"
         components.host = "pr0gramm.com"
         components.path = "/api/profile/info"
         components.queryItems = [
-            URLQueryItem(name: "name", value: "\(userName)")
+            URLQueryItem(name: "name", value: "\(name)")
         ]
         
         guard let url = components.url else { completion(nil); return }
@@ -266,11 +265,11 @@ class Pr0grammConnector {
     
     func fetchUserCollection(sorting: Sorting,
                              flags: [Flags],
+                             userName: String,
                              collectionName: String,
                              afterId: Int? = nil,
                              completion: @escaping (AllItems?) -> Void) {
         guard isLoggedIn else { return }
-        guard let userName = userName else { return }
             
         let userQueryItem = URLQueryItem(name: "user", value: userName)
         let collectionQueryItem = URLQueryItem(name: "collection", value: collectionName)
@@ -284,10 +283,10 @@ class Pr0grammConnector {
     
     func fetchUserItems(sorting: Sorting,
                         flags: [Flags],
+                        userName: String,
                         afterId: Int? = nil,
                         completion: @escaping (AllItems?) -> Void) {
         guard isLoggedIn else { return }
-        guard let userName = userName else { return }
         let queryItem = URLQueryItem(name: "user", value: userName)
         
         fetchItems(sorting: sorting,

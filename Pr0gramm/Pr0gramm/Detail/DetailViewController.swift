@@ -91,6 +91,10 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
         infoView.showCommentsAction = { [unowned self] in self.showComments() }
         infoView.upvoteAction = { [weak self] in self?.navigation?.showBanner(with: "Han blussert") }
         infoView.downvoteAction = { [weak self] in self?.navigation?.showBanner(with: "Han miesert") }
+        infoView.showUserAction = { [weak self] name in
+            guard let navigationController = self?.navigationController else { return }
+            self?.coordinator?.showUserProfile(for: name, navigationController: navigationController)
+        }
         
         switch viewModel.mediaType {
         case .image:

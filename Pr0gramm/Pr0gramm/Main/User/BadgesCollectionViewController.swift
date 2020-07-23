@@ -13,11 +13,10 @@ class BadgesCollectionViewController: UICollectionViewController, Storyboarded {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 30, height: 30)
         collectionView.collectionViewLayout = layout
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        collectionView.reloadData()
+        
+        let _ = viewModel.userInfo.observeNext { [unowned self] _ in
+            self.collectionView.reloadData()
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -25,12 +24,12 @@ class BadgesCollectionViewController: UICollectionViewController, Storyboarded {
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.userInfo?.badges.count ?? 0
+        return viewModel.userInfo.value?.badges.count ?? 0
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "badgeCell", for: indexPath) as! BadgeCollectionViewCell
-        cell.badge = viewModel.userInfo?.badges[indexPath.row]
+        cell.badge = viewModel.userInfo.value?.badges[indexPath.row]
         return cell
     }
 }

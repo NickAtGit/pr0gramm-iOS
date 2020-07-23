@@ -116,6 +116,18 @@ class Coordinator {
         navigationController.pushViewController(searchResultViewController, animated: true)
     }
 
+    
+    func showUserProfile(for name: String, navigationController: UINavigationController) {
+        let userInfoViewController = UserInfoViewController.fromStoryboard()
+        userInfoViewController.viewModel = UserInfoViewModel(name: name, connector: pr0grammConnector)
+        userInfoViewController.coordinator = self
+        let profileNavigationController = NavigationController()
+        profileNavigationController.style = .dismissable
+        profileNavigationController.modalPresentationStyle = .fullScreen
+        profileNavigationController.viewControllers = [userInfoViewController]
+        navigationController.present(profileNavigationController, animated: true)
+    }
+    
     func showReplyForPost(viewModel: DetailViewModel) {
         let viewController = ReplyViewController.fromStoryboard()
         viewController.viewModel = viewModel

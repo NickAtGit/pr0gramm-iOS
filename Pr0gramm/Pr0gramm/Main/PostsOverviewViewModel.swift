@@ -2,7 +2,7 @@
 import UIKit
 
 enum PostsOverviewStyle: Equatable {
-    case main, search(tags: [String]), user, collection(name: String)
+    case main, search(tags: [String]), user(name: String), collection(user: String, name: String)
 }
 
 class PostsOverviewViewModel: PostsLoadable {
@@ -36,9 +36,9 @@ class PostsOverviewViewModel: PostsLoadable {
             }
         case .search(let tags):
             return tags.first ?? ""
-        case .user:
-            return connector.userName ?? ""
-        case .collection(let collectionName):
+        case .user(let name):
+            return name
+        case .collection(_, let collectionName):
             return collectionName
         }
     }
@@ -116,9 +116,10 @@ extension PostsLoadable {
                                 self?.isAtEnd = items.atEnd
                                 completion(true)
             }
-        case .user:
+        case .user(let name):
             connector.fetchUserItems(sorting: sorting,
                                      flags: flags,
+                                     userName: name,
                                      afterId: afterId) { [weak self] items in
                                         guard let items = items else { completion(false); return }
                                         if isRefresh { self?.allItems.removeAll() }
@@ -126,16 +127,17 @@ extension PostsLoadable {
                                         self?.isAtEnd = items.atEnd
                                         completion(true)
             }
-        case .collection(let collectionName):
+        case .collection(let userName, let collectionName):
             connector.fetchUserCollection(sorting: sorting,
-                                     flags: flags,
-                                     collectionName: collectionName,
-                                     afterId: afterId) { [weak self] items in
-                                        guard let items = items else { completion(false); return }
-                                        if isRefresh { self?.allItems.removeAll() }
-                                        self?.allItems.append(items)
-                                        self?.isAtEnd = items.atEnd
-                                        completion(true)
+                                          flags: flags,
+                                          userName: userName,
+                                          collectionName: collectionName,
+                                          afterId: afterId) { [weak self] items in
+                                            guard let items = items else { completion(false); return }
+                                            if isRefresh { self?.allItems.removeAll() }
+                                            self?.allItems.append(items)
+                                            self?.isAtEnd = items.atEnd
+                                            completion(true)
             }
         }
     }

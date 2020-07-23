@@ -7,7 +7,7 @@ class InfoView: UIView, NibView {
     var viewModel: DetailViewModel! {
         didSet {
             viewModel.points.bind(to: pointsLabel.reactive.text)
-            viewModel.userName.bind(to: userNameLabel.reactive.text)
+            viewModel.userName.bind(to: userNameButton.reactive.title)
             viewModel.isTagsExpandButtonHidden.bind(to: tagsButton.reactive.isHidden)
             viewModel.isCommentsButtonHidden.bind(to: commentsButton.reactive.isHidden)
             viewModel.postTime.bind(to: dateLabel.reactive.text)
@@ -62,14 +62,15 @@ class InfoView: UIView, NibView {
             }
         }
     }
-    var showReplyAction: (() -> Void)?
-    var showCommentsAction: (() -> Void)?
-    var upvoteAction: (() -> Void)?
-    var downvoteAction: (() -> Void)?
-    var favoriteAction: (() -> Void)?
+    var showReplyAction: ActionClosure?
+    var showCommentsAction: ActionClosure?
+    var upvoteAction: ActionClosure?
+    var downvoteAction: ActionClosure?
+    var favoriteAction: ActionClosure?
+    var showUserAction: ((String) -> Void)?
     
     @IBOutlet private var pointsLabel: UILabel!
-    @IBOutlet private var userNameLabel: UILabel!
+    @IBOutlet private var userNameButton: UIButton!
     @IBOutlet private var upvoteButton: HapticFeedbackButton!
     @IBOutlet private var downvoteButton: HapticFeedbackButton!
     @IBOutlet private var favoriteButton: HapticFeedbackButton!
@@ -83,6 +84,11 @@ class InfoView: UIView, NibView {
         let interaction = UIContextMenuInteraction(delegate: self)
         pointsLabel.addInteraction(interaction)
         pointsLabel.isUserInteractionEnabled = true
+    }
+    
+    @IBAction func userNameTapped(_ sender: UIButton) {
+        guard let name = sender.titleLabel?.text else { return }
+        showUserAction?(name)
     }
     
     @IBAction func upvoteTapped(_ sender: HapticFeedbackButton) {

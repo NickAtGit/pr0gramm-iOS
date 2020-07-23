@@ -13,7 +13,8 @@ class UserInfoViewController: ScrollingContentViewController, Storyboarded {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = viewModel.title
+        view.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
+        title = viewModel.name
         tabBarItem = UITabBarItem(title: "Profil",
                                   image: UIImage(systemName: "person.circle"),
                                   selectedImage: UIImage(systemName: "person.circle.fill"))
@@ -21,18 +22,18 @@ class UserInfoViewController: ScrollingContentViewController, Storyboarded {
         let badgesCollectionViewController = BadgesCollectionViewController.fromStoryboard()
         badgesCollectionViewController.viewModel = viewModel
         addChild(badgesCollectionViewController)
-        stackView.insertArrangedSubview(badgesCollectionViewController.view, at: 2)
+        stackView.insertArrangedSubview(badgesCollectionViewController.view, at: 1)
         badgesCollectionViewController.didMove(toParent: self)
+        
+        let _ = viewModel.userInfo.observeNext { [unowned self] userInfo in
+            guard let userInfo = userInfo else { return }
+            self.scoreLabel.text = "Benis: \(userInfo.user.score)"
+            self.userClassDotView.backgroundColor = Colors.color(for: userInfo.user.mark)
+            self.userClassLabel.text = Strings.userClass(for: userInfo.user.mark)
+        }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        scoreLabel.text = "Benis: \(viewModel.score)"
-        userClassDotView.backgroundColor = Colors.color(for: viewModel.userClass)
-        userClassLabel.text = Strings.userClass(for: viewModel.userClass)
-    }
-    
-    @IBAction func showLikesButtonTapped(_ sender: Any) {
+    @IBAction func showCollectionsButtonTapped(_ sender: Any) {
         guard let navigationController = navigationController else { return }
         coordinator?.showCollections(viewModel: viewModel,
                                      navigationController: navigationController)
@@ -40,7 +41,7 @@ class UserInfoViewController: ScrollingContentViewController, Storyboarded {
     
     @IBAction func showUserUploadsButtonTapped(_ sender: Any) {
         guard let navigationController = navigationController else { return }
-        coordinator?.showUserPosts(for: .user,
+        coordinator?.showUserPosts(for: .user(name: viewModel.name),
                                    navigationController: navigationController)
     }
 }

@@ -7,12 +7,12 @@ class CollectionsTableViewController: UITableViewController, Storyboarded {
     var viewModel: UserInfoViewModel!
       
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.userInfo?.collections?.count ?? 0
+        return viewModel.userInfo.value?.collections?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "collectionCell")!
-        cell.textLabel?.text = viewModel.userInfo?.collections?[indexPath.row].name
+        cell.textLabel?.text = viewModel.userInfo.value?.collections?[indexPath.row].name
         cell.accessoryView = UIImageView(image: UIImage(systemName: "chevron.right"))
         cell.textLabel?.textColor = #colorLiteral(red: 0.9490196078, green: 0.9607843137, blue: 0.9568627451, alpha: 1)
         return cell
@@ -22,7 +22,7 @@ class CollectionsTableViewController: UITableViewController, Storyboarded {
         let cell = tableView.cellForRow(at: indexPath)
         guard let collection = cell?.textLabel?.text,
             let navigationController = navigationController else { return }
-        coordinator?.showUserPosts(for: .collection(name: collection), navigationController: navigationController)
+        coordinator?.showUserPosts(for: .collection(user: viewModel.name, name: collection), navigationController: navigationController)
     }
     
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {

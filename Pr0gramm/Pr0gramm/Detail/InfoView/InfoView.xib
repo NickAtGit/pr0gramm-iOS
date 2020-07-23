@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,37 +14,13 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="lZI-SO-vmQ">
-                    <rect key="frame" x="20" y="0.0" width="86.5" height="65"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYp-gL-QPE">
-                            <rect key="frame" x="0.0" y="0.0" width="86.5" height="36"/>
-                            <color key="backgroundColor" name="Richtiges Grau"/>
-                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
-                            <color key="textColor" name="Schriftfarbe"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="sHs-nM-5l6">
-                            <rect key="frame" x="0.0" y="46" width="86.5" height="19"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DTY-Ga-v1E">
-                                    <rect key="frame" x="0.0" y="1" width="68.5" height="17"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <color key="textColor" name="Schriftfarbe ausgegraut"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mcp-Fc-Wtz" customClass="UserClassDotView" customModule="pr0gramm" customModuleProvider="target">
-                                    <rect key="frame" x="78.5" y="5.5" width="8" height="8"/>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="8" id="DkS-Hk-NHv"/>
-                                        <constraint firstAttribute="height" constant="8" id="g5g-WO-v5W"/>
-                                    </constraints>
-                                </view>
-                            </subviews>
-                        </stackView>
-                    </subviews>
-                </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYp-gL-QPE">
+                    <rect key="frame" x="20" y="0.0" width="54.5" height="36"/>
+                    <color key="backgroundColor" name="Richtiges Grau"/>
+                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
+                    <color key="textColor" name="Schriftfarbe"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="FiG-1h-MxZ">
                     <rect key="frame" x="167" y="5.5" width="227" height="25.5"/>
                     <subviews>
@@ -106,21 +82,47 @@
                     </subviews>
                 </stackView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZIN-aa-biM">
-                    <rect key="frame" x="363.5" y="48" width="30.5" height="17"/>
+                    <rect key="frame" x="363.5" y="41" width="30.5" height="24"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" name="Schriftfarbe ausgegraut"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="sHs-nM-5l6">
+                    <rect key="frame" x="20" y="41" width="61" height="24"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qpW-n1-snV">
+                            <rect key="frame" x="0.0" y="0.0" width="43" height="24"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="Button"/>
+                            <connections>
+                                <action selector="userNameTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="Py6-Fq-2oH"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mcp-Fc-Wtz" customClass="UserClassDotView" customModule="pr0gramm" customModuleProvider="target">
+                            <rect key="frame" x="53" y="8" width="8" height="8"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="8" id="DkS-Hk-NHv"/>
+                                <constraint firstAttribute="height" constant="8" id="g5g-WO-v5W"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                </stackView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="FiG-1h-MxZ" firstAttribute="centerY" secondItem="aYp-gL-QPE" secondAttribute="centerY" id="4dP-gD-HZW"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="lZI-SO-vmQ" secondAttribute="bottom" id="6Ic-So-sCQ"/>
-                <constraint firstItem="lZI-SO-vmQ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="CxE-eg-Ra6"/>
+                <constraint firstItem="sHs-nM-5l6" firstAttribute="leading" secondItem="aYp-gL-QPE" secondAttribute="leading" id="2HG-xP-BBd"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="FiG-1h-MxZ" secondAttribute="trailing" constant="20" id="E3p-Re-pm9"/>
+                <constraint firstItem="ZIN-aa-biM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sHs-nM-5l6" secondAttribute="trailing" constant="10" id="FYw-X1-7gz"/>
+                <constraint firstItem="aYp-gL-QPE" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="OT2-Nq-Kbn"/>
+                <constraint firstItem="sHs-nM-5l6" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="SGr-SF-5Nu"/>
+                <constraint firstItem="FiG-1h-MxZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aYp-gL-QPE" secondAttribute="trailing" constant="10" id="fya-HZ-SkI"/>
+                <constraint firstItem="ZIN-aa-biM" firstAttribute="centerY" secondItem="sHs-nM-5l6" secondAttribute="centerY" id="gkJ-L0-ZGr"/>
+                <constraint firstItem="aYp-gL-QPE" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="hgn-fz-ZQQ"/>
                 <constraint firstItem="ZIN-aa-biM" firstAttribute="trailing" secondItem="FiG-1h-MxZ" secondAttribute="trailing" id="s9i-xt-8Vl"/>
                 <constraint firstItem="ZIN-aa-biM" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="sGe-eb-Hcy"/>
-                <constraint firstItem="lZI-SO-vmQ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="uLx-XS-8se"/>
+                <constraint firstItem="sHs-nM-5l6" firstAttribute="top" relation="greaterThanOrEqual" secondItem="aYp-gL-QPE" secondAttribute="bottom" constant="5" id="sq8-sQ-bcp"/>
+                <constraint firstItem="FiG-1h-MxZ" firstAttribute="centerY" secondItem="aYp-gL-QPE" secondAttribute="centerY" id="w85-HP-jVv"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
@@ -133,7 +135,7 @@
                 <outlet property="tagsButton" destination="S43-mO-YX6" id="V7v-YS-NaP"/>
                 <outlet property="upvoteButton" destination="Nlf-jk-WA2" id="LwO-eR-Hsh"/>
                 <outlet property="userClassDotView" destination="mcp-Fc-Wtz" id="ELX-M4-qAq"/>
-                <outlet property="userNameLabel" destination="DTY-Ga-v1E" id="eu2-h3-8Ij"/>
+                <outlet property="userNameButton" destination="qpW-n1-snV" id="TbX-wr-Cjk"/>
             </connections>
             <point key="canvasLocation" x="105.59999999999999" y="-36.431784107946029"/>
         </view>
