@@ -13,6 +13,7 @@ protocol UserSettingsConfigurable {
     static var isShowSeenBagdes: Bool { get set }
     static var isUseLeftRightQuickTap: Bool { get set }
     static var latestSearchStrings: [String] { get set }
+    static var postCount: Int { get set }
 }
 
 @objc
@@ -107,5 +108,10 @@ extension AppSettings: UserSettingsConfigurable {
     static var latestSearchStrings: [String] {
         get { return AppSettings.value(for: #keyPath(latestSearchStrings)) ?? [] }
         set { AppSettings.updateDefaults(for: #keyPath(latestSearchStrings), value: newValue) }
+    }
+    
+    static var postCount: Int {
+        get { return AppSettings.value(for: #keyPath(postCount)) ?? 3 }
+        set { AppSettings.updateDefaults(for: #keyPath(postCount), value: newValue) }
     }
 }

@@ -57,6 +57,8 @@
 		035EBA7F24262CA3009185E9 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035EBA7E24262CA3009185E9 /* LoginViewController.storyboard */; };
 		035EBA822426DA5E009185E9 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035EBA812426DA5E009185E9 /* Coordinator.swift */; };
 		035EBA842427790C009185E9 /* DetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035EBA832427790C009185E9 /* DetailViewController.storyboard */; };
+		035F91DE2519FD9E00C2CF08 /* PostCountSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035F91DD2519FD9E00C2CF08 /* PostCountSelectionCell.swift */; };
+		035F91E22519FDBA00C2CF08 /* PostCountSelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 035F91E12519FDBA00C2CF08 /* PostCountSelectionCell.xib */; };
 		036D58862473372500982AB3 /* ProfileComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036D58852473372500982AB3 /* ProfileComments.swift */; };
 		0388A0B524293BE0006E86A3 /* TapableImage+Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0388A0B424293BE0006E86A3 /* TapableImage+Video.swift */; };
 		0388A0B724297C70006E86A3 /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0388A0B624297C70006E86A3 /* Downloader.swift */; };
@@ -177,6 +179,8 @@
 		035EBA7E24262CA3009185E9 /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
 		035EBA812426DA5E009185E9 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		035EBA832427790C009185E9 /* DetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailViewController.storyboard; sourceTree = "<group>"; };
+		035F91DD2519FD9E00C2CF08 /* PostCountSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCountSelectionCell.swift; sourceTree = "<group>"; };
+		035F91E12519FDBA00C2CF08 /* PostCountSelectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostCountSelectionCell.xib; sourceTree = "<group>"; };
 		036D58852473372500982AB3 /* ProfileComments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileComments.swift; sourceTree = "<group>"; };
 		037A3F0924366F7800D68391 /* Pr0gramm.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pr0gramm.entitlements; sourceTree = "<group>"; };
 		0388A0B424293BE0006E86A3 /* TapableImage+Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TapableImage+Video.swift"; sourceTree = "<group>"; };
@@ -287,6 +291,8 @@
 				030CAF60244CD75E00D6885C /* SettingsViewController.swift */,
 				030CAF64244CD93D00D6885C /* ThemeSelectionCell.swift */,
 				030CAF65244CD93D00D6885C /* ThemeSelectionCell.xib */,
+				035F91DD2519FD9E00C2CF08 /* PostCountSelectionCell.swift */,
+				035F91E12519FDBA00C2CF08 /* PostCountSelectionCell.xib */,
 				033CF1BD205BFD2A00627321 /* Main */,
 				033CF1BE205BFD3200627321 /* Detail */,
 				0354AAF12431287A009C35E0 /* DownloadedFiles */,
@@ -587,6 +593,7 @@
 				0354AAF324312E37009C35E0 /* ImageDetailViewController.storyboard in Resources */,
 				030CAF67244CD93D00D6885C /* ThemeSelectionCell.xib in Resources */,
 				03D2AC48243212C40082D4C9 /* FlagsViewController.storyboard in Resources */,
+				035F91E22519FDBA00C2CF08 /* PostCountSelectionCell.xib in Resources */,
 				03B0628A2428CFD600CA657A /* InfoView.xib in Resources */,
 				0389C651248D9FD20053AE51 /* CollectionsTableViewController.storyboard in Resources */,
 				035EBA7F24262CA3009185E9 /* LoginViewController.storyboard in Resources */,
@@ -675,6 +682,7 @@
 				030CAF542440B76400D6885C /* CommentsViewController.swift in Sources */,
 				035EBA7D24262C7E009185E9 /* StoryboardViewController.swift in Sources */,
 				038F7C98246E0DEE00D268BA /* CollectionItem.swift in Sources */,
+				035F91DE2519FD9E00C2CF08 /* PostCountSelectionCell.swift in Sources */,
 				0388A0B524293BE0006E86A3 /* TapableImage+Video.swift in Sources */,
 				038F7C9C246E0DEE00D268BA /* User.swift in Sources */,
 				03B062942428EC3600CA657A /* TagCollectionViewCell.swift in Sources */,
@@ -920,7 +928,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pr0gramm/Pr0gramm.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 29;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = FMXL9R3NPC;
 				INFOPLIST_FILE = Pr0gramm/Info.plist;
@@ -941,7 +949,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pr0gramm/Pr0gramm.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 29;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = FMXL9R3NPC;
 				INFOPLIST_FILE = Pr0gramm/Info.plist;

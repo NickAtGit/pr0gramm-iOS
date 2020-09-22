@@ -21,6 +21,10 @@ class SettingsViewController: TableViewController {
                 Row(cellClass: ThemeSelectionCell.self)
             ], footer: ""),
             
+            Section(header: .autoLayoutView(CustomExtremityView("Anzahl der Hochlads pro Reihe", uppercased: false)), rows: [
+                Row(cellClass: PostCountSelectionCell.self)
+            ], footer: ""),
+            
             Section(header: .autoLayoutView(CustomExtremityView("Allgemein", uppercased: false)), rows: [
                 Row(text: "Gesehen Indikator anzeigen", accessory: .switchToggle(value: AppSettings.isShowSeenBagdes) {
                     AppSettings.isShowSeenBagdes = $0

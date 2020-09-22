@@ -27,7 +27,6 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-                    
         scrollView.showsVerticalScrollIndicator = false
         imageView.isUserInteractionEnabled = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -130,12 +129,9 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
     }
     
     private func setupVideo(for item: Item) {
-        avPlayer = AVPlayer()
-        avPlayerViewController = TapableAVPlayerViewController()
-        avPlayerViewController?.delegate = self
-        guard let avPlayer = avPlayer else { return }
-        guard let avPlayerViewController = avPlayerViewController else { return }
-        avPlayerViewController.view.addInteraction(contextMenuInteraction)
+        let avPlayer = AVPlayer()
+        let avPlayerViewController = TapableAVPlayerViewController()
+        avPlayerViewController.delegate = self
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(DetailViewController.playerItemDidReachEnd(_:)),
@@ -152,6 +148,9 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
         let url = URL(string: viewModel.link)
         let playerItem = AVPlayerItem(url: url!)
         avPlayer.replaceCurrentItem(with: playerItem)
+        self.avPlayer = avPlayer
+        self.avPlayerViewController = avPlayerViewController
+        avPlayerViewController.view.addInteraction(contextMenuInteraction)
     }
     
     @objc
@@ -272,5 +271,9 @@ extension DetailViewController: AVPlayerViewControllerDelegate {
     
     func playerViewController(_ playerViewController: AVPlayerViewController, willEndFullScreenPresentationWithAnimationCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         playerViewController.player?.play()
+    }
+    
+    func playerViewController(_ playerViewController: AVPlayerViewController, restoreUserInterfaceForPictureInPictureStopWithCompletionHandler completionHandler: @escaping (Bool) -> Void) {
+        completionHandler(true)
     }
 }

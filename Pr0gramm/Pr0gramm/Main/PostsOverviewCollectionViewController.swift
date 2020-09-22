@@ -9,7 +9,7 @@ class PostsOverviewCollectionViewController: UIViewController, Storyboarded, UIC
     var viewModel: PostsOverviewViewModel!
     
     @IBOutlet var collectionView: UICollectionView!
-    private let numberOfCellsPerRow: CGFloat = 3
+    private var numberOfCellsPerRow: CGFloat = CGFloat(AppSettings.postCount)
     private let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
@@ -17,12 +17,7 @@ class PostsOverviewCollectionViewController: UIViewController, Storyboarded, UIC
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView?.contentInsetAdjustmentBehavior = .always
-        
-        if let flowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
-            let horizontalSpacing = flowLayout.scrollDirection == .vertical ? flowLayout.minimumInteritemSpacing : flowLayout.minimumLineSpacing
-            let cellWidth = (view.frame.width - max(0, numberOfCellsPerRow - 1) * horizontalSpacing) / numberOfCellsPerRow
-            flowLayout.itemSize = CGSize(width: cellWidth, height: cellWidth)
-        }
+        updateLayout()
         
         refreshControl.addTarget(self,
                                  action: #selector(PostsOverviewCollectionViewController.refresh),
@@ -34,6 +29,23 @@ class PostsOverviewCollectionViewController: UIViewController, Storyboarded, UIC
                                                name: Notification.Name("flagsChanged+\(String(describing: self))"),
                                                object: nil)
         updateUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if numberOfCellsPerRow != CGFloat(AppSettings.postCount) {
+            numberOfCellsPerRow = CGFloat(AppSettings.postCount)
+            updateLayout()
+        }
+    }
+    
+    private func updateLayout() {
+        if let flowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
+            let horizontalSpacing = flowLayout.scrollDirection == .vertical ? flowLayout.minimumInteritemSpacing : flowLayout.minimumLineSpacing
+            let cellWidth = (view.frame.width - max(0, numberOfCellsPerRow - 1) * horizontalSpacing) / numberOfCellsPerRow
+            flowLayout.itemSize = CGSize(width: cellWidth, height: cellWidth)
+        }
     }
     
     @objc
