@@ -7,14 +7,15 @@ class ReplyViewController: ScrollingContentViewController, Storyboarded {
     var viewModel: DetailViewModel!
     var comment: Comment?
     
-    @IBOutlet var commentView: UIView!
-    @IBOutlet var separatorView: SeparatorView!
+    @IBOutlet private var commentView: UIView!
+    @IBOutlet private var separatorView: SeparatorView!
     @IBOutlet private var commentTextView: UITextView!
     @IBOutlet private var authorLabel: UILabel!
     @IBOutlet private var pointsLabel: UILabel!
     @IBOutlet private var opLabel: BadgeLabel!
     @IBOutlet private var replyTextView: UITextView!
     @IBOutlet private var commentTextViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private var replyTextViewHeightConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +42,9 @@ class ReplyViewController: ScrollingContentViewController, Storyboarded {
         authorLabel.text = comment.name
         pointsLabel.text = "\(comment.up - comment.down)"
         opLabel.isHidden = !viewModel.isAuthorOP(for: comment)
+        
+        commentTextView.delegate = self
+        replyTextView.delegate = self
     }
     
     override func viewDidLayoutSubviews() {
@@ -58,6 +62,19 @@ class ReplyViewController: ScrollingContentViewController, Storyboarded {
         let comment = Comment(with: text, name: userName, depth: depth)
         viewModel.addComment(comment, parentComment: self.comment)
         dismiss(animated: true)
+    }
+}
+
+extension ReplyViewController: UITextViewDelegate {
+    
+    func textViewDidChange(_ textView: UITextView) {
+        
+        if textView === commentTextView {
+            commentTextViewHeightConstraint.constant = commentTextView.contentSize.height
+        } else if textView === replyTextView {
+            replyTextViewHeightConstraint.constant = replyTextView.contentSize.height
+            scrollView.scrollFirstResponderToVisible(animated: true)
+        }
     }
 }
 
