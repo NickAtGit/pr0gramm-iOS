@@ -182,7 +182,11 @@ extension CommentsViewController: UITableViewDataSource {
 }
 
 extension CommentsViewController: CommentCellDelegate {
-    func requestedReply(for comment: Comment) {
+    func showReply(for comment: Comment) {
         coordinator?.showReply(for: comment, viewModel: viewModel, from: self)
+    }
+    
+    func showUserProfile(for name: String) {
+        coordinator?.showUserProfile(for: name, viewController: self)
     }
 }

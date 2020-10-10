@@ -117,7 +117,7 @@ class Coordinator {
     }
 
     
-    func showUserProfile(for name: String, navigationController: UINavigationController) {
+    func showUserProfile(for name: String, viewController: UIViewController) {
         let userInfoViewController = UserInfoViewController.fromStoryboard()
         userInfoViewController.viewModel = UserInfoViewModel(name: name, connector: pr0grammConnector)
         userInfoViewController.coordinator = self

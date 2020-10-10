@@ -2,7 +2,8 @@
 import UIKit
 
 protocol CommentCellDelegate: class {
-    func requestedReply(for comment: Comment)
+    func showReply(for comment: Comment)
+    func showUserProfile(for name: String)
 }
 
 class CommentCell: UITableViewCell, UIContextMenuInteractionDelegate {
@@ -11,7 +12,7 @@ class CommentCell: UITableViewCell, UIContextMenuInteractionDelegate {
     weak var delegate: CommentCellDelegate?
     
     @IBOutlet private var messageTextView: UITextView!
-    @IBOutlet private var authorLabel: UILabel!
+    @IBOutlet private var authorButton: UIButton!
     @IBOutlet private var userClassDotView: UserClassDotView!
     @IBOutlet private var pointsLabel: UILabel!
     @IBOutlet private var timeLabel: UILabel!
@@ -24,7 +25,7 @@ class CommentCell: UITableViewCell, UIContextMenuInteractionDelegate {
     
     var comment: Comment! {
         didSet {
-            authorLabel.text = comment.name
+            authorButton.setTitle(comment.name, for: .normal)
             messageTextView.text = comment.content
             initialPointCount =  comment.up - comment.down
             pointsLabel.text = "\(initialPointCount)"
@@ -50,6 +51,10 @@ class CommentCell: UITableViewCell, UIContextMenuInteractionDelegate {
         let interaction = UIContextMenuInteraction(delegate: self)
         addInteraction(interaction)
         isUserInteractionEnabled = true
+    }
+    
+    @IBAction func didTapUserName(_ sender: Any) {
+        delegate?.showUserProfile(for: comment.name)
     }
     
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
@@ -101,7 +106,7 @@ class CommentCell: UITableViewCell, UIContextMenuInteractionDelegate {
     }
     
     private func replyTapped() {
-        delegate?.requestedReply(for: comment)
+        delegate?.showReply(for: comment)
     }
     
     override func prepareForReuse() {
