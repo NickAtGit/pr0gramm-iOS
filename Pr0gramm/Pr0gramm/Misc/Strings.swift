@@ -99,5 +99,4 @@ class Strings {
         default: return "Fehler"
         }
     }
-
 }

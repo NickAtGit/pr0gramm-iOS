@@ -9,7 +9,6 @@ struct User: Codable {
 	let up: Int
 	let down: Int
 	let mark: Int
-	let admin: Int
 	let banned: Int
 	let commentDelete: Int
 	let itemDelete: Int
@@ -24,7 +23,6 @@ struct User: Codable {
 		case up = "up"
 		case down = "down"
 		case mark = "mark"
-		case admin = "admin"
 		case banned = "banned"
 		case commentDelete = "commentDelete"
 		case itemDelete = "itemDelete"
@@ -40,7 +38,6 @@ struct User: Codable {
 		up = try values.decode(Int.self, forKey: .up)
 		down = try values.decode(Int.self, forKey: .down)
 		mark = try values.decode(Int.self, forKey: .mark)
-		admin = try values.decode(Int.self, forKey: .admin)
 		banned = try values.decode(Int.self, forKey: .banned)
 		commentDelete = try values.decode(Int.self, forKey: .commentDelete)
 		itemDelete = try values.decode(Int.self, forKey: .itemDelete)
