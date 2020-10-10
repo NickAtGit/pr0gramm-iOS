@@ -18,16 +18,7 @@ protocol UserSettingsConfigurable {
 }
 
 @objc
-protocol SortingSettingsConfigurable {
-    static var sorting: Int { get set }
-}
-
-@objc
-protocol FlagFilterSettingsConfigurable {
-    static var sfwActive: Bool { get set }
-    static var nsfwActive: Bool { get set }
-    static var nsflActive: Bool { get set }
-}
+protocol FlagFilterSettingsConfigurable {}
 
 class AppSettings {
     
@@ -43,35 +34,24 @@ class AppSettings {
 extension AppSettings: SettingsConfigurable {}
 
 extension AppSettings: FlagFilterSettingsConfigurable {
-    static var sfwActive: Bool {
-        get { return AppSettings.value(for: #keyPath(sfwActive)) ?? true }
-        set { AppSettings.updateDefaults(for: #keyPath(sfwActive), value: newValue) }
+    
+    static func setFlags(_ flags: Set<Flags>, for flagsPosition: FlagsPosition) {
+        UserDefaults.standard.set(Array(flags.map({$0.rawValue})), forKey: flagsPosition.rawValue)
     }
     
-    static var nsfwActive: Bool {
-        get { return AppSettings.value(for: #keyPath(nsfwActive)) ?? false }
-        set { AppSettings.updateDefaults(for: #keyPath(nsfwActive), value: newValue) }
-    }
-
-    static var nsflActive: Bool {
-        get { return AppSettings.value(for: #keyPath(nsflActive)) ?? false }
-        set { AppSettings.updateDefaults(for: #keyPath(nsflActive), value: newValue) }
+    static func flags(for flagsPosition: FlagsPosition) -> Set<Flags> {
+        let flagsRaw = UserDefaults.standard.value(forKey: flagsPosition.rawValue) as? [Int] ?? [Flags.sfw.rawValue]
+        let flags = flagsRaw.map({ Flags(rawValue: $0)! })
+        return Set(flags)
     }
     
-    static var currentFlags: [Flags] {
-        var flags: [Flags] = []
-        guard AppSettings.isLoggedIn else { return [.sfw] }
-        if AppSettings.sfwActive { flags.append(.sfw); flags.append(.nsfp) }
-        if AppSettings.nsfwActive { flags.append(.nsfw) }
-        if AppSettings.nsflActive { flags.append(.nsfl) }
-        return flags
+    static func setSorting(_ sorting: Sorting, for flagsPosition: FlagsPosition) {
+        UserDefaults.standard.set(sorting.rawValue, forKey: flagsPosition.rawValue + "_sorting")
     }
-}
-
-extension AppSettings: SortingSettingsConfigurable {
-    static var sorting: Int {
-        get { return AppSettings.value(for: #keyPath(sorting)) ?? 1 }
-        set { AppSettings.updateDefaults(for: #keyPath(sorting), value: newValue) }
+    
+    static func sorting(for flagsPosition: FlagsPosition) -> Sorting {
+        let sortingRaw = UserDefaults.standard.value(forKey: flagsPosition.rawValue + "_sorting") as? Int ?? Sorting.top.rawValue
+        return Sorting(rawValue: sortingRaw) ?? .top
     }
 }
 

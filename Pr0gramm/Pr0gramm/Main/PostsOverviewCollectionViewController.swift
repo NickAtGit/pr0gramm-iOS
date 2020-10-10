@@ -3,7 +3,7 @@ import UIKit
 
 private let reuseIdentifier = "thumbCell"
 
-class PostsOverviewCollectionViewController: UIViewController, Storyboarded, UICollectionViewDelegate, UICollectionViewDataSource {
+class PostsOverviewCollectionViewController: UIViewController, Storyboarded, UICollectionViewDelegate, UICollectionViewDataSource, UIPopoverPresentationControllerDelegate, FlagsPopoverShowable {
     
     weak var coordinator: Coordinator?
     var viewModel: PostsOverviewViewModel!
@@ -23,12 +23,24 @@ class PostsOverviewCollectionViewController: UIViewController, Storyboarded, UIC
                                  action: #selector(PostsOverviewCollectionViewController.refresh),
                                  for: .valueChanged)
         collectionView?.refreshControl = refreshControl
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(updateUI),
-                                               name: Notification.Name("flagsChanged+\(String(describing: self))"),
-                                               object: nil)
         updateUI()
+        
+        let flagsPosition: FlagsPosition
+        
+        switch viewModel.style {
+        
+        case .main:
+            flagsPosition = .main
+        case .search:
+            flagsPosition = .search
+        case .user, .collection:
+            flagsPosition = .user
+        }
+        
+        setupFlagsPopover(for: flagsPosition) {
+            self.refresh()
+            self.updateUI()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -97,6 +109,8 @@ class PostsOverviewCollectionViewController: UIViewController, Storyboarded, UIC
             loadItems(more: true)
         }
     }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle { .none }
 }
 
 extension PostsOverviewCollectionViewController: Pr0grammConnectorObserver {

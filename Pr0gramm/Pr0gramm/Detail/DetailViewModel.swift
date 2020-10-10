@@ -87,17 +87,6 @@ class DetailViewModel {
         }
     }
     
-    func search(for tag: String, completion: @escaping ([Item]?) -> Void) {
-        let sorting = Sorting(rawValue: AppSettings.sorting)!
-        let flags = AppSettings.currentFlags
-
-        connector.search(sorting: sorting, flags: flags, for: [tag]) { items in
-            DispatchQueue.main.async {
-                completion(items?.items)
-            }
-        }
-    }
-    
     func isAuthorUser(for comment: Comment) -> Bool { comment.name == connector.userName }
     func isAuthorOP(for comment: Comment) -> Bool { comment.name == item.value.user }
     
