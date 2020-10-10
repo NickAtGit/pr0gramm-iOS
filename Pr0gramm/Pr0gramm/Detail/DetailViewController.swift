@@ -71,6 +71,12 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        avPlayerViewController?.allowsPictureInPicturePlayback = AppSettings.isPictureInPictureEnabled
+        avPlayer?.isMuted = AppSettings.isVideoMuted
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         avPlayer?.pause()
@@ -165,7 +171,6 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
     
     @objc
     func play() {
-        avPlayer?.isMuted = AppSettings.isVideoMuted
         if AppSettings.isAutoPlay { avPlayer?.play() }
         
         if viewModel.isSeen {

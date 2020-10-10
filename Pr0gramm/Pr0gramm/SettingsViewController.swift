@@ -45,7 +45,12 @@ class SettingsViewController: TableViewController {
                 
                 Row(text: "Videos automatisch starten", accessory: .switchToggle(value: AppSettings.isAutoPlay) {
                     AppSettings.isAutoPlay = $0
+                }, cellClass: SettingsCell.self),
+                
+                Row(text: "Bild in Bild Modus", accessory: .switchToggle(value: AppSettings.isPictureInPictureEnabled) {
+                    AppSettings.isPictureInPictureEnabled = $0
                 }, cellClass: SettingsCell.self)
+
             ], footer: ""),
         ]
     }
