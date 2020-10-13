@@ -24,8 +24,8 @@ class SearchTableViewController: UITableViewController, Storyboarded {
         definesPresentationContext = true
 
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(flagsChanged),
-                                               name: Notification.Name("flagsChanged+\(String(describing: self))"),
+                                               selector: #selector(flagsDidChange),
+                                               name: Notification.Name("flagsChanged"),
                                                object: nil)
         
         setTitle()
@@ -84,11 +84,12 @@ class SearchTableViewController: UITableViewController, Storyboarded {
     private func search(searchString: String) {
         coordinator?.showSearchResult(for: searchString, from: self)
     }
-    
+        
     @objc
-    func flagsChanged() {
+    func flagsDidChange() {
         setTitle()
     }
+
     
     private func setTitle() {
         title = "Suche (\(Sorting(rawValue: AppSettings.sorting)?.description ?? ""))"

@@ -45,18 +45,21 @@ class NavigationController: UINavigationController, UIPopoverPresentationControl
                                             style: .plain,
                                             target: self,
                                             action: #selector(self.showFlagsPopover(_:)))
-            self.topViewController?.navigationItem.leftBarButtonItem = flagsItem
+            self.topViewController?.navigationItem.rightBarButtonItem = flagsItem
         }
         
         switch style {
         case .dragable:
-            let flagsItem = UIBarButtonItem(image: UIImage(systemName: "chevron.down"),
+            let dismissItem = UIBarButtonItem(image: UIImage(systemName: "chevron.down"),
                                             style: .plain,
                                             target: self,
                                             action: #selector(dismissSelf))
-            topViewController?.navigationItem.rightBarButtonItem = flagsItem
+            topViewController?.navigationItem.rightBarButtonItem = dismissItem
             
         case .main:
+            setFlagsBarButtonItem()
+            
+        case .user:
             setFlagsBarButtonItem()
             
             if AppSettings.isLoggedIn {
@@ -64,28 +67,21 @@ class NavigationController: UINavigationController, UIPopoverPresentationControl
                                                  style: .plain,
                                                  target: coordinator,
                                                  action: #selector(Coordinator.logout))
-                topViewController?.navigationItem.rightBarButtonItem = logoutItem
+                topViewController?.navigationItem.leftBarButtonItem = logoutItem
             } else {
                 let loginItem = UIBarButtonItem(image: UIImage(systemName: "person.crop.circle.badge.plus"),
                                                 style: .plain,
                                                 target: coordinator,
                                                 action: #selector(Coordinator.showLogin))
-                
-                topViewController?.navigationItem.rightBarButtonItem = loginItem
+                topViewController?.navigationItem.leftBarButtonItem = loginItem
             }
-        case .user:
-            let flagsItem = UIBarButtonItem(image: UIImage(systemName: "list.dash"),
-                                            style: .plain,
-                                            target: self,
-                                            action: #selector(showFlagsPopover(_:)))
-            topViewController?.navigationItem.leftBarButtonItem = flagsItem
-            
+
         case .dismissable:
-            let flagsItem = UIBarButtonItem(image: UIImage(systemName: "xmark"),
+            let dismissItem = UIBarButtonItem(image: UIImage(systemName: "xmark"),
                                             style: .plain,
                                             target: self,
                                             action: #selector(dismissSelf))
-            topViewController?.navigationItem.leftBarButtonItem = flagsItem
+            topViewController?.navigationItem.leftBarButtonItem = dismissItem
         case .search:
             setFlagsBarButtonItem()
         }
@@ -120,20 +116,13 @@ class NavigationController: UINavigationController, UIPopoverPresentationControl
         present(flagsViewController, animated: true)
     }
     
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .none
-    }
     
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
-        guard let rootViewController = self.viewControllers.first else { return }
-        let name = String(describing: rootViewController)
-        NotificationCenter.default.post(name: Notification.Name("flagsChanged+\(name)"),
-                                        object: nil)
+        NotificationCenter.default.post(name: Notification.Name("flagsChanged"), object: nil)
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        .lightContent
-    }
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle { .none }
+    override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
 }
 
 extension NavigationController: Pr0grammConnectorObserver {

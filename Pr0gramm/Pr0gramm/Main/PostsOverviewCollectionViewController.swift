@@ -18,17 +18,17 @@ class PostsOverviewCollectionViewController: UIViewController, Storyboarded, UIC
         collectionView.dataSource = self
         collectionView?.contentInsetAdjustmentBehavior = .always
         updateLayout()
-        
+        updateUI()
+
         refreshControl.addTarget(self,
                                  action: #selector(PostsOverviewCollectionViewController.refresh),
                                  for: .valueChanged)
         collectionView?.refreshControl = refreshControl
         
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(updateUI),
-                                               name: Notification.Name("flagsChanged+\(String(describing: self))"),
+                                               selector: #selector(flagsDidChange),
+                                               name: Notification.Name("flagsChanged"),
                                                object: nil)
-        updateUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -96,6 +96,12 @@ class PostsOverviewCollectionViewController: UIViewController, Storyboarded, UIC
         if indexPath.row == viewModel.items.count - 1 {
             loadItems(more: true)
         }
+    }
+    
+    @objc
+    func flagsDidChange() {
+        refresh()
+        updateUI()
     }
 }
 
