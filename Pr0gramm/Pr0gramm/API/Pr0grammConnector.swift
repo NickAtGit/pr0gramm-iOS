@@ -19,6 +19,7 @@ enum Flags: Int {
     case nsfp = 8
 }
 
+@objc
 enum Sorting: Int {
     case top = 1
     case neu = 0
