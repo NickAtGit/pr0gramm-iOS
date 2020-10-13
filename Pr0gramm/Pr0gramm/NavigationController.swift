@@ -10,6 +10,14 @@ class NavigationController: UINavigationController, UIPopoverPresentationControl
     weak var coordinator: Coordinator?
     private var navigationBannerView = NavigationBannerView(frame: .zero)
     
+    lazy var setFlagsBarButtonItem = {
+        let flagsItem = UIBarButtonItem(image: UIImage(systemName: "list.dash"),
+                                        style: .plain,
+                                        target: self,
+                                        action: #selector(self.showFlagsPopover(_:)))
+        self.topViewController?.navigationItem.rightBarButtonItem = flagsItem
+    }
+
     var style: NavigationControllerStyle? {
         didSet {
             setupBarButtonItems()
@@ -36,17 +44,16 @@ class NavigationController: UINavigationController, UIPopoverPresentationControl
         setupBarButtonItems()
     }
     
+    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+        super.pushViewController(viewController, animated: animated)
+        if viewController is PostsOverviewCollectionViewController {
+            setFlagsBarButtonItem()
+        }
+    }
+    
     private func setupBarButtonItems() {
         
         guard let style = style else { return }
-        
-        let setFlagsBarButtonItem = {
-            let flagsItem = UIBarButtonItem(image: UIImage(systemName: "list.dash"),
-                                            style: .plain,
-                                            target: self,
-                                            action: #selector(self.showFlagsPopover(_:)))
-            self.topViewController?.navigationItem.rightBarButtonItem = flagsItem
-        }
         
         switch style {
         case .dragable:
