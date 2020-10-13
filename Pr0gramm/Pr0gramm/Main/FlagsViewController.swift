@@ -11,18 +11,14 @@ class FlagsViewController: UIViewController, Storyboarded {
     @IBOutlet private var flagStackViews: [UIStackView]!
     
     var currentFlags: [Flags] = []
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         sortingSegmentedControl.selectedSegmentIndex = AppSettings.sorting == Sorting.top.rawValue ? 0 : 1
         sfwSwitch.isOn = AppSettings.sfwActive
         nsfwSwitch.isOn = AppSettings.nsfwActive
         nsflSwitch.isOn = AppSettings.nsflActive
         flagStackViews.forEach { $0.isHidden = !AppSettings.isLoggedIn }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         preferredContentSize = CGSize(width: 200, height: stackView.bounds.height + 40)
     }
     
