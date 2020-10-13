@@ -2,7 +2,7 @@
 import UIKit
 import Bond
 
-class SearchTableViewController: UITableViewController, Storyboarded, UIPopoverPresentationControllerDelegate, FlagsPopoverShowable {
+class SearchTableViewController: UITableViewController, Storyboarded {
     
     var viewModel: SearchViewModel!
     weak var coordinator: Coordinator?
@@ -22,9 +22,13 @@ class SearchTableViewController: UITableViewController, Storyboarded, UIPopoverP
         viewModel.searchText.bind(to: searchController.searchBar.reactive.text)
         navigationItem.searchController = searchController
         definesPresentationContext = true
+
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(flagsChanged),
+                                               name: Notification.Name("flagsChanged+\(String(describing: self))"),
+                                               object: nil)
         
-        title = "Suche"
-        setupFlagsPopover(for: .search)
+        setTitle()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,8 +84,15 @@ class SearchTableViewController: UITableViewController, Storyboarded, UIPopoverP
     private func search(searchString: String) {
         coordinator?.showSearchResult(for: searchString, from: self)
     }
-        
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle { .none }
+    
+    @objc
+    func flagsChanged() {
+        setTitle()
+    }
+    
+    private func setTitle() {
+        title = "Suche (\(Sorting(rawValue: AppSettings.sorting)?.description ?? ""))"
+    }
 }
 
 extension SearchTableViewController: UISearchBarDelegate {

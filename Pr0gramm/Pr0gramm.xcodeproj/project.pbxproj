@@ -70,7 +70,6 @@
 		038F7C9A246E0DEE00D268BA /* Uploads.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038F7C94246E0DEE00D268BA /* Uploads.swift */; };
 		038F7C9B246E0DEE00D268BA /* Badges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038F7C95246E0DEE00D268BA /* Badges.swift */; };
 		038F7C9C246E0DEE00D268BA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038F7C96246E0DEE00D268BA /* User.swift */; };
-		03A8F8FE2531D35100335E99 /* BarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A8F8FD2531D35100335E99 /* BarButtonItem.swift */; };
 		03A93324243BAFBB00A16E1B /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A93323243BAFBB00A16E1B /* Login.swift */; };
 		03A93326243BC82000A16E1B /* AlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A93325243BC82000A16E1B /* AlignedCollectionViewFlowLayout.swift */; };
 		03A93328243CEFE100A16E1B /* HapticFeedbackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A93327243CEFE100A16E1B /* HapticFeedbackButton.swift */; };
@@ -194,7 +193,6 @@
 		038F7C94246E0DEE00D268BA /* Uploads.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Uploads.swift; sourceTree = "<group>"; };
 		038F7C95246E0DEE00D268BA /* Badges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Badges.swift; sourceTree = "<group>"; };
 		038F7C96246E0DEE00D268BA /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		03A8F8FD2531D35100335E99 /* BarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarButtonItem.swift; sourceTree = "<group>"; };
 		03A93323243BAFBB00A16E1B /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		03A93325243BC82000A16E1B /* AlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		03A93327243CEFE100A16E1B /* HapticFeedbackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedbackButton.swift; sourceTree = "<group>"; };
@@ -373,7 +371,6 @@
 				03DB2296246881D9007E6B31 /* SeenBadgeShowable.swift */,
 				03F7604C247147B700E0A542 /* Colors.swift */,
 				03F7604E2471489900E0A542 /* Strings.swift */,
-				03A8F8FD2531D35100335E99 /* BarButtonItem.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -692,7 +689,6 @@
 				033CF1B6205BDBED00627321 /* PostsOverviewCollectionViewController.swift in Sources */,
 				030CAF61244CD75E00D6885C /* SettingsViewController.swift in Sources */,
 				03DB22922466D5A8007E6B31 /* DataModel.xcdatamodeld in Sources */,
-				03A8F8FE2531D35100335E99 /* BarButtonItem.swift in Sources */,
 				033CF1C2205BFF9A00627321 /* Comment.swift in Sources */,
 				032E62FF243F8E9900FA6C00 /* DetailViewModel.swift in Sources */,
 				03C6BDAC246DFB7A005983AB /* UserInfoViewModel.swift in Sources */,

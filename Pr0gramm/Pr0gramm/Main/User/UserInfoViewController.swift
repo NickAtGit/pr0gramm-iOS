@@ -2,7 +2,7 @@
 import UIKit
 import ScrollingContentViewController
 
-class UserInfoViewController: ScrollingContentViewController, Storyboarded, UIPopoverPresentationControllerDelegate, FlagsPopoverShowable {
+class UserInfoViewController: ScrollingContentViewController, Storyboarded {
     
     weak var coordinator: Coordinator?
     var viewModel: UserInfoViewModel!
@@ -37,8 +37,6 @@ class UserInfoViewController: ScrollingContentViewController, Storyboarded, UIPo
             self.userClassLabel.text = Strings.userClass(for: userInfo.user.mark)
             self.collectionsButton.setTitle("Sammlungen (\(userInfo.collections?.count ?? 0))", for: .normal)
         }
-        
-        setupFlagsPopover(for: .user)
     }
     
     @IBAction func showCollectionsButtonTapped(_ sender: Any) {
@@ -52,8 +50,6 @@ class UserInfoViewController: ScrollingContentViewController, Storyboarded, UIPo
         coordinator?.showUserPosts(for: .user(name: viewModel.name),
                                    navigationController: navigationController)
     }
-    
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle { .none }
 }
 
 extension UserInfoViewController: UIContextMenuInteractionDelegate {
