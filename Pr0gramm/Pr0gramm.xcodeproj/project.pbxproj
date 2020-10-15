@@ -123,6 +123,8 @@
 		03E7B50C2471E6560038277A /* MinScoreSliderHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7B50B2471E6560038277A /* MinScoreSliderHeaderView.swift */; };
 		03E7B50E2471E6B70038277A /* MinScoreSliderHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03E7B50D2471E6B70038277A /* MinScoreSliderHeaderView.xib */; };
 		03E7B5102471EC650038277A /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7B50F2471EC650038277A /* SearchViewModel.swift */; };
+		03E83A192538DE2B009CD363 /* AsciiEmojiChooserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E83A182538DE2B009CD363 /* AsciiEmojiChooserTableViewController.swift */; };
+		03E83A1D2538DE60009CD363 /* AsciiEmojiChooserTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03E83A1C2538DE60009CD363 /* AsciiEmojiChooserTableViewController.storyboard */; };
 		03F7604D247147B700E0A542 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F7604C247147B700E0A542 /* Colors.swift */; };
 		03F7604F2471489900E0A542 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F7604E2471489900E0A542 /* Strings.swift */; };
 		03F7605124714DC300E0A542 /* UserClassDotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F7605024714DC300E0A542 /* UserClassDotView.swift */; };
@@ -230,6 +232,8 @@
 		03E7B50B2471E6560038277A /* MinScoreSliderHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinScoreSliderHeaderView.swift; sourceTree = "<group>"; };
 		03E7B50D2471E6B70038277A /* MinScoreSliderHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MinScoreSliderHeaderView.xib; sourceTree = "<group>"; };
 		03E7B50F2471EC650038277A /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		03E83A182538DE2B009CD363 /* AsciiEmojiChooserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsciiEmojiChooserTableViewController.swift; sourceTree = "<group>"; };
+		03E83A1C2538DE60009CD363 /* AsciiEmojiChooserTableViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AsciiEmojiChooserTableViewController.storyboard; sourceTree = "<group>"; };
 		03F7604C247147B700E0A542 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		03F7604E2471489900E0A542 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		03F7605024714DC300E0A542 /* UserClassDotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserClassDotView.swift; sourceTree = "<group>"; };
@@ -350,6 +354,8 @@
 				03D115FC2460BCD90096ECFD /* BadgeLabel.swift */,
 				03D115FE2461F3C00096ECFD /* ReplyViewController.swift */,
 				03D116002461F3CA0096ECFD /* ReplyViewController.storyboard */,
+				03E83A182538DE2B009CD363 /* AsciiEmojiChooserTableViewController.swift */,
+				03E83A1C2538DE60009CD363 /* AsciiEmojiChooserTableViewController.storyboard */,
 				03DB228A246206C5007E6B31 /* SeparatorView.swift */,
 			);
 			path = Comments;
@@ -582,6 +588,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03E7B50E2471E6B70038277A /* MinScoreSliderHeaderView.xib in Resources */,
+				03E83A1D2538DE60009CD363 /* AsciiEmojiChooserTableViewController.storyboard in Resources */,
 				03D116012461F3CA0096ECFD /* ReplyViewController.storyboard in Resources */,
 				0354AAF024311D08009C35E0 /* DownloadedFilesTableViewController.storyboard in Resources */,
 				03076A6E2059E80F00168E62 /* LaunchScreen.storyboard in Resources */,
@@ -742,6 +749,7 @@
 				03D2AC52243264740082D4C9 /* Theme.swift in Sources */,
 				03DB2297246881D9007E6B31 /* SeenBadgeShowable.swift in Sources */,
 				038F7C99246E0DEE00D268BA /* CommentsLikes.swift in Sources */,
+				03E83A192538DE2B009CD363 /* AsciiEmojiChooserTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

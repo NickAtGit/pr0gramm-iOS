@@ -63,6 +63,11 @@ class ReplyViewController: ScrollingContentViewController, Storyboarded {
         viewModel.addComment(comment, parentComment: self.comment)
         dismiss(animated: true)
     }
+    
+    @IBAction func showEmojiChooser(_ sender: Any) {
+        let emojiChooser = AsciiEmojiChooserTableViewController.fromStoryboard()
+        present(emojiChooser, animated: true)
+    }
 }
 
 extension ReplyViewController: UITextViewDelegate {

@@ -80,11 +80,18 @@
                                             <constraint firstAttribute="height" constant="1" id="JlU-JQ-zdj"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6lZ-F4-c23">
+                                        <rect key="frame" x="0.0" y="189" width="71" height="30"/>
+                                        <state key="normal" title="¯\_(ツ)_/¯ "/>
+                                        <connections>
+                                            <action selector="showEmojiChooser:" destination="Sdj-QF-40W" eventType="touchUpInside" id="iUi-bw-kWi"/>
+                                        </connections>
+                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SFi-3S-YZn">
-                                        <rect key="frame" x="0.0" y="189" width="374" height="589"/>
+                                        <rect key="frame" x="0.0" y="249" width="374" height="529"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iTk-OW-Eqe">
-                                                <rect key="frame" x="0.0" y="28" width="374" height="561"/>
+                                                <rect key="frame" x="0.0" y="28" width="374" height="501"/>
                                                 <color key="backgroundColor" name="Richtiges Grau"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="10" id="9eC-rO-ecl"/>
