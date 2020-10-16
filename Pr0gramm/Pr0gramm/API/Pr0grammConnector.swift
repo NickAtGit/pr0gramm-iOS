@@ -161,9 +161,9 @@ class Pr0grammConnector {
                                       "password": password,
                                       "token": token,
                                       "captcha": solvedCaptcha]
-        post(data: data, to: url, postType: .login) { success in
+        post(data: data, to: url, postType: .login) { [unowned self] success in
             print("Login: \(success)")
-            AppSettings.isLoggedIn = success
+            AppSettings.isLoggedIn = success && self.isLoggedIn
             DispatchQueue.main.async {
                 self.observers.forEach { $0.connectorDidUpdate(type: .login(success: success)) }
             }
@@ -174,6 +174,7 @@ class Pr0grammConnector {
         let cookies = HTTPCookieStorage.shared.cookies(for: URL(string: "https://pr0gramm.com/")!)
         cookies?.forEach { HTTPCookieStorage.shared.deleteCookie($0) }
         AppSettings.isLoggedIn = false
+        userName = nil
         observers.forEach { $0.connectorDidUpdate(type: .logout) }
     }
         

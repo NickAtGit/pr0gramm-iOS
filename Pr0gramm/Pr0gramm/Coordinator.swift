@@ -43,6 +43,7 @@ class Coordinator {
         userInfoViewController.coordinator = self
         userInfoViewController.loadViewIfNeeded()
         let profileNavigationController = NavigationController()
+        profileNavigationController.coordinator = self
         profileNavigationController.style = .user
         profileNavigationController.viewControllers = [userInfoViewController]
 
@@ -122,6 +123,7 @@ class Coordinator {
         userInfoViewController.viewModel = UserInfoViewModel(name: name, connector: pr0grammConnector)
         userInfoViewController.coordinator = self
         let profileNavigationController = NavigationController()
+        profileNavigationController.coordinator = self
         profileNavigationController.style = .dismissable
         profileNavigationController.modalPresentationStyle = .fullScreen
         profileNavigationController.viewControllers = [userInfoViewController]

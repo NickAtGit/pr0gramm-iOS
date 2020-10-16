@@ -14,8 +14,8 @@ class BadgesCollectionViewController: UICollectionViewController, Storyboarded {
         layout.itemSize = CGSize(width: 30, height: 30)
         collectionView.collectionViewLayout = layout
         
-        let _ = viewModel.userInfo.observeNext { [unowned self] _ in
-            self.collectionView.reloadData()
+        let _ = viewModel.userInfo.observeNext { [weak self] _ in
+            self?.collectionView.reloadData()
         }
     }
     

@@ -6,7 +6,8 @@ class UserInfoViewController: ScrollingContentViewController, Storyboarded {
     
     weak var coordinator: Coordinator?
     var viewModel: UserInfoViewModel!
-    @IBOutlet private var stackView: UIStackView!
+    @IBOutlet private var notLoggedInStackView: UIStackView!
+    @IBOutlet private var loggedInStackView: UIStackView!
     @IBOutlet private var scoreLabel: UILabel!
     @IBOutlet private var userClassDotView: UserClassDotView!
     @IBOutlet private var userClassLabel: UILabel!
@@ -15,28 +16,51 @@ class UserInfoViewController: ScrollingContentViewController, Storyboarded {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
-        title = viewModel.name
-        tabBarItem = UITabBarItem(title: "Profil",
-                                  image: UIImage(systemName: "person.circle"),
-                                  selectedImage: UIImage(systemName: "person.circle.fill"))
         
+        let _ = viewModel.isLoggedIn.observeNext(with: { [weak self] isLoggedIn in
+            if isLoggedIn {
+                self?.showLoggedIn()
+            } else {
+                self?.showLoggedOut()
+            }
+        })
+                        
         let badgesCollectionViewController = BadgesCollectionViewController.fromStoryboard()
         badgesCollectionViewController.viewModel = viewModel
         addChild(badgesCollectionViewController)
-        stackView.insertArrangedSubview(badgesCollectionViewController.view, at: 1)
+        loggedInStackView.insertArrangedSubview(badgesCollectionViewController.view, at: 1)
         badgesCollectionViewController.didMove(toParent: self)
         
         let interaction = UIContextMenuInteraction(delegate: self)
         scoreLabel.addInteraction(interaction)
         scoreLabel.isUserInteractionEnabled = true
         
-        let _ = viewModel.userInfo.observeNext { [unowned self] userInfo in
+        
+        let _ = viewModel.userInfo.observeNext { [weak self] userInfo in
             guard let userInfo = userInfo else { return }
-            self.scoreLabel.text = "Benis: \(userInfo.user.score)"
-            self.userClassDotView.backgroundColor = Colors.color(for: userInfo.user.mark)
-            self.userClassLabel.text = Strings.userClass(for: userInfo.user.mark)
-            self.collectionsButton.setTitle("Sammlungen (\(userInfo.collections?.count ?? 0))", for: .normal)
+            self?.scoreLabel.text = "Benis: \(userInfo.user.score)"
+            self?.userClassDotView.backgroundColor = Colors.color(for: userInfo.user.mark)
+            self?.userClassLabel.text = Strings.userClass(for: userInfo.user.mark)
+            self?.collectionsButton.setTitle("Sammlungen (\(userInfo.collections?.count ?? 0))", for: .normal)
         }
+                
+        let _ = viewModel.name.observeNext(with: { [weak self] name in
+            self?.title = name
+            self?.tabBarItem = UITabBarItem(title: "Profil",
+                                            image: UIImage(systemName: "person.circle"),
+                                            selectedImage: UIImage(systemName: "person.circle.fill"))
+        })
+
+    }
+    
+    private func showLoggedIn() {
+        loggedInStackView.isHidden = false
+        notLoggedInStackView.isHidden = true
+    }
+    
+    private func showLoggedOut() {
+        loggedInStackView.isHidden = true
+        notLoggedInStackView.isHidden = false
     }
     
     @IBAction func showCollectionsButtonTapped(_ sender: Any) {
@@ -46,8 +70,10 @@ class UserInfoViewController: ScrollingContentViewController, Storyboarded {
     }
     
     @IBAction func showUserUploadsButtonTapped(_ sender: Any) {
-        guard let navigationController = navigationController else { return }
-        coordinator?.showUserPosts(for: .user(name: viewModel.name),
+        guard let navigationController = navigationController,
+              let name = viewModel.name.value else { return }
+        
+        coordinator?.showUserPosts(for: .user(name: name),
                                    navigationController: navigationController)
     }
 }

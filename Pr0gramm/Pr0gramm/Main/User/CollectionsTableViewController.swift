@@ -21,8 +21,12 @@ class CollectionsTableViewController: UITableViewController, Storyboarded {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let keyword = viewModel.userInfo.value?.collections?[indexPath.row].keyword,
             let collectionName = viewModel.userInfo.value?.collections?[indexPath.row].name,
-            let navigationController = navigationController else { return }
-        coordinator?.showUserPosts(for: .collection(user: viewModel.name, name: collectionName, keyword: keyword), navigationController: navigationController)
+            let navigationController = navigationController,
+            let name = viewModel.name.value else { return }
+        coordinator?.showUserPosts(for: .collection(user: name,
+                                                    name: collectionName,
+                                                    keyword: keyword),
+                                   navigationController: navigationController)
     }
     
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
