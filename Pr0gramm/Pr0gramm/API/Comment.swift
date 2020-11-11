@@ -47,6 +47,7 @@ class Comment: Codable, Equatable {
         self.up = 1
         self.content = message
         self.name = name
+        self.created = Int(Date().timeIntervalSince1970)
     }
     
     static func == (lhs: Comment, rhs: Comment) -> Bool {

@@ -83,7 +83,7 @@ class Strings {
         switch mark {
         case 0: return "Schwuchtel"
         case 1: return "Neuschwuchtel"
-        case 2: return "Nltschwuchtel"
+        case 2: return "Altschwuchtel"
         case 3: return "Admin"
         case 4: return "Gesperrt"
         case 5: return "Moderator"
@@ -96,7 +96,7 @@ class Strings {
         case 12: return "Community Helfer"
         case 13: return "Nutzer Bot"
         case 14: return "System Bot"
-        default: return "Fehler"
+        default: return "Unbekannt"
         }
     }
 }
