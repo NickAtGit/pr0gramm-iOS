@@ -139,7 +139,8 @@ class Coordinator {
         self.navigationController.present(navigationController, animated: true)
     }
 
-    func showReply(for comment: Comment, viewModel: DetailViewModel,
+    func showReply(for comment: Comment,
+                   viewModel: DetailViewModel,
                    from presentingViewController: CommentsViewController) {
         let viewController = ReplyViewController.fromStoryboard()
         viewController.viewModel = viewModel
@@ -156,6 +157,18 @@ class Coordinator {
         viewController.viewModel = viewModel
         viewController.coordinator = self
         navigationController.pushViewController(viewController, animated: true)
+    }
+    
+    func showWebViewViewController(for url: URL,
+                                  from presentingViewController: UIViewController) {
+
+        let webViewViewController = WebViewViewController()
+        webViewViewController.loadUrl(url)
+        let navigationController = NavigationController()
+        navigationController.style = .dismissable
+        navigationController.viewControllers = [webViewViewController]
+        
+        presentingViewController.present(navigationController, animated: true)
     }
     
     @objc

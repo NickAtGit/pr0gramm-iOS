@@ -182,6 +182,10 @@ extension CommentsViewController: UITableViewDataSource {
 }
 
 extension CommentsViewController: CommentCellDelegate {
+    func didTapUrl(_ url: URL) {
+        coordinator?.showWebViewViewController(for: url, from: self)
+    }
+    
     func showReply(for comment: Comment) {
         coordinator?.showReply(for: comment, viewModel: viewModel, from: self)
     }

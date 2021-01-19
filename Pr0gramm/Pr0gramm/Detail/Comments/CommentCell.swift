@@ -4,6 +4,7 @@ import UIKit
 protocol CommentCellDelegate: class {
     func showReply(for comment: Comment)
     func showUserProfile(for name: String)
+    func didTapUrl(_ url: URL)
 }
 
 class CommentCell: UITableViewCell, UIContextMenuInteractionDelegate {
@@ -43,6 +44,7 @@ class CommentCell: UITableViewCell, UIContextMenuInteractionDelegate {
         super.awakeFromNib()
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
+        messageTextView.delegate = self
         messageTextView.isScrollEnabled = false
         messageTextView.backgroundColor = .clear
         messageTextView.textContainerInset = .zero
@@ -111,5 +113,16 @@ class CommentCell: UITableViewCell, UIContextMenuInteractionDelegate {
     
     override func prepareForReuse() {
         leadingConstraint.constant = 20
+    }
+}
+
+extension CommentCell: UITextViewDelegate {
+    
+    func textView(_ textView: UITextView,
+                  shouldInteractWith URL: URL,
+                  in characterRange: NSRange,
+                  interaction: UITextItemInteraction) -> Bool {
+        delegate?.didTapUrl(URL)
+        return false
     }
 }
