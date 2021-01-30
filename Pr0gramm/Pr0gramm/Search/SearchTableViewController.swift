@@ -29,6 +29,9 @@ class SearchTableViewController: UITableViewController, Storyboarded {
                                                object: nil)
         
         setTitle()
+        
+        let trashBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteAllSearchTerms))
+        navigationItem.leftBarButtonItem = trashBarButtonItem
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,8 +61,9 @@ class SearchTableViewController: UITableViewController, Storyboarded {
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 
-        let deleteAction = UIContextualAction(style: .destructive, title: "Löschen",
-          handler: { (action, view, completionHandler) in
+        let deleteAction = UIContextualAction(style: .destructive,
+                                              title: "Löschen",
+                                              handler: { (action, view, completionHandler) in
             AppSettings.latestSearchStrings = AppSettings.latestSearchStrings.filter { $0 != AppSettings.latestSearchStrings[indexPath.row] }
             tableView.deleteRows(at: [indexPath], with: .automatic)
         })
@@ -89,8 +93,22 @@ class SearchTableViewController: UITableViewController, Storyboarded {
     func flagsDidChange() {
         setTitle()
     }
-
     
+    @objc
+    func deleteAllSearchTerms() {
+        let alert = UIAlertController(title: "Obacht!",
+                                      message: "Du bist dabei alle gespeicherten Suchbegriffe zu löschen. Möchtest du das?",
+                                      preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "Ja", style: .destructive) { _ in
+            AppSettings.latestSearchStrings = []
+            self.tableView.reloadData()
+        })
+        alert.addAction(UIAlertAction(title: "Nein", style: .cancel))
+
+        present(alert, animated: true)
+    }
+
     private func setTitle() {
         title = "Suche (\(Sorting(rawValue: AppSettings.sorting)?.description ?? ""))"
     }
