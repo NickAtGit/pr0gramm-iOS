@@ -15,6 +15,9 @@ class LoginViewController: ScrollingContentViewController, Storyboarded {
         super.viewDidLoad()
         title = "Login"
         view.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
+        userNameTextField.textColor = #colorLiteral(red: 0.9490196078, green: 0.9607843137, blue: 0.9568627451, alpha: 1)
+        passwordTextField.textColor = #colorLiteral(red: 0.9490196078, green: 0.9607843137, blue: 0.9568627451, alpha: 1)
+        captchaTextField.textColor = #colorLiteral(red: 0.9490196078, green: 0.9607843137, blue: 0.9568627451, alpha: 1)
         contentView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
     }
     
