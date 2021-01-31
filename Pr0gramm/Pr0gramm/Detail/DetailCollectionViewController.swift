@@ -6,7 +6,8 @@ class DetailCollectionViewController: UICollectionViewController, Storyboarded {
     weak var coordinator: Coordinator?
     var isSearch = false
     var viewModel: PostsOverviewViewModel!
-        
+    private var currentIndex: Int { Int(collectionView.contentOffset.x / collectionView.frame.width) }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         edgesForExtendedLayout = []
@@ -31,12 +32,12 @@ class DetailCollectionViewController: UICollectionViewController, Storyboarded {
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(previousItem),
-                                               name: Notification.Name("leftTapped"),
+                                               name: Notification.Name.leftTapped,
                                                object: nil)
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(nextItem),
-                                               name: Notification.Name("rightTapped"),
+                                               name: Notification.Name.rightTapped,
                                                object: nil)
     }
     
@@ -47,25 +48,22 @@ class DetailCollectionViewController: UICollectionViewController, Storyboarded {
                 
     @objc
     func nextItem() {
-        guard let cell = collectionView.visibleCells.first else { return }
-        let indexPath = collectionView.indexPath(for: cell)!
-        guard indexPath.row != viewModel.items.count - 1 else { return }
+        guard let cell = collectionView.visibleCells.first,
+              let indexPath = collectionView.indexPath(for: cell),
+              indexPath.row != viewModel.items.count - 1 else { return }
         let newIndexPath = IndexPath(row: indexPath.row + 1, section: indexPath.section)
         collectionView.scrollToItem(at: newIndexPath, at: .centeredHorizontally, animated: true)
     }
     
     @objc
     func previousItem() {
-        guard let cell = collectionView.visibleCells.first else { return }
-        let indexPath = collectionView.indexPath(for: cell)!
-        guard indexPath.row != 0 else { return }
+        guard let cell = collectionView.visibleCells.first,
+              let indexPath = collectionView.indexPath(for: cell),
+              indexPath.row != 0 else { return }
         let newIndexPath = IndexPath(row: indexPath.row - 1, section: indexPath.section)
         collectionView.scrollToItem(at: newIndexPath, at: .centeredHorizontally, animated: true)
     }
     
-    private func getCurrentIndex() -> Int {
-        return Int(collectionView.contentOffset.x / collectionView.frame.width)
-    }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.items.count
@@ -109,7 +107,7 @@ class DetailCollectionViewController: UICollectionViewController, Storyboarded {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let cell = cell as! DetailCollectionViewCell
+        guard let cell = cell as? DetailCollectionViewCell else { return }
         cell.detailViewController.stop()
     }
 }

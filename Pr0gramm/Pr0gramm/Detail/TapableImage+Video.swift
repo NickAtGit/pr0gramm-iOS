@@ -2,6 +2,12 @@
 import UIKit
 import AVKit
  
+extension Notification.Name {
+    static let leftTapped = Notification.Name(rawValue: "leftTapped")
+    static let rightTapped = Notification.Name(rawValue: "rightTapped")
+    static let doubleTapped = Notification.Name(rawValue: "doubleTapped")
+}
+
 class TapableImageView: UIImageView, SeenBadgeShowable {
     var badgeView: UIView?
     private let nc = NotificationCenter.default
@@ -15,10 +21,10 @@ class TapableImageView: UIImageView, SeenBadgeShowable {
         let touchAreaWidth: CGFloat = 80
 
         if location.x <= touchAreaWidth {
-            nc.post(name: Notification.Name("leftTapped"), object: nil)
+            nc.post(name: Notification.Name.leftTapped, object: nil)
             feedback.selectionChanged()
         } else if location.x >= (frame.size.width - touchAreaWidth) {
-            nc.post(name: Notification.Name("rightTapped"), object: nil)
+            nc.post(name: Notification.Name.rightTapped, object: nil)
             feedback.selectionChanged()
         }
     }
@@ -32,15 +38,15 @@ class TapableAVPlayerViewController: AVPlayerViewController, SeenBadgeShowable {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         guard let location = touches.first?.location(in: view),
-            AppSettings.isUseLeftRightQuickTap else { return }
+              AppSettings.isUseLeftRightQuickTap else { return }
 
         let touchAreaWidth: CGFloat = 80
 
         if location.x <= touchAreaWidth {
-            nc.post(name: Notification.Name("leftTapped"), object: nil)
+            nc.post(name: Notification.Name.leftTapped, object: nil)
             feedback.selectionChanged()
         } else if location.x >= (view.frame.size.width - touchAreaWidth) {
-            nc.post(name: Notification.Name("rightTapped"), object: nil)
+            nc.post(name: Notification.Name.rightTapped, object: nil)
             feedback.selectionChanged()
         }
     }

@@ -67,7 +67,10 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
         }
         
         let _ = viewModel.isCommentsButtonHidden.observeCompleted { [weak self] in
-            DispatchQueue.main.async { self?.addComments() }
+            DispatchQueue.main.async {
+                self?.addComments()
+                self?.view.layoutSubviews()
+            }
         }
     }
     
