@@ -19,11 +19,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = coordinator.startViewController()
         window?.makeKeyAndVisible()
         Theming.applySelectedPersistedTheme()
-
-        //Play audio when ringer switch is silent
-        try? AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+        setupAudioSession()
 
         return true
+    }
+    
+    private func setupAudioSession() {
+        try? AVAudioSession.sharedInstance().setCategory(.playback, options: [.mixWithOthers])
+        try? AVAudioSession.sharedInstance().setActive(true)
     }
     
     lazy var persistentContainer: NSPersistentContainer = {
