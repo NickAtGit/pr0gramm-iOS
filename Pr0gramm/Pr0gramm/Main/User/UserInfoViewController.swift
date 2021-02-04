@@ -76,6 +76,11 @@ class UserInfoViewController: ScrollingContentViewController, Storyboarded {
         coordinator?.showUserPosts(for: .user(name: name),
                                    navigationController: navigationController)
     }
+    
+    @IBAction func showMessages() {
+        let url = URL(string: "https://pr0gramm.com/inbox/messages")!
+        coordinator?.showWebViewViewController(for: url, from: self)
+    }
 }
 
 extension UserInfoViewController: UIContextMenuInteractionDelegate {

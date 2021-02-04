@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dep-Lf-aPW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dep-Lf-aPW">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="QBy-ga-Jlg">
-                                <rect key="frame" x="20" y="64" width="374" height="241.5"/>
+                                <rect key="frame" x="20" y="64" width="374" height="286.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ubj-Mf-TfE">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
@@ -39,7 +39,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="iyA-ba-xr5">
-                                        <rect key="frame" x="0.0" y="60.5" width="374" height="181"/>
+                                        <rect key="frame" x="0.0" y="60.5" width="374" height="226"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="yZj-ba-EHl">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="66"/>
@@ -73,7 +73,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="2Zc-m6-ngQ">
-                                                <rect key="frame" x="0.0" y="106" width="374" height="75"/>
+                                                <rect key="frame" x="0.0" y="106" width="374" height="120"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKb-25-8d8">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
@@ -87,6 +87,13 @@
                                                         <state key="normal" title="Hochlads"/>
                                                         <connections>
                                                             <action selector="showUserUploadsButtonTapped:" destination="dep-Lf-aPW" eventType="touchUpInside" id="1e3-N1-M6o"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U2K-jO-oM0">
+                                                        <rect key="frame" x="0.0" y="90" width="374" height="30"/>
+                                                        <state key="normal" title="Nachrichten"/>
+                                                        <connections>
+                                                            <action selector="showMessages" destination="dep-Lf-aPW" eventType="touchUpInside" id="vws-pi-tSq"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -120,7 +127,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.turn.left.up" catalog="system" width="32" height="32"/>
+        <image name="arrow.turn.left.up" catalog="system" width="120" height="128"/>
         <namedColor name="Richtiges Grau">
             <color red="0.086274509803921567" green="0.086274509803921567" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

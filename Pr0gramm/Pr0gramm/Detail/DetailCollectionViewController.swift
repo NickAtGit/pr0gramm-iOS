@@ -20,6 +20,7 @@ class DetailCollectionViewController: UICollectionViewController, Storyboarded {
         layout.minimumLineSpacing = 25
         layout.scrollDirection = .horizontal
         collectionView.collectionViewLayout = layout
+        collectionView.decelerationRate = .fast
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -65,11 +66,13 @@ class DetailCollectionViewController: UICollectionViewController, Storyboarded {
     }
     
 
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.items.count
+    override func collectionView(_ collectionView: UICollectionView,
+                                 numberOfItemsInSection section: Int) -> Int {
+        viewModel.items.count
     }
 
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView,
+                                 cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailLargeCell", for: indexPath) as! DetailCollectionViewCell
         
         guard let connector = coordinator?.pr0grammConnector else { return cell }
@@ -87,7 +90,9 @@ class DetailCollectionViewController: UICollectionViewController, Storyboarded {
         }
     }
     
-    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    override func collectionView(_ collectionView: UICollectionView,
+                                 willDisplay cell: UICollectionViewCell,
+                                 forItemAt indexPath: IndexPath) {
         let cell = cell as! DetailCollectionViewCell
         cell.detailViewController.play()
         
@@ -106,7 +111,9 @@ class DetailCollectionViewController: UICollectionViewController, Storyboarded {
         }
     }
     
-    override func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    override func collectionView(_ collectionView: UICollectionView,
+                                 didEndDisplaying cell: UICollectionViewCell,
+                                 forItemAt indexPath: IndexPath) {
         guard let cell = cell as? DetailCollectionViewCell else { return }
         cell.detailViewController.stop()
     }
