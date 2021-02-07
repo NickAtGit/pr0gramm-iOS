@@ -233,11 +233,11 @@ extension DetailViewController: UIContextMenuInteractionDelegate {
             self.coordinator?.showShareSheet(with: [self.viewModel.shareLink])
         }
         
-        let safariAction = UIAction(title: "In Safari öffnen", image: UIImage(systemName: "safari")) { [unowned self] _ in
+        let browserAction = UIAction(title: "Im Browser öffnen", image: UIImage(systemName: "safari")) { [unowned self] _ in
             UIApplication.shared.open(self.viewModel.shareLink)
         }
 
-        return UIMenu(title: "", children: [downloadAction, fullscreenAction, saveToCameraRollAction, shareAction, safariAction])
+        return UIMenu(title: "", children: [downloadAction, fullscreenAction, saveToCameraRollAction, shareAction, browserAction])
     }
 }
 
