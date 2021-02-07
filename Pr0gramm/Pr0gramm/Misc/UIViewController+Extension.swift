@@ -2,13 +2,7 @@
 import UIKit
 
 extension UIViewController {
-    
-    #if os(iOS)
-    var navigation: NavigationController? {
-        return UIApplication.shared.windows.first?.topVisibleViewController?.navigationController as? NavigationController
-    }
-    #endif
-    
+        
     func embed(_ viewController: UIViewController) {
         viewController.willMove(toParent: self)
         viewController.view.frame = view.bounds

@@ -24,7 +24,8 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
     private var commentsAreShown = false
     private lazy var contextMenuInteraction = UIContextMenuInteraction(delegate: self)
     private var commentsViewController: CommentsViewController?
-
+    private var navigation: NavigationController? { navigationController as? NavigationController }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.showsVerticalScrollIndicator = false
