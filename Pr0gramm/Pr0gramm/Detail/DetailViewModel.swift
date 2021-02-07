@@ -15,12 +15,8 @@ class DetailViewModel {
     let isCommentsButtonHidden = Observable<Bool>(true)
     let currentVote = Observable<Vote>(.neutral)
     var isSeen: Bool {
-        get {
-            ActionsManager.shared.retrieveAction(for: item.value.id)?.seen ?? false
-        }
-        set {
-            ActionsManager.shared.saveAction(for: item.value.id, seen: newValue)
-        }
+        get { ActionsManager.shared.retrieveAction(for: item.value.id)?.seen ?? false }
+        set { ActionsManager.shared.saveAction(for: item.value.id, seen: newValue) }
     }
     let initialPointCount: Int
     let comments = Observable<[Comment]?>(nil)
@@ -29,7 +25,8 @@ class DetailViewModel {
     let postTime = Observable<String?>(nil)
     lazy var upvotes = item.value.up
     lazy var downvotes = item.value.down
-    
+    lazy var shouldShowPoints = item.value.date < Date(timeIntervalSinceNow: -3600)
+
     var shareLink: URL {
         URL(string: "https://pr0gramm.com/\(item.value.promoted == 0 ? "new" : "top")/\(item.value.id)")!
     }
@@ -40,21 +37,23 @@ class DetailViewModel {
         self.connector = connector
         let points = item.up - item.down
         self.initialPointCount = points
-        self.points.value = "\(points)"
         self.userName.value = item.user
         let link = connector.link(for: item)
         self.link = link.link
         self.mediaType = link.mediaType
         self.postTime.value = Strings.timeString(for: item.date)
-                
+        let pointsString = shouldShowPoints ? "\(points)" : "•••"
+        self.points.value = pointsString
+
         connector.loadItemInfo(for: item.id) { [weak self] itemInfo in
-            guard let itemInfo = itemInfo else { return }
-            self?.itemInfo.value = itemInfo
+            guard let itemInfo = itemInfo,
+                  let self = self else { return }
+            self.itemInfo.value = itemInfo
             let hasComments = itemInfo.comments.count != 0
-            self?.isCommentsButtonHidden.value = !hasComments
+            self.isCommentsButtonHidden.value = !hasComments
             guard hasComments else { return }
-            self?.sortComments(itemInfo.comments)
-            self?.isCommentsButtonHidden.send(completion: .finished)
+            self.sortComments(itemInfo.comments)
+            self.isCommentsButtonHidden.send(completion: .finished)
         }
     }
     

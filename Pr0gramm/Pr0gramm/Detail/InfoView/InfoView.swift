@@ -139,8 +139,10 @@ extension InfoView: UIContextMenuInteractionDelegate {
         let downvoteAction = UIAction(title: "Minus", image: UIImage(systemName: "minus.circle")) { [unowned self] _ in
             self.viewModel.vote(.down)
         }
-                
-        return UIMenu(title: "↑: \(viewModel.upvotes)\n↓: \(viewModel.downvotes)",
+        
+        let title = viewModel.shouldShowPoints ? "↑: \(viewModel.upvotes)\n↓: \(viewModel.downvotes)" : "Versteckt"
+        
+        return UIMenu(title: title,
                       children: [upvoteAction, favoriteAction, downvoteAction])
     }
 }
