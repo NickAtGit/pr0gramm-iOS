@@ -71,6 +71,45 @@ enum Vote: Int {
     case favorite = 2
 }
 
+enum Pr0grammURL {
+    static let base: URLComponents = {
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "pr0gramm.com"
+        return components
+    }()
+    
+    case login
+    case captcha
+    case postComment
+    case profileInfo
+    case itemsGet
+    case itemsInfo
+    
+    var components: URLComponents {
+        var compontents = Pr0grammURL.base
+        
+        switch self {
+        case .login:
+            compontents.path = "/api/user/login"
+        case .captcha:
+            compontents.path = "/api/user/captcha"
+        case .postComment:
+            compontents.path = "/api/comments/post"
+        case .profileInfo:
+            compontents.path = "/api/profile/info"
+        case .itemsGet:
+            compontents.path = "/api/items/get"
+        case .itemsInfo:
+            compontents.path = "/api/items/info"
+        }
+        
+        return compontents
+    }
+    
+    var url: URL { components.url! }
+}
+
 class Pr0grammConnector {
 
     var observers: [Pr0grammConnectorObserver] = []
@@ -80,34 +119,30 @@ class Pr0grammConnector {
     let img = "img."
     let vid = "vid."
     let baseURL = "pr0gramm.com/"
-    let top = "api/items/get?flags=3&promoted=0"
-    let itemInfo = "api/items/info?itemId="
     var captchaResponse: LoginCaptcha?
     var nonce: String?
     var userName: String?
         
     var isLoggedIn: Bool {
-        guard let cookies = HTTPCookieStorage.shared.cookies(for: URL(string: "https://pr0gramm.com/")!) else { return false }
+        guard let url = Pr0grammURL.base.url,
+              let cookies = HTTPCookieStorage.shared.cookies(for: url),
+              let cookie = cookies.first(where: { $0.name == "me" }),
+              let value = cookie.value.removingPercentEncoding?.data(using: .utf8),
+              let json = try? JSONSerialization.jsonObject(with: value, options: .mutableContainers) as? [String: Any],
+              let id = json["id"] as? String,
+              let userName = json["n"] as? String else {
             
-        for cookie in cookies {
-            if cookie.name == "me" {
-                print("Cookie found. User is logged in.")
-                
-                let value = cookie.value.removingPercentEncoding?.data(using: .utf8)!
-                
-                if let json = try? JSONSerialization.jsonObject(with: value!, options: .mutableContainers) as? [String: Any] {
-                    if let id = json["id"] as? String {
-                        nonce = String(id.prefix(16))
-                    }
-                    if let userName = json["n"] as? String {
-                        self.userName = userName
-                    }
-                }
-
-                return true
-            }
+            print("🍪❌ Cookie not found")
+            return false
         }
-        return false
+        let nonce = String(id.prefix(16))
+        self.nonce = nonce
+        self.userName = userName
+        print("🍪✅ Cookie found. User is logged in.")
+        print("🍪✅ Nonce: \(nonce)")
+        print("🍪✅ UserName: \(userName)")
+
+        return true
     }
     
     init() {
@@ -129,7 +164,7 @@ class Pr0grammConnector {
     }
     
     func getCaptcha() {
-        let url = URL(string:"https://pr0gramm.com/api/user/captcha")!
+        let url = Pr0grammURL.captcha.url
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -155,12 +190,12 @@ class Pr0grammConnector {
                password: String,
                solvedCaptcha: String) {
         
-        let url = URL(string: http + baseURL + "api/user/login")!
         guard let token = captchaResponse?.token else { return }
         let data: [String: String] = ["name": userName,
                                       "password": password,
                                       "token": token,
                                       "captcha": solvedCaptcha]
+        let url = Pr0grammURL.login.url
         post(data: data, to: url, postType: .login) { [unowned self] success in
             print("Login: \(success)")
             AppSettings.isLoggedIn = success && self.isLoggedIn
@@ -171,7 +206,7 @@ class Pr0grammConnector {
     }
     
     func logout() {
-        let cookies = HTTPCookieStorage.shared.cookies(for: URL(string: "https://pr0gramm.com/")!)
+        let cookies = HTTPCookieStorage.shared.cookies(for: Pr0grammURL.base.url!)
         cookies?.forEach { HTTPCookieStorage.shared.deleteCookie($0) }
         AppSettings.isLoggedIn = false
         userName = nil
@@ -199,12 +234,7 @@ class Pr0grammConnector {
                                       "comment": "\(comment)",
                                       "_nonce": nonce]
         
-        var components = URLComponents()
-        components.scheme = "https"
-        components.host = "pr0gramm.com"
-        components.path = "/api/comments/post"
-        guard let url = components.url else { return }
-
+        let url = Pr0grammURL.postComment.url
         post(data: data, to: url, postType: .voteItem) { success in
             print("Posted comment: \(success)")
         }
@@ -239,10 +269,7 @@ class Pr0grammConnector {
     }
     
     func fetchUserInfo(for name: String, completion: @escaping (UserInfo?) -> Void) {
-        var components = URLComponents()
-        components.scheme = "https"
-        components.host = "pr0gramm.com"
-        components.path = "/api/profile/info"
+        var components = Pr0grammURL.profileInfo.components
         components.queryItems = [
             URLQueryItem(name: "name", value: "\(name)")
         ]
@@ -321,10 +348,7 @@ class Pr0grammConnector {
         
         let flagsCombined = flags.reduce(0, { $0 + $1.rawValue })
         
-        var components = URLComponents()
-        components.scheme = "https"
-        components.host = "pr0gramm.com"
-        components.path = "/api/items/get"
+        var components = Pr0grammURL.itemsGet.components
         components.queryItems = [
             URLQueryItem(name: "flags", value: "\(flagsCombined)"),
             URLQueryItem(name: "promoted", value: "\(sorting.rawValue)")
@@ -367,8 +391,11 @@ class Pr0grammConnector {
     }
 
     func loadItemInfo(for id: Int, completion: @escaping (ItemInfo?) -> Void) {
-        let url = URL(string: http + baseURL + itemInfo + "\(id)")
-        let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
+        var compontents = Pr0grammURL.itemsInfo.components
+        compontents.queryItems = [ URLQueryItem(name: "itemId", value: "\(id)")]
+        let url = compontents.url!
+        
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data else { return }
             let jsonDecoder = JSONDecoder()
             do {

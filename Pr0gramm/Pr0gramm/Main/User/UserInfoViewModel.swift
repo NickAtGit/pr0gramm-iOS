@@ -13,7 +13,7 @@ class UserInfoViewModel: Pr0grammConnectorObserver {
         self.name.value = name ?? connector.userName
         self.connector = connector
         self.connector.addObserver(self)
-        isLoggedIn.value = connector.isLoggedIn
+        isLoggedIn.value = AppSettings.isLoggedIn
         loadUserInfo()
     }
     
