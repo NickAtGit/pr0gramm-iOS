@@ -20,8 +20,6 @@ class DetailViewModel {
     }
     let initialPointCount: Int
     let comments = Observable<[Comment]?>(nil)
-    let link: String
-    let mediaType: MediaType
     let postTime = Observable<String?>(nil)
     lazy var upvotes = item.value.up
     lazy var downvotes = item.value.down
@@ -38,9 +36,6 @@ class DetailViewModel {
         let points = item.up - item.down
         self.initialPointCount = points
         self.userName.value = item.user
-        let link = connector.link(for: item)
-        self.link = link.link
-        self.mediaType = link.mediaType
         self.postTime.value = Strings.timeString(for: item.date)
         let pointsString = shouldShowPoints ? "\(points)" : "•••"
         self.points.value = pointsString

@@ -93,6 +93,8 @@
 		03C1FA242427854600E6AEE4 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C1FA232427854600E6AEE4 /* NavigationController.swift */; };
 		03C1FA2B2427D27600E6AEE4 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C1FA2A2427D27600E6AEE4 /* UIViewController+Extension.swift */; };
 		03C6BDAC246DFB7A005983AB /* UserInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C6BDAB246DFB7A005983AB /* UserInfoViewModel.swift */; };
+		03CE35C925D35E4200BF4357 /* Pr0grammURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE35C825D35E4200BF4357 /* Pr0grammURL.swift */; };
+		03CE35D425D35E8300BF4357 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE35D325D35E8300BF4357 /* String+Extension.swift */; };
 		03D115FD2460BCD90096ECFD /* BadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D115FC2460BCD90096ECFD /* BadgeLabel.swift */; };
 		03D115FF2461F3C00096ECFD /* ReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D115FE2461F3C00096ECFD /* ReplyViewController.swift */; };
 		03D116012461F3CA0096ECFD /* ReplyViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03D116002461F3CA0096ECFD /* ReplyViewController.storyboard */; };
@@ -208,6 +210,8 @@
 		03C1FA232427854600E6AEE4 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		03C1FA2A2427D27600E6AEE4 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		03C6BDAB246DFB7A005983AB /* UserInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewModel.swift; sourceTree = "<group>"; };
+		03CE35C825D35E4200BF4357 /* Pr0grammURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pr0grammURL.swift; sourceTree = "<group>"; };
+		03CE35D325D35E8300BF4357 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		03D115FC2460BCD90096ECFD /* BadgeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeLabel.swift; sourceTree = "<group>"; };
 		03D115FE2461F3C00096ECFD /* ReplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyViewController.swift; sourceTree = "<group>"; };
 		03D116002461F3CA0096ECFD /* ReplyViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReplyViewController.storyboard; sourceTree = "<group>"; };
@@ -379,6 +383,7 @@
 				03DB2296246881D9007E6B31 /* SeenBadgeShowable.swift */,
 				03F7604C247147B700E0A542 /* Colors.swift */,
 				03F7604E2471489900E0A542 /* Strings.swift */,
+				03CE35D325D35E8300BF4357 /* String+Extension.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -440,6 +445,7 @@
 			isa = PBXGroup;
 			children = (
 				033CF1B7205BDC6B00627321 /* Pr0grammConnector.swift */,
+				03CE35C825D35E4200BF4357 /* Pr0grammURL.swift */,
 				035EBA782426261C009185E9 /* Captcha.swift */,
 				03076A762059E8B800168E62 /* AllItems.swift */,
 				03076A752059E8B800168E62 /* Item.swift */,
@@ -697,6 +703,7 @@
 				0388A0B524293BE0006E86A3 /* TapableImage+Video.swift in Sources */,
 				038F7C9C246E0DEE00D268BA /* User.swift in Sources */,
 				03B062942428EC3600CA657A /* TagCollectionViewCell.swift in Sources */,
+				03CE35C925D35E4200BF4357 /* Pr0grammURL.swift in Sources */,
 				033CF1B6205BDBED00627321 /* PostsOverviewCollectionViewController.swift in Sources */,
 				030CAF61244CD75E00D6885C /* SettingsViewController.swift in Sources */,
 				03DB22922466D5A8007E6B31 /* DataModel.xcdatamodeld in Sources */,
@@ -747,6 +754,7 @@
 				03D7F1A324831A610014190B /* BadgesCollectionViewController.swift in Sources */,
 				038F7C9B246E0DEE00D268BA /* Badges.swift in Sources */,
 				0354AAF524312E52009C35E0 /* ImageDetailViewController.swift in Sources */,
+				03CE35D425D35E8300BF4357 /* String+Extension.swift in Sources */,
 				033CF1C3205BFF9A00627321 /* Tags.swift in Sources */,
 				033CF1BC205BE5AC00627321 /* DetailViewController.swift in Sources */,
 				03460AD7244F9ABE007F16DB /* SearchTableViewController.swift in Sources */,

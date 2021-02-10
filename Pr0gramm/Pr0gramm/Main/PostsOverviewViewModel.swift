@@ -62,10 +62,6 @@ class PostsOverviewViewModel: PostsLoadable {
             return nil
         }
     }
-    
-    func thumbLink(for item: Item) -> String {
-        return connector.thumbLink(for: item)
-    }
 }
 
 

@@ -105,11 +105,11 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
             self?.coordinator?.showUserProfile(for: name, viewController: navigationController)
         }
         
-        switch viewModel.mediaType {
+        switch item.mediaType {
         case .image:
-            setupImage()
+            setupImage(for: item)
         case .gif:
-            setupGif()
+            setupGif(for: item)
         case .video:
             setupVideo(for: item)
         }
@@ -121,15 +121,15 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
         NotificationCenter.default.removeObserver(self)
     }
     
-    private func setupImage() {
-        imageView.downloadedFrom(link: viewModel.link)
+    private func setupImage(for item: Item) {
+        imageView.downloadedFrom(url: item.mediaURL)
         imageView.addInteraction(contextMenuInteraction)
     }
     
-    private func setupGif() {
+    private func setupGif(for item: Item) {
         DispatchQueue.global().async { [weak self] in
             guard let self = self else { return }
-            let gif = UIImage.gif(url: self.viewModel.link)
+            let gif = UIImage.gif(url: item.mediaURL)
             DispatchQueue.main.async {
                 self.imageView.image = gif
             }
@@ -155,8 +155,7 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
         stackView.removeArrangedSubview(imageView)
         stackView.insertArrangedSubview(avPlayerViewController.view, at: 0)
         avPlayerViewController.didMove(toParent: self)
-        let url = URL(string: viewModel.link)
-        let playerItem = AVPlayerItem(url: url!)
+        let playerItem = AVPlayerItem(url: item.mediaURL)
         avPlayer.replaceCurrentItem(with: playerItem)
         self.avPlayer = avPlayer
         self.avPlayerViewController = avPlayerViewController
@@ -247,7 +246,7 @@ extension DetailViewController: UIContextMenuInteractionDelegate {
 extension DetailViewController {
     
     func download(directory: FileManager.SearchPathDirectory) {
-        guard let connector = coordinator?.pr0grammConnector, let itemInfo = viewModel.itemInfo.value else { return }
+        guard let itemInfo = viewModel.itemInfo.value else { return }
         let item = viewModel.item.value
         let firstFourTags = itemInfo.tags.sorted { $0.confidence > $1.confidence }
             .prefix(4)
@@ -255,9 +254,8 @@ extension DetailViewController {
             .dropLast()
             .replacingOccurrences(of: "/", with: "-")
         let fileName = String(firstFourTags)
-        let link = connector.link(for: item)
         let downloader = Downloader()
-        let url = URL(string: link.link)!
+        let url = item.mediaURL
         downloader.loadFileAsync(url: url, fileName: fileName, directory: directory) { [weak self] successfully, toPath  in
             if directory == .cachesDirectory {
                 guard let path = toPath else { return }

@@ -78,7 +78,7 @@ class PostsOverviewCollectionViewController: UIViewController, Storyboarded, UIC
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ThumbCollectionViewCell
         let item = viewModel.items[indexPath.row]
-        cell.imageView.downloadedFrom(link: viewModel.thumbLink(for: item))
+        cell.imageView.downloadedFrom(url: item.thumbURL)
         
         let isSeen = ActionsManager.shared.retrieveAction(for: item.id)?.seen ?? false
         if isSeen {

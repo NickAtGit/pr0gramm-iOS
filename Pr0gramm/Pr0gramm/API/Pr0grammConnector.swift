@@ -71,44 +71,6 @@ enum Vote: Int {
     case favorite = 2
 }
 
-enum Pr0grammURL {
-    static let base: URLComponents = {
-        var components = URLComponents()
-        components.scheme = "https"
-        components.host = "pr0gramm.com"
-        return components
-    }()
-    
-    case login
-    case captcha
-    case postComment
-    case profileInfo
-    case itemsGet
-    case itemsInfo
-    
-    var components: URLComponents {
-        var compontents = Pr0grammURL.base
-        
-        switch self {
-        case .login:
-            compontents.path = "/api/user/login"
-        case .captcha:
-            compontents.path = "/api/user/captcha"
-        case .postComment:
-            compontents.path = "/api/comments/post"
-        case .profileInfo:
-            compontents.path = "/api/profile/info"
-        case .itemsGet:
-            compontents.path = "/api/items/get"
-        case .itemsInfo:
-            compontents.path = "/api/items/info"
-        }
-        
-        return compontents
-    }
-    
-    var url: URL { components.url! }
-}
 
 class Pr0grammConnector {
 
@@ -374,21 +336,6 @@ class Pr0grammConnector {
         }
         task.resume()
     }
-            
-    func thumbLink(for item: Item) -> String {
-        let link = http + thumb + baseURL + item.thumb
-        return link
-    }
-    
-    func link(for item: Item) -> (link: String, mediaType: MediaType) {
-        if item.image.hasSuffix(".mp4") {
-            return (http + vid + baseURL + item.image, .video)
-        } else if item.image.hasSuffix(".gif") {
-            return (http + img + baseURL + item.image, .gif)
-        } else {
-            return (http + img + baseURL + item.image, .image)
-        }
-    }
 
     func loadItemInfo(for id: Int, completion: @escaping (ItemInfo?) -> Void) {
         var compontents = Pr0grammURL.itemsInfo.components
@@ -415,31 +362,6 @@ class Pr0grammConnector {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.httpMethod = "GET"
         return request
-    }
-}
-
-
-extension String {
-    static let formUrlencodedAllowedCharacters =
-        CharacterSet(charactersIn: "0123456789" +
-            "abcdefghijklmnopqrstuvwxyz" +
-            "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
-            "-._* ")
-
-    public func formUrlencoded() -> String {
-        let encoded = addingPercentEncoding(withAllowedCharacters: String.formUrlencodedAllowedCharacters)
-        return encoded?.replacingOccurrences(of: " ", with: "+") ?? ""
-    }
-}
-
-extension String {
-    func base64ToImage() -> UIImage? {
-        if let url = URL(string: self),
-            let data = try? Data(contentsOf: url),
-            let image = UIImage(data: data) {
-            return image
-        }
-        return nil
     }
 }
 

@@ -57,6 +57,30 @@ struct Item: Codable {
 		user = try values.decode(String.self, forKey: .user)
 		mark = try values.decode(Int.self, forKey: .mark)
 	}
+    
+    var mediaType: MediaType {
+        if image.hasSuffix(".mp4") { return .video }
+        else if image.hasSuffix(".gif") { return .gif }
+        else { return .image }
+    }
+    
+    var thumbURL: URL {
+        var components = Pr0grammURL.thumb
+        components.path = "/" + thumb
+        return components.url!
+    }
+    
+    var mediaURL: URL {
+        var components: URLComponents
+        switch mediaType {
+        case .image, .gif:
+            components = Pr0grammURL.img
+        case .video:
+            components = Pr0grammURL.vid
+        }
+        components.path = "/" + image
+        return components.url!
+    }
 }
 
 extension Item {
