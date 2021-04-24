@@ -45,6 +45,7 @@ enum PostType {
     case voteComment
     case voteItem
     case voteTag
+    case addTags
     
     var path: String {
         switch self {
@@ -56,6 +57,8 @@ enum PostType {
            return "items"
         case .voteTag:
            return "tags"
+        case .addTags:
+            return ""
         }
     }
 }
@@ -219,7 +222,7 @@ class Pr0grammConnector {
                 case .login:
                     let responseModel = try jsonDecoder.decode(Login.self, from: data)
                     completion(responseModel.success ?? false)
-                case .voteTag, .voteItem, .voteComment:
+                case .voteTag, .voteItem, .voteComment, .addTags:
                     completion(true)
                 }
             } catch {
@@ -354,6 +357,19 @@ class Pr0grammConnector {
             }
         }
         task.resume()
+    }
+    
+    func addTags(_ tags: String, for itemId: Int) {
+        guard isLoggedIn else { return }
+        guard let nonce = nonce else { return }
+        let data: [String: String] = ["tags": "\(tags)",
+                                      "itemId": "\(itemId)",
+                                      "_nonce": nonce]
+
+        let url = Pr0grammURL.addTags.url
+        post(data: data, to: url, postType: .addTags) { success in
+            print("Posted tags: \(success)")
+        }
     }
     
     private func getRequest(with url: URL) -> URLRequest {

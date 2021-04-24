@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,10 +24,19 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="FiG-1h-MxZ">
-                    <rect key="frame" x="167" y="5.5" width="227" height="25.5"/>
+                    <rect key="frame" x="128" y="5.5" width="266" height="25.5"/>
                     <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pUS-OI-zlq" customClass="HapticFeedbackButton" customModule="pr0gramm" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="24.5" height="25.5"/>
+                            <state key="normal" image="plus.magnifyingglass" catalog="system">
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="thin"/>
+                            </state>
+                            <connections>
+                                <action selector="addTagsTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="wex-0E-jOE"/>
+                            </connections>
+                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S43-mO-YX6" customClass="HapticFeedbackButton" customModule="pr0gramm" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="27.5" height="25.5"/>
+                            <rect key="frame" x="39.5" y="0.0" width="27" height="25.5"/>
                             <state key="normal" image="tag" catalog="system">
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="thin"/>
                             </state>
@@ -34,7 +45,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3dJ-S0-pff" customClass="HapticFeedbackButton" customModule="pr0gramm" customModuleProvider="target">
-                            <rect key="frame" x="42.5" y="0.0" width="27" height="25.5"/>
+                            <rect key="frame" x="81.5" y="0.0" width="27" height="25.5"/>
                             <state key="normal" image="text.bubble" catalog="system">
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="thin"/>
                             </state>
@@ -43,7 +54,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xS2-nU-xbM" customClass="HapticFeedbackButton" customModule="pr0gramm" customModuleProvider="target">
-                            <rect key="frame" x="84.5" y="0.0" width="25" height="25.5"/>
+                            <rect key="frame" x="123.5" y="0.0" width="25" height="25.5"/>
                             <state key="normal" image="arrowshape.turn.up.left" catalog="system">
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="thin"/>
                             </state>
@@ -52,7 +63,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nlf-jk-WA2" customClass="HapticFeedbackButton" customModule="pr0gramm" customModuleProvider="target">
-                            <rect key="frame" x="124.5" y="0.0" width="24" height="25.5"/>
+                            <rect key="frame" x="163.5" y="0.0" width="24" height="25.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <state key="normal" image="plus.circle" catalog="system">
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="thin"/>
@@ -62,7 +73,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4p2-8H-bwM" customClass="HapticFeedbackButton" customModule="pr0gramm" customModuleProvider="target">
-                            <rect key="frame" x="163.5" y="0.0" width="24.5" height="25.5"/>
+                            <rect key="frame" x="202.5" y="0.0" width="24.5" height="25.5"/>
                             <state key="normal" image="heart" catalog="system">
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="thin"/>
                             </state>
@@ -71,7 +82,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gnB-LX-WFX" customClass="HapticFeedbackButton" customModule="pr0gramm" customModuleProvider="target">
-                            <rect key="frame" x="203" y="0.0" width="24" height="25.5"/>
+                            <rect key="frame" x="242" y="0.0" width="24" height="25.5"/>
                             <state key="normal" image="minus.circle" catalog="system">
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="thin"/>
                             </state>
@@ -90,7 +101,7 @@
                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="sHs-nM-5l6">
                     <rect key="frame" x="20" y="41" width="61" height="24"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qpW-n1-snV">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qpW-n1-snV">
                             <rect key="frame" x="0.0" y="0.0" width="43" height="24"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="Button"/>
@@ -100,7 +111,7 @@
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mcp-Fc-Wtz" customClass="UserClassDotView" customModule="pr0gramm" customModuleProvider="target">
                             <rect key="frame" x="53" y="8" width="8" height="8"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="8" id="DkS-Hk-NHv"/>
                                 <constraint firstAttribute="height" constant="8" id="g5g-WO-v5W"/>
@@ -109,6 +120,7 @@
                     </subviews>
                 </stackView>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="sHs-nM-5l6" firstAttribute="leading" secondItem="aYp-gL-QPE" secondAttribute="leading" id="2HG-xP-BBd"/>
@@ -125,8 +137,8 @@
                 <constraint firstItem="FiG-1h-MxZ" firstAttribute="centerY" secondItem="aYp-gL-QPE" secondAttribute="centerY" id="w85-HP-jVv"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="addTagsButton" destination="pUS-OI-zlq" id="T1q-sV-S8T"/>
                 <outlet property="commentsButton" destination="3dJ-S0-pff" id="bw7-Ps-jrJ"/>
                 <outlet property="dateLabel" destination="ZIN-aa-biM" id="mMI-pO-Z0g"/>
                 <outlet property="downvoteButton" destination="gnB-LX-WFX" id="Qd9-vT-9Jf"/>
@@ -145,7 +157,8 @@
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="minus.circle" catalog="system" width="128" height="121"/>
         <image name="plus.circle" catalog="system" width="128" height="121"/>
-        <image name="tag" catalog="system" width="128" height="116"/>
+        <image name="plus.magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="tag" catalog="system" width="128" height="119"/>
         <image name="text.bubble" catalog="system" width="128" height="110"/>
         <namedColor name="Richtiges Grau">
             <color red="0.086274509803921567" green="0.086274509803921567" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -156,5 +169,8 @@
         <namedColor name="Schriftfarbe ausgegraut">
             <color red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

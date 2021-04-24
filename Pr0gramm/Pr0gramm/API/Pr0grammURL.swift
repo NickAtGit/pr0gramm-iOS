@@ -36,6 +36,7 @@ enum Pr0grammURL {
     case profileInfo
     case itemsGet
     case itemsInfo
+    case addTags
     
     var components: URLComponents {
         var compontents = Pr0grammURL.base
@@ -53,6 +54,8 @@ enum Pr0grammURL {
             compontents.path = "/api/items/get"
         case .itemsInfo:
             compontents.path = "/api/items/info"
+        case .addTags:
+            compontents.path = "/api/tags/add"
         }
         
         return compontents

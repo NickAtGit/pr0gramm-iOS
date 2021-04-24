@@ -1,6 +1,7 @@
 
 import Foundation
 import Bond
+import Combine
 
 class DetailViewModel {
     
@@ -24,7 +25,8 @@ class DetailViewModel {
     lazy var upvotes = item.value.up
     lazy var downvotes = item.value.down
     lazy var shouldShowPoints = item.value.date < Date(timeIntervalSinceNow: -3600)
-
+    let addTagsButtonTap = PassthroughSubject<Bool, Never>()
+    
     var shareLink: URL {
         URL(string: "https://pr0gramm.com/\(item.value.promoted == 0 ? "new" : "top")/\(item.value.id)")!
     }
@@ -90,6 +92,18 @@ class DetailViewModel {
                 completion(items?.items)
             }
         }
+    }
+    
+    func addTagsTapped() {
+        addTagsButtonTap.send(true)
+    }
+    
+    func submitTags(_ tags: String) {
+        let tags = tags
+            .components(separatedBy: ",")
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines)}
+            .joined(separator: ",")
+        connector.addTags(tags, for: item.value.id)
     }
     
     func isAuthorUser(for comment: Comment) -> Bool { comment.name == connector.userName }

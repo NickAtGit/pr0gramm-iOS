@@ -75,6 +75,7 @@ class InfoView: UIView, NibView {
     @IBOutlet private var downvoteButton: HapticFeedbackButton!
     @IBOutlet private var favoriteButton: HapticFeedbackButton!
     @IBOutlet private var tagsButton: HapticFeedbackButton!
+    @IBOutlet private var addTagsButton: HapticFeedbackButton!
     @IBOutlet private var commentsButton: HapticFeedbackButton!
     @IBOutlet private var dateLabel: UILabel!
     @IBOutlet private var userClassDotView: UserClassDotView!
@@ -108,6 +109,10 @@ class InfoView: UIView, NibView {
     
     @IBAction func expandTagsTapped(_ sender: Any) {
         viewModel.isTagsExpanded.value = !viewModel.isTagsExpanded.value
+    }
+    
+    @IBAction func addTagsTapped(_ sender: Any) {
+        viewModel.addTagsButtonTap.send(true)
     }
     
     @IBAction func showCommentsTapped(_ sender: Any) {

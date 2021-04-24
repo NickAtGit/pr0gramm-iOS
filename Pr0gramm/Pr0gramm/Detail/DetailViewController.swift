@@ -3,6 +3,7 @@ import UIKit
 import AVFoundation
 import ScrollingContentViewController
 import AVKit
+import Combine
 
 class DetailViewController: ScrollingContentViewController, Storyboarded {
 
@@ -25,6 +26,7 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
     private lazy var contextMenuInteraction = UIContextMenuInteraction(delegate: self)
     private var commentsViewController: CommentsViewController?
     private var navigation: NavigationController? { navigationController as? NavigationController }
+    private var subscriptions = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,6 +75,24 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
                 self?.view.layoutSubviews()
             }
         }
+        
+        viewModel.addTagsButtonTap.sink { [weak self] tapped in
+            let alertController = UIAlertController(title: "Tags hinzufügen", message: "Tags bitte kommasepariert eingeben", preferredStyle: .alert)
+            alertController.addTextField { (textField : UITextField!) -> Void in
+                textField.placeholder = "süßvieh, awww, OC"
+            }
+            let saveAction = UIAlertAction(title: "Absenden", style: .default, handler: { alert -> Void in
+                let firstTextField = alertController.textFields![0] as UITextField
+                self?.viewModel.submitTags(firstTextField.text ?? "")
+            })
+            let cancelAction = UIAlertAction(title: "Abbrechen", style: .cancel, handler: { (action : UIAlertAction!) -> Void in })
+
+            alertController.addAction(saveAction)
+            alertController.addAction(cancelAction)
+            
+            self?.present(alertController, animated: true, completion: nil)
+        }
+        .store(in: &subscriptions)
     }
     
     override func viewWillAppear(_ animated: Bool) {
