@@ -1,12 +1,12 @@
 PODS:
-  - Bond (7.6.6):
+  - Bond (7.8.1):
     - Differ (~> 1.4)
     - ReactiveKit (~> 3.14)
   - Differ (1.4.5)
-  - ImageScrollView (1.8)
-  - ReactiveKit (3.17.1)
+  - ImageScrollView (1.9.3)
+  - ReactiveKit (3.17.4)
   - ScrollingContentViewController (1.4.0)
-  - Static (4.0.0)
+  - Static (4.0.1)
 
 DEPENDENCIES:
   - Bond
@@ -28,17 +28,17 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Static:
-    :commit: 9a721248d40bd6c18a8ea9d15db94e35c9a87f1e
+    :commit: 357afa10228a16ae8c63ce5d0bde99bdbf940696
     :git: https://github.com/venmo/Static
 
 SPEC CHECKSUMS:
-  Bond: 9e7d901cf4ed825b6004a93dd0a7f1c7479e2834
+  Bond: 87075c7f20f37ea3e73dc7057fce839787bf46eb
   Differ: 3b6bd78e2b20cc795d9a86f7641d087524e4273e
-  ImageScrollView: 82912273486297285682bdb2a806742f0d39940c
-  ReactiveKit: f578a74d3555296ea61fab228f5245a4ed7b4b27
+  ImageScrollView: d3ce8371e0d44299b2b638410db45387e18aa83f
+  ReactiveKit: f9f9e079efa39312c597bf1508ef4810d111ce76
   ScrollingContentViewController: 1bff026d6f32c15489dcd22821911eda5fda3801
-  Static: 3204aad2dc648cfe08dc7aa4a26d65ee37e4853a
+  Static: a4ef704ab38e966728ba2e588bcbae9e66c1845e
 
 PODFILE CHECKSUM: cc7f0d43f4697a5b7ff02930effd28e8c5e781a4
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.0
