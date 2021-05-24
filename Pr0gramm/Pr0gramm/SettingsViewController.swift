@@ -34,6 +34,10 @@ class SettingsViewController: TableViewController {
                     AppSettings.isUseLeftRightQuickTap = $0
                 }, cellClass: SettingsCell.self),
                 
+                Row(text: "Bilder auf Bildschirmhöhe begrenzen", accessory: .switchToggle(value: AppSettings.isMediaHeightLimitEnabled) {
+                    AppSettings.isMediaHeightLimitEnabled = $0
+                }, cellClass: SettingsCell.self),
+                
                 Row(text: "Datenbank", detailText: "\(ActionsManager.shared.dataBaseSize ?? "Fehler")", accessory: .none, cellClass: SettingsCell.self)
                 
             ], footer: ""),

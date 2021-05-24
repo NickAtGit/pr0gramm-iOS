@@ -113,8 +113,7 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
     }
         
     private func setup(with item: Item) {
-        imageView.heightAnchor.constraint(equalTo: view.widthAnchor,
-                                          multiplier: CGFloat(item.height) / CGFloat(item.width)).isActive = true
+        self.setupMediaHeight(mediaView: self.imageView, item: item)
         
         infoView.showReplyAction = { [unowned self] in self.coordinator?.showReplyForPost(viewModel: self.viewModel) }
         infoView.showCommentsAction = { [unowned self] in self.showComments() }
@@ -132,6 +131,21 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
             setupGif(for: item)
         case .video:
             setupVideo(for: item)
+        }
+    }
+    
+    private func setupMediaHeight(mediaView: UIView, item: Item) {
+        let enableHeightLimit = AppSettings.isMediaHeightLimitEnabled
+        let infoViewHeight: CGFloat = 120;
+        let fullHeightPriority: Float = enableHeightLimit ? 750 : 1000;
+        
+        let fullHeightConstraint = mediaView.heightAnchor.constraint(equalTo: self.view.widthAnchor,
+                                          multiplier: CGFloat(item.height) / CGFloat(item.width))
+        fullHeightConstraint.priority = UILayoutPriority(rawValue: fullHeightPriority)
+        fullHeightConstraint.isActive = true
+        
+        if enableHeightLimit {
+            mediaView.heightAnchor.constraint(lessThanOrEqualTo: view.heightAnchor, constant: -infoViewHeight).isActive = true
         }
     }
         
@@ -170,11 +184,11 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
 
         avPlayerViewController.player = avPlayer
         avPlayerViewController.view.translatesAutoresizingMaskIntoConstraints = false
-        avPlayerViewController.view.heightAnchor.constraint(equalToConstant: view.bounds.width * CGFloat(item.height) / CGFloat(item.width)).isActive = true
         addChild(avPlayerViewController)
         stackView.removeArrangedSubview(imageView)
         stackView.insertArrangedSubview(avPlayerViewController.view, at: 0)
         avPlayerViewController.didMove(toParent: self)
+        self.setupMediaHeight(mediaView: avPlayerViewController.view, item: item)
         let playerItem = AVPlayerItem(url: item.mediaURL)
         avPlayer.replaceCurrentItem(with: playerItem)
         self.avPlayer = avPlayer
