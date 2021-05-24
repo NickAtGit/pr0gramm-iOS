@@ -53,6 +53,10 @@ class CommentCell: UITableViewCell, UIContextMenuInteractionDelegate {
         let interaction = UIContextMenuInteraction(delegate: self)
         addInteraction(interaction)
         isUserInteractionEnabled = true
+        
+        if #available(iOS 13.4, *) {
+            self.authorButton.isPointerInteractionEnabled = true
+        }
     }
     
     @IBAction func didTapUserName(_ sender: Any) {

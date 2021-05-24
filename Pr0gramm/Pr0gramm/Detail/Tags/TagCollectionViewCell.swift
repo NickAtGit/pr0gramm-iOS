@@ -25,6 +25,10 @@ class TagCollectionViewCell: UICollectionViewCell, UIContextMenuInteractionDeleg
         let interaction = UIContextMenuInteraction(delegate: self)
         containerView.addInteraction(interaction)
         containerView.isUserInteractionEnabled = true
+        
+        if #available(iOS 13.4, *) {
+            self.containerView.addInteraction(UIPointerInteraction(delegate: self))
+        }
     }
         
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
@@ -51,5 +55,14 @@ class TagCollectionViewCell: UICollectionViewCell, UIContextMenuInteractionDeleg
 
                 
         return UIMenu(title: "", children: [upvoteAction, downvoteAction, saveAction])
+    }
+}
+
+@available(iOS 13.4, *)
+extension TagCollectionViewCell: UIPointerInteractionDelegate {
+    func pointerInteraction(_ interaction: UIPointerInteraction, styleFor region: UIPointerRegion) -> UIPointerStyle? {
+        guard let interactionView = interaction.view else { return nil }
+        let targetedPreview = UITargetedPreview(view: interactionView)
+        return UIPointerStyle(effect: .lift(targetedPreview))
     }
 }
