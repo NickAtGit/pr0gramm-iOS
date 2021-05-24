@@ -564,7 +564,7 @@
 					03076A5F2059E80F00168E62 = {
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 1130;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					031EE82C2065C59B0030CA68 = {
 						CreatedOnToolsVersion = 9.2;
@@ -947,15 +947,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pr0gramm/Pr0gramm.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 43;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
-				DEVELOPMENT_TEAM = FMXL9R3NPC;
+				DEVELOPMENT_TEAM = NXLG5J2V42;
 				INFOPLIST_FILE = Pr0gramm/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pr0gramm.Pr0grammApp;
 				PRODUCT_NAME = pr0gramm;
+				PROVISIONING_PROFILE_SPECIFIER = "Wildcard Com";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
