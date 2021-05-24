@@ -21,17 +21,6 @@ class DetailCollectionViewController: UICollectionViewController, Storyboarded {
         layout.scrollDirection = .horizontal
         collectionView.collectionViewLayout = layout
         collectionView.decelerationRate = .fast
-        
-        NotificationCenter
-            .default
-            .publisher(for: UIDevice.orientationDidChangeNotification)
-            .sink { [weak self] _ in
-                guard let cell = self?.collectionView.visibleCells.first,
-                      let indexPath = self?.collectionView.indexPath(for: cell),
-                      indexPath.row != 0 else { return }
-                self?.scrollTo(indexPath: indexPath)
-            }
-            .store(in: &subscriptions)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
