@@ -133,14 +133,31 @@ class CommentsViewController: UIViewController, Storyboarded, UIScrollViewDelega
     
     @objc
     func expand() {
-        self.topConstraint.constant = 0
+        self.changeHeight(distanceFromTop: 0, draggerColor: #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1))
+    }
+    
+    func collapse() {
+        guard let hostingViewController = self.hostingViewController else { return }
+        self.changeHeight(distanceFromTop: hostingViewController.view.frame.height - self.draggerView.frame.height, draggerColor: .clear)
+    }
+    
+    func toggle() {
+        if self.topConstraint.constant == 0 {
+            self.collapse()
+        } else {
+            self.expand()
+        }
+    }
+    
+    private func changeHeight(distanceFromTop: CGFloat, draggerColor: UIColor) {
+        self.topConstraint.constant = distanceFromTop
         
         UIView.animate(withDuration: 0.25,
                        delay: 0.0,
                        options: [.allowUserInteraction, .curveEaseInOut],
                        animations: {
                         self.hostingViewController?.view.layoutIfNeeded()
-                        self.draggerView.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
+                        self.draggerView.backgroundColor = draggerColor
         })
         
         reloadDataIfNeeded()
