@@ -93,6 +93,14 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
             self?.present(alertController, animated: true, completion: nil)
         }
         .store(in: &subscriptions)
+        
+        NotificationCenter
+            .default
+            .publisher(for: UIDevice.orientationDidChangeNotification)
+            .sink { [weak self] _ in
+                self?.view.layoutIfNeeded()
+            }
+            .store(in: &subscriptions)
     }
     
     override func viewWillAppear(_ animated: Bool) {
