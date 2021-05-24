@@ -1,12 +1,12 @@
 
 import UIKit
-
+import Combine
 class DetailCollectionViewController: UICollectionViewController, Storyboarded {
     
     weak var coordinator: Coordinator?
     var isSearch = false
     var viewModel: PostsOverviewViewModel!
-    private var currentIndex: Int { Int(collectionView.contentOffset.x / collectionView.frame.width) }
+    private var subscriptions = Set<AnyCancellable>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,13 +21,35 @@ class DetailCollectionViewController: UICollectionViewController, Storyboarded {
         layout.scrollDirection = .horizontal
         collectionView.collectionViewLayout = layout
         collectionView.decelerationRate = .fast
+        
+        NotificationCenter
+            .default
+            .publisher(for: UIDevice.orientationDidChangeNotification)
+            .sink { [weak self] _ in
+                guard let cell = self?.collectionView.visibleCells.first,
+                      let indexPath = self?.collectionView.indexPath(for: cell),
+                      indexPath.row != 0 else { return }
+                self?.scrollTo(indexPath: indexPath)
+            }
+            .store(in: &subscriptions)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        collectionView.collectionViewLayout.invalidateLayout()
-    }
+        guard let flowLayout = self.collectionView?.collectionViewLayout as? UICollectionViewFlowLayout else {
+            return
+        }
         
+        coordinator.animate { context in
+            self.collectionView.collectionViewLayout.invalidateLayout()
+        } completion: { _ in
+            let cellSize = CGSize(width: self.view.bounds.width - (self.view.safeAreaInsets.left + self.view.safeAreaInsets.right),
+                                  height: self.view.bounds.height - (self.view.safeAreaInsets.top + self.view.safeAreaInsets.bottom))
+            flowLayout.itemSize = cellSize
+            self.view.layoutSubviews()
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -65,7 +87,6 @@ class DetailCollectionViewController: UICollectionViewController, Storyboarded {
         collectionView.scrollToItem(at: newIndexPath, at: .centeredHorizontally, animated: true)
     }
     
-
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
         viewModel.items.count
@@ -124,8 +145,8 @@ extension DetailCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width - (view.safeAreaInsets.left + view.safeAreaInsets.right),
-                      height: view.frame.height - (view.safeAreaInsets.top + view.safeAreaInsets.bottom))
+        return CGSize(width: view.bounds.width - (view.safeAreaInsets.left + view.safeAreaInsets.right),
+                      height: view.bounds.height - (view.safeAreaInsets.top + view.safeAreaInsets.bottom))
     }
 }
 
@@ -133,12 +154,14 @@ class SnapCenterLayout: UICollectionViewFlowLayout {
     
     override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint,
                                       withScrollingVelocity velocity: CGPoint) -> CGPoint {
-        guard let collectionView = collectionView else { return super.targetContentOffset(forProposedContentOffset: proposedContentOffset, withScrollingVelocity: velocity) }
+        guard let collectionView = collectionView else {
+            return super.targetContentOffset(forProposedContentOffset: proposedContentOffset, withScrollingVelocity: velocity)
+        }
         let parent = super.targetContentOffset(forProposedContentOffset: proposedContentOffset, withScrollingVelocity: velocity)
         
         let itemSpace = itemSize.width + minimumInteritemSpacing + minimumLineSpacing
         var currentItemIdx = round(collectionView.contentOffset.x / itemSpace)
-        
+                
         let vX = velocity.x
         if vX > 0 {
             currentItemIdx += 1
@@ -149,5 +172,18 @@ class SnapCenterLayout: UICollectionViewFlowLayout {
         let nearestPageOffset = (currentItemIdx * itemSpace)
         return CGPoint(x: nearestPageOffset,
                        y: parent.y)
+    }
+    
+    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+        collectionView?.bounds.size != newBounds.size
+    }
+    
+    override func invalidateLayout(with context: UICollectionViewLayoutInvalidationContext) {
+        guard let flowContext = context as? UICollectionViewFlowLayoutInvalidationContext else {
+            return
+        }
+        flowContext.invalidateFlowLayoutDelegateMetrics = true
+        flowContext.invalidateFlowLayoutAttributes = true
+        super.invalidateLayout(with: flowContext)
     }
 }
