@@ -144,34 +144,34 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
     }
     
     func upvotePost() {
-        self.viewModel.vote(.up)
-        self.didFinishUpvote()
+        viewModel.vote(.up)
+        didFinishUpvote()
     }
     
     func downvotePost() {
-        self.viewModel.vote(.down)
-        self.didFinishDownvote()
+        viewModel.vote(.down)
+        didFinishDownvote()
     }
     
-    func favouritePost() {
-        self.viewModel.vote(.favorite)
+    func favoritePost() {
+        viewModel.vote(.favorite)
     }
     
     func toggleCommentPanel() {
-        self.commentsViewController?.toggle()
+        commentsViewController?.toggle()
     }
     
     func enterFullscreen() {
-        self.showImageDetail()
-        self.avPlayerViewController?.goFullScreen()
+        showImageDetail()
+        avPlayerViewController?.goFullScreen()
     }
     
     func toggleMute() {
-        self.avPlayerViewController?.player?.isMuted.toggle()
+        avPlayerViewController?.player?.isMuted.toggle()
     }
     
     func toggleVideoPlayback() {
-        guard let player = self.avPlayerViewController?.player,
+        guard let player = avPlayerViewController?.player,
               player.error == nil else { return }
         if player.rate != 0 {
             player.pause()
@@ -181,11 +181,11 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
     }
     
     private func didFinishUpvote() {
-        self.navigation?.showBanner(with: "Han blussert")
+        navigation?.showBanner(with: "Han blussert")
     }
     
     private func didFinishDownvote() {
-        self.navigation?.showBanner(with: "Han miesert")
+        navigation?.showBanner(with: "Han miesert")
     }
         
     func cleanup() {

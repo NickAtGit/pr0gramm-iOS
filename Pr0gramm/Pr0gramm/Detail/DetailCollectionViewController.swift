@@ -69,7 +69,7 @@ class DetailCollectionViewController: UICollectionViewController, Storyboarded {
             UIKeyCommand(action: #selector(nextItem), input: "d", discoverabilityTitle: "Nächster Post"),
             UIKeyCommand(action: #selector(upvoteCurrentPost), input: "w", discoverabilityTitle: "Blussi geben"),
             UIKeyCommand(action: #selector(downvoteCurrentPost), input: "s", discoverabilityTitle: "Minus geben"),
-            UIKeyCommand(action: #selector(favouriteCurrentPost), input: "f", discoverabilityTitle: "Favorisieren"),
+            UIKeyCommand(action: #selector(favoriteCurrentPost), input: "f", discoverabilityTitle: "Favorisieren"),
             UIKeyCommand(action: #selector(toggleCommentPanel), input: "c", discoverabilityTitle: "Kommentare öffnen"),
             
             UIKeyCommand(action: #selector(enterFullscreen), input: "f", modifierFlags: [.control, .command], discoverabilityTitle: "Vollbild"),
@@ -97,31 +97,31 @@ class DetailCollectionViewController: UICollectionViewController, Storyboarded {
     }
     
     @objc func upvoteCurrentPost() {
-        self.getCurrentDetailController()?.upvotePost()
+        getCurrentDetailController()?.upvotePost()
     }
     
     @objc func downvoteCurrentPost() {
-        self.getCurrentDetailController()?.downvotePost()
+        getCurrentDetailController()?.downvotePost()
     }
     
-    @objc func favouriteCurrentPost() {
-        self.getCurrentDetailController()?.favouritePost()
+    @objc func favoriteCurrentPost() {
+        getCurrentDetailController()?.favoritePost()
     }
     
     @objc func toggleCommentPanel() {
-        self.getCurrentDetailController()?.toggleCommentPanel()
+        getCurrentDetailController()?.toggleCommentPanel()
     }
     
     @objc func enterFullscreen() {
-        self.getCurrentDetailController()?.enterFullscreen()
+        getCurrentDetailController()?.enterFullscreen()
     }
     
     @objc func toggleMute() {
-        self.getCurrentDetailController()?.toggleMute()
+        getCurrentDetailController()?.toggleMute()
     }
     
     @objc func toggleVideoPlayback() {
-        self.getCurrentDetailController()?.toggleVideoPlayback()
+        getCurrentDetailController()?.toggleVideoPlayback()
     }
     
     func getCurrentDetailController() -> DetailViewController? {
