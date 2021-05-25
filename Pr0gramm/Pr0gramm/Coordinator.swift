@@ -101,7 +101,8 @@ class Coordinator {
         let imageViewController = ImageDetailViewController.fromStoryboard()
         imageViewController.image = image
         let navigationController = NavigationController(rootViewController: imageViewController)
-        navigationController.style = .dragable
+        navigationController.style = .dismissable
+        navigationController.modalPresentationStyle = .fullScreen
         viewController.present(navigationController, animated: true)
     }
     
