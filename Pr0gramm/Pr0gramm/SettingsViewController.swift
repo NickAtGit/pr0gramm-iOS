@@ -34,7 +34,7 @@ class SettingsViewController: TableViewController {
                     AppSettings.isUseLeftRightQuickTap = $0
                 }, cellClass: SettingsCell.self),
                 
-                Row(text: "Bilder auf Bildschirmhöhe begrenzen", accessory: .switchToggle(value: AppSettings.isMediaHeightLimitEnabled) {
+                Row(text: "Medien auf Bildschirmhöhe begrenzen", accessory: .switchToggle(value: AppSettings.isMediaHeightLimitEnabled) {
                     AppSettings.isMediaHeightLimitEnabled = $0
                 }, cellClass: SettingsCell.self),
                 
