@@ -52,7 +52,7 @@ class PostsOverviewCollectionViewController: UIViewController, Storyboarded, UIC
     func updateUI() {
         tabBarItem = nil
         title = viewModel.title
-        loadItems(isRefresh: true)
+        refresh()
         tabBarItem = viewModel.tabBarItem
     }
     
@@ -100,7 +100,6 @@ class PostsOverviewCollectionViewController: UIViewController, Storyboarded, UIC
     
     @objc
     func flagsDidChange() {
-        refresh()
         updateUI()
     }
 }
