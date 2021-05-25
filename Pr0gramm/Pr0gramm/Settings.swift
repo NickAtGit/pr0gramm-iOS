@@ -15,6 +15,7 @@ protocol UserSettingsConfigurable {
     static var isPictureInPictureEnabled: Bool { get set }
     static var latestSearchStrings: [String] { get set }
     static var postCount: Int { get set }
+    static var isMediaHeightLimitEnabled: Bool { get set }
 }
 
 @objc
@@ -119,5 +120,10 @@ extension AppSettings: UserSettingsConfigurable {
     static var postCount: Int {
         get { return AppSettings.value(for: #keyPath(postCount)) ?? 3 }
         set { AppSettings.updateDefaults(for: #keyPath(postCount), value: newValue) }
+    }
+    
+    static var isMediaHeightLimitEnabled: Bool {
+        get { return AppSettings.value(for: #keyPath(isMediaHeightLimitEnabled)) ?? false }
+        set { AppSettings.updateDefaults(for: #keyPath(isMediaHeightLimitEnabled), value: newValue) }
     }
 }

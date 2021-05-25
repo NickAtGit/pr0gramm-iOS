@@ -54,7 +54,7 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
         stackView.topAnchor.constraint(equalTo: hostView.topAnchor, constant: 2).isActive = true
         stackView.leftAnchor.constraint(equalTo: hostView.leftAnchor).isActive = true
         stackView.rightAnchor.constraint(equalTo: hostView.rightAnchor).isActive = true
-        stackView.bottomAnchor.constraint(lessThanOrEqualTo: hostView.bottomAnchor, constant: -50).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: hostView.bottomAnchor).isActive = true
         
         contentView = hostView
         stackView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
@@ -121,8 +121,7 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
     }
         
     private func setup(with item: Item) {
-        imageView.heightAnchor.constraint(equalTo: view.widthAnchor,
-                                          multiplier: CGFloat(item.height) / CGFloat(item.width)).isActive = true
+        setupMediaHeight(mediaView: imageView, item: item)
         
         infoView.showReplyAction = { [unowned self] in self.coordinator?.showReplyForPost(viewModel: self.viewModel) }
         infoView.showCommentsAction = { [unowned self] in self.showComments() }
@@ -178,11 +177,11 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
 
         avPlayerViewController.player = avPlayer
         avPlayerViewController.view.translatesAutoresizingMaskIntoConstraints = false
-        avPlayerViewController.view.heightAnchor.constraint(equalToConstant: view.bounds.width * CGFloat(item.height) / CGFloat(item.width)).isActive = true
         addChild(avPlayerViewController)
         stackView.removeArrangedSubview(imageView)
         stackView.insertArrangedSubview(avPlayerViewController.view, at: 0)
         avPlayerViewController.didMove(toParent: self)
+        setupMediaHeight(mediaView: avPlayerViewController.view, item: item)
         let playerItem = AVPlayerItem(url: item.mediaURL)
         avPlayer.replaceCurrentItem(with: playerItem)
         self.avPlayer = avPlayer
@@ -227,9 +226,18 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
     private func showComments() {
         commentsViewController?.expand()
     }
+    
+    private func setupMediaHeight(mediaView: UIView, item: Item) {
+        let isEnableHeightLimit = AppSettings.isMediaHeightLimitEnabled
+        
+        mediaView.heightAnchor.constraint(equalTo: view.widthAnchor,
+                                          multiplier: CGFloat(item.height) / CGFloat(item.width)).isActive = !isEnableHeightLimit
+        
+        let constant: CGFloat = -(infoView.frame.height + tagsCollectionViewController.view.frame.height + 88)
+        mediaView.heightAnchor.constraint(equalTo: view.heightAnchor,
+                                          constant: constant).isActive = isEnableHeightLimit
+    }
 }
-
-
 
 extension DetailViewController: UIContextMenuInteractionDelegate {
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction,
@@ -269,8 +277,6 @@ extension DetailViewController: UIContextMenuInteractionDelegate {
     }
 }
 
-
-
 extension DetailViewController {
     
     func download(directory: FileManager.SearchPathDirectory) {
@@ -296,8 +302,6 @@ extension DetailViewController {
         }
     }
 }
-
-
 
 extension DetailViewController: AVPlayerViewControllerDelegate {
     func playerViewController(_ playerViewController: AVPlayerViewController, willBeginFullScreenPresentationWithAnimationCoordinator coordinator: UIViewControllerTransitionCoordinator) {
