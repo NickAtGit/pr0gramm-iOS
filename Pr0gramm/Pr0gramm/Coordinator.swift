@@ -76,8 +76,13 @@ class Coordinator {
         detailViewController.scrollTo(indexPath: indexPath)
     }
     
-    func showShareSheet(with items: [Any]) {
+    func showShareSheet(with items: [Any], from view: UIView) {
         let ac = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        ac.popoverPresentationController?.sourceView = view
+        ac.popoverPresentationController?.sourceRect = CGRect(x: UIScreen.main.bounds.width / 2,
+                                                              y: UIScreen.main.bounds.height * 2/3,
+                                                              width: 0,
+                                                              height: 0)
         tabbarController.present(ac, animated: true)
     }
     

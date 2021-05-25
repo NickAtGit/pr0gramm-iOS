@@ -70,7 +70,7 @@ class DownloadedFilesTableViewController: UITableViewController, Storyboarded {
         guard let fileURL = files?[indexPath.row] else { return nil }
 
         let deleteAction = UIContextualAction(style: .destructive, title: "Löschen",
-          handler: { (action, view, completionHandler) in
+          handler: { action, view, completionHandler in
             do {
                 try FileManager.default.removeItem(at: fileURL)
                 self.tableView.beginUpdates()
@@ -85,7 +85,7 @@ class DownloadedFilesTableViewController: UITableViewController, Storyboarded {
         deleteAction.backgroundColor = UIColor.red.withAlphaComponent(0.25)
         
         let shareAction = UIContextualAction(style: .normal, title: "Teilen",
-          handler: { (action, view, completionHandler) in
+          handler: { action, view, completionHandler in
             DispatchQueue.main.async {
                 self.shareFile(at: fileURL)
             }
@@ -116,7 +116,7 @@ class DownloadedFilesTableViewController: UITableViewController, Storyboarded {
         }
 
         let items = [file]
-        self.coordinator?.showShareSheet(with: items)
+        self.coordinator?.showShareSheet(with: items, from: view)
     }
 }
 

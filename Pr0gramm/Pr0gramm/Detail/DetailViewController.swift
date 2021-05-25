@@ -258,7 +258,7 @@ extension DetailViewController: UIContextMenuInteractionDelegate {
         }
         
         let shareAction = UIAction(title: "Link teilen", image: UIImage(systemName: "square.and.arrow.up")) { [unowned self] _ in
-            self.coordinator?.showShareSheet(with: [self.viewModel.shareLink])
+            self.coordinator?.showShareSheet(with: [self.viewModel.shareLink], from: imageView)
         }
         
         let browserAction = UIAction(title: "Im Browser öffnen", image: UIImage(systemName: "safari")) { [unowned self] _ in

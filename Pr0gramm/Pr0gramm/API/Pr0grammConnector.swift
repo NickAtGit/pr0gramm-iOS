@@ -8,7 +8,7 @@ enum ConnectorUpdateType {
     case logout
 }
 
-protocol Pr0grammConnectorObserver: class {
+protocol Pr0grammConnectorObserver: AnyObject {
     func connectorDidUpdate(type: ConnectorUpdateType)
 }
 
