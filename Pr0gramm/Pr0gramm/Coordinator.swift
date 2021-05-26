@@ -103,6 +103,7 @@ class Coordinator {
         let navigationController = NavigationController(rootViewController: imageViewController)
         navigationController.style = .dismissable
         navigationController.modalPresentationStyle = .fullScreen
+        navigationController.modalTransitionStyle = .crossDissolve
         viewController.present(navigationController, animated: true)
     }
     

@@ -101,6 +101,9 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
                 self?.view.layoutIfNeeded()
             }
             .store(in: &subscriptions)
+                
+        let pinch = UIPinchGestureRecognizer(target: self, action: #selector(handleZoom))
+        imageView.addGestureRecognizer(pinch)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -314,5 +317,19 @@ extension DetailViewController: AVPlayerViewControllerDelegate {
     
     func playerViewController(_ playerViewController: AVPlayerViewController, restoreUserInterfaceForPictureInPictureStopWithCompletionHandler completionHandler: @escaping (Bool) -> Void) {
         completionHandler(true)
+    }
+}
+
+extension DetailViewController {
+      
+    @objc
+    func handleZoom(_ gesture: UIPinchGestureRecognizer) {
+        switch gesture.state {
+        case .ended:
+            guard let image = imageView.image else { return }
+            coordinator?.showImageViewController(with: image, from: self)
+        default:
+            break
+        }
     }
 }
