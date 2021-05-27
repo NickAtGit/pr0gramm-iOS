@@ -172,11 +172,19 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
         let avPlayer = AVPlayer()
         let avPlayerViewController = TapableAVPlayerViewController()
         avPlayerViewController.delegate = self
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(DetailViewController.playerItemDidReachEnd(_:)),
-                                               name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
-                                               object: avPlayer.currentItem)
+                
+        NotificationCenter.default
+            .publisher(for: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: avPlayer.currentItem)
+            .sink { notification in
+                
+                if let playerItem = notification.object as? AVPlayerItem {
+                    if playerItem == self.avPlayer?.currentItem {
+                        playerItem.seek(to: CMTime.zero, completionHandler: nil)
+                        self.avPlayer?.play()
+                    }
+                }
+            }
+            .store(in: &subscriptions)
 
         avPlayerViewController.player = avPlayer
         avPlayerViewController.view.translatesAutoresizingMaskIntoConstraints = false
@@ -190,16 +198,6 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
         self.avPlayer = avPlayer
         self.avPlayerViewController = avPlayerViewController
         avPlayerViewController.view.addInteraction(contextMenuInteraction)
-    }
-    
-    @objc
-    func playerItemDidReachEnd(_ notification: NSNotification) {
-        if let playerItem = notification.object as? AVPlayerItem {
-            if playerItem == avPlayer?.currentItem {
-                playerItem.seek(to: CMTime.zero, completionHandler: nil)
-                avPlayer?.play()
-            }
-        }
     }
     
     @objc
