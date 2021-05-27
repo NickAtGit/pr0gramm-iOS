@@ -6,6 +6,8 @@ class ImageDetailViewController: UIViewController, Storyboarded {
     
     @IBOutlet var imageScrollView: ImageScrollView!
     var image: UIImage?
+    
+    private var initalZoomScale: CGFloat = 1.0
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -14,5 +16,17 @@ class ImageDetailViewController: UIViewController, Storyboarded {
         imageScrollView.setup()
         guard let image = image else { return }
         imageScrollView.display(image: image)
+        imageScrollView.imageScrollViewDelegate = self
+        initalZoomScale = imageScrollView.zoomScale
+    }
+}
+
+extension ImageDetailViewController: ImageScrollViewDelegate {
+    func imageScrollViewDidChangeOrientation(imageScrollView: ImageScrollView) {}
+        
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        if scrollView.zoomScale < initalZoomScale - 0.3 {
+            dismiss(animated: true)
+        }
     }
 }
