@@ -164,6 +164,17 @@ class CommentsViewController: UIViewController, Storyboarded, UIScrollViewDelega
         tableView.contentInset.bottom = self.topConstraint.constant
         tableView.verticalScrollIndicatorInsets.bottom = self.topConstraint.constant
     }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        coordinator.animate { context in
+            let height = self.hostingViewController?.view.frame.height ?? 0
+            self.topConstraint.constant = height - self.draggerView.frame.height
+            self.view.layoutIfNeeded()
+        } completion: { _ in
+        }
+    }
 }
 
 extension CommentsViewController: UITableViewDataSource {
