@@ -175,12 +175,12 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
                 
         NotificationCenter.default
             .publisher(for: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: avPlayer.currentItem)
-            .sink { notification in
+            .sink { [weak self] notification in
                 
                 if let playerItem = notification.object as? AVPlayerItem {
-                    if playerItem == self.avPlayer?.currentItem {
+                    if playerItem == self?.avPlayer?.currentItem {
                         playerItem.seek(to: CMTime.zero, completionHandler: nil)
-                        self.avPlayer?.play()
+                        self?.avPlayer?.play()
                     }
                 }
             }

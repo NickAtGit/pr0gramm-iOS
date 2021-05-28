@@ -40,6 +40,19 @@ class PostsOverviewCollectionViewController: UIViewController, Storyboarded, UIC
         }
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        guard let collectionView = collectionView else { return }
+        
+        coordinator.animate { context in
+            collectionView.collectionViewLayout.invalidateLayout()
+            self.updateLayout()
+        } completion: { _ in
+            self.view.layoutSubviews()
+        }
+    }
+
+    
     private func updateLayout() {
         if let flowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
             let horizontalSpacing = flowLayout.scrollDirection == .vertical ? flowLayout.minimumInteritemSpacing : flowLayout.minimumLineSpacing

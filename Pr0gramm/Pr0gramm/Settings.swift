@@ -1,5 +1,6 @@
 
 import Foundation
+import UIKit
 
 @objc
 protocol SettingsConfigurable {}
@@ -78,7 +79,7 @@ extension AppSettings: SortingSettingsConfigurable {
 
 extension AppSettings: UserSettingsConfigurable {
     static var selectedTheme: Int {
-        get { return AppSettings.value(for: #keyPath(selectedTheme)) ?? 0 }
+        get { return AppSettings.value(for: #keyPath(selectedTheme)) ?? 1 }
         set { AppSettings.updateDefaults(for: #keyPath(selectedTheme), value: newValue) }
     }
     
@@ -93,17 +94,17 @@ extension AppSettings: UserSettingsConfigurable {
     }
     
     static var isAutoPlay: Bool {
-        get { return AppSettings.value(for: #keyPath(isAutoPlay)) ?? false }
+        get { return AppSettings.value(for: #keyPath(isAutoPlay)) ?? true }
         set { AppSettings.updateDefaults(for: #keyPath(isAutoPlay), value: newValue) }
     }
     
     static var isShowSeenBagdes: Bool {
-        get { return AppSettings.value(for: #keyPath(isShowSeenBagdes)) ?? false }
+        get { return AppSettings.value(for: #keyPath(isShowSeenBagdes)) ?? true }
         set { AppSettings.updateDefaults(for: #keyPath(isShowSeenBagdes), value: newValue) }
     }
     
     static var isUseLeftRightQuickTap: Bool {
-        get { return AppSettings.value(for: #keyPath(isUseLeftRightQuickTap)) ?? false }
+        get { return AppSettings.value(for: #keyPath(isUseLeftRightQuickTap)) ?? true }
         set { AppSettings.updateDefaults(for: #keyPath(isUseLeftRightQuickTap), value: newValue) }
     }
     
@@ -118,7 +119,7 @@ extension AppSettings: UserSettingsConfigurable {
     }
     
     static var postCount: Int {
-        get { return AppSettings.value(for: #keyPath(postCount)) ?? 3 }
+        get { return AppSettings.value(for: #keyPath(postCount)) ?? 4 }
         set { AppSettings.updateDefaults(for: #keyPath(postCount), value: newValue) }
     }
     
