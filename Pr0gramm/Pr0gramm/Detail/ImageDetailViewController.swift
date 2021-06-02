@@ -25,7 +25,9 @@ extension ImageDetailViewController: ImageScrollViewDelegate {
     func imageScrollViewDidChangeOrientation(imageScrollView: ImageScrollView) {}
         
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
-        if scrollView.zoomScale < initalZoomScale - 0.3 {
+        let threshold: CGFloat = UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad ? 0.3 : 0.1
+        
+        if scrollView.zoomScale < initalZoomScale - threshold {
             dismiss(animated: true)
         }
     }
