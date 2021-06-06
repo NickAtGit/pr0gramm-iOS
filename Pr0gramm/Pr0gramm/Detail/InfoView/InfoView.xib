@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -26,7 +26,7 @@
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="FiG-1h-MxZ">
                     <rect key="frame" x="128" y="5.5" width="266" height="25.5"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pUS-OI-zlq" customClass="HapticFeedbackButton" customModule="pr0gramm" customModuleProvider="target">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pUS-OI-zlq" customClass="HapticFeedbackButton" customModule="pr0gramm" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="24.5" height="25.5"/>
                             <state key="normal" image="plus.magnifyingglass" catalog="system">
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="thin"/>
@@ -35,7 +35,7 @@
                                 <action selector="addTagsTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="wex-0E-jOE"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S43-mO-YX6" customClass="HapticFeedbackButton" customModule="pr0gramm" customModuleProvider="target">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S43-mO-YX6" customClass="HapticFeedbackButton" customModule="pr0gramm" customModuleProvider="target">
                             <rect key="frame" x="39.5" y="0.0" width="27" height="25.5"/>
                             <state key="normal" image="tag" catalog="system">
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="thin"/>
@@ -44,7 +44,7 @@
                                 <action selector="expandTagsTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="nDN-a1-8Nf"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3dJ-S0-pff" customClass="HapticFeedbackButton" customModule="pr0gramm" customModuleProvider="target">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3dJ-S0-pff" customClass="HapticFeedbackButton" customModule="pr0gramm" customModuleProvider="target">
                             <rect key="frame" x="81.5" y="0.0" width="27" height="25.5"/>
                             <state key="normal" image="text.bubble" catalog="system">
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="thin"/>
@@ -53,7 +53,7 @@
                                 <action selector="showCommentsTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="atb-ow-thR"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xS2-nU-xbM" customClass="HapticFeedbackButton" customModule="pr0gramm" customModuleProvider="target">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xS2-nU-xbM" customClass="HapticFeedbackButton" customModule="pr0gramm" customModuleProvider="target">
                             <rect key="frame" x="123.5" y="0.0" width="25" height="25.5"/>
                             <state key="normal" image="arrowshape.turn.up.left" catalog="system">
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="thin"/>
@@ -62,7 +62,7 @@
                                 <action selector="replyTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="fIZ-tN-fhn"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nlf-jk-WA2" customClass="HapticFeedbackButton" customModule="pr0gramm" customModuleProvider="target">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nlf-jk-WA2" customClass="HapticFeedbackButton" customModule="pr0gramm" customModuleProvider="target">
                             <rect key="frame" x="163.5" y="0.0" width="24" height="25.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <state key="normal" image="plus.circle" catalog="system">
@@ -72,7 +72,7 @@
                                 <action selector="upvoteTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="pcD-cv-sxA"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4p2-8H-bwM" customClass="HapticFeedbackButton" customModule="pr0gramm" customModuleProvider="target">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4p2-8H-bwM" customClass="HapticFeedbackButton" customModule="pr0gramm" customModuleProvider="target">
                             <rect key="frame" x="202.5" y="0.0" width="24.5" height="25.5"/>
                             <state key="normal" image="heart" catalog="system">
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="thin"/>
@@ -81,7 +81,7 @@
                                 <action selector="favoriteTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="XJG-h0-9TT"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gnB-LX-WFX" customClass="HapticFeedbackButton" customModule="pr0gramm" customModuleProvider="target">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gnB-LX-WFX" customClass="HapticFeedbackButton" customModule="pr0gramm" customModuleProvider="target">
                             <rect key="frame" x="242" y="0.0" width="24" height="25.5"/>
                             <state key="normal" image="minus.circle" catalog="system">
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="thin"/>
@@ -101,7 +101,7 @@
                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="sHs-nM-5l6">
                     <rect key="frame" x="20" y="41" width="61" height="24"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qpW-n1-snV">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qpW-n1-snV">
                             <rect key="frame" x="0.0" y="0.0" width="43" height="24"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="Button"/>

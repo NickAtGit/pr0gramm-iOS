@@ -27,7 +27,10 @@ class CommentsViewController: UIViewController, Storyboarded, UIScrollViewDelega
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(expand))
         tapGesture.numberOfTapsRequired = 2
         draggerView.addGestureRecognizer(tapGesture)
-    
+        
+        if #available(iOS 13.4, *) {
+            self.draggerView.addInteraction(UIPointerInteraction(delegate: self))
+        }
     }
     
     func embed(in viewController: UIViewController) {
@@ -203,5 +206,14 @@ extension CommentsViewController: CommentCellDelegate {
     
     func showUserProfile(for name: String) {
         coordinator?.showUserProfile(for: name, viewController: self)
+    }
+}
+
+@available(iOS 13.4, *)
+extension CommentsViewController: UIPointerInteractionDelegate {
+    func pointerInteraction(_ interaction: UIPointerInteraction, styleFor region: UIPointerRegion) -> UIPointerStyle? {
+        guard let interactionView = interaction.view else { return nil }
+        let targetedPreview = UITargetedPreview(view: interactionView)
+        return UIPointerStyle(effect: .highlight(targetedPreview))
     }
 }
