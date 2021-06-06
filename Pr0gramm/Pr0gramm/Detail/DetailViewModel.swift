@@ -26,6 +26,7 @@ class DetailViewModel {
     lazy var downvotes = item.value.down
     lazy var shouldShowPoints = item.value.date < Date(timeIntervalSinceNow: -3600)
     let addTagsButtonTap = PassthroughSubject<Bool, Never>()
+    let tags = CurrentValueSubject<[Tags], Never>([])
     
     var shareLink: URL {
         URL(string: "https://pr0gramm.com/\(item.value.promoted == 0 ? "new" : "top")/\(item.value.id)")!
@@ -51,6 +52,7 @@ class DetailViewModel {
             guard hasComments else { return }
             self.sortComments(itemInfo.comments)
             self.isCommentsButtonHidden.send(completion: .finished)
+            self.tags.value = itemInfo.tags.sorted { $0.confidence > $1.confidence }
         }
     }
     
@@ -103,7 +105,15 @@ class DetailViewModel {
             .components(separatedBy: ",")
             .map { $0.trimmingCharacters(in: .whitespacesAndNewlines)}
             .joined(separator: ",")
-        connector.addTags(tags, for: item.value.id)
+        
+        connector.addTags(tags, for: item.value.id) { [weak self] result in
+            switch result {
+            case .success(let tags):
+                self?.tags.send(tags)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     func isAuthorUser(for comment: Comment) -> Bool { comment.name == connector.userName }

@@ -1,6 +1,6 @@
 
 import UIKit
-import Bond
+import Combine
 
 class TagsCollectionViewController: UICollectionViewController, Storyboarded {
     
@@ -24,6 +24,8 @@ class TagsCollectionViewController: UICollectionViewController, Storyboarded {
             }
         }
     }
+    
+    private var subscriptions = Set<AnyCancellable>()
      
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,10 +42,10 @@ class TagsCollectionViewController: UICollectionViewController, Storyboarded {
         viewHeightConstraint = view.heightAnchor.constraint(equalToConstant: collapsedHeight)
         viewHeightConstraint?.isActive = true
 
-        
-        let _ = viewModel.itemInfo.observeNext { [weak self] itemInfo in
-            self?.tags = itemInfo?.tags.sorted { $0.confidence > $1.confidence }
+        viewModel.tags.sink { [weak self] tags in
+            self?.tags = tags
         }
+        .store(in: &subscriptions)
     }
     
     override func viewDidLayoutSubviews() {

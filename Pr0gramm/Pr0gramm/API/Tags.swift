@@ -19,3 +19,17 @@ struct Tags: Codable {
 		tag = try values.decode(String.self, forKey: .tag)
 	}
 }
+
+struct TagsResponse: Codable {
+    let tags: [Tags]
+    let tagIds: [String]
+    let ts: Int
+    let rt: Int
+    let qc: Int
+
+    enum CodingKeys: String, CodingKey {
+        case tags
+        case tagIds
+        case ts, rt, qc
+    }
+}

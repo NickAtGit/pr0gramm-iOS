@@ -34,6 +34,12 @@ enum Sorting: Int {
     }
 }
 
+enum ConnectorError: Error {
+    case noData
+    case decodingFailed
+}
+
+
 enum FetchType {
     case reload
     case more
@@ -207,11 +213,7 @@ class Pr0grammConnector {
     
     private func post(data: [String: String], to url: URL, postType: PostType, completion: @escaping (Bool) -> Void) {
         
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/x-www-form-urlencoded;", forHTTPHeaderField: "Content-Type")
-        let body = HTTPUtils.formUrlencode(data)
-        request.httpBody = body.data(using: .utf8)
+        let request = postRequest(with: url, with: data)
 
         let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
             guard let data = data else { completion(false); return }
@@ -359,17 +361,32 @@ class Pr0grammConnector {
         task.resume()
     }
     
-    func addTags(_ tags: String, for itemId: Int) {
+    func addTags(_ tags: String, for itemId: Int, result: @escaping (Result<[Tags], ConnectorError>) -> Void) {
+        
+        let url = Pr0grammURL.addTags.url
         guard isLoggedIn else { return }
         guard let nonce = nonce else { return }
         let data: [String: String] = ["tags": "\(tags)",
                                       "itemId": "\(itemId)",
                                       "_nonce": nonce]
 
-        let url = Pr0grammURL.addTags.url
-        post(data: data, to: url, postType: .addTags) { success in
-            print("Posted tags: \(success)")
-        }
+        let request = postRequest(with: url, with: data)
+
+        let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
+            guard let data = data else {
+                result(.failure(.noData))
+                return
+            }
+            do {
+                let jsonDecoder = JSONDecoder()
+                let responseModel = try jsonDecoder.decode(TagsResponse.self, from: data)
+                result(.success(responseModel.tags))
+            } catch {
+                print(error)
+                result(.failure(.decodingFailed))
+            }
+        })
+        task.resume()
     }
     
     private func getRequest(with url: URL) -> URLRequest {
@@ -377,6 +394,15 @@ class Pr0grammConnector {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.httpMethod = "GET"
+        return request
+    }
+    
+    private func postRequest(with url: URL, with data: [String: String]) -> URLRequest {
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/x-www-form-urlencoded;", forHTTPHeaderField: "Content-Type")
+        let body = HTTPUtils.formUrlencode(data)
+        request.httpBody = body.data(using: .utf8)
         return request
     }
 }
