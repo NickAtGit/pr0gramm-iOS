@@ -128,6 +128,14 @@ extension Theme {
             $0.font = font15
         }
         
+        // Prevent theming of text in the keyboard shortcut discovery overlay (appearing when holding the Command key)
+        // TODO: The overlay class should be more specific, but I can't find any resource about the name or class of this system overlay.
+        // TODO: Maybe it is a wise idea to scrap the global styling of UITextViews altogether because of the side-effects.
+        UITextView.appearance(whenContainedInInstancesOf: [UIVisualEffectView.self]).with {
+            $0.textColor = nil
+            $0.font = nil
+        }
+        
         UITextField.appearance().with {
             $0.font = font15
         }
@@ -170,6 +178,13 @@ extension Theme {
         
         UIImageView.appearance().with {
             $0.tintColor = tint
+        }
+        
+        // Prevent theming of text containing icons in the keyboard shortcut discovery overlay (appearing when holding the Command key)
+        // TODO: The overlay class should be more specific, but I can't find any resource about the name or class of this system overlay.
+        // TODO: Maybe it is a wise idea to scrap the global styling of UIImageView altogether because of the side-effects.
+        UIImageView.appearance(whenContainedInInstancesOf: [UIVisualEffectView.self]).with {
+            $0.tintColor = nil
         }
         
         UISegmentedControl.appearance().with {
