@@ -5,6 +5,14 @@ import AVFoundation
 extension UIImageView {
     func downloadedFrom(url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
         contentMode = mode
+        
+        let activityIndator = UIActivityIndicatorView(style: .large)
+        activityIndator.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(activityIndator)
+        activityIndator.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        activityIndator.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        activityIndator.startAnimating()
+        
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard
                 let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
@@ -14,6 +22,7 @@ extension UIImageView {
                 else { return }
             DispatchQueue.main.async() {
                 self.image = image
+                activityIndator.stopAnimating()
             }
         }.resume()
     }
