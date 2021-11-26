@@ -6,10 +6,14 @@ enum PostsOverviewStyle: Equatable {
 }
 
 class PostsOverviewViewModel: PostsLoadable {
+
+    var queue = DispatchQueue(label: "com.readerWriter", qos: .userInitiated, attributes: .concurrent)
     
     var items: [Item] {
         var items = [Item]()
-        allItems.forEach { items += $0.items }
+        queue.sync {
+            allItems.forEach { items += $0.items }
+        }
         return items
     }
     
@@ -65,13 +69,14 @@ class PostsOverviewViewModel: PostsLoadable {
 }
 
 
-protocol PostsLoadable: class {
+protocol PostsLoadable: AnyObject {
     var style: PostsOverviewStyle { get set }
     var connector: Pr0grammConnector { get set }
     var sorting: Sorting { get }
     var allItems: [AllItems] { get set }
     var items: [Item] { get }
     var isAtEnd: Bool { get set }
+    var queue: DispatchQueue { get set }
 }
 
 extension PostsLoadable {
@@ -95,33 +100,39 @@ extension PostsLoadable {
             connector.fetchItems(sorting: sorting,
                                  flags: flags,
                                  afterId: afterId) { [weak self] items in
-                                    guard let items = items else { completion(false); return }
-                                    if isRefresh { self?.allItems.removeAll() }
-                                    self?.allItems.append(items)
-                                    self?.isAtEnd = items.atEnd
-                                    completion(true)
+                guard let items = items else { completion(false); return }
+                self?.queue.async(flags: .barrier) {
+                    if isRefresh { self?.allItems.removeAll() }
+                    self?.allItems.append(items)
+                }
+                self?.isAtEnd = items.atEnd
+                completion(true)
             }
         case .search(let tags):
             connector.search(sorting: sorting,
                              flags: flags,
                              for: tags,
                              afterId: afterId) { [weak self] items in
-                                guard let items = items else { completion(false); return }
-                                if isRefresh { self?.allItems.removeAll() }
-                                self?.allItems.append(items)
-                                self?.isAtEnd = items.atEnd
-                                completion(true)
+                guard let items = items else { completion(false); return }
+                self?.queue.async(flags: .barrier) {
+                    if isRefresh { self?.allItems.removeAll() }
+                    self?.allItems.append(items)
+                }
+                self?.isAtEnd = items.atEnd
+                completion(true)
             }
         case .user(let name):
             connector.fetchUserItems(sorting: sorting,
                                      flags: flags,
                                      userName: name,
                                      afterId: afterId) { [weak self] items in
-                                        guard let items = items else { completion(false); return }
-                                        if isRefresh { self?.allItems.removeAll() }
-                                        self?.allItems.append(items)
-                                        self?.isAtEnd = items.atEnd
-                                        completion(true)
+                guard let items = items else { completion(false); return }
+                self?.queue.async(flags: .barrier) {
+                    if isRefresh { self?.allItems.removeAll() }
+                    self?.allItems.append(items)
+                }
+                self?.isAtEnd = items.atEnd
+                completion(true)
             }
         case .collection(let userName, _, let keyword):
             connector.fetchUserCollection(sorting: sorting,
@@ -129,11 +140,13 @@ extension PostsLoadable {
                                           userName: userName,
                                           collectionName: keyword,
                                           afterId: afterId) { [weak self] items in
-                                            guard let items = items else { completion(false); return }
-                                            if isRefresh { self?.allItems.removeAll() }
-                                            self?.allItems.append(items)
-                                            self?.isAtEnd = items.atEnd
-                                            completion(true)
+                guard let items = items else { completion(false); return }
+                self?.queue.async(flags: .barrier) {
+                    if isRefresh { self?.allItems.removeAll() }
+                    self?.allItems.append(items)
+                }
+                self?.isAtEnd = items.atEnd
+                completion(true)
             }
         }
     }
