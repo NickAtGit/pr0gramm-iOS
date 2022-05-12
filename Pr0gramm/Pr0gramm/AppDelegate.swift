@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         Theming.applySelectedPersistedTheme()
         setupAudioSession()
+        UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .dark
 
         return true
     }

@@ -110,6 +110,7 @@ extension Theme {
         
         let font15 = UIFont.systemFont(ofSize: 15)
         let font12 =  UIFont.systemFont(ofSize: 12)
+        let font10 =  UIFont.systemFont(ofSize: 10)
 
         UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: font15],
                                                             for: .normal)
@@ -131,22 +132,46 @@ extension Theme {
         UITextField.appearance().with {
             $0.font = font15
         }
+                
+        UINavigationBar.appearance().with {
+            let app = UINavigationBarAppearance()
+            app.configureWithOpaqueBackground()
+            app.shadowImage = tint.as1ptImage()
+            app.titleTextAttributes = [.foregroundColor: labelColor,
+                                       .font: UIFont.systemFont(ofSize: 17, weight: .bold)]
+            
+            let barButtonItemAppearance = UIBarButtonItemAppearance()
+            barButtonItemAppearance.normal.titleTextAttributes = [.font: font15]
+            app.buttonAppearance = barButtonItemAppearance
+            
+            $0.standardAppearance = app
+            $0.scrollEdgeAppearance = app
+            $0.tintColor = tint
+        }
         
         UITabBar.appearance().with {
+            let app = UITabBarAppearance()
+            app.configureWithOpaqueBackground()
             $0.tintColor = tint
-            $0.isTranslucent = false
-            $0.barTintColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
+            
+            let tabBarItemAppearance = UITabBarItemAppearance()
+            tabBarItemAppearance.normal.titleTextAttributes = [.font: font12]
+            tabBarItemAppearance.selected.titleTextAttributes = [.font: font12]
+            app.inlineLayoutAppearance = tabBarItemAppearance
+            
+            let compactInlineItemAppearance = UITabBarItemAppearance()
+            compactInlineItemAppearance.normal.titleTextAttributes = [.font: font10]
+            compactInlineItemAppearance.selected.titleTextAttributes = [.font: font10]
+            app.compactInlineLayoutAppearance = compactInlineItemAppearance
+            app.stackedLayoutAppearance = compactInlineItemAppearance
+
+            $0.standardAppearance = app
+            
+            if #available(iOS 15.0, *) {
+                $0.scrollEdgeAppearance = app
+            }
         }
-        
-        UINavigationBar.appearance().with {
-            $0.tintColor = tint
-            $0.shadowImage = tint.as1ptImage()
-            $0.titleTextAttributes = [.foregroundColor: labelColor,
-                                      .font: UIFont.systemFont(ofSize: 17, weight: .bold)]
-            $0.isTranslucent = false
-            $0.barTintColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
-        }
-        
+
         UISearchTextField.appearance().with {
             $0.textColor = labelColor
         }
