@@ -42,7 +42,6 @@ class CommentCell: UITableViewCell, UIContextMenuInteractionDelegate {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
         messageTextView.delegate = self
         messageTextView.isScrollEnabled = false
