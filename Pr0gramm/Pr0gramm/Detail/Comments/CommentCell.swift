@@ -1,7 +1,7 @@
 
 import UIKit
 
-protocol CommentCellDelegate: class {
+protocol CommentCellDelegate: AnyObject {
     func showReply(for comment: Comment)
     func showUserProfile(for name: String)
     func didTapUrl(_ url: URL)
