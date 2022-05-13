@@ -1,5 +1,6 @@
 
 import Static
+import StoreKit
 
 class SettingsViewController: TableViewController {
     
@@ -10,22 +11,27 @@ class SettingsViewController: TableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Einstellungen"
-        view.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
         tabBarItem = UITabBarItem(title: "Einstellungen",
                                   image: UIImage(systemName: "gear"),
                                   selectedImage: nil)
 
         dataSource = DataSource(tableViewDelegate: nil)
         dataSource.sections = [
-            Section(header: .autoLayoutView(CustomExtremityView("Theme", uppercased: false)), rows: [
+            Section(header: .autoLayoutView(CustomExtremityView("Unterstütze mich", uppercased: true)), rows: [
+                Row(text: "Downloade meine andere App", selection: { [unowned self] in
+                    self.displayOverlay()
+                }, cellClass: ButtonCell.self)
+            ], footer: "Da ich immer wieder gefragt werde, ob und wie man mich unterstützen kann: Lade einfach meine anderen Apps herunter. Ich würde mich auch über eine (gute) Bewertung im AppStore freuen. Vielen Dank!"),
+            
+            Section(header: .autoLayoutView(CustomExtremityView("Theme", uppercased: true)), rows: [
                 Row(cellClass: ThemeSelectionCell.self)
             ], footer: ""),
             
-            Section(header: .autoLayoutView(CustomExtremityView("Anzahl der Hochlads pro Reihe", uppercased: false)), rows: [
+            Section(header: .autoLayoutView(CustomExtremityView("Anzahl der Hochlads pro Reihe", uppercased: true)), rows: [
                 Row(cellClass: PostCountSelectionCell.self)
             ], footer: ""),
             
-            Section(header: .autoLayoutView(CustomExtremityView("Allgemein", uppercased: false)), rows: [
+            Section(header: .autoLayoutView(CustomExtremityView("Allgemein", uppercased: true)), rows: [
                 Row(text: "Gesehen Indikator anzeigen", accessory: .switchToggle(value: AppSettings.isShowSeenBagdes) {
                     AppSettings.isShowSeenBagdes = $0
                 }, cellClass: SettingsCell.self),
@@ -42,7 +48,7 @@ class SettingsViewController: TableViewController {
                 
             ], footer: ""),
 
-            Section(header: .autoLayoutView(CustomExtremityView("Video", uppercased: false)), rows: [
+            Section(header: .autoLayoutView(CustomExtremityView("Video", uppercased: true)), rows: [
                 Row(text: "Videos stumm starten", accessory: .switchToggle(value: AppSettings.isVideoMuted) {
                     AppSettings.isVideoMuted = $0
                 }, cellClass: SettingsCell.self),
@@ -57,6 +63,15 @@ class SettingsViewController: TableViewController {
 
             ], footer: ""),
         ]
+    }
+    
+    private func displayOverlay() {
+        guard let scene = (UIApplication.shared.connectedScenes.first as? UIWindowScene) else { return }
+        if #available(iOS 14.0, *) {
+            let config = SKOverlay.AppConfiguration(appIdentifier: "1249686798", position: .bottomRaised)
+            let overlay = SKOverlay(configuration: config)
+            overlay.present(in: scene)
+        }
     }
 }
 

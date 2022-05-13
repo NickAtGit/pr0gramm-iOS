@@ -1,7 +1,6 @@
 
 import UIKit
 import ScrollingContentViewController
-import StoreKit
 
 class UserInfoViewController: ScrollingContentViewController, Storyboarded {
     
@@ -51,8 +50,6 @@ class UserInfoViewController: ScrollingContentViewController, Storyboarded {
                                             image: UIImage(systemName: "person.circle"),
                                             selectedImage: UIImage(systemName: "person.circle.fill"))
         })
-
-        displayOverlay()
     }
     
     private func showLoggedIn() {
@@ -64,16 +61,7 @@ class UserInfoViewController: ScrollingContentViewController, Storyboarded {
         loggedInStackView.isHidden = true
         notLoggedInStackView.isHidden = false
     }
-    
-    private func displayOverlay() {
-        guard let scene = (UIApplication.shared.connectedScenes.first as? UIWindowScene) else { return }
-        if #available(iOS 14.0, *) {
-            let config = SKOverlay.AppConfiguration(appIdentifier: "1249686798", position: .bottomRaised)
-            let overlay = SKOverlay(configuration: config)
-            overlay.present(in: scene)
-        }
-    }
-    
+        
     @IBAction func showCollectionsButtonTapped(_ sender: Any) {
         guard let navigationController = navigationController else { return }
         coordinator?.showCollections(viewModel: viewModel,
