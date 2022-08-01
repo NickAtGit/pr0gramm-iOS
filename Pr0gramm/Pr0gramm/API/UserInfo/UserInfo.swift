@@ -11,7 +11,6 @@ struct UserInfo: Codable {
 	let uploadCount: Int
 	let likesArePublic: Bool
     let collections: [Collections]?
-	let likeCount: Int
 	let tagCount: Int
 	let badges: [Badges]
 	let followCount: Int
@@ -33,7 +32,6 @@ struct UserInfo: Codable {
 		case uploadCount = "uploadCount"
 		case likesArePublic = "likesArePublic"
 		case collections = "collections"
-		case likeCount = "likeCount"
 		case tagCount = "tagCount"
 		case badges = "badges"
 		case followCount = "followCount"
@@ -57,7 +55,6 @@ struct UserInfo: Codable {
 		uploadCount = try values.decode(Int.self, forKey: .uploadCount)
 		likesArePublic = try values.decode(Bool.self, forKey: .likesArePublic)
 		collections = try values.decodeIfPresent([Collections].self, forKey: .collections)
-		likeCount = try values.decode(Int.self, forKey: .likeCount)
 		tagCount = try values.decode(Int.self, forKey: .tagCount)
 		badges = try values.decode([Badges].self, forKey: .badges)
 		followCount = try values.decode(Int.self, forKey: .followCount)
