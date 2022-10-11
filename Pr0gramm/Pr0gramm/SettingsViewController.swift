@@ -44,8 +44,12 @@ class SettingsViewController: TableViewController {
                     AppSettings.isMediaHeightLimitEnabled = $0
                 }, cellClass: SettingsCell.self),
                 
-                Row(text: "Datenbank", detailText: "\(ActionsManager.shared.dataBaseSize ?? "Fehler")", accessory: .none, cellClass: SettingsCell.self)
+                Row(text: "Datenbank", detailText: "\(ActionsManager.shared.dataBaseSize ?? "Fehler")", accessory: .none, cellClass: SettingsCell.self),
                 
+                Row(text: "NFSW/NSFL bei Appstart deaktivieren", accessory: .switchToggle(value: AppSettings.isDeactivateNsfwOnAppStart) {
+                    AppSettings.isDeactivateNsfwOnAppStart = $0
+                }, cellClass: SettingsCell.self),
+
             ], footer: ""),
 
             Section(header: .autoLayoutView(CustomExtremityView("Video", uppercased: true)), rows: [

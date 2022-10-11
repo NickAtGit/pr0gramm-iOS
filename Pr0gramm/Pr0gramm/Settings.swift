@@ -17,6 +17,7 @@ protocol UserSettingsConfigurable {
     static var latestSearchStrings: [String] { get set }
     static var postCount: Int { get set }
     static var isMediaHeightLimitEnabled: Bool { get set }
+    static var isDeactivateNsfwOnAppStart: Bool { get set }
 }
 
 @objc
@@ -126,5 +127,10 @@ extension AppSettings: UserSettingsConfigurable {
     static var isMediaHeightLimitEnabled: Bool {
         get { return AppSettings.value(for: #keyPath(isMediaHeightLimitEnabled)) ?? false }
         set { AppSettings.updateDefaults(for: #keyPath(isMediaHeightLimitEnabled), value: newValue) }
+    }
+    
+    static var isDeactivateNsfwOnAppStart: Bool {
+        get { return AppSettings.value(for: #keyPath(isDeactivateNsfwOnAppStart)) ?? false }
+        set { AppSettings.updateDefaults(for: #keyPath(isDeactivateNsfwOnAppStart), value: newValue) }
     }
 }

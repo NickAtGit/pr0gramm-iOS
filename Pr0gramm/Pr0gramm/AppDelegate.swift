@@ -22,6 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupAudioSession()
         UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .dark
 
+        if AppSettings.isDeactivateNsfwOnAppStart {
+            AppSettings.nsfwActive = false
+            AppSettings.nsflActive = false
+        }
+        
         return true
     }
     
