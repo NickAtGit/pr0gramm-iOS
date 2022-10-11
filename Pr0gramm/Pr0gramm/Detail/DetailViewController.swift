@@ -54,7 +54,7 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
         stackView.topAnchor.constraint(equalTo: hostView.topAnchor, constant: 2).isActive = true
         stackView.leftAnchor.constraint(equalTo: hostView.leftAnchor).isActive = true
         stackView.rightAnchor.constraint(equalTo: hostView.rightAnchor).isActive = true
-        stackView.bottomAnchor.constraint(lessThanOrEqualTo: hostView.bottomAnchor).isActive = true
+        stackView.bottomAnchor.constraint(lessThanOrEqualTo: hostView.bottomAnchor, constant: -25).isActive = true
         
         contentView = hostView
         stackView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true

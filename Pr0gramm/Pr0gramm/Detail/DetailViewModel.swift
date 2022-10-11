@@ -47,12 +47,13 @@ class DetailViewModel {
             guard let itemInfo = itemInfo,
                   let self = self else { return }
             self.itemInfo.value = itemInfo
+            self.tags.value = itemInfo.tags.sorted { $0.confidence > $1.confidence }
+
             let hasComments = itemInfo.comments.count != 0
             self.isCommentsButtonHidden.value = !hasComments
             guard hasComments else { return }
             self.sortComments(itemInfo.comments)
             self.isCommentsButtonHidden.send(completion: .finished)
-            self.tags.value = itemInfo.tags.sorted { $0.confidence > $1.confidence }
         }
     }
     

@@ -43,12 +43,12 @@ class SettingsViewController: TableViewController {
                 Row(text: "Medien auf Bildschirmhöhe begrenzen", accessory: .switchToggle(value: AppSettings.isMediaHeightLimitEnabled) {
                     AppSettings.isMediaHeightLimitEnabled = $0
                 }, cellClass: SettingsCell.self),
-                
-                Row(text: "Datenbank", detailText: "\(ActionsManager.shared.dataBaseSize ?? "Fehler")", accessory: .none, cellClass: SettingsCell.self),
-                
+                                
                 Row(text: "NFSW/NSFL bei Appstart deaktivieren", accessory: .switchToggle(value: AppSettings.isDeactivateNsfwOnAppStart) {
                     AppSettings.isDeactivateNsfwOnAppStart = $0
                 }, cellClass: SettingsCell.self),
+                
+                Row(text: "Datenbank", detailText: "\(ActionsManager.shared.dataBaseSize ?? "Fehler")", accessory: .none, cellClass: SettingsCell.self),
 
             ], footer: ""),
 
