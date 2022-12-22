@@ -76,6 +76,16 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
             }
         }
         
+        viewModel.tags.sink { [weak self] tags in
+            if AppSettings.isMuteOnUnnecessaryMusic,
+               !AppSettings.isVideoMuted {
+                self?.avPlayer?.isMuted = tags.contains(where: {
+                    $0.tag.caseInsensitiveCompare("unnötige Musik") == .orderedSame
+                })
+            }
+        }
+        .store(in: &subscriptions)
+        
         viewModel.addTagsButtonTap.sink { [weak self] tapped in
             let alertController = UIAlertController(title: "Tags hinzufügen", message: "Tags bitte kommasepariert eingeben", preferredStyle: .alert)
             alertController.addTextField { (textField : UITextField!) -> Void in
@@ -305,15 +315,18 @@ extension DetailViewController {
 }
 
 extension DetailViewController: AVPlayerViewControllerDelegate {
-    func playerViewController(_ playerViewController: AVPlayerViewController, willBeginFullScreenPresentationWithAnimationCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+    func playerViewController(_ playerViewController: AVPlayerViewController,
+                              willBeginFullScreenPresentationWithAnimationCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         playerViewController.player?.play()
     }
     
-    func playerViewController(_ playerViewController: AVPlayerViewController, willEndFullScreenPresentationWithAnimationCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+    func playerViewController(_ playerViewController: AVPlayerViewController,
+                              willEndFullScreenPresentationWithAnimationCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         playerViewController.player?.play()
     }
     
-    func playerViewController(_ playerViewController: AVPlayerViewController, restoreUserInterfaceForPictureInPictureStopWithCompletionHandler completionHandler: @escaping (Bool) -> Void) {
+    func playerViewController(_ playerViewController: AVPlayerViewController,
+                              restoreUserInterfaceForPictureInPictureStopWithCompletionHandler completionHandler: @escaping (Bool) -> Void) {
         completionHandler(true)
     }
 }

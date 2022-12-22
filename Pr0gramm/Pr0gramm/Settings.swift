@@ -18,6 +18,7 @@ protocol UserSettingsConfigurable {
     static var postCount: Int { get set }
     static var isMediaHeightLimitEnabled: Bool { get set }
     static var isDeactivateNsfwOnAppStart: Bool { get set }
+    static var isMuteOnUnnecessaryMusic: Bool { get set }
 }
 
 @objc
@@ -132,5 +133,10 @@ extension AppSettings: UserSettingsConfigurable {
     static var isDeactivateNsfwOnAppStart: Bool {
         get { return AppSettings.value(for: #keyPath(isDeactivateNsfwOnAppStart)) ?? false }
         set { AppSettings.updateDefaults(for: #keyPath(isDeactivateNsfwOnAppStart), value: newValue) }
+    }
+    
+    static var isMuteOnUnnecessaryMusic: Bool {
+        get { return AppSettings.value(for: #keyPath(isMuteOnUnnecessaryMusic)) ?? false }
+        set { AppSettings.updateDefaults(for: #keyPath(isMuteOnUnnecessaryMusic), value: newValue) }
     }
 }

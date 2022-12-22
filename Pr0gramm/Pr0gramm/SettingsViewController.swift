@@ -63,7 +63,11 @@ class SettingsViewController: TableViewController {
                 
                 Row(text: "Bild in Bild Modus", accessory: .switchToggle(value: AppSettings.isPictureInPictureEnabled) {
                     AppSettings.isPictureInPictureEnabled = $0
-                }, cellClass: SettingsCell.self)
+                }, cellClass: SettingsCell.self),
+                
+                Row(text: "Stumm bei Tag \"unnötige Musik\"", accessory: .switchToggle(value: AppSettings.isMuteOnUnnecessaryMusic) {
+                    AppSettings.isMuteOnUnnecessaryMusic = $0
+                }, cellClass: SettingsCell.self),
 
             ], footer: ""),
         ]
