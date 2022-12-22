@@ -14,7 +14,7 @@ struct UserInfo: Codable {
 	let tagCount: Int
 	let badges: [Badges]
 	let followCount: Int
-	let appLinks: [String]
+	let appLinks: [String]?
 	let following: Bool
 	let subscribed: Bool
 	let ts: Int
@@ -58,7 +58,7 @@ struct UserInfo: Codable {
 		tagCount = try values.decode(Int.self, forKey: .tagCount)
 		badges = try values.decode([Badges].self, forKey: .badges)
 		followCount = try values.decode(Int.self, forKey: .followCount)
-		appLinks = try values.decode([String].self, forKey: .appLinks)
+		appLinks = try values.decodeIfPresent([String].self, forKey: .appLinks)
 		following = try values.decode(Bool.self, forKey: .following)
 		subscribed = try values.decode(Bool.self, forKey: .subscribed)
 		ts = try values.decode(Int.self, forKey: .ts)
