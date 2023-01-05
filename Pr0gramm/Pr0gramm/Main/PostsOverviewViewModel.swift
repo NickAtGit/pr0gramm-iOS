@@ -5,22 +5,20 @@ enum PostsOverviewStyle: Equatable {
     case main, search(tags: [String]), user(name: String), collection(user: String, name: String, keyword: String)
 }
 
-class PostsOverviewViewModel: PostsLoadable {
+class PostsOverviewViewModel: ObservableObject, PostsLoadable {
 
     var queue = DispatchQueue(label: "com.readerWriter", qos: .userInitiated, attributes: .concurrent)
     
-    var items: [Item] {
-        var items = [Item]()
-        queue.sync {
-            allItems.forEach { items += $0.items }
-        }
-        return items
-    }
+    @Published var items: [Item] = []
     
     var style: PostsOverviewStyle
     var connector: Pr0grammConnector
     var sorting: Sorting { Sorting(rawValue: AppSettings.sorting)! }
-    var allItems: [AllItems] = []
+    var allItems: [AllItems] = [] {
+        didSet {
+            self.items = allItems.flatMap { $0.items }
+        }
+    }
     var isAtEnd = false
     
     init(style: PostsOverviewStyle,

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -33,6 +33,7 @@
 		031EE8422065C5B10030CA68 /* ItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033CF1C4205C0F7400627321 /* ItemInfo.swift */; };
 		031EE8432065C5B10030CA68 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033CF1C0205BFF9A00627321 /* Comment.swift */; };
 		031EE8442065C5B10030CA68 /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033CF1C1205BFF9A00627321 /* Tags.swift */; };
+		032AF2822966696200465B16 /* SwiftUIPager in Frameworks */ = {isa = PBXBuildFile; productRef = 032AF2812966696200465B16 /* SwiftUIPager */; };
 		032E62FF243F8E9900FA6C00 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032E62FE243F8E9900FA6C00 /* DetailViewModel.swift */; };
 		0331B2862427ED4D0040D1D1 /* DetailCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0331B2852427ED4D0040D1D1 /* DetailCollectionViewController.swift */; };
 		0331B2882427ED680040D1D1 /* DetailCollectionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0331B2872427ED680040D1D1 /* DetailCollectionViewController.storyboard */; };
@@ -253,6 +254,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				032AF2822966696200465B16 /* SwiftUIPager in Frameworks */,
 				9F41A63FD0AD2BBEFBCBB0D8 /* Pods_Pr0gramm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -530,6 +532,9 @@
 			dependencies = (
 			);
 			name = Pr0gramm;
+			packageProductDependencies = (
+				032AF2812966696200465B16 /* SwiftUIPager */,
+			);
 			productName = Pr0gramm;
 			productReference = 03076A602059E80F00168E62 /* pr0gramm.app */;
 			productType = "com.apple.product-type.application";
@@ -581,6 +586,9 @@
 				Base,
 			);
 			mainGroup = 03076A572059E80F00168E62;
+			packageReferences = (
+				032AF2802966696200465B16 /* XCRemoteSwiftPackageReference "SwiftUIPager" */,
+			);
 			productRefGroup = 03076A612059E80F00168E62 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -930,7 +938,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -946,8 +955,11 @@
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = FMXL9R3NPC;
 				INFOPLIST_FILE = Pr0gramm/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pr0gramm.Pr0grammApp;
 				PRODUCT_NAME = pr0gramm;
 				SUPPORTS_MACCATALYST = YES;
@@ -967,8 +979,11 @@
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = FMXL9R3NPC;
 				INFOPLIST_FILE = Pr0gramm/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pr0gramm.Pr0grammApp;
 				PRODUCT_NAME = pr0gramm;
 				SUPPORTS_MACCATALYST = YES;
@@ -985,7 +1000,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FMXL9R3NPC;
 				INFOPLIST_FILE = Pr0grammTV/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pr0gramm.Pr0grammTV;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
@@ -1003,7 +1021,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FMXL9R3NPC;
 				INFOPLIST_FILE = Pr0grammTV/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pr0gramm.Pr0grammTV;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
@@ -1044,6 +1065,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		032AF2802966696200465B16 /* XCRemoteSwiftPackageReference "SwiftUIPager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/fermoya/SwiftUIPager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		032AF2812966696200465B16 /* SwiftUIPager */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 032AF2802966696200465B16 /* XCRemoteSwiftPackageReference "SwiftUIPager" */;
+			productName = SwiftUIPager;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		031EE8332065C59B0030CA68 /* Pr0grammTV.xcdatamodeld */ = {

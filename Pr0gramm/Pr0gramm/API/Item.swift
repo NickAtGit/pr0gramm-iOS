@@ -1,7 +1,7 @@
 
 import Foundation
 
-struct Item: Codable {
+struct Item: Codable, Identifiable {
 	let id: Int
 	let promoted: Int
 	let up: Int
@@ -98,4 +98,9 @@ extension Item {
     var isVideo: Bool {
         return url.absoluteString.hasSuffix(".mp4")
     }
+}
+
+
+extension Item: Equatable {
+    
 }

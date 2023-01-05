@@ -1,6 +1,7 @@
 
 import UIKit
 import AVKit
+import SwiftUI
 
 class Coordinator {
     
@@ -69,11 +70,14 @@ class Coordinator {
                     with viewModel: PostsOverviewViewModel,
                     at indexPath: IndexPath) {
         
-        let detailViewController = DetailCollectionViewController.fromStoryboard()
-        detailViewController.coordinator = self
-        detailViewController.viewModel = viewModel
-        viewController.navigationController?.pushViewController(detailViewController, animated: true)
-        detailViewController.scrollTo(indexPath: indexPath)
+//        let detailViewController = DetailCollectionViewController.fromStoryboard()
+//        detailViewController.coordinator = self
+//        detailViewController.viewModel = viewModel
+//        viewController.navigationController?.pushViewController(detailViewController, animated: true)
+//        detailViewController.scrollTo(indexPath: indexPath)
+        
+        let hostingController = UIHostingController(rootView: DetailView(viewModel: viewModel))
+        viewController.navigationController?.pushViewController(hostingController, animated: true)
     }
     
     func showShareSheet(with items: [Any], from view: UIView) {

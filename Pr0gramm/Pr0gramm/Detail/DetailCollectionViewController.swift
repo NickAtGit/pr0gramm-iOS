@@ -1,6 +1,10 @@
 
 import UIKit
 import Combine
+import SwiftUI
+import AVFoundation
+import AVKit
+
 class DetailCollectionViewController: UICollectionViewController, Storyboarded {
     
     weak var coordinator: Coordinator?
@@ -175,4 +179,63 @@ class SnapCenterLayout: UICollectionViewFlowLayout {
         flowContext.invalidateFlowLayoutAttributes = true
         super.invalidateLayout(with: flowContext)
     }
+}
+
+import SwiftUIPager
+
+struct DetailView: View {
+    
+    @ObservedObject var viewModel: PostsOverviewViewModel
+    @StateObject var page: Page = .first()
+
+    var body: some View {
+        
+        Pager(page: page, data: viewModel.items) { item in
+            switch item.mediaType {
+            case .image:
+                ScrollView(.vertical) {
+                    VStack {
+                        AsyncImage(
+                            url: item.mediaURL,
+                            content: { image in
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                            },
+                            placeholder: {
+                                ProgressView()
+                                    .padding()
+                            }
+                        )
+                        Spacer()
+                    }
+                }
+            case .gif:
+                Text("GIF")
+            case .video:
+                PlayerViewController(videoURL: item.mediaURL)
+            }
+        }
+        .sensitivity(.high)
+    }
+}
+
+
+struct PlayerViewController: UIViewControllerRepresentable {
+    var videoURL: URL?
+
+    private var player: AVPlayer {
+        return AVPlayer(url: videoURL!)
+    }
+
+    func makeUIViewController(context: Context) -> AVPlayerViewController {
+        let controller = AVPlayerViewController()
+        controller.canStartPictureInPictureAutomaticallyFromInline = true
+        controller.player = player
+        controller.player?.play()
+        
+        return controller
+    }
+
+    func updateUIViewController(_ playerController: AVPlayerViewController, context: Context) {}
 }

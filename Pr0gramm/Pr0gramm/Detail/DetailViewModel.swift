@@ -2,7 +2,7 @@
 import Foundation
 import Combine
 
-class DetailViewModel {
+class DetailViewModel: ObservableObject {
     
     var loggedInUserName: String? { connector.userName }
     @Published var connector: Pr0grammConnector
@@ -46,13 +46,13 @@ class DetailViewModel {
         connector.loadItemInfo(for: item.id) { [weak self] itemInfo in
             guard let itemInfo,
                   let self else { return }
-            self.itemInfo = itemInfo
-            self.tags.value = itemInfo.tags.sorted { $0.confidence > $1.confidence }
 
             let hasComments = itemInfo.comments.count != 0
             
             DispatchQueue.main.async {
                 self.isCommentsButtonHidden = !hasComments
+                self.itemInfo = itemInfo
+                self.tags.value = itemInfo.tags.sorted { $0.confidence > $1.confidence }
             }
 
             guard hasComments else { return }
