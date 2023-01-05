@@ -1,11 +1,13 @@
 
 import UIKit
+import Combine
 
 class BadgesCollectionViewController: UICollectionViewController, Storyboarded {
     
     var viewModel: UserInfoViewModel!
     private var viewHeightConstraint: NSLayoutConstraint?
-
+    private var subscriptions = Set<AnyCancellable>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewHeightConstraint = view.heightAnchor.constraint(equalToConstant: 50)
@@ -14,9 +16,11 @@ class BadgesCollectionViewController: UICollectionViewController, Storyboarded {
         layout.itemSize = CGSize(width: 30, height: 30)
         collectionView.collectionViewLayout = layout
         
-        let _ = viewModel.userInfo.observeNext { [weak self] _ in
-            self?.collectionView.reloadData()
-        }
+        viewModel.$userInfo
+            .sink { [weak self] _ in
+                self?.collectionView.reloadData()
+            }
+            .store(in: &subscriptions)
     }
     
     override func viewDidLayoutSubviews() {
@@ -24,12 +28,12 @@ class BadgesCollectionViewController: UICollectionViewController, Storyboarded {
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.userInfo.value?.badges.count ?? 0
+        return viewModel.userInfo?.badges.count ?? 0
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "badgeCell", for: indexPath) as! BadgeCollectionViewCell
-        cell.badge = viewModel.userInfo.value?.badges[indexPath.row]
+        cell.badge = viewModel.userInfo?.badges[indexPath.row]
         return cell
     }
 }

@@ -1,88 +1,91 @@
 
 import Foundation
-import Bond
 import Combine
 
 class DetailViewModel {
     
     var loggedInUserName: String? { connector.userName }
-    let item: Observable<Item>
-    let itemInfo = Observable<ItemInfo?>(nil)
-    let connector: Pr0grammConnector
-    let points = Observable<String?>(nil)
-    let userName = Observable<String?>(nil)
-    let isTagsExpanded = Observable<Bool>(false)
-    let isTagsExpandButtonHidden = Observable<Bool>(true)
-    let isCommentsButtonHidden = Observable<Bool>(true)
-    let currentVote = Observable<Vote>(.neutral)
+    @Published var connector: Pr0grammConnector
+    @Published var item: Item
+    @Published var itemInfo: ItemInfo?
+    @Published var points: String?
+    @Published var userName: String?
+    @Published var isTagsExpanded = false
+    @Published var isTagsExpandButtonHidden = true
+    @Published var isCommentsButtonHidden = true
+    @Published var currentVote = Vote.neutral
+    @Published var comments: [Comment]?
+    @Published var postTime: String?
+
     var isSeen: Bool {
-        get { ActionsManager.shared.retrieveAction(for: item.value.id)?.seen ?? false }
-        set { ActionsManager.shared.saveAction(for: item.value.id, seen: newValue) }
+        get { ActionsManager.shared.retrieveAction(for: item.id)?.seen ?? false }
+        set { ActionsManager.shared.saveAction(for: item.id, seen: newValue) }
     }
     let initialPointCount: Int
-    let comments = Observable<[Comment]?>(nil)
-    let postTime = Observable<String?>(nil)
-    lazy var upvotes = item.value.up
-    lazy var downvotes = item.value.down
-    lazy var shouldShowPoints = item.value.date < Date(timeIntervalSinceNow: -3600)
+    lazy var upvotes = item.up
+    lazy var downvotes = item.down
+    lazy var shouldShowPoints = item.date < Date(timeIntervalSinceNow: -3600)
     let addTagsButtonTap = PassthroughSubject<Bool, Never>()
     let tags = CurrentValueSubject<[Tags], Never>([])
     
     var shareLink: URL {
-        URL(string: "https://pr0gramm.com/\(item.value.promoted == 0 ? "new" : "top")/\(item.value.id)")!
+        URL(string: "https://pr0gramm.com/\(item.promoted == 0 ? "new" : "top")/\(item.id)")!
     }
     
     init(item: Item,
          connector: Pr0grammConnector) {
-        self.item = Observable<Item>(item)
+        self.item = item
         self.connector = connector
         let points = item.up - item.down
         self.initialPointCount = points
-        self.userName.value = item.user
-        self.postTime.value = Strings.timeString(for: item.date)
+        self.userName = item.user
+        self.postTime = Strings.timeString(for: item.date)
         let pointsString = shouldShowPoints ? "\(points)" : "•••"
-        self.points.value = pointsString
+        self.points = pointsString
 
         connector.loadItemInfo(for: item.id) { [weak self] itemInfo in
-            guard let itemInfo = itemInfo,
-                  let self = self else { return }
-            self.itemInfo.value = itemInfo
+            guard let itemInfo,
+                  let self else { return }
+            self.itemInfo = itemInfo
             self.tags.value = itemInfo.tags.sorted { $0.confidence > $1.confidence }
 
             let hasComments = itemInfo.comments.count != 0
-            self.isCommentsButtonHidden.value = !hasComments
+            
+            DispatchQueue.main.async {
+                self.isCommentsButtonHidden = !hasComments
+            }
+
             guard hasComments else { return }
             self.sortComments(itemInfo.comments)
-            self.isCommentsButtonHidden.send(completion: .finished)
         }
     }
     
     func addComment(_ comment: Comment, parentComment: Comment? = nil) {
         
         if let parentComment = parentComment {
-            guard let index = comments.value?.firstIndex(of: parentComment) else { return }
-            comments.value?.insert(comment, at: index + 1)
-            connector.postComment(to: item.value.id, parentId: parentComment.id, comment: comment.content)
+            guard let index = comments?.firstIndex(of: parentComment) else { return }
+            comments?.insert(comment, at: index + 1)
+            connector.postComment(to: item.id, parentId: parentComment.id, comment: comment.content)
         } else {
-            comments.value?.insert(comment, at: 0)
-            isCommentsButtonHidden.value = false
-            connector.postComment(to: item.value.id, comment: comment.content)
+            comments?.insert(comment, at: 0)
+            isCommentsButtonHidden = false
+            connector.postComment(to: item.id, comment: comment.content)
         }
     }
     
     func vote(_ vote: Vote) {
-        currentVote.value = vote
-        connector.vote(id: item.value.id, value: vote, type: .voteItem)
+        currentVote = vote
+        connector.vote(id: item.id, value: vote, type: .voteItem)
         
         switch vote {
         case .neutral:
-            ActionsManager.shared.saveAction(for: item.value.id, action: VoteAction.itemNeutral.rawValue)
+            ActionsManager.shared.saveAction(for: item.id, action: VoteAction.itemNeutral.rawValue)
         case .up:
-            ActionsManager.shared.saveAction(for: item.value.id, action: VoteAction.itemUp.rawValue)
+            ActionsManager.shared.saveAction(for: item.id, action: VoteAction.itemUp.rawValue)
         case .down:
-            ActionsManager.shared.saveAction(for: item.value.id, action: VoteAction.itemDown.rawValue)
+            ActionsManager.shared.saveAction(for: item.id, action: VoteAction.itemDown.rawValue)
         case .favorite:
-            ActionsManager.shared.saveAction(for: item.value.id, action: VoteAction.itemFavorite.rawValue)
+            ActionsManager.shared.saveAction(for: item.id, action: VoteAction.itemFavorite.rawValue)
         }
     }
     
@@ -107,7 +110,7 @@ class DetailViewModel {
             .map { $0.trimmingCharacters(in: .whitespacesAndNewlines)}
             .joined(separator: ",")
         
-        connector.addTags(tags, for: item.value.id) { [weak self] result in
+        connector.addTags(tags, for: item.id) { [weak self] result in
             switch result {
             case .success(let tags):
                 self?.tags.send(tags)
@@ -118,7 +121,7 @@ class DetailViewModel {
     }
     
     func isAuthorUser(for comment: Comment) -> Bool { comment.name == connector.userName }
-    func isAuthorOP(for comment: Comment) -> Bool { comment.name == item.value.user }
+    func isAuthorOP(for comment: Comment) -> Bool { comment.name == item.user }
     
     private func sortComments(_ comments: [Comment]) {
         let parentNodes = comments.filter { $0.parent == 0 }.map { Node(value: $0) }
@@ -187,7 +190,7 @@ class DetailViewModel {
                 convertCommentNodesToArray(nodes: nodes, currentArray: commentsArray)
             }
         } else {
-            self.comments.value = commentsArray
+            self.comments = commentsArray
         }
     }
 }

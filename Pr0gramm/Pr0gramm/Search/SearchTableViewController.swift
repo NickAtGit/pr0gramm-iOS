@@ -1,12 +1,13 @@
 
 import UIKit
-import Bond
+import Combine
 
 class SearchTableViewController: UITableViewController, Storyboarded {
     
     var viewModel: SearchViewModel!
     weak var coordinator: Coordinator?
     var searchController: UISearchController!
+    private var subscriptions = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +20,12 @@ class SearchTableViewController: UITableViewController, Storyboarded {
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.delegate = self
-        viewModel.searchText.bind(to: searchController.searchBar.reactive.text)
+        
+        viewModel.$searchText.sink { [weak self] searchText in
+            self?.searchController.searchBar.text = searchText
+        }
+        .store(in: &subscriptions)
+        
         navigationItem.searchController = searchController
         definesPresentationContext = true
 

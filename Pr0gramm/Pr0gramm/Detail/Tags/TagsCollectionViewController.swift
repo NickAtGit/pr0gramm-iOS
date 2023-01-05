@@ -11,9 +11,11 @@ class TagsCollectionViewController: UICollectionViewController, Storyboarded {
     
     var viewModel: DetailViewModel! {
         didSet {
-            let _ = viewModel.isTagsExpanded.observeNext(with: { [weak self] isExpanded in
-                self?.setContentHeight(isExpanded: isExpanded)
-            })
+            viewModel.$isTagsExpanded
+                .sink { [weak self] isExpanded in
+                    self?.setContentHeight(isExpanded: isExpanded)
+                }
+                .store(in: &subscriptions)
         }
     }
     private var tags: [Tags]? {
@@ -50,7 +52,7 @@ class TagsCollectionViewController: UICollectionViewController, Storyboarded {
     
     override func viewDidLayoutSubviews() {
         collectionViewContentHeight = collectionView.collectionViewLayout.collectionViewContentSize.height
-        viewModel.isTagsExpandButtonHidden.value = !(collectionViewContentHeight > collapsedHeight)
+        viewModel.isTagsExpandButtonHidden = !(collectionViewContentHeight > collapsedHeight)
     }
     
     private func setContentHeight(isExpanded: Bool) {

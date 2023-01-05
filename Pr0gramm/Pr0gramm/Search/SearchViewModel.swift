@@ -1,18 +1,21 @@
 
 import Foundation
-import Bond
+import Combine
 
 class SearchViewModel {
 
-    let searchText = Observable<String>("")
-    let minScoreSliderValue = Observable<Int>(0)
+    @Published var searchText = ""
+    @Published var minScoreSliderValue = 0
     private let connector: Pr0grammConnector
+    private var subscriptions = Set<AnyCancellable>()
     
     init(connector: Pr0grammConnector) {
         self.connector = connector
         
-        let _ = minScoreSliderValue.observeNext { [unowned self] value in
-            self.searchText.value = value == 0 ? "" : "!s:\(value) "
-        }
+        $minScoreSliderValue
+            .sink { [unowned self] value in
+                self.searchText = value == 0 ? "" : "!s:\(value) "
+            }
+            .store(in: &subscriptions)
     }
 }

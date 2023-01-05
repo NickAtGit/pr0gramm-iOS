@@ -1,5 +1,6 @@
 
 import UIKit
+import Combine
 
 class CommentsViewController: UIViewController, Storyboarded, UIScrollViewDelegate, UITableViewDelegate {
     
@@ -13,7 +14,8 @@ class CommentsViewController: UIViewController, Storyboarded, UIScrollViewDelega
     private let feedback = UIImpactFeedbackGenerator(style: .soft)
     private var isAnimating = false
     private var firstDrag = true
-
+    private var subscriptions = Set<AnyCancellable>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -155,11 +157,13 @@ class CommentsViewController: UIViewController, Storyboarded, UIScrollViewDelega
         firstDrag = false
         tableView.reloadData()
         
-        let _ = viewModel.comments.observeNext { [weak self] _ in
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()
+        viewModel.$comments
+            .sink { [weak self] _ in
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
             }
-        }
+            .store(in: &subscriptions)
     }
 
     
@@ -171,7 +175,8 @@ class CommentsViewController: UIViewController, Storyboarded, UIScrollViewDelega
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         
-        coordinator.animate { context in
+        coordinator.animate { [weak self] context in
+            guard let self else { return }
             let height = self.hostingViewController?.view.frame.height ?? 0
             self.topConstraint.constant = height - self.draggerView.frame.height
             self.view.layoutIfNeeded()
@@ -183,13 +188,13 @@ class CommentsViewController: UIViewController, Storyboarded, UIScrollViewDelega
 extension CommentsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.comments.value?.count ?? 0
+        return viewModel.comments?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell") as! CommentCell
         cell.detailViewModel = viewModel
-        cell.comment = viewModel.comments.value?[indexPath.row]
+        cell.comment = viewModel.comments?[indexPath.row]
         cell.delegate = self
         return cell
     }

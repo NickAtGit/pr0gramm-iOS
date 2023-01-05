@@ -7,7 +7,6 @@ target 'Pr0gramm' do
 
   pod 'ScrollingContentViewController'
   pod 'ImageScrollView'
-  pod 'Bond'
   pod 'Static', git: 'https://github.com/venmo/Static'
   
 end

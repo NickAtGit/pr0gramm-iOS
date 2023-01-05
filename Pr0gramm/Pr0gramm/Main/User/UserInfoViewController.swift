@@ -1,6 +1,7 @@
 
 import UIKit
 import ScrollingContentViewController
+import Combine
 
 class UserInfoViewController: ScrollingContentViewController, Storyboarded {
     
@@ -12,19 +13,22 @@ class UserInfoViewController: ScrollingContentViewController, Storyboarded {
     @IBOutlet private var userClassDotView: UserClassDotView!
     @IBOutlet private var userClassLabel: UILabel!
     @IBOutlet private var collectionsButton: UIButton!
-    
+    private var subscriptions = Set<AnyCancellable>()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
         
-        let _ = viewModel.isLoggedIn.observeNext(with: { [weak self] isLoggedIn in
-            if isLoggedIn {
-                self?.showLoggedIn()
-            } else {
-                self?.showLoggedOut()
-            }
-        })
-                        
+        viewModel.$isLoggedIn
+            .sink(receiveValue: { [weak self] isLoggedIn in
+                if isLoggedIn {
+                    self?.showLoggedIn()
+                } else {
+                    self?.showLoggedOut()
+                }
+            })
+            .store(in: &subscriptions)
+        
         let badgesCollectionViewController = BadgesCollectionViewController.fromStoryboard()
         badgesCollectionViewController.viewModel = viewModel
         addChild(badgesCollectionViewController)
@@ -36,20 +40,24 @@ class UserInfoViewController: ScrollingContentViewController, Storyboarded {
         scoreLabel.isUserInteractionEnabled = true
         
         
-        let _ = viewModel.userInfo.observeNext { [weak self] userInfo in
-            guard let userInfo = userInfo else { return }
-            self?.scoreLabel.text = "Benis: \(userInfo.user.score)"
-            self?.userClassDotView.backgroundColor = Colors.color(for: userInfo.user.mark)
-            self?.userClassLabel.text = Strings.userClass(for: userInfo.user.mark)
-            self?.collectionsButton.setTitle("Sammlungen (\(userInfo.collections?.count ?? 0))", for: .normal)
-        }
-                
-        let _ = viewModel.name.observeNext(with: { [weak self] name in
-            self?.title = name
-            self?.tabBarItem = UITabBarItem(title: "Profil",
-                                            image: UIImage(systemName: "person.circle"),
-                                            selectedImage: UIImage(systemName: "person.circle.fill"))
-        })
+        viewModel.$userInfo
+            .sink(receiveValue: { [weak self] userInfo in
+                guard let userInfo = userInfo else { return }
+                self?.scoreLabel.text = "Benis: \(userInfo.user.score)"
+                self?.userClassDotView.backgroundColor = Colors.color(for: userInfo.user.mark)
+                self?.userClassLabel.text = Strings.userClass(for: userInfo.user.mark)
+                self?.collectionsButton.setTitle("Sammlungen (\(userInfo.collections?.count ?? 0))", for: .normal)
+            })
+            .store(in: &subscriptions)
+        
+        viewModel.$name
+            .sink(receiveValue: { [weak self] name in
+                self?.title = name
+                self?.tabBarItem = UITabBarItem(title: "Profil",
+                                                image: UIImage(systemName: "person.circle"),
+                                                selectedImage: UIImage(systemName: "person.circle.fill"))
+            })
+            .store(in: &subscriptions)
     }
     
     private func showLoggedIn() {
@@ -70,7 +78,7 @@ class UserInfoViewController: ScrollingContentViewController, Storyboarded {
     
     @IBAction func showUserUploadsButtonTapped(_ sender: Any) {
         guard let navigationController = navigationController,
-              let name = viewModel.name.value else { return }
+              let name = viewModel.name else { return }
         
         coordinator?.showUserPosts(for: .user(name: name),
                                    navigationController: navigationController)
@@ -93,8 +101,8 @@ extension UserInfoViewController: UIContextMenuInteractionDelegate {
         let okAction = UIAction(title: "Ok", image: UIImage(systemName: "checkmark.circle")) { _ in }
         
         let title = """
-        ↑ \(viewModel.userInfo.value?.user.up ?? 0)
-        ↓ \(viewModel.userInfo.value?.user.down ?? 0)
+        ↑ \(viewModel.userInfo?.user.up ?? 0)
+        ↓ \(viewModel.userInfo?.user.down ?? 0)
         """
         
         return UIMenu(title: title, children: [okAction])

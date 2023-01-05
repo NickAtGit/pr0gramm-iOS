@@ -1,45 +1,65 @@
 
 import UIKit
-import Bond
+import Combine
 
 class InfoView: UIView, NibView {
     
+    private var subscriptions = Set<AnyCancellable>()
+    
     var viewModel: DetailViewModel! {
         didSet {
-            viewModel.points.bind(to: pointsLabel.reactive.text)
-            viewModel.userName.bind(to: userNameButton.reactive.title)
-            viewModel.isTagsExpandButtonHidden.bind(to: tagsButton.reactive.isHidden)
-            viewModel.isCommentsButtonHidden.bind(to: commentsButton.reactive.isHidden)
-            viewModel.postTime.bind(to: dateLabel.reactive.text)
-            userClassDotView.backgroundColor = Colors.color(for: viewModel.item.value.mark)
+            viewModel.$points
+                .assign(to: \.text, on: pointsLabel)
+                .store(in: &subscriptions)
             
-            let _ = viewModel.isTagsExpanded.observeNext { [weak self] isExpanded in
+            userNameButton.setTitle(viewModel.userName, for: .normal)
+            
+            viewModel.$isTagsExpandButtonHidden
+                .assign(to: \.isHidden, on: tagsButton)
+                .store(in: &subscriptions)
+            
+            viewModel.$isCommentsButtonHidden
+                .assign(to: \.isHidden, on: commentsButton)
+                .store(in: &subscriptions)
+
+            viewModel.$postTime
+                .assign(to: \.text, on: dateLabel)
+                .store(in: &subscriptions)
+            
+            userClassDotView.backgroundColor = Colors.color(for: viewModel.item.mark)
+            
+            
+            viewModel.$isTagsExpanded.sink { [weak self] isExpanded in
                 self?.tagsButton.setImage(isExpanded ? UIImage(systemName: "tag.fill") : UIImage(systemName: "tag"), for: .normal)
             }
+            .store(in: &subscriptions)
             
-            let _ = viewModel.currentVote.observeNext { [unowned self] vote in
-                switch vote {
-                case .neutral:
-                    break
-                case .up:
-                    self.pointsLabel.text = "\(self.viewModel.initialPointCount + 1)"
-                    self.upvoteButton.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
-                    self.favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
-                    self.downvoteButton.setImage(UIImage(systemName: "minus.circle"), for: .normal)
-                case .down:
-                    self.pointsLabel.text = "\(self.viewModel.initialPointCount - 1)"
-                    self.upvoteButton.setImage(UIImage(systemName: "plus.circle"), for: .normal)
-                    self.favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
-                    self.downvoteButton.setImage(UIImage(systemName: "minus.circle.fill"), for: .normal)
-                case .favorite:
-                    self.pointsLabel.text = "\(self.viewModel.initialPointCount + 1)"
-                    self.upvoteButton.setImage(UIImage(systemName: "plus.circle"), for: .normal)
-                    self.favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-                    self.downvoteButton.setImage(UIImage(systemName: "minus.circle"), for: .normal)
+            viewModel.$currentVote
+                .sink { [weak self] vote in
+                    guard let self else { return }
+                    switch vote {
+                    case .neutral:
+                        break
+                    case .up:
+                        self.pointsLabel.text = "\(self.viewModel.initialPointCount + 1)"
+                        self.upvoteButton.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
+                        self.favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+                        self.downvoteButton.setImage(UIImage(systemName: "minus.circle"), for: .normal)
+                    case .down:
+                        self.pointsLabel.text = "\(self.viewModel.initialPointCount - 1)"
+                        self.upvoteButton.setImage(UIImage(systemName: "plus.circle"), for: .normal)
+                        self.favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+                        self.downvoteButton.setImage(UIImage(systemName: "minus.circle.fill"), for: .normal)
+                    case .favorite:
+                        self.pointsLabel.text = "\(self.viewModel.initialPointCount + 1)"
+                        self.upvoteButton.setImage(UIImage(systemName: "plus.circle"), for: .normal)
+                        self.favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                        self.downvoteButton.setImage(UIImage(systemName: "minus.circle"), for: .normal)
+                    }
                 }
-            }
+                .store(in: &subscriptions)
             
-            if let action = ActionsManager.shared.retrieveAction(for: viewModel.item.value.id)?.action,
+            if let action = ActionsManager.shared.retrieveAction(for: viewModel.item.id)?.action,
                 let voteAction = VoteAction(rawValue: Int(action)) {
                 
                 switch voteAction {
@@ -108,7 +128,7 @@ class InfoView: UIView, NibView {
     }
     
     @IBAction func expandTagsTapped(_ sender: Any) {
-        viewModel.isTagsExpanded.value = !viewModel.isTagsExpanded.value
+        viewModel.isTagsExpanded.toggle()
     }
     
     @IBAction func addTagsTapped(_ sender: Any) {

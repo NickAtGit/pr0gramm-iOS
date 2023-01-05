@@ -59,32 +59,39 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
         contentView = hostView
         stackView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         
-        let _ = viewModel.isTagsExpanded.observeNext(with: { [unowned self] _ in
-            UIView.animate(withDuration: 0.25) {
-                self.view.layoutIfNeeded()
+        viewModel.$isTagsExpanded
+            .sink { [weak self] _ in
+                UIView.animate(withDuration: 0.25) {
+                    self?.view.layoutIfNeeded()
+                }
             }
-        })
+            .store(in: &subscriptions)
         
-        let _ = viewModel.item.observeNext { [unowned self] item in
-            self.setup(with: item)
-        }
-        
-        let _ = viewModel.isCommentsButtonHidden.observeCompleted { [weak self] in
-            DispatchQueue.main.async {
-                self?.addComments()
-                self?.view.layoutSubviews()
+        viewModel.$item
+            .sink { [weak self] item in
+                self?.setup(with: item)
             }
-        }
-        
-        viewModel.tags.sink { [weak self] tags in
-            if AppSettings.isMuteOnUnnecessaryMusic,
-               !AppSettings.isVideoMuted {
-                self?.avPlayer?.isMuted = tags.contains(where: {
-                    $0.tag.caseInsensitiveCompare("unnötige Musik") == .orderedSame
-                })
+            .store(in: &subscriptions)
+                
+        viewModel.$isCommentsButtonHidden
+            .sink { [weak self] _ in
+                DispatchQueue.main.async {
+                    self?.addComments()
+                    self?.view.layoutSubviews()
+                }
             }
-        }
-        .store(in: &subscriptions)
+            .store(in: &subscriptions)
+        
+        viewModel.tags
+            .sink { [weak self] tags in
+                if AppSettings.isMuteOnUnnecessaryMusic,
+                   !AppSettings.isVideoMuted {
+                    self?.avPlayer?.isMuted = tags.contains(where: {
+                        $0.tag.caseInsensitiveCompare("unnötige Musik") == .orderedSame
+                    })
+                }
+            }
+            .store(in: &subscriptions)
         
         viewModel.addTagsButtonTap.sink { [weak self] tapped in
             let alertController = UIAlertController(title: "Tags hinzufügen", message: "Tags bitte kommasepariert eingeben", preferredStyle: .alert)
@@ -167,8 +174,7 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
     }
     
     private func setupGif(for item: Item) {
-        DispatchQueue.global().async { [weak self] in
-            guard let self = self else { return }
+        DispatchQueue.global().async {
             let gif = UIImage.gif(url: item.mediaURL)
             DispatchQueue.main.async {
                 self.imageView.image = gif
@@ -291,8 +297,8 @@ extension DetailViewController: UIContextMenuInteractionDelegate {
 extension DetailViewController {
     
     func download(directory: FileManager.SearchPathDirectory) {
-        guard let itemInfo = viewModel.itemInfo.value else { return }
-        let item = viewModel.item.value
+        guard let itemInfo = viewModel.itemInfo else { return }
+        let item = viewModel.item
         let firstFourTags = itemInfo.tags.sorted { $0.confidence > $1.confidence }
             .prefix(4)
             .reduce("", {$0 + ($1.tag) + "-" })

@@ -11,7 +11,7 @@ class MinScoreSliderHeaderView: UIView, NibView {
     @IBAction func sliderValueDidChange(_ sender: UISlider) {
         let newValue = (sender.value / Float(interval)).rounded() * Float(interval)
         sender.setValue(newValue, animated: false)
-        viewModel.minScoreSliderValue.value = Int(newValue)
+        viewModel.minScoreSliderValue = Int(newValue)
         descriptionLabel.text = "Minimaler Benis: \(Int(newValue))"
     }
 }
