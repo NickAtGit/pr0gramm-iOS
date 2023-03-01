@@ -187,55 +187,97 @@ struct DetailView: View {
     
     @ObservedObject var viewModel: PostsOverviewViewModel
     @StateObject var page: Page = .first()
-
+    @State var play = false
+    
     var body: some View {
-        
         Pager(page: page, data: viewModel.items) { item in
-            switch item.mediaType {
-            case .image:
-                ScrollView(.vertical) {
-                    VStack {
-                        AsyncImage(
-                            url: item.mediaURL,
-                            content: { image in
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                            },
-                            placeholder: {
-                                ProgressView()
-                                    .padding()
-                            }
-                        )
-                        Spacer()
-                    }
+            VStack {
+                switch item.mediaType {
+                case .image:
+                    AsyncImage(
+                        url: item.mediaURL,
+                        content: { image in
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                        },
+                        placeholder: {
+                            ProgressView()
+                                .padding()
+                        }
+                    )
+                case .gif:
+                    Text("GIF")
+                case .video:
+                    PlayerViewController(videoURL: item.mediaURL, play: $play)
                 }
-            case .gif:
-                Text("GIF")
-            case .video:
-                PlayerViewController(videoURL: item.mediaURL)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .onBecomingVisible { isVisible in
+                print(item.user)
+                print(isVisible)
+                play = isVisible
             }
         }
+        .vertical()
         .sensitivity(.high)
     }
 }
 
 
 struct PlayerViewController: UIViewControllerRepresentable {
-    var videoURL: URL?
+    let videoURL: URL
+    @Binding var play: Bool
 
     private var player: AVPlayer {
-        return AVPlayer(url: videoURL!)
+        return AVPlayer(url: videoURL)
     }
 
     func makeUIViewController(context: Context) -> AVPlayerViewController {
-        let controller = AVPlayerViewController()
-        controller.canStartPictureInPictureAutomaticallyFromInline = true
-        controller.player = player
-        controller.player?.play()
-        
-        return controller
+        let playerController = AVPlayerViewController()
+        playerController.canStartPictureInPictureAutomaticallyFromInline = true
+        playerController.player = player
+        return playerController
     }
 
-    func updateUIViewController(_ playerController: AVPlayerViewController, context: Context) {}
+    func updateUIViewController(_ playerController: AVPlayerViewController, context: Context) {
+        if play {
+            playerController.player?.play()
+        } else {
+            playerController.player?.pause()
+        }
+    }
+}
+
+
+public extension View {
+    
+    func onBecomingVisible(perform action: @escaping (Bool) -> Void) -> some View {
+        modifier(BecomingVisible(action: action))
+    }
+}
+
+private struct BecomingVisible: ViewModifier {
+    
+    @State var action: ((Bool) -> Void)?
+
+    func body(content: Content) -> some View {
+        content.overlay {
+            GeometryReader { proxy in
+                Color.clear
+                    .preference(
+                        key: VisibleKey.self,
+                        value: UIScreen.main.bounds.intersects(proxy.frame(in: .global))
+                    )
+                    .onPreferenceChange(VisibleKey.self) { isVisible in
+                        action?(isVisible)
+                    }
+            }
+        }
+    }
+
+    struct VisibleKey: PreferenceKey {
+        static var defaultValue: Bool = false
+        static func reduce(value: inout Bool, nextValue: () -> Bool) { }
+    }
 }
