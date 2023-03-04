@@ -1,6 +1,7 @@
 
 import UIKit
 import AVKit
+import SafariServices
 
 class Coordinator {
     
@@ -168,14 +169,8 @@ class Coordinator {
     
     func showWebViewViewController(for url: URL,
                                   from presentingViewController: UIViewController) {
-
-        let webViewViewController = WebViewViewController()
-        webViewViewController.loadUrl(url)
-        let navigationController = NavigationController()
-        navigationController.style = .dismissable
-        navigationController.viewControllers = [webViewViewController]
-        
-        presentingViewController.present(navigationController, animated: true)
+        let webViewViewController = SFSafariViewController(url: url)
+        presentingViewController.present(webViewViewController, animated: true)
     }
     
     @objc

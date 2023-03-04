@@ -45,7 +45,6 @@
 		033CF1C5205C0F7400627321 /* ItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033CF1C4205C0F7400627321 /* ItemInfo.swift */; };
 		033CF1C7205ED95500627321 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033CF1C6205ED95500627321 /* CommentCell.swift */; };
 		033CF1CB205FCB4500627321 /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033CF1CA205FCB4500627321 /* NibView.swift */; };
-		0343948C25B793400046216F /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0343948B25B793400046216F /* WebViewViewController.swift */; };
 		03460AD7244F9ABE007F16DB /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03460AD6244F9ABE007F16DB /* SearchTableViewController.swift */; };
 		03460AD9244F9AEA007F16DB /* SearchTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03460AD8244F9AEA007F16DB /* SearchTableViewController.storyboard */; };
 		0354AAEE24311CE6009C35E0 /* DownloadedFilesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0354AAED24311CE6009C35E0 /* DownloadedFilesTableViewController.swift */; };
@@ -172,7 +171,6 @@
 		033CF1C4205C0F7400627321 /* ItemInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemInfo.swift; sourceTree = "<group>"; };
 		033CF1C6205ED95500627321 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		033CF1CA205FCB4500627321 /* NibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
-		0343948B25B793400046216F /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		03460AD6244F9ABE007F16DB /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		03460AD8244F9AEA007F16DB /* SearchTableViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchTableViewController.storyboard; sourceTree = "<group>"; };
 		0354AAED24311CE6009C35E0 /* DownloadedFilesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadedFilesTableViewController.swift; sourceTree = "<group>"; };
@@ -417,7 +415,6 @@
 				03D2AC45243212A70082D4C9 /* FlagsViewController.swift */,
 				03D2AC47243212C40082D4C9 /* FlagsViewController.storyboard */,
 				0389C64D248D9ED80053AE51 /* User */,
-				0343948B25B793400046216F /* WebViewViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -684,7 +681,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0343948C25B793400046216F /* WebViewViewController.swift in Sources */,
 				03083427246C7D1500F6B6CE /* UserInfoViewController.swift in Sources */,
 				03F7604D247147B700E0A542 /* Colors.swift in Sources */,
 				03076A662059E80F00168E62 /* UIImageView+Extension.swift in Sources */,
