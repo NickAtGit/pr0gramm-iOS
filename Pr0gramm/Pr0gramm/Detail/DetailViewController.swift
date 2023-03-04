@@ -286,7 +286,7 @@ extension DetailViewController: UIContextMenuInteractionDelegate {
             self.coordinator?.showShareSheet(with: [self.viewModel.shareLink], from: imageView)
         }
         
-        let shareImageAction = UIAction(title: "Bild-Link teilen", image: UIImage(systemName: "square.and.arrow.up")) { [unowned self] _ in
+        let shareDirectAction = UIAction(title: "Direktlink teilen", image: UIImage(systemName: "square.and.arrow.up")) { [unowned self] _ in
             self.coordinator?.showShareSheet(with: [self.viewModel.item.url], from: imageView)
         }
         
@@ -294,7 +294,7 @@ extension DetailViewController: UIContextMenuInteractionDelegate {
             UIApplication.shared.open(self.viewModel.shareLink)
         }
 
-        return UIMenu(title: "", children: [downloadAction, fullscreenAction, saveToCameraRollAction, shareAction, shareImageAction, browserAction])
+        return UIMenu(title: "", children: [downloadAction, fullscreenAction, saveToCameraRollAction, shareAction, shareDirectAction, browserAction])
     }
 }
 
