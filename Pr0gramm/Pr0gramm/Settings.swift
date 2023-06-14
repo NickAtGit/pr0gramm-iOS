@@ -12,7 +12,6 @@ protocol UserSettingsConfigurable {
     static var isVideoMuted: Bool { get set }
     static var isAutoPlay: Bool { get set }
     static var isShowSeenBagdes: Bool { get set }
-    static var isUseLeftRightQuickTap: Bool { get set }
     static var isPictureInPictureEnabled: Bool { get set }
     static var latestSearchStrings: [String] { get set }
     static var postCount: Int { get set }
@@ -104,12 +103,7 @@ extension AppSettings: UserSettingsConfigurable {
         get { return AppSettings.value(for: #keyPath(isShowSeenBagdes)) ?? true }
         set { AppSettings.updateDefaults(for: #keyPath(isShowSeenBagdes), value: newValue) }
     }
-    
-    static var isUseLeftRightQuickTap: Bool {
-        get { return AppSettings.value(for: #keyPath(isUseLeftRightQuickTap)) ?? true }
-        set { AppSettings.updateDefaults(for: #keyPath(isUseLeftRightQuickTap), value: newValue) }
-    }
-    
+        
     static var isPictureInPictureEnabled: Bool {
         get { return AppSettings.value(for: #keyPath(isPictureInPictureEnabled)) ?? true }
         set { AppSettings.updateDefaults(for: #keyPath(isPictureInPictureEnabled), value: newValue) }

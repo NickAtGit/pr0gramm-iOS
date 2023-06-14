@@ -1,32 +1,20 @@
 PODS:
   - ImageScrollView (1.9.3)
   - ScrollingContentViewController (1.4.0)
-  - Static (4.0.1)
 
 DEPENDENCIES:
   - ImageScrollView
   - ScrollingContentViewController
-  - Static (from `https://github.com/venmo/Static`)
 
 SPEC REPOS:
   trunk:
     - ImageScrollView
     - ScrollingContentViewController
 
-EXTERNAL SOURCES:
-  Static:
-    :git: https://github.com/venmo/Static
-
-CHECKOUT OPTIONS:
-  Static:
-    :commit: 357afa10228a16ae8c63ce5d0bde99bdbf940696
-    :git: https://github.com/venmo/Static
-
 SPEC CHECKSUMS:
   ImageScrollView: d3ce8371e0d44299b2b638410db45387e18aa83f
   ScrollingContentViewController: 1bff026d6f32c15489dcd22821911eda5fda3801
-  Static: a4ef704ab38e966728ba2e588bcbae9e66c1845e
 
-PODFILE CHECKSUM: c34ed35d37aa6ac5eb24100494859237fa6fea70
+PODFILE CHECKSUM: 20db4b343dc9f4edca49ec6b2ffebcde8df4a39e
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.12.1

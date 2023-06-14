@@ -15,8 +15,10 @@ class TapableImageView: UIImageView, SeenBadgeShowable {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
+        
+        //Killed setting for left right tap because of issues, this code below should be deleted
         guard let location = touches.first?.location(in: self),
-            AppSettings.isUseLeftRightQuickTap else { return }
+            false else { return }
 
         let touchAreaWidth: CGFloat = 80
 
@@ -37,8 +39,10 @@ class TapableAVPlayerViewController: AVPlayerViewController, SeenBadgeShowable {
         
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
+        
+        //Killed setting for left right tap because of issues, this code below should be deleted
         guard let location = touches.first?.location(in: view),
-              AppSettings.isUseLeftRightQuickTap else { return }
+              false else { return }
 
         let touchAreaWidth: CGFloat = 80
 

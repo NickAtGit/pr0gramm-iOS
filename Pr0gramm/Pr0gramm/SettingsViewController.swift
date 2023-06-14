@@ -1,123 +1,94 @@
 
-import Static
-import StoreKit
+@propertyWrapper
+struct CodableAppStorage<T: Codable> {
+    let key: String
+    let defaultValue: T
 
-class SettingsViewController: TableViewController {
-    
-    convenience init() {
-        self.init(style: .grouped)
+    init(_ key: String, defaultValue: T) {
+        self.key = key
+        self.defaultValue = defaultValue
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        title = "Einstellungen"
-        tabBarItem = UITabBarItem(title: "Einstellungen",
-                                  image: UIImage(systemName: "gear"),
-                                  selectedImage: nil)
-
-        dataSource = DataSource(tableViewDelegate: nil)
-        dataSource.sections = [
-            Section(header: .autoLayoutView(CustomExtremityView("Unterstütze mich", uppercased: true)), rows: [
-                Row(text: "Downloade meine andere App", selection: { [unowned self] in
-                    self.displayOverlay()
-                }, cellClass: ButtonCell.self)
-            ], footer: "Da ich immer wieder gefragt werde, ob und wie man mich unterstützen kann: Lade einfach meine anderen Apps herunter. Ich würde mich auch über eine (gute) Bewertung im AppStore freuen. Vielen Dank!"),
-            
-            Section(header: .autoLayoutView(CustomExtremityView("Theme", uppercased: true)), rows: [
-                Row(cellClass: ThemeSelectionCell.self)
-            ], footer: ""),
-            
-            Section(header: .autoLayoutView(CustomExtremityView("Anzahl der Hochlads pro Reihe", uppercased: true)), rows: [
-                Row(cellClass: PostCountSelectionCell.self)
-            ], footer: ""),
-            
-            Section(header: .autoLayoutView(CustomExtremityView("Allgemein", uppercased: true)), rows: [
-                Row(text: "Gesehen Indikator anzeigen", accessory: .switchToggle(value: AppSettings.isShowSeenBagdes) {
-                    AppSettings.isShowSeenBagdes = $0
-                }, cellClass: SettingsCell.self),
-                
-                Row(text: "Nächster/Letzter Hochlad Tap aktivieren", accessory: .switchToggle(value: AppSettings.isUseLeftRightQuickTap) {
-                    AppSettings.isUseLeftRightQuickTap = $0
-                }, cellClass: SettingsCell.self),
-                
-                Row(text: "Medien auf Bildschirmhöhe begrenzen", accessory: .switchToggle(value: AppSettings.isMediaHeightLimitEnabled) {
-                    AppSettings.isMediaHeightLimitEnabled = $0
-                }, cellClass: SettingsCell.self),
-                                
-                Row(text: "NFSW/NSFL bei Appstart deaktivieren", accessory: .switchToggle(value: AppSettings.isDeactivateNsfwOnAppStart) {
-                    AppSettings.isDeactivateNsfwOnAppStart = $0
-                }, cellClass: SettingsCell.self),
-                
-                Row(text: "Datenbank", detailText: "\(ActionsManager.shared.dataBaseSize ?? "Fehler")", accessory: .none, cellClass: SettingsCell.self),
-
-            ], footer: ""),
-
-            Section(header: .autoLayoutView(CustomExtremityView("Video", uppercased: true)), rows: [
-                Row(text: "Videos stumm starten", accessory: .switchToggle(value: AppSettings.isVideoMuted) {
-                    AppSettings.isVideoMuted = $0
-                }, cellClass: SettingsCell.self),
-                
-                Row(text: "Videos automatisch starten", accessory: .switchToggle(value: AppSettings.isAutoPlay) {
-                    AppSettings.isAutoPlay = $0
-                }, cellClass: SettingsCell.self),
-                
-                Row(text: "Bild in Bild Modus", accessory: .switchToggle(value: AppSettings.isPictureInPictureEnabled) {
-                    AppSettings.isPictureInPictureEnabled = $0
-                }, cellClass: SettingsCell.self),
-                
-                Row(text: "Stumm bei Tag \"unnötige Musik\"", accessory: .switchToggle(value: AppSettings.isMuteOnUnnecessaryMusic) {
-                    AppSettings.isMuteOnUnnecessaryMusic = $0
-                }, cellClass: SettingsCell.self),
-
-            ], footer: ""),
-        ]
-    }
-    
-    private func displayOverlay() {
-        guard let scene = (UIApplication.shared.connectedScenes.first as? UIWindowScene) else { return }
-        if #available(iOS 14.0, *) {
-            let config = SKOverlay.AppConfiguration(appIdentifier: "1249686798", position: .bottomRaised)
-            let overlay = SKOverlay(configuration: config)
-            overlay.present(in: scene)
+    var wrappedValue: T {
+        get {
+            guard let data = UserDefaults.standard.data(forKey: key),
+                  let value = try? JSONDecoder().decode(T.self, from: data) else {
+                return defaultValue
+            }
+            return value
+        }
+        set {
+            if let data = try? JSONEncoder().encode(newValue) {
+                UserDefaults.standard.set(data, forKey: key)
+            }
         }
     }
 }
 
+import SwiftUI
+import StoreKit
 
-class CustomExtremityView: UIView {
-    lazy var label: UILabel = {
-        let label = UILabel()
-        label.textColor = #colorLiteral(red: 0.9490196078, green: 0.9607843137, blue: 0.9568627451, alpha: 1)
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+struct SettingsView: View {
+    @State private var isOverlayShown = false
+    
+    @AppStorage("sfwActive") var sfwActive: Bool = true
+    @AppStorage("nsfwActive") var nsfwActive: Bool = false
+    @AppStorage("nsflActive") var nsflActive: Bool = false
+    @AppStorage("sorting") var sorting: Int = 1
+    @AppStorage("selectedTheme") var selectedTheme: Int = 1
+    @AppStorage("isLoggedIn") var isLoggedIn: Bool = false
+    @AppStorage("isVideoMuted") var isVideoMuted: Bool = false
+    @AppStorage("isAutoPlay") var isAutoPlay: Bool = true
+    @AppStorage("isShowSeenBagdes") var isShowSeenBagdes: Bool = true
+    @AppStorage("isPictureInPictureEnabled") var isPictureInPictureEnabled: Bool = true
+    @AppStorage("postCount") var postCount: Int = 4
+    @AppStorage("isMediaHeightLimitEnabled") var isMediaHeightLimitEnabled: Bool = false
+    @AppStorage("isDeactivateNsfwOnAppStart") var isDeactivateNsfwOnAppStart: Bool = false
+    @AppStorage("isMuteOnUnnecessaryMusic") var isMuteOnUnnecessaryMusic: Bool = false
+    @CodableAppStorage("latestSearchStrings", defaultValue: []) var latestSearchStrings: [String]
 
-    init(_ string: String, uppercased: Bool = false) {
-        super.init(frame: .zero)
-        layoutMargins = UIEdgeInsets(top: 5, left: 20, bottom: 5, right: 20)
-        addSubview(label)
-        label.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).isActive = true
-        label.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).isActive = true
-        label.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor).isActive = true
-        label.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor).isActive = true
-        label.text = uppercased ? string.uppercased() : string
+    var body: some View {
+        NavigationView {
+            List {
+                Section(header: Text("Unterstütze mich"),
+                        footer: Text("Da ich immer wieder gefragt werde, ob und wie man mich unterstützen kann: Lade einfach meine anderen Apps herunter. Ich würde mich auch über eine (gute) Bewertung im AppStore freuen. Vielen Dank!")) {
+                    Button("Downloade meine andere App") {
+                        displayOverlay()
+                    }
+                }
+                
+                Section(header: Text("Theme")) {
+                    ThemeSelectionView()
+                }
+                
+                Section(header: Text("Anzahl der Hochlads pro Reihe")) {
+                    PostCountSelectionView()
+                }
+                
+                Section(header: Text("Allgemein")) {
+                    Toggle("Gesehen Indikator anzeigen", isOn: $isShowSeenBagdes)
+                    Toggle("Medien auf Bildschirmhöhe begrenzen", isOn: $isMediaHeightLimitEnabled)
+                    Toggle("NFSW/NSFL bei Appstart deaktivieren", isOn: $isDeactivateNsfwOnAppStart)
+                    Text("Datenbank: \(ActionsManager.shared.dataBaseSize ?? "Fehler")")
+                }
+                
+                Section(header: Text("Video")) {
+                    Toggle("Videos stumm starten", isOn: $isVideoMuted)
+                    Toggle("Videos automatisch starten", isOn: $isAutoPlay)
+                    Toggle("Bild in Bild Modus", isOn: $isPictureInPictureEnabled)
+                    Toggle("Stumm bei Tag \"unnötige Musik\"", isOn: $isMuteOnUnnecessaryMusic)
+                }
+            }
+            .navigationTitle("Einstellungen")
+            .listStyle(GroupedListStyle())
+        }
     }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-class SettingsCell: Value1Cell {
-        
-    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: .value1, reuseIdentifier: reuseIdentifier)
-        textLabel?.textColor = #colorLiteral(red: 0.9490196078, green: 0.9607843137, blue: 0.9568627451, alpha: 1)
-        detailTextLabel?.textColor = #colorLiteral(red: 0.9490196078, green: 0.9607843137, blue: 0.9568627451, alpha: 1)
-    }
-
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    
+    private func displayOverlay() {
+        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            let config = SKOverlay.AppConfiguration(appIdentifier: "1249686798", position: .bottomRaised)
+            let overlay = SKOverlay(configuration: config)
+            overlay.present(in: scene)
+        }
     }
 }

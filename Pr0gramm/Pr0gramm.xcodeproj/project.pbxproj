@@ -20,8 +20,7 @@
 		030CAF562440B76A00D6885C /* CommentsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 030CAF552440B76A00D6885C /* CommentsViewController.storyboard */; };
 		030CAF5E2449183F00D6885C /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030CAF5D2449183F00D6885C /* UIImage+Gif.swift */; };
 		030CAF61244CD75E00D6885C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030CAF60244CD75E00D6885C /* SettingsViewController.swift */; };
-		030CAF66244CD93D00D6885C /* ThemeSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030CAF64244CD93D00D6885C /* ThemeSelectionCell.swift */; };
-		030CAF67244CD93D00D6885C /* ThemeSelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 030CAF65244CD93D00D6885C /* ThemeSelectionCell.xib */; };
+		030CAF66244CD93D00D6885C /* ThemeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030CAF64244CD93D00D6885C /* ThemeSelectionView.swift */; };
 		031EE8302065C59B0030CA68 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031EE82F2065C59B0030CA68 /* AppDelegate.swift */; };
 		031EE8322065C59B0030CA68 /* TVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031EE8312065C59B0030CA68 /* TVViewController.swift */; };
 		031EE8352065C59B0030CA68 /* Pr0grammTV.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 031EE8332065C59B0030CA68 /* Pr0grammTV.xcdatamodeld */; };
@@ -57,8 +56,7 @@
 		035EBA7F24262CA3009185E9 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035EBA7E24262CA3009185E9 /* LoginViewController.storyboard */; };
 		035EBA822426DA5E009185E9 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035EBA812426DA5E009185E9 /* Coordinator.swift */; };
 		035EBA842427790C009185E9 /* DetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035EBA832427790C009185E9 /* DetailViewController.storyboard */; };
-		035F91DE2519FD9E00C2CF08 /* PostCountSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035F91DD2519FD9E00C2CF08 /* PostCountSelectionCell.swift */; };
-		035F91E22519FDBA00C2CF08 /* PostCountSelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 035F91E12519FDBA00C2CF08 /* PostCountSelectionCell.xib */; };
+		035F91DE2519FD9E00C2CF08 /* PostCountSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035F91DD2519FD9E00C2CF08 /* PostCountSelectionView.swift */; };
 		036D58862473372500982AB3 /* ProfileComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036D58852473372500982AB3 /* ProfileComments.swift */; };
 		0388A0B524293BE0006E86A3 /* TapableImage+Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0388A0B424293BE0006E86A3 /* TapableImage+Video.swift */; };
 		0388A0B724297C70006E86A3 /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0388A0B624297C70006E86A3 /* Downloader.swift */; };
@@ -150,8 +148,7 @@
 		030CAF5D2449183F00D6885C /* UIImage+Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
 		030CAF60244CD75E00D6885C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		030CAF62244CD7B600D6885C /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		030CAF64244CD93D00D6885C /* ThemeSelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeSelectionCell.swift; sourceTree = "<group>"; };
-		030CAF65244CD93D00D6885C /* ThemeSelectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThemeSelectionCell.xib; sourceTree = "<group>"; };
+		030CAF64244CD93D00D6885C /* ThemeSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeSelectionView.swift; sourceTree = "<group>"; };
 		031EE82D2065C59B0030CA68 /* PR0GRAMM TV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PR0GRAMM TV.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		031EE82F2065C59B0030CA68 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		031EE8312065C59B0030CA68 /* TVViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVViewController.swift; sourceTree = "<group>"; };
@@ -183,8 +180,7 @@
 		035EBA7E24262CA3009185E9 /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
 		035EBA812426DA5E009185E9 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		035EBA832427790C009185E9 /* DetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailViewController.storyboard; sourceTree = "<group>"; };
-		035F91DD2519FD9E00C2CF08 /* PostCountSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCountSelectionCell.swift; sourceTree = "<group>"; };
-		035F91E12519FDBA00C2CF08 /* PostCountSelectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostCountSelectionCell.xib; sourceTree = "<group>"; };
+		035F91DD2519FD9E00C2CF08 /* PostCountSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCountSelectionView.swift; sourceTree = "<group>"; };
 		036D58852473372500982AB3 /* ProfileComments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileComments.swift; sourceTree = "<group>"; };
 		037A3F0924366F7800D68391 /* Pr0gramm.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pr0gramm.entitlements; sourceTree = "<group>"; };
 		0388A0B424293BE0006E86A3 /* TapableImage+Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TapableImage+Video.swift"; sourceTree = "<group>"; };
@@ -297,10 +293,8 @@
 				03C1FA232427854600E6AEE4 /* NavigationController.swift */,
 				03D2AC4A24321DB40082D4C9 /* Settings.swift */,
 				030CAF60244CD75E00D6885C /* SettingsViewController.swift */,
-				030CAF64244CD93D00D6885C /* ThemeSelectionCell.swift */,
-				030CAF65244CD93D00D6885C /* ThemeSelectionCell.xib */,
-				035F91DD2519FD9E00C2CF08 /* PostCountSelectionCell.swift */,
-				035F91E12519FDBA00C2CF08 /* PostCountSelectionCell.xib */,
+				030CAF64244CD93D00D6885C /* ThemeSelectionView.swift */,
+				035F91DD2519FD9E00C2CF08 /* PostCountSelectionView.swift */,
 				033CF1BD205BFD2A00627321 /* Main */,
 				033CF1BE205BFD3200627321 /* Detail */,
 				0354AAF12431287A009C35E0 /* DownloadedFiles */,
@@ -604,9 +598,7 @@
 				03D7F1A524831A880014190B /* BadgesCollectionViewController.storyboard in Resources */,
 				03083429246C7D5D00F6B6CE /* UserInfoViewController.storyboard in Resources */,
 				0354AAF324312E37009C35E0 /* ImageDetailViewController.storyboard in Resources */,
-				030CAF67244CD93D00D6885C /* ThemeSelectionCell.xib in Resources */,
 				03D2AC48243212C40082D4C9 /* FlagsViewController.storyboard in Resources */,
-				035F91E22519FDBA00C2CF08 /* PostCountSelectionCell.xib in Resources */,
 				03B0628A2428CFD600CA657A /* InfoView.xib in Resources */,
 				0389C651248D9FD20053AE51 /* CollectionsTableViewController.storyboard in Resources */,
 				035EBA7F24262CA3009185E9 /* LoginViewController.storyboard in Resources */,
@@ -639,13 +631,11 @@
 				"${PODS_ROOT}/Target Support Files/Pods-Pr0gramm/Pods-Pr0gramm-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ImageScrollView/ImageScrollView.framework",
 				"${BUILT_PRODUCTS_DIR}/ScrollingContentViewController/ScrollingContentViewController.framework",
-				"${BUILT_PRODUCTS_DIR}/Static/Static.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageScrollView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ScrollingContentViewController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Static.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -685,11 +675,11 @@
 				03F7604D247147B700E0A542 /* Colors.swift in Sources */,
 				03076A662059E80F00168E62 /* UIImageView+Extension.swift in Sources */,
 				03D2AC50243264740082D4C9 /* With.swift in Sources */,
-				030CAF66244CD93D00D6885C /* ThemeSelectionCell.swift in Sources */,
+				030CAF66244CD93D00D6885C /* ThemeSelectionView.swift in Sources */,
 				030CAF542440B76400D6885C /* CommentsViewController.swift in Sources */,
 				035EBA7D24262C7E009185E9 /* StoryboardViewController.swift in Sources */,
 				038F7C98246E0DEE00D268BA /* CollectionItem.swift in Sources */,
-				035F91DE2519FD9E00C2CF08 /* PostCountSelectionCell.swift in Sources */,
+				035F91DE2519FD9E00C2CF08 /* PostCountSelectionView.swift in Sources */,
 				0388A0B524293BE0006E86A3 /* TapableImage+Video.swift in Sources */,
 				038F7C9C246E0DEE00D268BA /* User.swift in Sources */,
 				03B062942428EC3600CA657A /* TagCollectionViewCell.swift in Sources */,
@@ -938,11 +928,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pr0gramm/Pr0gramm.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 55;
+				CURRENT_PROJECT_VERSION = 56;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = FMXL9R3NPC;
 				INFOPLIST_FILE = Pr0gramm/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pr0gramm.Pr0grammApp;
 				PRODUCT_NAME = pr0gramm;
@@ -959,11 +949,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pr0gramm/Pr0gramm.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 55;
+				CURRENT_PROJECT_VERSION = 56;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = FMXL9R3NPC;
 				INFOPLIST_FILE = Pr0gramm/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pr0gramm.Pr0grammApp;
 				PRODUCT_NAME = pr0gramm;

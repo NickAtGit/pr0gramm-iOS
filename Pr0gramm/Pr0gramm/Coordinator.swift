@@ -2,6 +2,7 @@
 import UIKit
 import AVKit
 import SafariServices
+import SwiftUI
 
 class Coordinator {
     
@@ -26,10 +27,11 @@ class Coordinator {
         let downloadedFilesNavigationController = NavigationController()
         downloadedFilesNavigationController.viewControllers = [downloadedFilesTableViewController]
         
-        let settingsViewController = SettingsViewController()
-        settingsViewController.loadViewIfNeeded()
-        let settingsNavigationController = NavigationController()
-        settingsNavigationController.viewControllers = [settingsViewController]
+        let settingsViewController = UIHostingController(rootView: SettingsView())
+        settingsViewController.title = "Einstellungen"
+        settingsViewController.tabBarItem = UITabBarItem(title: "Einstellungen",
+                                                         image: UIImage(systemName: "gearshape"),
+                                                         selectedImage: UIImage(systemName: "gearshape.fill"))
         
         let searchViewController = SearchTableViewController.fromStoryboard()
         searchViewController.viewModel = SearchViewModel(connector: pr0grammConnector)
@@ -52,7 +54,7 @@ class Coordinator {
                                              searchNavigationController,
                                              profileNavigationController,
                                              downloadedFilesNavigationController,
-                                             settingsNavigationController], animated: false)
+                                             settingsViewController], animated: false)
         return tabbarController
     }
     
