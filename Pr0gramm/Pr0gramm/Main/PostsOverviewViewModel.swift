@@ -151,10 +151,8 @@ extension PostsLoadable {
                 completion(true)
             }
         case .only(let id):
-            connector.fetchItems(
-                flags: flags,
-                additionalQueryItems: [URLQueryItem(name: "id", value: "\(id)")])
-            { [weak self] items in
+            connector.fetchItems(flags: flags,
+                                 additionalQueryItems: [URLQueryItem(name: "id", value: "\(id)")]) { [weak self] items in
                 guard let items = items else { completion(false); return }
                 self?.queue.async(flags: .barrier) {
                     if isRefresh { self?.allItems.removeAll() }

@@ -170,9 +170,7 @@ class Coordinator {
     }
     
     func showWebViewViewController(for url: URL,
-                                   from viewController: UIViewController
-    ) {
-
+                                   from viewController: UIViewController) {
         if let postID = extractPostID(url: url) {
             let detailViewController = DetailCollectionViewController.fromStoryboard()
             detailViewController.coordinator = self
@@ -190,14 +188,13 @@ class Coordinator {
     }
 
     private func extractPostID(url: URL) -> Int? {
-        if url.host?.contains("pr0gramm.com") == true {
-            let pathComponents = url.pathComponents
-
-            if pathComponents.count >= 2 {
-                return Int(pathComponents.last!)
-            }
+        if let host = url.host,
+           host.contains("pr0gramm.com"),
+           let lastComponent = url.pathComponents.last,
+           let postId = Int(lastComponent) {
+            
+            return postId
         }
-
         return nil
     }
     
