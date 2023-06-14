@@ -170,9 +170,35 @@ class Coordinator {
     }
     
     func showWebViewViewController(for url: URL,
-                                  from presentingViewController: UIViewController) {
-        let webViewViewController = SFSafariViewController(url: url)
-        presentingViewController.present(webViewViewController, animated: true)
+                                   from viewController: UIViewController
+    ) {
+
+        if let postID = extractPostID(url: url) {
+            let detailViewController = DetailCollectionViewController.fromStoryboard()
+            detailViewController.coordinator = self
+            detailViewController.viewModel = PostsOverviewViewModel(style: .only(id: postID), connector: pr0grammConnector)
+            detailViewController.viewModel.loadItems { _ in
+                DispatchQueue.main.async {
+                    viewController.navigationController?.pushViewController(detailViewController, animated: true)
+                }
+            }
+        }
+        else {
+            let webViewViewController = SFSafariViewController(url: url)
+            viewController.present(webViewViewController, animated: true)
+        }
+    }
+
+    private func extractPostID(url: URL) -> Int? {
+        if url.host?.contains("pr0gramm.com") == true {
+            let pathComponents = url.pathComponents
+
+            if pathComponents.count >= 2 {
+                return Int(pathComponents.last!)
+            }
+        }
+
+        return nil
     }
     
     @objc

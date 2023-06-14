@@ -307,8 +307,8 @@ class Pr0grammConnector {
     }
     
     
-    func fetchItems(sorting: Sorting,
-                    flags: [Flags],
+    func fetchItems(sorting: Sorting? = nil,
+                    flags: [Flags] = [],
                     additionalQueryItems: [URLQueryItem] = [],
                     afterId: Int? = nil,
                     completion: @escaping (AllItems?) -> Void) {
@@ -316,10 +316,15 @@ class Pr0grammConnector {
         let flagsCombined = flags.reduce(0, { $0 + $1.rawValue })
         
         var components = Pr0grammURL.itemsGet.components
-        components.queryItems = [
-            URLQueryItem(name: "flags", value: "\(flagsCombined)"),
-            URLQueryItem(name: "promoted", value: "\(sorting.rawValue)")
-            ] + additionalQueryItems
+
+        var queryItems = additionalQueryItems
+        if let sorting {
+            queryItems += [URLQueryItem(name: "promoted", value: "\(sorting.rawValue)")]
+        }
+        if !flags.isEmpty {
+            queryItems += [URLQueryItem(name: "flags", value: "\(flagsCombined)")]
+        }
+        components.queryItems = queryItems
 
         if let afterId = afterId {
             components.queryItems?.append(URLQueryItem(name: "older", value: "\(afterId)"))

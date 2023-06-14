@@ -2,7 +2,7 @@
 import UIKit
 
 enum PostsOverviewStyle: Equatable {
-    case main, search(tags: [String]), user(name: String), collection(user: String, name: String, keyword: String)
+    case main, search(tags: [String]), user(name: String), collection(user: String, name: String, keyword: String), only(id: Int)
 }
 
 class PostsOverviewViewModel: PostsLoadable {
@@ -44,6 +44,8 @@ class PostsOverviewViewModel: PostsLoadable {
             return name
         case .collection(_, let collectionName, _):
             return collectionName
+        case .only(let id):
+            return "Post \(id)"
         }
     }
     
@@ -148,6 +150,19 @@ extension PostsLoadable {
                 self?.isAtEnd = items.atEnd
                 completion(true)
             }
-        }
+        case .only(let id):
+            connector.fetchItems(
+                flags: flags,
+                additionalQueryItems: [URLQueryItem(name: "id", value: "\(id)")])
+            { [weak self] items in
+                guard let items = items else { completion(false); return }
+                self?.queue.async(flags: .barrier) {
+                    if isRefresh { self?.allItems.removeAll() }
+                    self?.allItems.append(items)
+                }
+                self?.isAtEnd = items.atEnd
+                completion(true)
+            }
+        }        
     }
 }
