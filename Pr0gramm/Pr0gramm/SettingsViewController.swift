@@ -68,7 +68,7 @@ struct SettingsView: View {
                 Section(header: Text("Allgemein")) {
                     Toggle("Gesehen Indikator anzeigen", isOn: $isShowSeenBagdes)
                     Toggle("Medien auf Bildschirmhöhe begrenzen", isOn: $isMediaHeightLimitEnabled)
-                    Toggle("NFSW/NSFL bei Appstart deaktivieren", isOn: $isDeactivateNsfwOnAppStart)
+                    Toggle("NSFW/NSFL bei Appstart deaktivieren", isOn: $isDeactivateNsfwOnAppStart)
                     Text("Datenbank: \(ActionsManager.shared.dataBaseSize ?? "Fehler")")
                 }
                 
