@@ -30,6 +30,7 @@ protocol FlagFilterSettingsConfigurable {
     static var sfwActive: Bool { get set }
     static var nsfwActive: Bool { get set }
     static var nsflActive: Bool { get set }
+    static var polActive: Bool { get set }
 }
 
 class AppSettings {
@@ -60,13 +61,24 @@ extension AppSettings: FlagFilterSettingsConfigurable {
         get { return AppSettings.value(for: #keyPath(nsflActive)) ?? false }
         set { AppSettings.updateDefaults(for: #keyPath(nsflActive), value: newValue) }
     }
-    
+
+    static var polActive: Bool {
+        get { return AppSettings.value(for: #keyPath(polActive)) ?? true }
+        set { AppSettings.updateDefaults(for: #keyPath(polActive), value: newValue) }
+    }
+
     static var currentFlags: [Flags] {
         var flags: [Flags] = []
-        guard AppSettings.isLoggedIn else { return [.sfw] }
+        guard AppSettings.isLoggedIn else { return [.sfw, .pol] }
         if AppSettings.sfwActive { flags.append(.sfw); flags.append(.nsfp) }
         if AppSettings.nsfwActive { flags.append(.nsfw) }
         if AppSettings.nsflActive { flags.append(.nsfl) }
+        if AppSettings.polActive { flags.append(.pol) }
+        guard !flags.isEmpty else {
+            AppSettings.sfwActive = true
+            AppSettings.polActive = true
+            return self.currentFlags
+        }
         return flags
     }
 }

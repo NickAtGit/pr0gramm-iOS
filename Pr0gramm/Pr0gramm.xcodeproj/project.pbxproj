@@ -95,8 +95,6 @@
 		03D115FD2460BCD90096ECFD /* BadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D115FC2460BCD90096ECFD /* BadgeLabel.swift */; };
 		03D115FF2461F3C00096ECFD /* ReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D115FE2461F3C00096ECFD /* ReplyViewController.swift */; };
 		03D116012461F3CA0096ECFD /* ReplyViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03D116002461F3CA0096ECFD /* ReplyViewController.storyboard */; };
-		03D2AC46243212A70082D4C9 /* FlagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2AC45243212A70082D4C9 /* FlagsViewController.swift */; };
-		03D2AC48243212C40082D4C9 /* FlagsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03D2AC47243212C40082D4C9 /* FlagsViewController.storyboard */; };
 		03D2AC4B24321DB40082D4C9 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2AC4A24321DB40082D4C9 /* Settings.swift */; };
 		03D2AC50243264740082D4C9 /* With.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2AC4D243264740082D4C9 /* With.swift */; };
 		03D2AC51243264740082D4C9 /* UIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2AC4E243264740082D4C9 /* UIWindow.swift */; };
@@ -128,6 +126,7 @@
 		03F7604D247147B700E0A542 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F7604C247147B700E0A542 /* Colors.swift */; };
 		03F7604F2471489900E0A542 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F7604E2471489900E0A542 /* Strings.swift */; };
 		03F7605124714DC300E0A542 /* UserClassDotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F7605024714DC300E0A542 /* UserClassDotView.swift */; };
+		17D315AA2B608E67009F81E5 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D315A92B608E67009F81E5 /* FilterView.swift */; };
 		9F41A63FD0AD2BBEFBCBB0D8 /* Pods_Pr0gramm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55CDBC6EB3F96F0E3E6A68C0 /* Pods_Pr0gramm.framework */; };
 /* End PBXBuildFile section */
 
@@ -209,8 +208,6 @@
 		03D115FC2460BCD90096ECFD /* BadgeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeLabel.swift; sourceTree = "<group>"; };
 		03D115FE2461F3C00096ECFD /* ReplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyViewController.swift; sourceTree = "<group>"; };
 		03D116002461F3CA0096ECFD /* ReplyViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReplyViewController.storyboard; sourceTree = "<group>"; };
-		03D2AC45243212A70082D4C9 /* FlagsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagsViewController.swift; sourceTree = "<group>"; };
-		03D2AC47243212C40082D4C9 /* FlagsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FlagsViewController.storyboard; sourceTree = "<group>"; };
 		03D2AC4A24321DB40082D4C9 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		03D2AC4D243264740082D4C9 /* With.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = With.swift; sourceTree = "<group>"; };
 		03D2AC4E243264740082D4C9 /* UIWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIWindow.swift; sourceTree = "<group>"; };
@@ -237,6 +234,7 @@
 		03F7604C247147B700E0A542 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		03F7604E2471489900E0A542 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		03F7605024714DC300E0A542 /* UserClassDotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserClassDotView.swift; sourceTree = "<group>"; };
+		17D315A92B608E67009F81E5 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		55CDBC6EB3F96F0E3E6A68C0 /* Pods_Pr0gramm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pr0gramm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8B6109EB9DAB3D7BC6F488C /* Pods-Pr0gramm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pr0gramm.release.xcconfig"; path = "Target Support Files/Pods-Pr0gramm/Pods-Pr0gramm.release.xcconfig"; sourceTree = "<group>"; };
 		CF40EF03453B6FC2E81BF011 /* Pods-Pr0gramm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pr0gramm.debug.xcconfig"; path = "Target Support Files/Pods-Pr0gramm/Pods-Pr0gramm.debug.xcconfig"; sourceTree = "<group>"; };
@@ -406,8 +404,7 @@
 				033CF1B5205BDBED00627321 /* PostsOverviewCollectionViewController.swift */,
 				03076A672059E80F00168E62 /* PostsOverviewCollectionViewController.storyboard */,
 				033CF1B9205BDE1500627321 /* ThumbCollectionViewCell.swift */,
-				03D2AC45243212A70082D4C9 /* FlagsViewController.swift */,
-				03D2AC47243212C40082D4C9 /* FlagsViewController.storyboard */,
+				17D315A92B608E67009F81E5 /* FilterView.swift */,
 				0389C64D248D9ED80053AE51 /* User */,
 			);
 			path = Main;
@@ -598,7 +595,6 @@
 				03D7F1A524831A880014190B /* BadgesCollectionViewController.storyboard in Resources */,
 				03083429246C7D5D00F6B6CE /* UserInfoViewController.storyboard in Resources */,
 				0354AAF324312E37009C35E0 /* ImageDetailViewController.storyboard in Resources */,
-				03D2AC48243212C40082D4C9 /* FlagsViewController.storyboard in Resources */,
 				03B0628A2428CFD600CA657A /* InfoView.xib in Resources */,
 				0389C651248D9FD20053AE51 /* CollectionsTableViewController.storyboard in Resources */,
 				035EBA7F24262CA3009185E9 /* LoginViewController.storyboard in Resources */,
@@ -675,6 +671,7 @@
 				03F7604D247147B700E0A542 /* Colors.swift in Sources */,
 				03076A662059E80F00168E62 /* UIImageView+Extension.swift in Sources */,
 				03D2AC50243264740082D4C9 /* With.swift in Sources */,
+				17D315AA2B608E67009F81E5 /* FilterView.swift in Sources */,
 				030CAF66244CD93D00D6885C /* ThemeSelectionView.swift in Sources */,
 				030CAF542440B76400D6885C /* CommentsViewController.swift in Sources */,
 				035EBA7D24262C7E009185E9 /* StoryboardViewController.swift in Sources */,
@@ -720,7 +717,6 @@
 				03D2AC4B24321DB40082D4C9 /* Settings.swift in Sources */,
 				03076A642059E80F00168E62 /* AppDelegate.swift in Sources */,
 				03D2AC542432649C0082D4C9 /* Appearance.swift in Sources */,
-				03D2AC46243212A70082D4C9 /* FlagsViewController.swift in Sources */,
 				0331B2862427ED4D0040D1D1 /* DetailCollectionViewController.swift in Sources */,
 				033CF1B8205BDC6B00627321 /* Pr0grammConnector.swift in Sources */,
 				03A93326243BC82000A16E1B /* AlignedCollectionViewFlowLayout.swift in Sources */,
