@@ -87,7 +87,7 @@ public class ScrollingContentScrollView: UIScrollView {
             // between the time when self.scrollRectToVisible and super.scrollRectToVisible are
             // called.
             // Note: This does not handle the case where the rect is smaller than the
-            // descendant view's bounds and the size of the descedant view changes.
+            // descendant view's bounds and the size of the descendant view changes.
             let boundsRect = descendantView.convert(rect, from: self)
             let rect: CGRect? = boundsRect == descendantView.bounds ? nil : boundsRect
             scrollViewFilter?.submitScrollRectEvent(ScrollRectEvent(contentArea: .descendantViewRect(rect, descendantView: descendantView), animated: animated, margin: margin ?? visibilityScrollMargin))
@@ -111,7 +111,7 @@ public class ScrollingContentScrollView: UIScrollView {
     ///   - view: The view to make visible.
     ///   - animated: If `true`, the scrolling is animated.
     ///   - margin: An optional margin to apply to the view. If left unspecified,
-    ///   `scrollToVisibleMargin` is used.
+    ///   `visibilityScrollMargin` is used.
     public func scrollViewToVisible(_ view: UIView, animated: Bool, margin: CGFloat? = nil) {
         scrollViewFilter?.submitScrollRectEvent(ScrollRectEvent(contentArea: .descendantViewRect(view.bounds, descendantView: view), animated: animated, margin: margin ?? visibilityScrollMargin))
 
@@ -124,16 +124,16 @@ public class ScrollingContentScrollView: UIScrollView {
     /// - Parameters:
     ///   - animated: If `true`, the scrolling is animated.
     ///   - margin: An optional margin to apply to the first responder. If left
-    ///   unspecified, `scrollToVisibleMargin` is used.
+    ///   unspecified, `visibilityScrollMargin` is used.
     public func scrollFirstResponderToVisible(animated: Bool, margin: CGFloat? = nil) {
-        guard let view = UIResponder.rf_current as? UIView else {
+        guard let view = self.firstResponder as? UIView else {
             return
         }
 
         scrollViewToVisible(view, animated: animated, margin: margin)
     }
 
-    /// Returns the descedant view with the greatest depth whose bounds contains the
+    /// Returns the descendant view with the greatest depth whose bounds contains the
     /// specified rectangle.
     ///
     /// - Parameters:
