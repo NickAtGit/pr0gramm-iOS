@@ -1,5 +1,6 @@
 
 import UIKit
+import SwiftUI
 
 enum NavigationControllerStyle {
     case main, dismissable, dragable, user, search
@@ -10,11 +11,11 @@ class NavigationController: UINavigationController, UIPopoverPresentationControl
     weak var coordinator: Coordinator?
     private var navigationBannerView = NavigationBannerView(frame: .zero)
     
-    lazy var setFlagsBarButtonItem = {
+    lazy var setFilterBarButtonItem = {
         let flagsItem = UIBarButtonItem(image: UIImage(systemName: "list.dash"),
                                         style: .plain,
                                         target: self,
-                                        action: #selector(self.showFlagsPopover(_:)))
+                                        action: #selector(self.showFilterPopover(_:)))
         self.topViewController?.navigationItem.rightBarButtonItem = flagsItem
     }
 
@@ -47,7 +48,7 @@ class NavigationController: UINavigationController, UIPopoverPresentationControl
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         super.pushViewController(viewController, animated: animated)
         if viewController is PostsOverviewCollectionViewController {
-            setFlagsBarButtonItem()
+            setFilterBarButtonItem()
         }
     }
     
@@ -64,10 +65,10 @@ class NavigationController: UINavigationController, UIPopoverPresentationControl
             topViewController?.navigationItem.rightBarButtonItem = dismissItem
             
         case .main:
-            setFlagsBarButtonItem()
+            setFilterBarButtonItem()
             
         case .user:
-            setFlagsBarButtonItem()
+            setFilterBarButtonItem()
             
             if AppSettings.isLoggedIn {
                 let logoutItem = UIBarButtonItem(image: UIImage(systemName: "person.crop.circle.badge.minus"),
@@ -90,7 +91,7 @@ class NavigationController: UINavigationController, UIPopoverPresentationControl
                                             action: #selector(dismissSelf))
             topViewController?.navigationItem.leftBarButtonItem = dismissItem
         case .search:
-            setFlagsBarButtonItem()
+            setFilterBarButtonItem()
         }
     }
     
@@ -110,17 +111,19 @@ class NavigationController: UINavigationController, UIPopoverPresentationControl
     }
     
     @objc
-    func showFlagsPopover(_ sender: UIBarButtonItem) {
-        let flagsViewController = FlagsViewController.fromStoryboard()
-        flagsViewController.modalPresentationStyle = .popover
-        flagsViewController.popoverPresentationController?.sourceView = view
-        flagsViewController.popoverPresentationController?.permittedArrowDirections = .up
+    func showFilterPopover(_ sender: UIBarButtonItem) {
+        let filterViewController = UIHostingController(rootView: FilterView())
+        filterViewController.modalPresentationStyle = .popover
+        filterViewController.popoverPresentationController?.sourceView = view
+        filterViewController.popoverPresentationController?.permittedArrowDirections = .up
+        filterViewController.popoverPresentationController?.barButtonItem = sender
+        filterViewController.popoverPresentationController?.delegate = self
+      
+        let popoverSize = CGSize(width: 200, height: filterViewController.view.bounds.height)
+        let idealPopoverSize = filterViewController.sizeThatFits(in: popoverSize)
+        filterViewController.preferredContentSize = idealPopoverSize
         
-        let popover: UIPopoverPresentationController = flagsViewController.popoverPresentationController!
-        popover.barButtonItem = sender
-        popover.delegate = self
-        
-        present(flagsViewController, animated: true)
+        present(filterViewController, animated: true)
     }
     
     
