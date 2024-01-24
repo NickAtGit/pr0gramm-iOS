@@ -30,11 +30,7 @@ import StoreKit
 
 struct SettingsView: View {
     @State private var isOverlayShown = false
-    
-    @AppStorage("sfwActive") var sfwActive: Bool = true
-    @AppStorage("nsfwActive") var nsfwActive: Bool = false
-    @AppStorage("nsflActive") var nsflActive: Bool = false
-    @AppStorage("sorting") var sorting: Int = 1
+
     @AppStorage("selectedTheme") var selectedTheme: Int = 1
     @AppStorage("isLoggedIn") var isLoggedIn: Bool = false
     @AppStorage("isVideoMuted") var isVideoMuted: Bool = false

@@ -17,6 +17,22 @@ enum Flags: Int {
     case nsfw = 2
     case nsfl = 4
     case nsfp = 8
+    case pol = 16
+
+    var description: String {
+        switch self {
+        case .sfw:
+            return "SFW"
+        case .nsfw:
+            return "NSFW"
+        case .nsfl:
+            return "NSFL"
+        case .nsfp:
+            return "NSFP"
+        case .pol:
+            return "POL"
+        }
+    }
 }
 
 @objc
