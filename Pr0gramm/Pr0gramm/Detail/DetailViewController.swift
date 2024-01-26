@@ -226,6 +226,11 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
         } else {
             viewModel.isSeen = true
         }
+
+        if viewModel.item.isSticky {
+            imageView.addStickyBadge()
+            avPlayerViewController?.addStickyBadge()
+        }
     }
     
     func stop() {

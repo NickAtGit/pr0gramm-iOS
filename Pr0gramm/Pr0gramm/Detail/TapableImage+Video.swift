@@ -8,8 +8,9 @@ extension Notification.Name {
     static let doubleTapped = Notification.Name(rawValue: "doubleTapped")
 }
 
-class TapableImageView: UIImageView, SeenBadgeShowable {
+class TapableImageView: UIImageView, SeenBadgeShowable, StickyBadgeShowable {
     var badgeView: UIView?
+    var stickyBadgeView: UIView?
     private let nc = NotificationCenter.default
     private let feedback = UISelectionFeedbackGenerator()
     
@@ -32,8 +33,9 @@ class TapableImageView: UIImageView, SeenBadgeShowable {
     }
 }
 
-class TapableAVPlayerViewController: AVPlayerViewController, SeenBadgeShowable {
+class TapableAVPlayerViewController: AVPlayerViewController, SeenBadgeShowable, StickyBadgeShowable {
     var badgeView: UIView?
+    var stickyBadgeView: UIView?
     private let nc = NotificationCenter.default
     private let feedback = UISelectionFeedbackGenerator()
         

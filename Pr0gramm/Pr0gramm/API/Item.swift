@@ -98,4 +98,8 @@ extension Item {
     var isVideo: Bool {
         return url.absoluteString.hasSuffix(".mp4")
     }
+  
+    var isSticky: Bool {
+        promoted > 1000000000
+    }
 }

@@ -98,6 +98,10 @@ class PostsOverviewCollectionViewController: UIViewController, Storyboarded, UIC
             cell.imageView.addSeenBadge()
         }
         
+        if item.isSticky {
+            cell.imageView.addStickyBadge()
+        }
+        
         return cell
     }
     

@@ -127,6 +127,7 @@
 		03F7604F2471489900E0A542 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F7604E2471489900E0A542 /* Strings.swift */; };
 		03F7605124714DC300E0A542 /* UserClassDotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F7605024714DC300E0A542 /* UserClassDotView.swift */; };
 		17D315AA2B608E67009F81E5 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D315A92B608E67009F81E5 /* FilterView.swift */; };
+		17D315AC2B60BE12009F81E5 /* StickyBadgeShowable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D315AB2B60BE12009F81E5 /* StickyBadgeShowable.swift */; };
 		9F41A63FD0AD2BBEFBCBB0D8 /* Pods_Pr0gramm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55CDBC6EB3F96F0E3E6A68C0 /* Pods_Pr0gramm.framework */; };
 /* End PBXBuildFile section */
 
@@ -235,6 +236,7 @@
 		03F7604E2471489900E0A542 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		03F7605024714DC300E0A542 /* UserClassDotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserClassDotView.swift; sourceTree = "<group>"; };
 		17D315A92B608E67009F81E5 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
+		17D315AB2B60BE12009F81E5 /* StickyBadgeShowable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickyBadgeShowable.swift; sourceTree = "<group>"; };
 		55CDBC6EB3F96F0E3E6A68C0 /* Pods_Pr0gramm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pr0gramm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8B6109EB9DAB3D7BC6F488C /* Pods-Pr0gramm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pr0gramm.release.xcconfig"; path = "Target Support Files/Pods-Pr0gramm/Pods-Pr0gramm.release.xcconfig"; sourceTree = "<group>"; };
 		CF40EF03453B6FC2E81BF011 /* Pods-Pr0gramm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pr0gramm.debug.xcconfig"; path = "Target Support Files/Pods-Pr0gramm/Pods-Pr0gramm.debug.xcconfig"; sourceTree = "<group>"; };
@@ -371,6 +373,7 @@
 				035EBA7C24262C7E009185E9 /* StoryboardViewController.swift */,
 				033CF1CA205FCB4500627321 /* NibView.swift */,
 				03DB2296246881D9007E6B31 /* SeenBadgeShowable.swift */,
+				17D315AB2B60BE12009F81E5 /* StickyBadgeShowable.swift */,
 				03F7604C247147B700E0A542 /* Colors.swift */,
 				03F7604E2471489900E0A542 /* Strings.swift */,
 				03CE35D325D35E8300BF4357 /* String+Extension.swift */,
@@ -701,6 +704,7 @@
 				03B0628E2428E9FF00CA657A /* TagsCollectionViewController.swift in Sources */,
 				03D115FF2461F3C00096ECFD /* ReplyViewController.swift in Sources */,
 				03DB228D24647CFA007E6B31 /* PostsOverviewViewModel.swift in Sources */,
+				17D315AC2B60BE12009F81E5 /* StickyBadgeShowable.swift in Sources */,
 				03D2AC51243264740082D4C9 /* UIWindow.swift in Sources */,
 				036D58862473372500982AB3 /* ProfileComments.swift in Sources */,
 				038F7C9A246E0DEE00D268BA /* Uploads.swift in Sources */,
