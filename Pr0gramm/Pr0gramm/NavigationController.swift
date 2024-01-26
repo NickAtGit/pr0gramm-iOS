@@ -73,8 +73,8 @@ class NavigationController: UINavigationController, UIPopoverPresentationControl
             if AppSettings.isLoggedIn {
                 let logoutItem = UIBarButtonItem(image: UIImage(systemName: "person.crop.circle.badge.minus"),
                                                  style: .plain,
-                                                 target: coordinator,
-                                                 action: #selector(Coordinator.logout))
+                                                 target: self,
+                                                 action: #selector(confirmLogout))
                 topViewController?.navigationItem.leftBarButtonItem = logoutItem
             } else {
                 let loginItem = UIBarButtonItem(image: UIImage(systemName: "person.crop.circle.badge.plus"),
@@ -126,6 +126,19 @@ class NavigationController: UINavigationController, UIPopoverPresentationControl
         present(filterViewController, animated: true)
     }
     
+    @objc
+    func confirmLogout() {
+        let alert = UIAlertController(title: "Obacht!",
+                                      message: "Du bist dabei dich auszuloggen. Möchtest du das?",
+                                      preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "Ja", style: .destructive) { _ in
+            self.coordinator?.logout()
+        })
+        alert.addAction(UIAlertAction(title: "Nein", style: .cancel))
+
+        present(alert, animated: true)
+    }
     
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
         NotificationCenter.default.post(name: Notification.Name("flagsChanged"), object: nil)

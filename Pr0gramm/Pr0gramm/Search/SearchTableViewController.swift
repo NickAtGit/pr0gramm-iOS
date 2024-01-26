@@ -20,6 +20,8 @@ class SearchTableViewController: UITableViewController, Storyboarded {
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.delegate = self
+        searchController.searchBar.placeholder = "Suchen"
+        searchController.searchBar.setValue("Abbrechen", forKey: "cancelButtonText")
         
         viewModel.$searchText.sink { [weak self] searchText in
             self?.searchController.searchBar.text = searchText
