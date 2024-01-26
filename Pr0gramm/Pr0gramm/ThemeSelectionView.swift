@@ -1,8 +1,7 @@
-
 import SwiftUI
 
 struct ThemeSelectionView: View {
-    @AppStorage("selectedTheme") private var selectedTheme: Int = 0
+    @AppStorage(#keyPath(AppSettings.selectedTheme)) private var selectedTheme: Int = AppSettings.selectedTheme
 
     let themes = ["Blau", "Orange", "Grün", "Pink", "Gelb"]
 
@@ -19,8 +18,6 @@ struct ThemeSelectionView: View {
     }
 }
 
-struct ThemeSelectionView_Previews: PreviewProvider {
-    static var previews: some View {
-        ThemeSelectionView()
-    }
+#Preview {
+    ThemeSelectionView()
 }
