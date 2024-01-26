@@ -1,47 +1,24 @@
-
-@propertyWrapper
-struct CodableAppStorage<T: Codable> {
-    let key: String
-    let defaultValue: T
-
-    init(_ key: String, defaultValue: T) {
-        self.key = key
-        self.defaultValue = defaultValue
-    }
-
-    var wrappedValue: T {
-        get {
-            guard let data = UserDefaults.standard.data(forKey: key),
-                  let value = try? JSONDecoder().decode(T.self, from: data) else {
-                return defaultValue
-            }
-            return value
-        }
-        set {
-            if let data = try? JSONEncoder().encode(newValue) {
-                UserDefaults.standard.set(data, forKey: key)
-            }
-        }
-    }
-}
-
 import SwiftUI
 import StoreKit
 
 struct SettingsView: View {
     @State private var isOverlayShown = false
 
-    @AppStorage("selectedTheme") var selectedTheme: Int = 1
-    @AppStorage("isLoggedIn") var isLoggedIn: Bool = false
-    @AppStorage("isVideoMuted") var isVideoMuted: Bool = false
-    @AppStorage("isAutoPlay") var isAutoPlay: Bool = true
-    @AppStorage("isShowSeenBagdes") var isShowSeenBagdes: Bool = true
-    @AppStorage("isPictureInPictureEnabled") var isPictureInPictureEnabled: Bool = true
-    @AppStorage("postCount") var postCount: Int = 4
-    @AppStorage("isMediaHeightLimitEnabled") var isMediaHeightLimitEnabled: Bool = false
-    @AppStorage("isDeactivateNsfwOnAppStart") var isDeactivateNsfwOnAppStart: Bool = false
-    @AppStorage("isMuteOnUnnecessaryMusic") var isMuteOnUnnecessaryMusic: Bool = false
-    @CodableAppStorage("latestSearchStrings", defaultValue: []) var latestSearchStrings: [String]
+    @AppStorage(#keyPath(AppSettings.isShowSeenBagdes))
+    var isShowSeenBagdes: Bool = AppSettings.isShowSeenBagdes
+    @AppStorage(#keyPath(AppSettings.isMediaHeightLimitEnabled))
+    var isMediaHeightLimitEnabled: Bool = AppSettings.isMediaHeightLimitEnabled
+    @AppStorage(#keyPath(AppSettings.isDeactivateNsfwOnAppStart))
+    var isDeactivateNsfwOnAppStart: Bool = AppSettings.isDeactivateNsfwOnAppStart
+  
+    @AppStorage(#keyPath(AppSettings.isVideoMuted))
+    var isVideoMuted: Bool = AppSettings.isVideoMuted
+    @AppStorage(#keyPath(AppSettings.isAutoPlay))
+    var isAutoPlay: Bool = AppSettings.isAutoPlay
+    @AppStorage(#keyPath(AppSettings.isPictureInPictureEnabled))
+    var isPictureInPictureEnabled: Bool = AppSettings.isPictureInPictureEnabled
+    @AppStorage(#keyPath(AppSettings.isMuteOnUnnecessaryMusic))
+    var isMuteOnUnnecessaryMusic: Bool = AppSettings.isMuteOnUnnecessaryMusic
 
     var body: some View {
         NavigationView {
@@ -65,7 +42,11 @@ struct SettingsView: View {
                     Toggle("Gesehen Indikator anzeigen", isOn: $isShowSeenBagdes)
                     Toggle("Medien auf Bildschirmhöhe begrenzen", isOn: $isMediaHeightLimitEnabled)
                     Toggle("NSFW/NSFL bei Appstart deaktivieren", isOn: $isDeactivateNsfwOnAppStart)
-                    Text("Datenbank: \(ActionsManager.shared.dataBaseSize ?? "Fehler")")
+                    HStack {
+                        Text("Datenbank")
+                        Spacer()
+                        Text(ActionsManager.shared.dataBaseSize ?? "Fehler").foregroundStyle(.secondary)
+                    }
                 }
                 
                 Section(header: Text("Video")) {
@@ -87,4 +68,8 @@ struct SettingsView: View {
             overlay.present(in: scene)
         }
     }
+}
+
+#Preview {
+    SettingsView()
 }
