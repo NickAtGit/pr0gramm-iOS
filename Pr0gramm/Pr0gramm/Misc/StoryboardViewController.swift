@@ -1,7 +1,7 @@
 
 import UIKit
 
-public protocol StoryboardViewController: class {
+public protocol StoryboardViewController: AnyObject {
     static var storyboardName: String {get}
     static var storyboardIdentifier: String {get}
     static var bundle: Bundle {get}

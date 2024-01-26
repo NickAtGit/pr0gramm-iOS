@@ -106,7 +106,8 @@ class Theming {
 extension Theme {
     
     func apply(for application: UIApplication) {
-        application.keyWindow?.tintColor = tint
+        application.connectedScenes.compactMap { ($0 as? UIWindowScene)?.keyWindow }.last?
+        .tintColor = tint
         
         let font15 = UIFont.systemFont(ofSize: 15)
         let font12 =  UIFont.systemFont(ofSize: 12)
@@ -220,7 +221,8 @@ extension Theme {
             $0.thumbTintColor = tint
         }
         
-        application.windows.reload()
+        application.connectedScenes.compactMap { ($0 as? UIWindowScene)?.windows }.last?
+        .reload()
     }
 }
 
