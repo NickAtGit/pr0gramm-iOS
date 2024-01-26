@@ -130,6 +130,8 @@
 		17D315AC2B60BE12009F81E5 /* StickyBadgeShowable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D315AB2B60BE12009F81E5 /* StickyBadgeShowable.swift */; };
 		17D315AF2B6398EA009F81E5 /* ScrollingContentViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 17D315AE2B6398EA009F81E5 /* ScrollingContentViewController */; };
 		17D315B22B639925009F81E5 /* ImageScrollView in Frameworks */ = {isa = PBXBuildFile; productRef = 17D315B12B639925009F81E5 /* ImageScrollView */; };
+		17D315B32B639C94009F81E5 /* Pr0grammURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE35C825D35E4200BF4357 /* Pr0grammURL.swift */; };
+		17D315B42B639CA4009F81E5 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE35D325D35E8300BF4357 /* String+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -712,10 +714,12 @@
 				03C1AF632481CAFF00BB3487 /* Downloader.swift in Sources */,
 				031EE8442065C5B10030CA68 /* Tags.swift in Sources */,
 				031EE8412065C5B10030CA68 /* Item.swift in Sources */,
+				17D315B32B639C94009F81E5 /* Pr0grammURL.swift in Sources */,
 				031EE83F2065C5B10030CA68 /* Pr0grammConnector.swift in Sources */,
 				03C1AF652481CB0300BB3487 /* Badges.swift in Sources */,
 				03D7F1A6248466890014190B /* UIViewController+Extension.swift in Sources */,
 				03C1AF5F2481CAD300BB3487 /* Settings.swift in Sources */,
+				17D315B42B639CA4009F81E5 /* String+Extension.swift in Sources */,
 				031EE8432065C5B10030CA68 /* Comment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
