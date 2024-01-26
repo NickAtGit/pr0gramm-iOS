@@ -10,9 +10,11 @@ class ThumbCollectionViewCell: UICollectionViewCell {
         imageView.image = nil
         imageView.subviews.forEach { $0.removeFromSuperview() }
         imageView.badgeView = nil
+        imageView.stickyBadgeView = nil
     }
 }
 
-class ThumbImageView: UIImageView, SeenBadgeShowable {
+class ThumbImageView: UIImageView, SeenBadgeShowable, StickyBadgeShowable {
     var badgeView: UIView?
+    var stickyBadgeView: UIView?
 }

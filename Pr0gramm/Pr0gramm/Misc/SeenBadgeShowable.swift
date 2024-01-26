@@ -10,7 +10,7 @@ extension SeenBadgeShowable where Self: UIView {
         guard AppSettings.isShowSeenBagdes else { return }
         guard badgeView == nil else { return }
         badgeView = UIImageView(image: UIImage(systemName: "checkmark.circle.fill"))
-        badgeView?.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
+        badgeView?.backgroundColor = UIColor(resource: .grau)
         badgeView?.translatesAutoresizingMaskIntoConstraints = false
         addSubview(badgeView!)
         badgeView?.heightAnchor.constraint(equalToConstant: 30).isActive = true
@@ -32,7 +32,7 @@ extension SeenBadgeShowable where Self: AVPlayerViewController {
         guard AppSettings.isShowSeenBagdes else { return }
         guard badgeView == nil else { return }
         badgeView = UIImageView(image: UIImage(systemName: "checkmark.circle.fill"))
-        badgeView?.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.0862745098, blue: 0.09411764706, alpha: 1)
+        badgeView?.backgroundColor = UIColor(resource: .grau)
         badgeView?.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(badgeView!)
         badgeView?.heightAnchor.constraint(equalToConstant: 30).isActive = true
