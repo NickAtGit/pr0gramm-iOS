@@ -42,10 +42,4 @@ class TVViewModel {
                                 completion(true)
         }
     }
-    
-    func loadItemInfo(for id: Int) {
-        connector.loadItemInfo(for: id) { [unowned self] itemInfo in
-            
-        }
-    }
 }

@@ -20,7 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         Theming.applySelectedPersistedTheme()
         setupAudioSession()
-        UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .dark
 
         if AppSettings.isDeactivateNsfwOnAppStart {
             AppSettings.nsfwActive = false

@@ -39,7 +39,7 @@ class TVViewController: UIViewController, Storyboarded {
     func swipeUp() {
         guard let indexPath = collectionView.indexPathsForVisibleItems.first else { return }
         let item = viewModel.items[indexPath.row]
-        viewModel.connector.vote(id: item.id, value: .upvote, type: .voteItem)
+        viewModel.connector.vote(id: item.id, value: .up, type: .voteItem)
         
         UIView.animate(withDuration: 0.5, animations: {
             self.voteImageView.alpha = 1
@@ -184,7 +184,7 @@ extension UIImageView {
     }
 }
 
-protocol ItemInfoDisplaying: class {
+protocol ItemInfoDisplaying: AnyObject {
     var item: Item! { get set }
     var itemInfoView: UIView! { get set }
 }

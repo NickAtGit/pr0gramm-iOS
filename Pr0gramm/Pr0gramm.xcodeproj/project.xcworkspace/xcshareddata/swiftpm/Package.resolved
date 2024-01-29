@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "imagescrollview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/huynguyencong/ImageScrollView",
+      "state" : {
+        "revision" : "1cf139aec5b838d3b383058e20cdbd80d20142f5",
+        "version" : "1.9.3"
+      }
+    },
+    {
+      "identity" : "scrollingcontentviewcontroller",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/drewolbrich/ScrollingContentViewController",
+      "state" : {
+        "revision" : "2de1a0a7b1d8c94b3356566748549d97d2bf88ba",
+        "version" : "1.7.0"
+      }
+    }
+  ],
+  "version" : 2
+}

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -128,7 +128,10 @@
 		03F7605124714DC300E0A542 /* UserClassDotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F7605024714DC300E0A542 /* UserClassDotView.swift */; };
 		17D315AA2B608E67009F81E5 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D315A92B608E67009F81E5 /* FilterView.swift */; };
 		17D315AC2B60BE12009F81E5 /* StickyBadgeShowable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D315AB2B60BE12009F81E5 /* StickyBadgeShowable.swift */; };
-		9F41A63FD0AD2BBEFBCBB0D8 /* Pods_Pr0gramm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55CDBC6EB3F96F0E3E6A68C0 /* Pods_Pr0gramm.framework */; };
+		17D315AF2B6398EA009F81E5 /* ScrollingContentViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 17D315AE2B6398EA009F81E5 /* ScrollingContentViewController */; };
+		17D315B22B639925009F81E5 /* ImageScrollView in Frameworks */ = {isa = PBXBuildFile; productRef = 17D315B12B639925009F81E5 /* ImageScrollView */; };
+		17D315B32B639C94009F81E5 /* Pr0grammURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE35C825D35E4200BF4357 /* Pr0grammURL.swift */; };
+		17D315B42B639CA4009F81E5 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE35D325D35E8300BF4357 /* String+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -147,7 +150,6 @@
 		030CAF552440B76A00D6885C /* CommentsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommentsViewController.storyboard; sourceTree = "<group>"; };
 		030CAF5D2449183F00D6885C /* UIImage+Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
 		030CAF60244CD75E00D6885C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		030CAF62244CD7B600D6885C /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		030CAF64244CD93D00D6885C /* ThemeSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeSelectionView.swift; sourceTree = "<group>"; };
 		031EE82D2065C59B0030CA68 /* PR0GRAMM TV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PR0GRAMM TV.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		031EE82F2065C59B0030CA68 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -237,9 +239,6 @@
 		03F7605024714DC300E0A542 /* UserClassDotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserClassDotView.swift; sourceTree = "<group>"; };
 		17D315A92B608E67009F81E5 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		17D315AB2B60BE12009F81E5 /* StickyBadgeShowable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickyBadgeShowable.swift; sourceTree = "<group>"; };
-		55CDBC6EB3F96F0E3E6A68C0 /* Pods_Pr0gramm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pr0gramm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B8B6109EB9DAB3D7BC6F488C /* Pods-Pr0gramm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pr0gramm.release.xcconfig"; path = "Target Support Files/Pods-Pr0gramm/Pods-Pr0gramm.release.xcconfig"; sourceTree = "<group>"; };
-		CF40EF03453B6FC2E81BF011 /* Pods-Pr0gramm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pr0gramm.debug.xcconfig"; path = "Target Support Files/Pods-Pr0gramm/Pods-Pr0gramm.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,7 +246,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F41A63FD0AD2BBEFBCBB0D8 /* Pods_Pr0gramm.framework in Frameworks */,
+				17D315B22B639925009F81E5 /* ImageScrollView in Frameworks */,
+				17D315AF2B6398EA009F81E5 /* ScrollingContentViewController in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,12 +264,9 @@
 		03076A572059E80F00168E62 = {
 			isa = PBXGroup;
 			children = (
-				030CAF62244CD7B600D6885C /* Podfile */,
 				03076A622059E80F00168E62 /* Pr0gramm */,
 				031EE82E2065C59B0030CA68 /* Pr0grammTV */,
 				03076A612059E80F00168E62 /* Products */,
-				41D1267FFB34B8376D19F7A2 /* Pods */,
-				2CBFB2BFB4CB393713D25893 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -486,23 +483,6 @@
 			path = User;
 			sourceTree = "<group>";
 		};
-		2CBFB2BFB4CB393713D25893 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				55CDBC6EB3F96F0E3E6A68C0 /* Pods_Pr0gramm.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		41D1267FFB34B8376D19F7A2 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				CF40EF03453B6FC2E81BF011 /* Pods-Pr0gramm.debug.xcconfig */,
-				B8B6109EB9DAB3D7BC6F488C /* Pods-Pr0gramm.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -510,17 +490,19 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 03076A722059E80F00168E62 /* Build configuration list for PBXNativeTarget "Pr0gramm" */;
 			buildPhases = (
-				3261192917A63495B365694F /* [CP] Check Pods Manifest.lock */,
 				03076A5C2059E80F00168E62 /* Sources */,
 				03076A5D2059E80F00168E62 /* Frameworks */,
 				03076A5E2059E80F00168E62 /* Resources */,
-				1D98B46F8362373647148E25 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Pr0gramm;
+			packageProductDependencies = (
+				17D315AE2B6398EA009F81E5 /* ScrollingContentViewController */,
+				17D315B12B639925009F81E5 /* ImageScrollView */,
+			);
 			productName = Pr0gramm;
 			productReference = 03076A602059E80F00168E62 /* pr0gramm.app */;
 			productType = "com.apple.product-type.application";
@@ -548,8 +530,9 @@
 		03076A582059E80F00168E62 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1520;
 				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					03076A5F2059E80F00168E62 = {
@@ -572,6 +555,10 @@
 				Base,
 			);
 			mainGroup = 03076A572059E80F00168E62;
+			packageReferences = (
+				17D315AD2B6398EA009F81E5 /* XCRemoteSwiftPackageReference "ScrollingContentViewController" */,
+				17D315B02B639925009F81E5 /* XCRemoteSwiftPackageReference "ImageScrollView" */,
+			);
 			productRefGroup = 03076A612059E80F00168E62 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -619,51 +606,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		1D98B46F8362373647148E25 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Pr0gramm/Pods-Pr0gramm-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/ImageScrollView/ImageScrollView.framework",
-				"${BUILT_PRODUCTS_DIR}/ScrollingContentViewController/ScrollingContentViewController.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageScrollView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ScrollingContentViewController.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pr0gramm/Pods-Pr0gramm-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3261192917A63495B365694F /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Pr0gramm-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		03076A5C2059E80F00168E62 /* Sources */ = {
@@ -772,10 +714,12 @@
 				03C1AF632481CAFF00BB3487 /* Downloader.swift in Sources */,
 				031EE8442065C5B10030CA68 /* Tags.swift in Sources */,
 				031EE8412065C5B10030CA68 /* Item.swift in Sources */,
+				17D315B32B639C94009F81E5 /* Pr0grammURL.swift in Sources */,
 				031EE83F2065C5B10030CA68 /* Pr0grammConnector.swift in Sources */,
 				03C1AF652481CB0300BB3487 /* Badges.swift in Sources */,
 				03D7F1A6248466890014190B /* UIViewController+Extension.swift in Sources */,
 				03C1AF5F2481CAD300BB3487 /* Settings.swift in Sources */,
+				17D315B42B639CA4009F81E5 /* String+Extension.swift in Sources */,
 				031EE8432065C5B10030CA68 /* Comment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -813,11 +757,9 @@
 		03076A702059E80F00168E62 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -835,6 +777,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -846,6 +789,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -860,23 +804,21 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TVOS_DEPLOYMENT_TARGET = 15.0;
 			};
 			name = Debug;
 		};
 		03076A712059E80F00168E62 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -894,6 +836,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -905,6 +848,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -913,17 +857,17 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TVOS_DEPLOYMENT_TARGET = 15.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		03076A732059E80F00168E62 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CF40EF03453B6FC2E81BF011 /* Pods-Pr0gramm.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pr0gramm/Pr0gramm.entitlements;
@@ -932,8 +876,6 @@
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = FMXL9R3NPC;
 				INFOPLIST_FILE = Pr0gramm/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pr0gramm.Pr0grammApp;
 				PRODUCT_NAME = pr0gramm;
 				SUPPORTS_MACCATALYST = YES;
@@ -944,7 +886,6 @@
 		};
 		03076A742059E80F00168E62 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B8B6109EB9DAB3D7BC6F488C /* Pods-Pr0gramm.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Pr0gramm/Pr0gramm.entitlements;
@@ -953,8 +894,6 @@
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = FMXL9R3NPC;
 				INFOPLIST_FILE = Pr0gramm/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pr0gramm.Pr0grammApp;
 				PRODUCT_NAME = pr0gramm;
 				SUPPORTS_MACCATALYST = YES;
@@ -971,13 +910,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FMXL9R3NPC;
 				INFOPLIST_FILE = Pr0grammTV/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pr0gramm.Pr0grammTV;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 13.0;
 			};
 			name = Debug;
 		};
@@ -989,13 +926,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FMXL9R3NPC;
 				INFOPLIST_FILE = Pr0grammTV/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pr0gramm.Pr0grammTV;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 13.0;
 			};
 			name = Release;
 		};
@@ -1030,6 +965,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		17D315AD2B6398EA009F81E5 /* XCRemoteSwiftPackageReference "ScrollingContentViewController" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/drewolbrich/ScrollingContentViewController";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.7.0;
+			};
+		};
+		17D315B02B639925009F81E5 /* XCRemoteSwiftPackageReference "ImageScrollView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/huynguyencong/ImageScrollView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.9.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		17D315AE2B6398EA009F81E5 /* ScrollingContentViewController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17D315AD2B6398EA009F81E5 /* XCRemoteSwiftPackageReference "ScrollingContentViewController" */;
+			productName = ScrollingContentViewController;
+		};
+		17D315B12B639925009F81E5 /* ImageScrollView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17D315B02B639925009F81E5 /* XCRemoteSwiftPackageReference "ImageScrollView" */;
+			productName = ImageScrollView;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		031EE8332065C59B0030CA68 /* Pr0grammTV.xcdatamodeld */ = {
