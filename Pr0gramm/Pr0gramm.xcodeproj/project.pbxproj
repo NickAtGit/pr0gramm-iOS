@@ -105,8 +105,6 @@
 		03D7F1A524831A880014190B /* BadgesCollectionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03D7F1A424831A880014190B /* BadgesCollectionViewController.storyboard */; };
 		03D7F1A6248466890014190B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C1FA2A2427D27600E6AEE4 /* UIViewController+Extension.swift */; };
 		03D7F1A92486E8B70014190B /* TVViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D7F1A72486E7840014190B /* TVViewModel.swift */; };
-		03D7F1AA248712320014190B /* UserClassDotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F7605024714DC300E0A542 /* UserClassDotView.swift */; };
-		03D7F1AB248712370014190B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F7604C247147B700E0A542 /* Colors.swift */; };
 		03D7F1B024882FD00014190B /* StoryboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035EBA7C24262C7E009185E9 /* StoryboardViewController.swift */; };
 		03D7F1B5248833EB0014190B /* TVCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D7F1B3248833A80014190B /* TVCoordinator.swift */; };
 		03D7F1B6248833F10014190B /* TVLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D7F1AC24882F650014190B /* TVLoginViewController.swift */; };
@@ -123,15 +121,15 @@
 		03E7B5102471EC650038277A /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E7B50F2471EC650038277A /* SearchViewModel.swift */; };
 		03E83A192538DE2B009CD363 /* AsciiEmojiChooserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E83A182538DE2B009CD363 /* AsciiEmojiChooserTableViewController.swift */; };
 		03E83A1D2538DE60009CD363 /* AsciiEmojiChooserTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03E83A1C2538DE60009CD363 /* AsciiEmojiChooserTableViewController.storyboard */; };
-		03F7604D247147B700E0A542 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F7604C247147B700E0A542 /* Colors.swift */; };
 		03F7604F2471489900E0A542 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F7604E2471489900E0A542 /* Strings.swift */; };
-		03F7605124714DC300E0A542 /* UserClassDotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F7605024714DC300E0A542 /* UserClassDotView.swift */; };
 		17D315AA2B608E67009F81E5 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D315A92B608E67009F81E5 /* FilterView.swift */; };
 		17D315AC2B60BE12009F81E5 /* StickyBadgeShowable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D315AB2B60BE12009F81E5 /* StickyBadgeShowable.swift */; };
 		17D315AF2B6398EA009F81E5 /* ScrollingContentViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 17D315AE2B6398EA009F81E5 /* ScrollingContentViewController */; };
 		17D315B22B639925009F81E5 /* ImageScrollView in Frameworks */ = {isa = PBXBuildFile; productRef = 17D315B12B639925009F81E5 /* ImageScrollView */; };
 		17D315B32B639C94009F81E5 /* Pr0grammURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE35C825D35E4200BF4357 /* Pr0grammURL.swift */; };
 		17D315B42B639CA4009F81E5 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CE35D325D35E8300BF4357 /* String+Extension.swift */; };
+		17D315B62B63FA19009F81E5 /* Mark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D315B52B63FA19009F81E5 /* Mark.swift */; };
+		17D315B72B67C5B4009F81E5 /* Mark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D315B52B63FA19009F81E5 /* Mark.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -234,11 +232,10 @@
 		03E7B50F2471EC650038277A /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		03E83A182538DE2B009CD363 /* AsciiEmojiChooserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsciiEmojiChooserTableViewController.swift; sourceTree = "<group>"; };
 		03E83A1C2538DE60009CD363 /* AsciiEmojiChooserTableViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AsciiEmojiChooserTableViewController.storyboard; sourceTree = "<group>"; };
-		03F7604C247147B700E0A542 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		03F7604E2471489900E0A542 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
-		03F7605024714DC300E0A542 /* UserClassDotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserClassDotView.swift; sourceTree = "<group>"; };
 		17D315A92B608E67009F81E5 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		17D315AB2B60BE12009F81E5 /* StickyBadgeShowable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickyBadgeShowable.swift; sourceTree = "<group>"; };
+		17D315B52B63FA19009F81E5 /* Mark.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = Mark.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -371,9 +368,9 @@
 				033CF1CA205FCB4500627321 /* NibView.swift */,
 				03DB2296246881D9007E6B31 /* SeenBadgeShowable.swift */,
 				17D315AB2B60BE12009F81E5 /* StickyBadgeShowable.swift */,
-				03F7604C247147B700E0A542 /* Colors.swift */,
 				03F7604E2471489900E0A542 /* Strings.swift */,
 				03CE35D325D35E8300BF4357 /* String+Extension.swift */,
+				17D315B52B63FA19009F81E5 /* Mark.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -474,7 +471,6 @@
 				03C6BDAB246DFB7A005983AB /* UserInfoViewModel.swift */,
 				03083426246C7D1500F6B6CE /* UserInfoViewController.swift */,
 				03083428246C7D5D00F6B6CE /* UserInfoViewController.storyboard */,
-				03F7605024714DC300E0A542 /* UserClassDotView.swift */,
 				03D7F1A224831A610014190B /* BadgesCollectionViewController.swift */,
 				03D7F1A424831A880014190B /* BadgesCollectionViewController.storyboard */,
 				0389C64E248D9F240053AE51 /* CollectionsTableViewController.swift */,
@@ -613,7 +609,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				03083427246C7D1500F6B6CE /* UserInfoViewController.swift in Sources */,
-				03F7604D247147B700E0A542 /* Colors.swift in Sources */,
 				03076A662059E80F00168E62 /* UIImageView+Extension.swift in Sources */,
 				03D2AC50243264740082D4C9 /* With.swift in Sources */,
 				17D315AA2B608E67009F81E5 /* FilterView.swift in Sources */,
@@ -640,7 +635,6 @@
 				03D7F1B9248B0F250014190B /* Collections.swift in Sources */,
 				033CF1BA205BDE1500627321 /* ThumbCollectionViewCell.swift in Sources */,
 				035EBA792426261C009185E9 /* Captcha.swift in Sources */,
-				03F7605124714DC300E0A542 /* UserClassDotView.swift in Sources */,
 				033CF1C5205C0F7400627321 /* ItemInfo.swift in Sources */,
 				03076A782059E8B900168E62 /* AllItems.swift in Sources */,
 				03B0628E2428E9FF00CA657A /* TagsCollectionViewController.swift in Sources */,
@@ -675,6 +669,7 @@
 				038F7C97246E0DEE00D268BA /* UserInfo.swift in Sources */,
 				03D7F1A324831A610014190B /* BadgesCollectionViewController.swift in Sources */,
 				038F7C9B246E0DEE00D268BA /* Badges.swift in Sources */,
+				17D315B62B63FA19009F81E5 /* Mark.swift in Sources */,
 				0354AAF524312E52009C35E0 /* ImageDetailViewController.swift in Sources */,
 				03CE35D425D35E8300BF4357 /* String+Extension.swift in Sources */,
 				033CF1C3205BFF9A00627321 /* Tags.swift in Sources */,
@@ -692,8 +687,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				03D7F1B024882FD00014190B /* StoryboardViewController.swift in Sources */,
-				03D7F1AA248712320014190B /* UserClassDotView.swift in Sources */,
-				03D7F1AB248712370014190B /* Colors.swift in Sources */,
 				03C1AF692481CB0300BB3487 /* Uploads.swift in Sources */,
 				031EE8402065C5B10030CA68 /* AllItems.swift in Sources */,
 				03C1AF682481CB0300BB3487 /* ProfileComments.swift in Sources */,
@@ -706,6 +699,7 @@
 				03C1AF612481CAF500BB3487 /* UserInfo.swift in Sources */,
 				03D7F1A92486E8B70014190B /* TVViewModel.swift in Sources */,
 				03D7F1B5248833EB0014190B /* TVCoordinator.swift in Sources */,
+				17D315B72B67C5B4009F81E5 /* Mark.swift in Sources */,
 				03D7F1B6248833F10014190B /* TVLoginViewController.swift in Sources */,
 				031EE8422065C5B10030CA68 /* ItemInfo.swift in Sources */,
 				031EE8302065C59B0030CA68 /* AppDelegate.swift in Sources */,
@@ -870,6 +864,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CODE_SIGN_ENTITLEMENTS = Pr0gramm/Pr0gramm.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 60;
@@ -888,6 +883,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CODE_SIGN_ENTITLEMENTS = Pr0gramm/Pr0gramm.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 60;

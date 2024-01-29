@@ -16,7 +16,7 @@ struct Item: Codable {
 	let source: String
 	let flags: Int
 	let user: String
-	let mark: Int
+	let mark: Mark
     var date: Date {
         return Date(timeIntervalSince1970: TimeInterval(created))
     }
@@ -55,7 +55,7 @@ struct Item: Codable {
 		source = try values.decode(String.self, forKey: .source)
 		flags = try values.decode(Int.self, forKey: .flags)
 		user = try values.decode(String.self, forKey: .user)
-		mark = try values.decode(Int.self, forKey: .mark)
+        mark = try values.decode(Mark.self, forKey: .mark)
 	}
     
     var mediaType: MediaType {

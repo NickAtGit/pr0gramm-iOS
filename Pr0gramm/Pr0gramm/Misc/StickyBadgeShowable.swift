@@ -10,8 +10,8 @@ extension StickyBadgeShowable where Self: UIView {
     mutating func addStickyBadge() {
         guard stickyBadgeView == nil else { return }
         stickyBadgeView = UIImageView(image: UIImage(systemName: "bookmark.circle.fill"))
-        stickyBadgeView?.backgroundColor = UIColor(resource: .grau)
-        stickyBadgeView?.tintColor = UIColor(resource: .sticky)
+        stickyBadgeView?.backgroundColor = .Theme.richtigesGrau
+        stickyBadgeView?.tintColor = .Theme.sticky
         stickyBadgeView?.translatesAutoresizingMaskIntoConstraints = false
         addSubview(stickyBadgeView!)
         stickyBadgeView?.heightAnchor.constraint(equalToConstant: 30).isActive = true
@@ -33,8 +33,8 @@ extension StickyBadgeShowable where Self: AVPlayerViewController {
     mutating func addStickyBadge() {
         guard stickyBadgeView == nil else { return }
         stickyBadgeView = UIImageView(image: UIImage(systemName: "bookmark.circle.fill"))
-        stickyBadgeView?.backgroundColor = UIColor(resource: .grau)
-        stickyBadgeView?.tintColor = UIColor(resource: .sticky)
+        stickyBadgeView?.backgroundColor = .Theme.richtigesGrau
+        stickyBadgeView?.tintColor = .Theme.sticky
         stickyBadgeView?.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stickyBadgeView!)
         stickyBadgeView?.heightAnchor.constraint(equalToConstant: 30).isActive = true

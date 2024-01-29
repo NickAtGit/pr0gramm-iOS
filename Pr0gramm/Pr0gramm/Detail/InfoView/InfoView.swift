@@ -26,7 +26,7 @@ class InfoView: UIView, NibView {
                 .assign(to: \.text, on: dateLabel)
                 .store(in: &subscriptions)
             
-            userClassDotView.backgroundColor = Colors.color(for: viewModel.item.mark)
+            userClassView.image = viewModel.item.mark.icon
             
             
             viewModel.$isTagsExpanded.sink { [weak self] isExpanded in
@@ -98,7 +98,7 @@ class InfoView: UIView, NibView {
     @IBOutlet private var addTagsButton: HapticFeedbackButton!
     @IBOutlet private var commentsButton: HapticFeedbackButton!
     @IBOutlet private var dateLabel: UILabel!
-    @IBOutlet private var userClassDotView: UserClassDotView!
+    @IBOutlet private var userClassView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()        

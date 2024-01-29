@@ -12,7 +12,7 @@ class Comment: Codable, Equatable {
 	var down: Int = 0
 	var confidence: Double = 0
 	var name: String = ""
-	var mark: Int = 0
+    var mark: Mark = .unbekannt
     var date: Date {
         return Date(timeIntervalSince1970: TimeInterval(created))
     }
@@ -39,7 +39,7 @@ class Comment: Codable, Equatable {
 		down = try values.decode(Int.self, forKey: .down)
 		confidence = try values.decode(Double.self, forKey: .confidence)
 		name = try values.decode(String.self, forKey: .name)
-		mark = try values.decode(Int.self, forKey: .mark)
+        mark = try values.decode(Mark.self, forKey: .mark)
 	}
     
     init(with message: String, name: String, depth: Int) {

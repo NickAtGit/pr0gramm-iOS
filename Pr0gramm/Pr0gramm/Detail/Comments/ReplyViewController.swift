@@ -11,6 +11,7 @@ class ReplyViewController: ScrollingContentViewController, Storyboarded {
     @IBOutlet private var separatorView: SeparatorView!
     @IBOutlet private var commentTextView: UITextView!
     @IBOutlet private var authorLabel: UILabel!
+    @IBOutlet private var userClassView: UIImageView!
     @IBOutlet private var pointsLabel: UILabel!
     @IBOutlet private var opLabel: BadgeLabel!
     @IBOutlet private var replyTextView: UITextView!
@@ -40,6 +41,7 @@ class ReplyViewController: ScrollingContentViewController, Storyboarded {
         commentTextView.text = comment.content
 
         authorLabel.text = comment.name
+        userClassView.image = comment.mark.icon
         pointsLabel.text = "\(comment.up - comment.down)"
         opLabel.isHidden = !viewModel.isAuthorOP(for: comment)
         

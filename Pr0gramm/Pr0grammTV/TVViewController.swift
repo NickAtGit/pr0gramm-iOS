@@ -203,8 +203,8 @@ extension ItemInfoDisplaying where Self: UIView {
         
         let userNameLabel = UILabel()
         userNameLabel.text = item.user
-        let userClassView = UserClassDotView()
-        userClassView.backgroundColor = Colors.color(for: item.mark)
+        let userClassView = UIImageView()
+        userClassView.image = item.mark.icon
         userClassView.heightAnchor.constraint(equalToConstant: 20).isActive = true
         userClassView.widthAnchor.constraint(equalToConstant: 20).isActive = true
 
