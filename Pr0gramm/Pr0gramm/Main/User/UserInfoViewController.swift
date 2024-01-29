@@ -10,7 +10,7 @@ class UserInfoViewController: ScrollingContentViewController, Storyboarded {
     @IBOutlet private var notLoggedInStackView: UIStackView!
     @IBOutlet private var loggedInStackView: UIStackView!
     @IBOutlet private var scoreLabel: UILabel!
-    @IBOutlet private var userClassDotView: UserClassDotView!
+    @IBOutlet private var userClassView: UIImageView!
     @IBOutlet private var userClassLabel: UILabel!
     @IBOutlet private var collectionsButton: UIButton!
     private var subscriptions = Set<AnyCancellable>()
@@ -44,8 +44,8 @@ class UserInfoViewController: ScrollingContentViewController, Storyboarded {
             .sink(receiveValue: { [weak self] userInfo in
                 guard let userInfo = userInfo else { return }
                 self?.scoreLabel.text = "Benis: \(userInfo.user.score)"
-                self?.userClassDotView.backgroundColor = Colors.color(for: userInfo.user.mark)
-                self?.userClassLabel.text = Strings.userClass(for: userInfo.user.mark)
+                self?.userClassView.image = userInfo.user.mark.icon
+                self?.userClassLabel.text = userInfo.user.mark.title
                 self?.collectionsButton.setTitle("Sammlungen (\(userInfo.collections?.count ?? 0))", for: .normal)
             })
             .store(in: &subscriptions)

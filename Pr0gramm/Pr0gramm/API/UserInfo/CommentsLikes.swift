@@ -11,7 +11,7 @@ struct CommentsLikes: Codable {
 	let itemId: Int
 	let thumb: String
 	let userId: Int
-	let mark: Int
+    let mark: Mark
 	let name: String
 
 	enum CodingKeys: String, CodingKey {
@@ -39,7 +39,7 @@ struct CommentsLikes: Codable {
 		itemId = try values.decode(Int.self, forKey: .itemId)
 		thumb = try values.decode(String.self, forKey: .thumb)
 		userId = try values.decode(Int.self, forKey: .userId)
-		mark = try values.decode(Int.self, forKey: .mark)
+        mark = try values.decode(Mark.self, forKey: .mark)
 		name = try values.decode(String.self, forKey: .name)
 	}
 }

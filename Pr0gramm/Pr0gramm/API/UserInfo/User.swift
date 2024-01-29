@@ -8,7 +8,7 @@ struct User: Codable {
 	let score: Int
 	let up: Int
 	let down: Int
-	let mark: Int
+	let mark: Mark
 	let banned: Int
 	let commentDelete: Int
 	let itemDelete: Int
@@ -37,7 +37,7 @@ struct User: Codable {
 		score = try values.decode(Int.self, forKey: .score)
 		up = try values.decode(Int.self, forKey: .up)
 		down = try values.decode(Int.self, forKey: .down)
-		mark = try values.decode(Int.self, forKey: .mark)
+        mark = try values.decode(Mark.self, forKey: .mark)
 		banned = try values.decode(Int.self, forKey: .banned)
 		commentDelete = try values.decode(Int.self, forKey: .commentDelete)
 		itemDelete = try values.decode(Int.self, forKey: .itemDelete)
