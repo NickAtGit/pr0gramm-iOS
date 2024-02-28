@@ -5,7 +5,7 @@ struct ItemInfo: Codable {
 	let tags: [Tags]
 	let comments: [Comment]
 	let ts: Int
-	let cache: String
+	let cache: String?
 	let rt: Int
 	let qc: Int
 
@@ -23,7 +23,7 @@ struct ItemInfo: Codable {
 		tags = try values.decode([Tags].self, forKey: .tags)
 		comments = try values.decode([Comment].self, forKey: .comments)
 		ts = try values.decode(Int.self, forKey: .ts)
-		cache = try values.decode(String.self, forKey: .cache)
+		cache = try values.decodeIfPresent(String.self, forKey: .cache)
 		rt = try values.decode(Int.self, forKey: .rt)
 		qc = try values.decode(Int.self, forKey: .qc)
 	}
