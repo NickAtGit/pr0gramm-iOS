@@ -60,24 +60,15 @@ class ActionsManager {
         return nil
     }
     
-    var dataBaseSize: String? {
-        do {
-            guard let storeUrl = ActionsManager.config.context.persistentStoreCoordinator?.persistentStores.first?.url else {
-                return nil
-            }
-            
-            let size = try Data(contentsOf: storeUrl)
-            if size.count < 1 {
-                return nil
-            }
-            let bcf = ByteCountFormatter()
-            bcf.countStyle = .file
-            let string = bcf.string(fromByteCount: Int64(size.count))
-            print(string)
-            return string
-        } catch {
+    var dataBaseSize: UInt? {
+        guard let sqlFile = ActionsManager.config.context.persistentStoreCoordinator?.persistentStores.first?.url,
+              let sqlFilesize = sqlFile.filesize,
+              let walFilesize = URL(string: sqlFile.absoluteString.appending("-wal"))?.filesize,
+              let shmFilesize = URL(string: sqlFile.absoluteString.appending("-shm"))?.filesize else {
             return nil
         }
+        
+        return UInt(sqlFilesize + walFilesize + shmFilesize)
     }
 }
 

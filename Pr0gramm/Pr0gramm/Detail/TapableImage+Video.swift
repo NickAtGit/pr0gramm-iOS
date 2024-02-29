@@ -1,6 +1,7 @@
 
 import UIKit
 import AVKit
+import Kingfisher
  
 extension Notification.Name {
     static let leftTapped = Notification.Name(rawValue: "leftTapped")
@@ -8,7 +9,7 @@ extension Notification.Name {
     static let doubleTapped = Notification.Name(rawValue: "doubleTapped")
 }
 
-class TapableImageView: UIImageView, SeenBadgeShowable, StickyBadgeShowable {
+class TapableImageView: AnimatedImageView, SeenBadgeShowable, StickyBadgeShowable {
     var badgeView: UIView?
     var stickyBadgeView: UIView?
     private let nc = NotificationCenter.default

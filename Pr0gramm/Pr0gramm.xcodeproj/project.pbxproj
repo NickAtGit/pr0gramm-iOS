@@ -18,7 +18,6 @@
 		03083429246C7D5D00F6B6CE /* UserInfoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03083428246C7D5D00F6B6CE /* UserInfoViewController.storyboard */; };
 		030CAF542440B76400D6885C /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030CAF532440B76400D6885C /* CommentsViewController.swift */; };
 		030CAF562440B76A00D6885C /* CommentsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 030CAF552440B76A00D6885C /* CommentsViewController.storyboard */; };
-		030CAF5E2449183F00D6885C /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030CAF5D2449183F00D6885C /* UIImage+Gif.swift */; };
 		030CAF61244CD75E00D6885C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030CAF60244CD75E00D6885C /* SettingsViewController.swift */; };
 		030CAF66244CD93D00D6885C /* ThemeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030CAF64244CD93D00D6885C /* ThemeSelectionView.swift */; };
 		031EE8302065C59B0030CA68 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031EE82F2065C59B0030CA68 /* AppDelegate.swift */; };
@@ -122,6 +121,7 @@
 		03E83A192538DE2B009CD363 /* AsciiEmojiChooserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E83A182538DE2B009CD363 /* AsciiEmojiChooserTableViewController.swift */; };
 		03E83A1D2538DE60009CD363 /* AsciiEmojiChooserTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03E83A1C2538DE60009CD363 /* AsciiEmojiChooserTableViewController.storyboard */; };
 		03F7604F2471489900E0A542 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F7604E2471489900E0A542 /* Strings.swift */; };
+		17024FE22B8FC87500563DF1 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 17024FE12B8FC87500563DF1 /* Kingfisher */; };
 		17D315AA2B608E67009F81E5 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D315A92B608E67009F81E5 /* FilterView.swift */; };
 		17D315AC2B60BE12009F81E5 /* StickyBadgeShowable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D315AB2B60BE12009F81E5 /* StickyBadgeShowable.swift */; };
 		17D315AF2B6398EA009F81E5 /* ScrollingContentViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 17D315AE2B6398EA009F81E5 /* ScrollingContentViewController */; };
@@ -146,7 +146,6 @@
 		03083428246C7D5D00F6B6CE /* UserInfoViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserInfoViewController.storyboard; sourceTree = "<group>"; };
 		030CAF532440B76400D6885C /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		030CAF552440B76A00D6885C /* CommentsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommentsViewController.storyboard; sourceTree = "<group>"; };
-		030CAF5D2449183F00D6885C /* UIImage+Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
 		030CAF60244CD75E00D6885C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		030CAF64244CD93D00D6885C /* ThemeSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeSelectionView.swift; sourceTree = "<group>"; };
 		031EE82D2065C59B0030CA68 /* PR0GRAMM TV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PR0GRAMM TV.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -243,6 +242,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17024FE22B8FC87500563DF1 /* Kingfisher in Frameworks */,
 				17D315B22B639925009F81E5 /* ImageScrollView in Frameworks */,
 				17D315AF2B6398EA009F81E5 /* ScrollingContentViewController in Frameworks */,
 			);
@@ -357,7 +357,6 @@
 			isa = PBXGroup;
 			children = (
 				03076A652059E80F00168E62 /* UIImageView+Extension.swift */,
-				030CAF5D2449183F00D6885C /* UIImage+Gif.swift */,
 				03A93327243CEFE100A16E1B /* HapticFeedbackButton.swift */,
 				03D2AC4F243264740082D4C9 /* Theme.swift */,
 				03D2AC4E243264740082D4C9 /* UIWindow.swift */,
@@ -498,6 +497,7 @@
 			packageProductDependencies = (
 				17D315AE2B6398EA009F81E5 /* ScrollingContentViewController */,
 				17D315B12B639925009F81E5 /* ImageScrollView */,
+				17024FE12B8FC87500563DF1 /* Kingfisher */,
 			);
 			productName = Pr0gramm;
 			productReference = 03076A602059E80F00168E62 /* pr0gramm.app */;
@@ -554,6 +554,7 @@
 			packageReferences = (
 				17D315AD2B6398EA009F81E5 /* XCRemoteSwiftPackageReference "ScrollingContentViewController" */,
 				17D315B02B639925009F81E5 /* XCRemoteSwiftPackageReference "ImageScrollView" */,
+				17024FE02B8FC87500563DF1 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 03076A612059E80F00168E62 /* Products */;
 			projectDirPath = "";
@@ -661,7 +662,6 @@
 				033CF1B8205BDC6B00627321 /* Pr0grammConnector.swift in Sources */,
 				03A93326243BC82000A16E1B /* AlignedCollectionViewFlowLayout.swift in Sources */,
 				0388A0B724297C70006E86A3 /* Downloader.swift in Sources */,
-				030CAF5E2449183F00D6885C /* UIImage+Gif.swift in Sources */,
 				03D115FD2460BCD90096ECFD /* BadgeLabel.swift in Sources */,
 				033CF1CB205FCB4500627321 /* NibView.swift in Sources */,
 				03DB22952466DC91007E6B31 /* ActionsManager.swift in Sources */,
@@ -963,6 +963,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		17024FE02B8FC87500563DF1 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.11.0;
+			};
+		};
 		17D315AD2B6398EA009F81E5 /* XCRemoteSwiftPackageReference "ScrollingContentViewController" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/drewolbrich/ScrollingContentViewController";
@@ -982,6 +990,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		17024FE12B8FC87500563DF1 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17024FE02B8FC87500563DF1 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		17D315AE2B6398EA009F81E5 /* ScrollingContentViewController */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 17D315AD2B6398EA009F81E5 /* XCRemoteSwiftPackageReference "ScrollingContentViewController" */;

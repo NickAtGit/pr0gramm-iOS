@@ -115,6 +115,10 @@ class PostsOverviewCollectionViewController: UIViewController, Storyboarded, UIC
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        (cell as! ThumbCollectionViewCell).imageView.cancelDownload()
+    }
+    
     @objc
     func flagsDidChange() {
         updateUI()
