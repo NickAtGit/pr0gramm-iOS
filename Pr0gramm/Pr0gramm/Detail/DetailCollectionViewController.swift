@@ -57,6 +57,26 @@ class DetailCollectionViewController: UICollectionViewController, Storyboarded {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
     }
+    
+    override var keyCommands: [UIKeyCommand]? {
+        return [
+            UIKeyCommand(action: #selector(previousItem), input: UIKeyCommand.inputLeftArrow, discoverabilityTitle: "Vorheriger Post"),
+            UIKeyCommand(action: #selector(nextItem), input: UIKeyCommand.inputRightArrow, discoverabilityTitle: "Nächster Post"),
+            UIKeyCommand(action: #selector(upvoteCurrentPost), input: UIKeyCommand.inputUpArrow, discoverabilityTitle: "Blussi geben"),
+            UIKeyCommand(action: #selector(downvoteCurrentPost), input: UIKeyCommand.inputDownArrow, discoverabilityTitle: "Minus geben"),
+            
+            UIKeyCommand(action: #selector(previousItem), input: "a", discoverabilityTitle: "Vorheriger Post"),
+            UIKeyCommand(action: #selector(nextItem), input: "d", discoverabilityTitle: "Nächster Post"),
+            UIKeyCommand(action: #selector(upvoteCurrentPost), input: "w", discoverabilityTitle: "Blussi geben"),
+            UIKeyCommand(action: #selector(downvoteCurrentPost), input: "s", discoverabilityTitle: "Minus geben"),
+            UIKeyCommand(action: #selector(favoriteCurrentPost), input: "f", discoverabilityTitle: "Favorisieren"),
+            UIKeyCommand(action: #selector(toggleCommentPanel), input: "c", discoverabilityTitle: "Kommentare öffnen"),
+            
+            UIKeyCommand(action: #selector(enterFullscreen), input: "f", modifierFlags: [.control, .command], discoverabilityTitle: "Vollbild"),
+            UIKeyCommand(action: #selector(toggleMute), input: "m", discoverabilityTitle: "Video stummschalten"),
+            UIKeyCommand(action: #selector(toggleVideoPlayback), input: " ", discoverabilityTitle: "Video starten")
+        ]
+    }
                 
     @objc
     func nextItem() {
@@ -76,6 +96,39 @@ class DetailCollectionViewController: UICollectionViewController, Storyboarded {
         collectionView.scrollToItem(at: newIndexPath, at: .centeredHorizontally, animated: true)
     }
     
+    @objc func upvoteCurrentPost() {
+        getCurrentDetailController()?.upvotePost()
+    }
+    
+    @objc func downvoteCurrentPost() {
+        getCurrentDetailController()?.downvotePost()
+    }
+    
+    @objc func favoriteCurrentPost() {
+        getCurrentDetailController()?.favoritePost()
+    }
+    
+    @objc func toggleCommentPanel() {
+        getCurrentDetailController()?.toggleCommentPanel()
+    }
+    
+    @objc func enterFullscreen() {
+        getCurrentDetailController()?.enterFullscreen()
+    }
+    
+    @objc func toggleMute() {
+        getCurrentDetailController()?.toggleMute()
+    }
+    
+    @objc func toggleVideoPlayback() {
+        getCurrentDetailController()?.toggleVideoPlayback()
+    }
+    
+    func getCurrentDetailController() -> DetailViewController? {
+        guard let cell = collectionView.visibleCells.first as? DetailCollectionViewCell else { return nil }
+        return cell.detailViewController
+    }
+
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
         viewModel.items.count
