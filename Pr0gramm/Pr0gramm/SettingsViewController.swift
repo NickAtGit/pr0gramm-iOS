@@ -1,9 +1,8 @@
+import Kingfisher
 import SwiftUI
 import StoreKit
 
 struct SettingsView: View {
-    @State private var isOverlayShown = false
-
     @AppStorage(#keyPath(AppSettings.isShowSeenBagdes))
     var isShowSeenBagdes: Bool = AppSettings.isShowSeenBagdes
     @AppStorage(#keyPath(AppSettings.isMediaHeightLimitEnabled))
@@ -19,6 +18,9 @@ struct SettingsView: View {
     var isPictureInPictureEnabled: Bool = AppSettings.isPictureInPictureEnabled
     @AppStorage(#keyPath(AppSettings.isMuteOnUnnecessaryMusic))
     var isMuteOnUnnecessaryMusic: Bool = AppSettings.isMuteOnUnnecessaryMusic
+    
+    @State var dataBaseSize: String?
+    @State var diskCacheSize: String?
 
     var body: some View {
         NavigationView {
@@ -42,11 +44,6 @@ struct SettingsView: View {
                     Toggle("Gesehen Indikator anzeigen", isOn: $isShowSeenBagdes)
                     Toggle("Medien auf Bildschirmhöhe begrenzen", isOn: $isMediaHeightLimitEnabled)
                     Toggle("NSFW/NSFL bei Appstart deaktivieren", isOn: $isDeactivateNsfwOnAppStart)
-                    HStack {
-                        Text("Datenbank")
-                        Spacer()
-                        Text(ActionsManager.shared.dataBaseSize ?? "Fehler").foregroundStyle(.secondary)
-                    }
                 }
                 
                 Section(header: Text("Video")) {
@@ -55,9 +52,39 @@ struct SettingsView: View {
                     Toggle("Bild in Bild Modus", isOn: $isPictureInPictureEnabled)
                     Toggle("Stumm bei Tag \"unnötige Musik\"", isOn: $isMuteOnUnnecessaryMusic)
                 }
+                
+                Section(header: Text("Speicher")) {
+                    HStack {
+                        Text("Datenbank")
+                        Spacer()
+                        Text(dataBaseSize ?? "Fehler").foregroundStyle(.secondary)
+                    }
+                    HStack {
+                        Text("Cache")
+                        Spacer()
+                        Text(diskCacheSize ?? "Fehler").foregroundStyle(.secondary)
+                    }
+                    Button("Cache leeren") {
+                        Task {
+                            ImageCache.default.clearDiskCache()
+                            await updateStorageSizes()
+                        }
+                    }
+                }.task {
+                    await updateStorageSizes()
+                }
             }
             .navigationTitle("Einstellungen")
             .listStyle(GroupedListStyle())
+        }
+    }
+    
+    private func updateStorageSizes() async {
+        if let diskStorageSize = try? await ImageCache.default.diskStorageSize {
+            diskCacheSize = ByteCountFormatter().string(fromByteCount: Int64(diskStorageSize))
+        }
+        if let databaseSize = ActionsManager.shared.dataBaseSize {
+            dataBaseSize = ByteCountFormatter().string(fromByteCount: Int64(databaseSize))
         }
     }
     

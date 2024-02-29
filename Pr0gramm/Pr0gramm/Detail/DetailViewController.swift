@@ -153,10 +153,8 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
         }
         
         switch item.mediaType {
-        case .image:
+        case .image, .gif:
             setupImage(for: item)
-        case .gif:
-            setupGif(for: item)
         case .video:
             setupVideo(for: item)
         }
@@ -170,17 +168,6 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
     
     private func setupImage(for item: Item) {
         imageView.downloadedFrom(url: item.mediaURL)
-        imageView.addInteraction(contextMenuInteraction)
-    }
-    
-    private func setupGif(for item: Item) {
-        DispatchQueue.global().async {
-            let gif = UIImage.gif(url: item.mediaURL)
-            DispatchQueue.main.async {
-                self.imageView.image = gif
-            }
-        }
-        imageView.contentMode = .scaleAspectFit
         imageView.addInteraction(contextMenuInteraction)
     }
     
