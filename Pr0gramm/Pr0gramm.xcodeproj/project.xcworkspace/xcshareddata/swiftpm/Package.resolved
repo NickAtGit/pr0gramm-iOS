@@ -1,4 +1,5 @@
 {
+  "originHash" : "46f6fd4fb5498601f731a761a30ddd5312dc48240a046fe81fa4a3298bf537f5",
   "pins" : [
     {
       "identity" : "imagescrollview",
@@ -28,5 +29,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
