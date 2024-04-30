@@ -86,9 +86,20 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
             .sink { [weak self] tags in
                 if AppSettings.isMuteOnUnnecessaryMusic,
                    !AppSettings.isVideoMuted {
-                    self?.avPlayer?.isMuted = tags.contains(where: {
+                    let containsUnnecessaryMusicTag = tags.first(where: {
                         $0.tag.caseInsensitiveCompare("unnötige Musik") == .orderedSame
                     })
+
+                    let containsNecessaryMusicTag = tags.first(where: {
+                        $0.tag.caseInsensitiveCompare("nötige Musik") == .orderedSame
+                    })
+
+                    if let containsNecessaryMusicTag,
+                       let containsUnnecessaryMusicTag {
+                        self?.avPlayer?.isMuted = containsUnnecessaryMusicTag.confidence > containsNecessaryMusicTag.confidence
+                    } else if containsUnnecessaryMusicTag != nil {
+                        self?.avPlayer?.isMuted = true
+                    }
                 }
             }
             .store(in: &subscriptions)
