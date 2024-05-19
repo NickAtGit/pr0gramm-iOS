@@ -156,8 +156,8 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
         
         infoView.showReplyAction = { [unowned self] in self.coordinator?.showReplyForPost(viewModel: self.viewModel) }
         infoView.showCommentsAction = { [unowned self] in self.showComments() }
-        infoView.upvoteAction = { [weak self] in self?.navigation?.showBanner(with: "Han blussert") }
-        infoView.downvoteAction = { [weak self] in self?.navigation?.showBanner(with: "Han miesert") }
+        infoView.upvoteAction = { [weak self] in self?.didFinishUpvote() }
+        infoView.downvoteAction = { [weak self] in self?.didFinishDownvote() }
         infoView.showUserAction = { [weak self] name in
             guard let navigationController = self?.navigationController else { return }
             self?.coordinator?.showUserProfile(for: name, viewController: navigationController)
@@ -169,6 +169,51 @@ class DetailViewController: ScrollingContentViewController, Storyboarded {
         case .video:
             setupVideo(for: item)
         }
+    }
+    
+    func upvotePost() {
+        viewModel.vote(.up)
+        didFinishUpvote()
+    }
+    
+    func downvotePost() {
+        viewModel.vote(.down)
+        didFinishDownvote()
+    }
+    
+    func favoritePost() {
+        viewModel.vote(.favorite)
+    }
+    
+    func toggleCommentPanel() {
+        commentsViewController?.toggle()
+    }
+    
+    func enterFullscreen() {
+        showImageDetail()
+        avPlayerViewController?.goFullScreen()
+    }
+    
+    func toggleMute() {
+        avPlayerViewController?.player?.isMuted.toggle()
+    }
+    
+    func toggleVideoPlayback() {
+        guard let player = avPlayerViewController?.player,
+              player.error == nil else { return }
+        if player.rate != 0 {
+            player.pause()
+        } else {
+            player.play()
+        }
+    }
+    
+    private func didFinishUpvote() {
+        navigation?.showBanner(with: "Han blussert")
+    }
+    
+    private func didFinishDownvote() {
+        navigation?.showBanner(with: "Han miesert")
     }
         
     func cleanup() {
@@ -273,8 +318,7 @@ extension DetailViewController: UIContextMenuInteractionDelegate {
         }
         
         let fullscreenAction = UIAction(title: "Vollbild", image: UIImage(systemName: "rectangle.expand.vertical")) { [unowned self] _ in
-            self.showImageDetail()
-            self.avPlayerViewController?.goFullScreen()
+            self.enterFullscreen()
         }
         
         let saveToCameraRollAction = UIAction(title: "In Fotos speichern", image: UIImage(systemName: "photo")) { [unowned self] _ in
