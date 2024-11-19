@@ -22,7 +22,7 @@ struct Tags: Codable {
 
 struct TagsResponse: Codable {
     let tags: [Tags]
-    let tagIds: [String]
+    let tagIds: [Int]
     let ts: Int
     let rt: Int
     let qc: Int
