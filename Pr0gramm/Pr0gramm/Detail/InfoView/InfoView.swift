@@ -118,7 +118,7 @@ class InfoView: UIView, NibView {
     }
     
     @IBAction func favoriteTapped(_ sender: HapticFeedbackButton) {
-        viewModel.vote(.favorite)
+        viewModel.favorite()
         favoriteAction?()
     }
     

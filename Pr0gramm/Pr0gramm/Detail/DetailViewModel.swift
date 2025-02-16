@@ -85,10 +85,16 @@ class DetailViewModel {
         case .down:
             ActionsManager.shared.saveAction(for: item.id, action: VoteAction.itemDown.rawValue)
         case .favorite:
-            ActionsManager.shared.saveAction(for: item.id, action: VoteAction.itemFavorite.rawValue)
+            // Not used anymore, endpoint changed
+            break
         }
     }
-    
+
+    func favorite() {
+        connector.favorite(id: item.id)
+        ActionsManager.shared.saveAction(for: item.id, action: VoteAction.itemFavorite.rawValue)
+    }
+
     func search(for tag: String, completion: @escaping ([Item]?) -> Void) {
         let sorting = Sorting(rawValue: AppSettings.sorting)!
         let flags = AppSettings.currentFlags

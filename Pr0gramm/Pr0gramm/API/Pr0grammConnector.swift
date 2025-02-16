@@ -212,7 +212,22 @@ class Pr0grammConnector {
             print("Voted \(type.path): \(success)")
         }
     }
-    
+
+    func favorite(id: Int) {
+        guard isLoggedIn else { return }
+        guard let nonce = nonce else { return }
+        let data: [String: String] = ["itemId": "\(id)",
+                                      "_nonce": nonce]
+
+        // I add just manually to add fav function again
+        // unfaving is not possible because collectionId is needed
+        // don't know right now where to get it...
+        let url = URL(string: http + baseURL + "api/collections/add")!
+        post(data: data, to: url, postType: .voteItem) { success in
+            print("Favorite: \(success)")
+        }
+    }
+
     func postComment(to itemId: Int, parentId: Int = 0, comment: String) {
         guard isLoggedIn else { return }
         guard let nonce = nonce else { return }
