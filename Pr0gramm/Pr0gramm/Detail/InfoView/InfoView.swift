@@ -1,4 +1,3 @@
-
 import UIKit
 import Combine
 
@@ -25,6 +24,15 @@ class InfoView: UIView, NibView {
             viewModel.$postTime
                 .assign(to: \.text, on: dateLabel)
                 .store(in: &subscriptions)
+                
+            viewModel.$isFavorited
+                .sink { [weak self] isFavorited in
+                    self?.favoriteButton.setImage(
+                        UIImage(systemName: isFavorited ? "heart.fill" : "heart"), 
+                        for: .normal
+                    )
+                }
+                .store(in: &subscriptions)
             
             userClassView.image = viewModel.item.mark.icon
             
@@ -43,17 +51,14 @@ class InfoView: UIView, NibView {
                     case .up:
                         self.pointsLabel.text = "\(self.viewModel.initialPointCount + 1)"
                         self.upvoteButton.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
-                        self.favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
                         self.downvoteButton.setImage(UIImage(systemName: "minus.circle"), for: .normal)
                     case .down:
                         self.pointsLabel.text = "\(self.viewModel.initialPointCount - 1)"
                         self.upvoteButton.setImage(UIImage(systemName: "plus.circle"), for: .normal)
-                        self.favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
                         self.downvoteButton.setImage(UIImage(systemName: "minus.circle.fill"), for: .normal)
                     case .favorite:
                         self.pointsLabel.text = "\(self.viewModel.initialPointCount + 1)"
                         self.upvoteButton.setImage(UIImage(systemName: "plus.circle"), for: .normal)
-                        self.favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                         self.downvoteButton.setImage(UIImage(systemName: "minus.circle"), for: .normal)
                     }
                 }
@@ -66,15 +71,12 @@ class InfoView: UIView, NibView {
                     
                 case .itemDown:
                     upvoteButton.setImage(UIImage(systemName: "plus.circle"), for: .normal)
-                    favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
                     downvoteButton.setImage(UIImage(systemName: "minus.circle.fill"), for: .normal)
                 case .itemUp:
                     upvoteButton.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
-                    favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
                     downvoteButton.setImage(UIImage(systemName: "minus.circle"), for: .normal)
                 case .itemFavorite:
                     upvoteButton.setImage(UIImage(systemName: "plus.circle"), for: .normal)
-                    favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                     downvoteButton.setImage(UIImage(systemName: "minus.circle"), for: .normal)
                 default:
                     break
@@ -157,8 +159,8 @@ extension InfoView: UIContextMenuInteractionDelegate {
             self.viewModel.vote(.up)
         }
         
-        let favoriteAction = UIAction(title: "Favorit", image: UIImage(systemName: "heart")) { [unowned self] _ in
-            self.viewModel.vote(.favorite)
+        let favoriteAction = UIAction(title: "Favorit", image: UIImage(systemName: viewModel.isFavorited ? "heart.fill" : "heart")) { [unowned self] _ in
+            self.viewModel.favorite()
         }
 
         let downvoteAction = UIAction(title: "Minus", image: UIImage(systemName: "minus.circle")) { [unowned self] _ in

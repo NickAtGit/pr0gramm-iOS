@@ -1,4 +1,3 @@
-
 import Foundation
 import UIKit
 
@@ -96,6 +95,16 @@ enum Vote: Int {
     case favorite = 2
 }
 
+// Collection membership response
+struct CollectionMembership: Codable {
+    let id: Int
+    let name: String
+    let isDefault: Bool?
+}
+
+struct CollectionMemberships: Codable {
+    let collections: [CollectionMembership]
+}
 
 class Pr0grammConnector {
 
@@ -213,18 +222,113 @@ class Pr0grammConnector {
         }
     }
 
-    func favorite(id: Int) {
-        guard isLoggedIn else { return }
-        guard let nonce = nonce else { return }
-        let data: [String: String] = ["itemId": "\(id)",
-                                      "_nonce": nonce]
+    // MARK: - Collections/Favorites Methods
 
-        // I add just manually to add fav function again
-        // unfaving is not possible because collectionId is needed
-        // don't know right now where to get it...
-        let url = URL(string: http + baseURL + "api/collections/add")!
+    /// Check if an item is in user's collections (including favorites)
+    func getCollectionMemberships(itemId: Int, completion: @escaping (Result<CollectionMemberships, ConnectorError>) -> Void) {
+        guard isLoggedIn else { completion(.failure(.noData)); return }
+        
+        var components = URLComponents(string: "\(http)\(baseURL)api/collections/memberships")!
+        components.queryItems = [URLQueryItem(name: "itemId", value: "\(itemId)")]
+        
+        guard let url = components.url else { completion(.failure(.noData)); return }
+        let request = getRequest(with: url)
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data else { 
+                completion(.failure(.noData))
+                return 
+            }
+            
+            let jsonDecoder = JSONDecoder()
+            do {
+                let memberships = try jsonDecoder.decode(CollectionMemberships.self, from: data)
+                completion(.success(memberships))
+            } catch {
+                print("Failed to decode collection memberships: \(error)")
+                completion(.failure(.decodingFailed))
+            }
+        }
+        task.resume()
+    }
+    
+    /// Check if an item is in favorites/default collection
+    func isItemFavorited(itemId: Int, completion: @escaping (Bool) -> Void) {
+        getCollectionMemberships(itemId: itemId) { result in
+            switch result {
+            case .success(let memberships):
+                let isFavorited = memberships.collections.contains { $0.isDefault == true }
+                completion(isFavorited)
+            case .failure:
+                completion(false)
+            }
+        }
+    }
+    
+    /// Add an item to a collection (or favorites if no collectionId provided)
+    func addToCollection(itemId: Int, collectionId: Int? = nil, completion: @escaping (Bool) -> Void) {
+        guard isLoggedIn else { completion(false); return }
+        guard let nonce = nonce else { completion(false); return }
+        
+        var data: [String: String] = [
+            "itemId": "\(itemId)",
+            "_nonce": nonce
+        ]
+        
+        if let collectionId = collectionId {
+            data["collectionId"] = "\(collectionId)"
+        }
+        
+        let url = URL(string: "\(http)\(baseURL)api/collections/add")!
         post(data: data, to: url, postType: .voteItem) { success in
-            print("Favorite: \(success)")
+            if success {
+                ActionsManager.shared.saveAction(for: itemId, action: VoteAction.itemFavorite.rawValue)
+            }
+            print("Add to collection: \(success)")
+            completion(success)
+        }
+    }
+    
+    /// Remove an item from a collection (requires collectionId)
+    func removeFromCollection(itemId: Int, collectionId: Int, completion: @escaping (Bool) -> Void) {
+        guard isLoggedIn else { completion(false); return }
+        guard let nonce = nonce else { completion(false); return }
+        
+        let data: [String: String] = [
+            "itemId": "\(itemId)",
+            "collectionId": "\(collectionId)",
+            "_nonce": nonce
+        ]
+        
+        let url = URL(string: "\(http)\(baseURL)api/collections/remove")!
+        post(data: data, to: url, postType: .voteItem) { success in
+            if success {
+                ActionsManager.shared.saveAction(for: itemId, action: VoteAction.none.rawValue)
+            }
+            print("Remove from collection: \(success)")
+            completion(success)
+        }
+    }
+    
+    /// Toggle favorite status of an item - add if not in favorites, remove if already there
+    func toggleFavorite(itemId: Int, completion: @escaping (Bool) -> Void) {
+        getCollectionMemberships(itemId: itemId) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let memberships):
+                // Check if item is already in the default/favorites collection
+                if let defaultCollection = memberships.collections.first(where: { $0.isDefault == true }) {
+                    // Item is already in favorites, remove it
+                    self.removeFromCollection(itemId: itemId, collectionId: defaultCollection.id, completion: completion)
+                } else {
+                    // Item is not in favorites, add it
+                    self.addToCollection(itemId: itemId, completion: completion)
+                }
+            case .failure:
+                // Failed to get memberships, try to add to favorites
+                self.addToCollection(itemId: itemId, completion: completion)
+            }
         }
     }
 

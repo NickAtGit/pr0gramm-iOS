@@ -1,4 +1,3 @@
-
 import Foundation
 import Combine
 
@@ -16,6 +15,7 @@ class DetailViewModel {
     @Published var currentVote = Vote.neutral
     @Published var comments: [Comment]?
     @Published var postTime: String?
+    @Published var isFavorited = false
 
     var isSeen: Bool {
         get { ActionsManager.shared.retrieveAction(for: item.id)?.seen ?? false }
@@ -58,6 +58,21 @@ class DetailViewModel {
             guard hasComments else { return }
             self.sortComments(itemInfo.comments)
         }
+        
+        // Check if the item is favorited
+        if connector.isLoggedIn {
+            checkFavoriteStatus()
+        }
+    }
+    
+    private func checkFavoriteStatus() {
+        connector.isItemFavorited(itemId: item.id) { [weak self] isFavorited in
+            guard let self = self else { return }
+            
+            DispatchQueue.main.async {
+                self.isFavorited = isFavorited
+            }
+        }
     }
     
     func addComment(_ comment: Comment, parentComment: Comment? = nil) {
@@ -91,8 +106,13 @@ class DetailViewModel {
     }
 
     func favorite() {
-        connector.favorite(id: item.id)
-        ActionsManager.shared.saveAction(for: item.id, action: VoteAction.itemFavorite.rawValue)
+        connector.toggleFavorite(itemId: item.id) { [weak self] success in
+            guard success, let self = self else { return }
+            
+            DispatchQueue.main.async {
+                self.isFavorited.toggle()
+            }
+        }
     }
 
     func search(for tag: String, completion: @escaping ([Item]?) -> Void) {
