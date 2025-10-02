@@ -58,10 +58,10 @@
                         </subviews>
                         <color key="backgroundColor" name="Richtiges Grau"/>
                         <constraints>
-                            <constraint firstItem="wRs-lW-6sq" firstAttribute="top" secondItem="bKh-V8-bG8" secondAttribute="top" id="Hxf-vs-IVZ"/>
-                            <constraint firstItem="wRs-lW-6sq" firstAttribute="leading" secondItem="bKh-V8-bG8" secondAttribute="leading" id="OFx-6Z-TPa"/>
-                            <constraint firstItem="wRs-lW-6sq" firstAttribute="bottom" secondItem="bKh-V8-bG8" secondAttribute="bottom" id="WjL-XJ-vbk"/>
-                            <constraint firstItem="wRs-lW-6sq" firstAttribute="trailing" secondItem="bKh-V8-bG8" secondAttribute="trailing" id="wuq-1p-LrS"/>
+                            <constraint firstItem="wRs-lW-6sq" firstAttribute="top" secondItem="g6G-bE-6FQ" secondAttribute="top" id="Hxf-vs-IVZ"/>
+                            <constraint firstItem="wRs-lW-6sq" firstAttribute="leading" secondItem="g6G-bE-6FQ" secondAttribute="leading" id="OFx-6Z-TPa"/>
+                            <constraint firstItem="wRs-lW-6sq" firstAttribute="bottom" secondItem="g6G-bE-6FQ" secondAttribute="bottom" id="WjL-XJ-vbk"/>
+                            <constraint firstItem="wRs-lW-6sq" firstAttribute="trailing" secondItem="g6G-bE-6FQ" secondAttribute="trailing" id="wuq-1p-LrS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bKh-V8-bG8"/>
                     </view>

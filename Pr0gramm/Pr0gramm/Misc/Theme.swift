@@ -181,7 +181,6 @@ extension Theme {
         
         UITableView.appearance().with {
             $0.backgroundColor = backgroundColor
-            $0.separatorColor = separatorColor
         }
         
         UITableViewCell.appearance().with {

@@ -16,7 +16,8 @@ class PostsOverviewCollectionViewController: UIViewController, Storyboarded, UIC
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView?.contentInsetAdjustmentBehavior = .always
+        collectionView?.contentInsetAdjustmentBehavior = .never
+
         updateLayout()
         updateUI()
 
@@ -24,7 +25,7 @@ class PostsOverviewCollectionViewController: UIViewController, Storyboarded, UIC
                                  action: #selector(PostsOverviewCollectionViewController.refresh),
                                  for: .valueChanged)
         collectionView?.refreshControl = refreshControl
-        
+
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(flagsDidChange),
                                                name: Notification.Name("flagsChanged"),
@@ -33,11 +34,29 @@ class PostsOverviewCollectionViewController: UIViewController, Storyboarded, UIC
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         if numberOfCellsPerRow != CGFloat(AppSettings.postCount) {
             numberOfCellsPerRow = CGFloat(AppSettings.postCount)
             updateLayout()
         }
+
+        updateContentInsets()
+    }
+
+    private func updateContentInsets() {
+        var topInset: CGFloat = 0
+        var bottomInset: CGFloat = 0
+
+        if let navBarHeight = navigationController?.navigationBar.frame.maxY {
+            topInset = navBarHeight
+        }
+
+        if let tabBarHeight = tabBarController?.tabBar.frame.height {
+            bottomInset = tabBarHeight
+        }
+
+        collectionView.contentInset = UIEdgeInsets(top: topInset, left: 0, bottom: bottomInset, right: 0)
+        collectionView.scrollIndicatorInsets = UIEdgeInsets(top: topInset, left: 0, bottom: bottomInset, right: 0)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
