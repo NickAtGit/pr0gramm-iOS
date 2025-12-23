@@ -136,8 +136,7 @@ extension Theme {
                 
         UINavigationBar.appearance().with {
             let app = UINavigationBarAppearance()
-            app.configureWithOpaqueBackground()
-            app.shadowImage = tint.as1ptImage()
+            app.configureWithTransparentBackground()
             app.titleTextAttributes = [.foregroundColor: labelColor,
                                        .font: UIFont.systemFont(ofSize: 17, weight: .bold)]
             
