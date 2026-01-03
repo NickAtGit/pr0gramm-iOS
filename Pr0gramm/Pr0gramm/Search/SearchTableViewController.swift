@@ -57,10 +57,51 @@ class SearchTableViewController: UITableViewController, Storyboarded {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "searchTextCell")!
-        cell.textLabel?.text = AppSettings.latestSearchStrings[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "searchTextCell") ?? UITableViewCell(style: .default, reuseIdentifier: "searchTextCell")
+
+        // Configure label
+        let searchText = AppSettings.latestSearchStrings[indexPath.row]
+        cell.textLabel?.text = searchText
         cell.textLabel?.textColor = #colorLiteral(red: 0.9490196078, green: 0.9607843137, blue: 0.9568627451, alpha: 1)
+
+        // Add arrow button if not already added
+        let buttonTag = 999
+        if cell.contentView.viewWithTag(buttonTag) == nil {
+            let button = UIButton(type: .system)
+            let config = UIImage.SymbolConfiguration(pointSize: 16, weight: .medium)
+            let image = UIImage(systemName: "arrow.up.right", withConfiguration: config)
+            button.setImage(image, for: .normal)
+            button.tintColor = .white
+            button.tag = buttonTag
+            button.addTarget(self, action: #selector(didTapArrowButton(_:)), for: .touchUpInside)
+            cell.contentView.addSubview(button)
+
+            // Layout
+            button.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                button.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
+                button.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -16),
+                button.widthAnchor.constraint(equalToConstant: 30),
+                button.heightAnchor.constraint(equalToConstant: 30)
+            ])
+        }
+
+        // Store index path as accessibility identifier for retrieval
+        if let button = cell.contentView.viewWithTag(buttonTag) as? UIButton {
+            button.accessibilityIdentifier = "\(indexPath.row)"
+        }
+
         return cell
+    }
+    
+    @objc func didTapArrowButton(_ sender: UIButton) {
+        guard let id = sender.accessibilityIdentifier,
+              let index = Int(id),
+              index < AppSettings.latestSearchStrings.count else { return }
+
+        let text = AppSettings.latestSearchStrings[index]
+        searchController.searchBar.text = text
+        searchController.searchBar.becomeFirstResponder()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
